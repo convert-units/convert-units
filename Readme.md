@@ -22,7 +22,7 @@ convert(1).from('ltr').to('ml')
 Jump from imperial to metric units the same way:
 
 ```js
-convert(1).from('lb').to('kg');
+convert(1).from('lb').to('kg')
 // 0.4536... (tested to 4 significant figures)
 ```
 
@@ -36,10 +36,10 @@ convert(1).from('oz').to('fl-oz')
 If you ever want to know the possible conversions for a unit, just use `.possibilities`
 
 ```js
-convert().from('ltr').possibilities();
+convert().from('ltr').possibilities()
 // [ 'ml', 'ltr', 'tsp', 'tbsp', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ]
 
-convert().from('kg').possibilities();
+convert().from('kg').possibilities()
 // [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ]
 ```
 
