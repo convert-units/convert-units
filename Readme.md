@@ -13,7 +13,7 @@ Usage
 Here's how you move between the metric units for volume:
 
 ```js
-var convert = require('convert-units');
+var convert = require('convert-units')
 
 convert(1).from('ltr').to('ml')
 // 1000
