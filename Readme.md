@@ -36,11 +36,25 @@ convert(1).from('oz').to('fl-oz')
 If you ever want to know the possible conversions for a unit, just use `.possibilities`
 
 ```js
-convert(1).from('ltr').possibilities();
+convert().from('ltr').possibilities();
 // [ 'ml', 'ltr', 'tsp', 'tbsp', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ]
 
-convert(1).from('kg').possibilities();
+convert().from('kg').possibilities();
 // [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ]
+```
+
+To get a detailed description of a unit, use `describe`
+
+```
+convert().describe('kg')
+/*
+  {
+    measure: 'mass'
+  , system: 'metric'
+  , singular: 'Kilogram'
+  , plural: 'Kilograms'
+  }
+*/
 ```
 
 Supported Units
