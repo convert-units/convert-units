@@ -5,7 +5,7 @@ var t = new jake.TestTask('convert-units', function () {
 var d = new jake.NpmPublishTask('convert-units', function () {
   this.packageFiles.include([
     'lib/**'
-  , 'test'
+  , 'test/*'
   , 'Jakefile'
   , 'package.json'
   , 'Readme.md'
