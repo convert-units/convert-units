@@ -43,6 +43,34 @@ convert(1).from('kg').possibilities();
 // [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ]
 ```
 
+Supported Units
+---------------
+
+### Volume
+
+ * ml
+ * ltr
+ * tsp
+ * tbsp
+ * fl-oz
+ * cup
+ * pnt
+ * qt
+ * gal
+
+### Mass
+
+ * mcg
+ * mg
+ * g
+ * kg
+ * oz
+ * lb
+
+### Want More?
+
+Adding new measurement sets is easy. Take a look at `lib/masses.js` and `lib/volumes.js` to see how it's done.
+
 License
 -------
 Copyright (c) 2013 Ben Ng, http://benng.me
