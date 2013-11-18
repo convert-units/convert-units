@@ -1,0 +1,29 @@
+{
+  "name": "convert-units",
+  "version": "0.0.1",
+  "description": "Convert between quantities in different units",
+  "main": "lib",
+  "dependencies": {
+    "lodash.keys": "2.3.x",
+    "lodash.foreach": "2.3.x"
+  },
+  "devDependencies": {
+    "jake": "0.7.x"
+  },
+  "scripts": {
+    "test": "jake test --trace"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ben-ng/convert-units.git"
+  },
+  "keywords": [
+    "metric",
+    "imperial",
+    "convert",
+    "ratio",
+    "fraction"
+  ],
+  "author": "Ben Ng <me@benng.me> (http://benng.me)",
+  "license": "MIT"
+}
