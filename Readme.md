@@ -83,7 +83,7 @@ Supported Units
 
 ### Want More?
 
-Adding new measurement sets is easy. Take a look at `lib/masses.js` and `lib/volumes.js` to see how it's done.
+Adding new measurement sets is easy. Take a look at [`lib/definitions`](https://github.com/ben-ng/convert-units/tree/master/lib/definitions) to see how it's done.
 
 License
 -------
