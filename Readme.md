@@ -12,7 +12,7 @@ Usage
 
 Here's how you move between the metric units for volume:
 
-```
+```js
 var convert = require('convert-units');
 
 convert(1).from('ltr').to('ml')
@@ -21,21 +21,21 @@ convert(1).from('ltr').to('ml')
 
 Jump from imperial to metric units the same way:
 
-```
+```js
 convert(1).from('lb').to('kg');
 // 0.4536... (tested to 4 significant figures)
 ```
 
 Just be careful not to ask for an impossible conversion:
 
-```
+```js
 convert(1).from('oz').to('fl-oz')
 // throws -- you can't go from mass to volume!
 ```
 
-If you ever want to know the possible conversions for a unit, just use `.possibilities`:
+If you ever want to know the possible conversions for a unit, just use `.possibilities`
 
-```
+```js
 convert(1).from('ltr').possibilities();
 // [ 'ml', 'ltr', 'tsp', 'tbsp', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ]
 
