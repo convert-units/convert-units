@@ -14,4 +14,16 @@ tests['kg possibilities'] = function () {
   assert.deepEqual(actual, expected);
 };
 
+tests['mass possibilities'] = function () {
+  var actual = convert().possibilities('mass')
+    , expected = [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ];
+  assert.deepEqual(actual, expected);
+};
+
+tests['volume possibilities'] = function () {
+  var actual = convert().possibilities('volume')
+    , expected = [ 'ml', 'ltr', 'tsp', 'tbsp', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ];
+  assert.deepEqual(actual, expected);
+};
+
 module.exports = tests;

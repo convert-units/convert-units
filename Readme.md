@@ -33,6 +33,13 @@ convert(1).from('oz').to('fl-oz')
 // throws -- you can't go from mass to volume!
 ```
 
+You can get a list of the measurement types supported with `.measures`
+
+```js
+convert().measurements()
+// [ 'mass', 'volume' ]
+```
+
 If you ever want to know the possible conversions for a unit, just use `.possibilities`
 
 ```js
@@ -40,6 +47,12 @@ convert().from('ltr').possibilities()
 // [ 'ml', 'ltr', 'tsp', 'tbsp', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ]
 
 convert().from('kg').possibilities()
+// [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ]
+```
+
+You can also get the possible conversions for a measure:
+```js
+convert().possibilities('mass')
 // [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ]
 ```
 
