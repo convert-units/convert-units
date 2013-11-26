@@ -14,6 +14,12 @@ tests['kg possibilities'] = function () {
   assert.deepEqual(actual, expected);
 };
 
+tests['each possibilities'] = function () {
+  var actual = convert().possibilities('each')
+    , expected = [ 'ea' ];
+  assert.deepEqual(actual, expected);
+};
+
 tests['mass possibilities'] = function () {
   var actual = convert().possibilities('mass')
     , expected = [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ];
