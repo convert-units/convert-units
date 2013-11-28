@@ -4,7 +4,7 @@ var convert = require('../lib')
 
 tests['ltr possibilities'] = function () {
   var actual = convert().from('ltr').possibilities()
-    , expected = [ 'ml', 'ltr', 'tsp', 'tbsp', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ];
+    , expected = [ 'ml', 'ltr', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ];
   assert.deepEqual(actual, expected);
 };
 
@@ -28,7 +28,7 @@ tests['mass possibilities'] = function () {
 
 tests['volume possibilities'] = function () {
   var actual = convert().possibilities('volume')
-    , expected = [ 'ml', 'ltr', 'tsp', 'tbsp', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ];
+    , expected = [ 'ml', 'ltr', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ];
   assert.deepEqual(actual, expected);
 };
 

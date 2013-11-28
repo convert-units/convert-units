@@ -25,15 +25,15 @@ tests['fl-oz to fl-oz'] = function () {
 };
 
 tests['fl-oz to tbsp'] = function () {
-  assert.strictEqual( convert(4).from('fl-oz').to('tbsp') , 8);
+  assert.strictEqual( convert(4).from('fl-oz').to('Tbs') , 8);
 };
 
-tests['tbsp to fl-oz'] = function () {
-  assert.strictEqual( convert(2).from('tbsp').to('fl-oz') , 1);
+tests['Tbs to fl-oz'] = function () {
+  assert.strictEqual( convert(2).from('Tbs').to('fl-oz') , 1);
 };
 
-tests['tbsp to tbsp'] = function () {
-  assert.strictEqual( convert(140).from('tbsp').to('tbsp') , 140);
+tests['Tbs to Tbs'] = function () {
+  assert.strictEqual( convert(140).from('Tbs').to('Tbs') , 140);
 };
 
 // When converting between systems, expect < 0.1% error
