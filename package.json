@@ -24,22 +24,6 @@
     "ratio",
     "fraction"
   ],
-  "author": {
-    "name": "Ben Ng",
-    "email": "me@benng.me",
-    "url": "http://benng.me"
-  },
-  "license": "MIT",
-  "readme": "convert-units\n=============\n\n[![Build Status](https://travis-ci.org/ben-ng/convert-units.png)](https://travis-ci.org/ben-ng/convert-units)\n\nA handy utility for converting between quantities in different units.\n\nUsage\n-----\n\n`convert-units` has a simple chained API that is easy to read.\n\nHere's how you move between the metric units for volume:\n\n```js\nvar convert = require('convert-units')\n\nconvert(1).from('ltr').to('ml')\n// 1000\n```\n\nJump from imperial to metric units the same way:\n\n```js\nconvert(1).from('lb').to('kg')\n// 0.4536... (tested to 4 significant figures)\n```\n\nJust be careful not to ask for an impossible conversion:\n\n```js\nconvert(1).from('oz').to('fl-oz')\n// throws -- you can't go from mass to volume!\n```\n\nYou can get a list of the measurement types supported with `.measures`\n\n```js\nconvert().measurements()\n// [ 'mass', 'volume' ]\n```\n\nIf you ever want to know the possible conversions for a unit, just use `.possibilities`\n\n```js\nconvert().from('ltr').possibilities()\n// [ 'ml', 'ltr', 'tsp', 'tbsp', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ]\n\nconvert().from('kg').possibilities()\n// [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ]\n```\n\nYou can also get the possible conversions for a measure:\n```js\nconvert().possibilities('mass')\n// [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ]\n```\n\nTo get a detailed description of a unit, use `describe`\n\n```\nconvert().describe('kg')\n/*\n  {\n    measure: 'mass'\n  , system: 'metric'\n  , singular: 'Kilogram'\n  , plural: 'Kilograms'\n  }\n*/\n```\n\nSupported Units\n---------------\n\n### Volume\n\n * ml\n * ltr\n * tsp\n * tbsp\n * fl-oz\n * cup\n * pnt\n * qt\n * gal\n\n### Mass\n\n * mcg\n * mg\n * g\n * kg\n * oz\n * lb\n\n### Want More?\n\nAdding new measurement sets is easy. Take a look at [`lib/definitions`](https://github.com/ben-ng/convert-units/tree/master/lib/definitions) to see how it's done.\n\nLicense\n-------\nCopyright (c) 2013 Ben Ng, http://benng.me\n\nPermission is hereby granted, free of charge, to any person\nobtaining a copy of this software and associated documentation\nfiles (the \"Software\"), to deal in the Software without\nrestriction, including without limitation the rights to use,\ncopy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the\nSoftware is furnished to do so, subject to the following\nconditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES\nOF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\nNONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT\nHOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\nWHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\nFROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR\nOTHER DEALINGS IN THE SOFTWARE.\n",
-  "readmeFilename": "Readme.md",
-  "bugs": {
-    "url": "https://github.com/ben-ng/convert-units/issues"
-  },
-  "homepage": "https://github.com/ben-ng/convert-units",
-  "_id": "convert-units@0.0.7",
-  "dist": {
-    "shasum": "0efe587c1cf6abf6c97a279d1ed264ca64276255"
-  },
-  "_from": "convert-units@",
-  "_resolved": "https://registry.npmjs.org/convert-units/-/convert-units-0.0.7.tgz"
+  "author": "Ben Ng <me@benng.me> (http://benng.me)",
+  "license": "MIT"
 }
