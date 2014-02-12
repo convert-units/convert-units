@@ -14,6 +14,12 @@ tests['kg possibilities'] = function () {
   assert.deepEqual(actual, expected);
 };
 
+tests['m possibilities'] = function () {
+  var actual = convert().from('m').possibilities()
+    , expected = [ 'mm', 'cm', 'm', 'in', 'ft' ];
+  assert.deepEqual(actual, expected);
+};
+
 tests['each possibilities'] = function () {
   var actual = convert().possibilities('each')
     , expected = [ 'ea' ];
@@ -29,6 +35,12 @@ tests['mass possibilities'] = function () {
 tests['volume possibilities'] = function () {
   var actual = convert().possibilities('volume')
     , expected = [ 'ml', 'ltr', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ];
+  assert.deepEqual(actual, expected);
+};
+
+tests['length possibilities'] = function () {
+  var actual = convert().possibilities('length')
+    , expected = [ 'mm', 'cm', 'm', 'in', 'ft' ];
   assert.deepEqual(actual, expected);
 };
 

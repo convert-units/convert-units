@@ -36,8 +36,8 @@ convert(1).from('oz').to('fl-oz')
 You can get a list of the measurement types supported with `.measures`
 
 ```js
-convert().measurements()
-// [ 'mass', 'volume' ]
+convert().measures()
+// [ 'length', 'mass', 'volume' ]
 ```
 
 If you ever want to know the possible conversions for a unit, just use `.possibilities`
@@ -73,6 +73,23 @@ convert().describe('kg')
 Supported Units
 ---------------
 
+### Length
+
+* mm
+* cm
+* m
+* in
+* ft
+
+### Mass
+
+ * mcg
+ * mg
+ * g
+ * kg
+ * oz
+ * lb
+
 ### Volume
 
  * ml
@@ -85,14 +102,7 @@ Supported Units
  * qt
  * gal
 
-### Mass
 
- * mcg
- * mg
- * g
- * kg
- * oz
- * lb
 
 ### Want More?
 
