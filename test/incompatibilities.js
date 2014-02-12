@@ -20,6 +20,12 @@ tests['kg to fl-oz throws'] = function () {
   });
 };
 
+tests['kg to ft throws'] = function () {
+  assert.throws(function () {
+    convert(4).from('kg').to('fl-oz');
+  });
+};
+
 tests['kg to nonexistant unit throws'] = function () {
   assert.throws(function () {
     convert(4).from('kg').to('garbage');
