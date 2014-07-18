@@ -56,6 +56,12 @@ convert().possibilities('mass')
 // [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ]
 ```
 
+You can also get the all the available units:
+```js
+convert().possibilities()
+// [ 'mm', 'cm', 'm', 'in', 'ft', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'ml', 'ltr', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea' ];
+```
+
 To get a detailed description of a unit, use `describe`
 
 ```
