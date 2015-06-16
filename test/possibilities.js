@@ -20,6 +20,12 @@ tests['m possibilities'] = function () {
   assert.deepEqual(actual, expected);
 };
 
+tests['C possibilities'] = function () {
+  var actual = convert().from('C').possibilities()
+    , expected = [ 'C', 'F', 'K' ];
+  assert.deepEqual(actual, expected);
+};
+
 tests['each possibilities'] = function () {
   var actual = convert().possibilities('each')
     , expected = [ 'ea' ];
@@ -44,9 +50,15 @@ tests['length possibilities'] = function () {
   assert.deepEqual(actual, expected);
 };
 
+tests['temperature possibilities'] = function () {
+  var actual = convert().possibilities('temperature')
+    , expected = [ 'C', 'F', 'K' ];
+  assert.deepEqual(actual, expected);
+};
+
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
-    , expected = [ 'mm', 'cm', 'm', 'in', 'ft', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'ml', 'ltr', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea' ];
+    , expected = [ 'mm', 'cm', 'm', 'in', 'ft', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'ml', 'ltr', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea', 'C', 'F', 'K' ];
   assert.deepEqual(actual, expected);
 };
 

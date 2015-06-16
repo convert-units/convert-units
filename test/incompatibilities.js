@@ -44,4 +44,10 @@ tests['.to before .from throws'] = function () {
   });
 };
 
+tests['.to before .from throws'] = function () {
+  assert.throws(function () {
+    convert(4).to('C').from('fl-oz');
+  });
+};
+
 module.exports = tests;
