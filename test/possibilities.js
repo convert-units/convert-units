@@ -16,9 +16,15 @@ tests['kg possibilities'] = function () {
 
 tests['m possibilities'] = function () {
   var actual = convert().from('m').possibilities()
-    , expected = [ 'mm', 'cm', 'm', 'in', 'ft' ];
+    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'ft' ];
   assert.deepEqual(actual, expected);
 };
+
+tests['b possibilities'] = function () {
+  var actual = convert().from('b').possibilities()
+    , expected = [ 'b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB' ];
+  assert.deepEqual(actual, expected);
+}
 
 tests['each possibilities'] = function () {
   var actual = convert().possibilities('each')
@@ -40,13 +46,19 @@ tests['volume possibilities'] = function () {
 
 tests['length possibilities'] = function () {
   var actual = convert().possibilities('length')
-    , expected = [ 'mm', 'cm', 'm', 'in', 'ft' ];
+    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'ft' ];
+  assert.deepEqual(actual, expected);
+};
+
+tests['digital possibilities'] = function() {
+  var actual = convert().possibilities('digital')
+    , expected = [ 'b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB' ];
   assert.deepEqual(actual, expected);
 };
 
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
-    , expected = [ 'mm', 'cm', 'm', 'in', 'ft', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'ml', 'ltr', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea' ];
+    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'ft', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'ml', 'ltr', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB', 'ea' ];
   assert.deepEqual(actual, expected);
 };
 
