@@ -1,5 +1,5 @@
 {
-  "name": "convert-units",
+  "name": "@toddself/convert-units",
   "version": "0.1.1",
   "description": "Convert between quantities in different units",
   "main": "lib",
