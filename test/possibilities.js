@@ -16,7 +16,7 @@ tests['kg possibilities'] = function () {
 
 tests['m possibilities'] = function () {
   var actual = convert().from('m').possibilities()
-    , expected = [ 'mm', 'cm', 'm', 'in', 'ft' ];
+    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'ft' ];
   assert.deepEqual(actual, expected);
 };
 
@@ -40,7 +40,7 @@ tests['volume possibilities'] = function () {
 
 tests['length possibilities'] = function () {
   var actual = convert().possibilities('length')
-    , expected = [ 'mm', 'cm', 'm', 'in', 'ft' ];
+    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'ft' ];
   assert.deepEqual(actual, expected);
 };
 
@@ -58,7 +58,7 @@ tests['time possibilities'] = function () {
 
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
-    , expected = [ 'mm', 'cm', 'm', 'in', 'ft', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'ml', 'ltr', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea', 'C', 'K', 'F', 'ms', 's', 'min', 'h','d', 'week', 'month', 'year' ];
+    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'ft', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'ml', 'ltr', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea', 'C', 'K', 'F', 'ms', 's', 'min', 'h','d', 'week', 'month', 'year' ];
   assert.deepEqual(actual, expected);
 };
 

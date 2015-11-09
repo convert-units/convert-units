@@ -33,6 +33,10 @@ tests['m to mm'] = function () {
   assert.strictEqual( convert(1).from('m').to('mm') , 1000);
 };
 
+tests['km to m'] = function () {
+  assert.strictEqual( convert(1).from('km').to('m'), 1000);
+};
+
 // When converting between systems, expect < 0.1% error
 tests['m to ft'] = function () {
   var expected = 3.28084
