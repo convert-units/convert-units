@@ -1,6 +1,6 @@
 {
   "name": "convert-units",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Convert between quantities in different units",
   "main": "lib",
   "dependencies": {
