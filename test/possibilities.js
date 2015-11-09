@@ -50,9 +50,15 @@ tests['temperature possibilities'] = function () {
   assert.deepEqual(actual, expected);
 }
 
+tests['time possibilities'] = function () {
+  var actual = convert().possibilities('time')
+    , expected = ['ms', 's', 'min', 'h', 'd', 'week', 'month', 'year']
+  assert.deepEqual(actual, expected)
+};
+
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
-    , expected = [ 'mm', 'cm', 'm', 'in', 'ft', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'ml', 'ltr', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea', 'C', 'K', 'F' ];
+    , expected = [ 'mm', 'cm', 'm', 'in', 'ft', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'ml', 'ltr', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea', 'C', 'K', 'F', 'ms', 's', 'min', 'h','d', 'week', 'month', 'year' ];
   assert.deepEqual(actual, expected);
 };
 
