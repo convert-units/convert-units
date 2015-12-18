@@ -7,8 +7,8 @@ tests['best mm'] = function () {
     , expected = {
         val: 1.2
       , unit: 'm'
-      , singular: 'meter'
-      , plural: 'meters'
+      , singular: 'Meter'
+      , plural: 'Meters'
       };
 
   assert.deepEqual(actual, expected);
