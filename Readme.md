@@ -33,6 +33,12 @@ convert(1).from('oz').to('fl-oz')
 // throws -- you can't go from mass to volume!
 ```
 
+You can ask `convert-units` to select the best unit for you:
+```js
+convert(1200).from('mm').toBest()
+// 1.2 Meters (the smallest unit with a value above 1)
+```
+
 You can get a list of the measurement types supported with `.measures`
 
 ```js

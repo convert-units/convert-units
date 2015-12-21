@@ -3,7 +3,7 @@ var convert = require('../lib')
   , tests = {};
 
 tests['best mm'] = function () {
-  var actual = convert(1200).from('mm').best()
+  var actual = convert(1200).from('mm').toBest()
     , expected = {
         val: 1.2
       , unit: 'm'
