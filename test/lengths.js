@@ -17,6 +17,14 @@ tests['in to ft'] = function () {
   assert.strictEqual( convert(1).from('in').to('ft') , 1/12);
 };
 
+tests['ft to mi'] = function () {
+  assert.strictEqual( convert(1).from('ft').to('mi') , 1/5280);
+};
+
+tests['mi to ft'] = function () {
+  assert.strictEqual( convert(1).from('mi').to('ft') , 5280);
+};
+
 tests['m to m'] = function () {
   assert.strictEqual( convert(1).from('m').to('m') , 1);
 };
