@@ -96,6 +96,20 @@ convert().list()
 */
 ```
 
+You can also get detailed descriptions of all units for a measure:
+
+```
+convert().list('mass')
+/*
+  [{
+    measure: 'mass'
+  , system: 'metric'
+  , singular: 'Kilogram'
+  , plural: 'Kilograms'
+  }, ...]
+*/
+```
+
 Supported Units
 ---------------
 
