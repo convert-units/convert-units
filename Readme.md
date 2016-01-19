@@ -82,6 +82,20 @@ convert().describe('kg')
 */
 ```
 
+To get detailed descriptions of all units, use `list`.
+
+```
+convert().list()
+/*
+  [{
+    measure: 'mass'
+  , system: 'metric'
+  , singular: 'Kilogram'
+  , plural: 'Kilograms'
+  }, ...]
+*/
+```
+
 Supported Units
 ---------------
 
