@@ -7,6 +7,7 @@ tests['list'] = function () {
     , firstItem = list[0];
 
   assert(list.length > 0);
+  assert(firstItem.hasOwnProperty("abbr"));
   assert(firstItem.hasOwnProperty("measure"));
   assert(firstItem.hasOwnProperty("system"));
   assert(firstItem.hasOwnProperty("singular"));
