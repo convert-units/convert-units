@@ -8,8 +8,24 @@ tests['ltr to ltr'] = function () {
   assert.strictEqual( convert(2).from('ltr').to('ltr') , 2);
 };
 
+tests['mm3 to ltr'] = function () {
+  assert.strictEqual( convert(1000000).from('mm3').to('ltr') , 1);
+};
+
+tests['cm3 to ltr'] = function () {
+  assert.strictEqual( convert(100).from('cm3').to('ltr') , 1/10);
+};
+
 tests['ml to ltr'] = function () {
   assert.strictEqual( convert(100).from('ml').to('ltr') , 1/10);
+};
+
+tests['m3 to ltr'] = function () {
+  assert.strictEqual( convert(1).from('m3').to('ltr') , 1000);
+};
+
+tests['km3 to ltr'] = function () {
+  assert.strictEqual( convert(1).from('km3').to('ltr') , 1000000000000);
 };
 
 tests['ltr to ml'] = function () {
@@ -40,6 +56,34 @@ tests['Tbs to Tbs'] = function () {
 tests['tsp to ltr'] = function () {
   var expected = 1.75
     , actual = convert(355).from('tsp').to('ltr');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['in3 to ltr'] = function () {
+  var expected = 0.0163871
+    , actual = convert(1).from('in3').to('ltr');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['in3 to fl-oz'] = function () {
+  var expected = 0.554113
+    , actual = convert(1).from('in3').to('fl-oz');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['m3 to yd3'] = function () {
+  var expected = 1.30795
+    , actual = convert(1).from('m3').to('yd3');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['ft3 to cm3'] = function () {
+  var expected = 28316.8
+    , actual = convert(1).from('ft3').to('cm3');
   assert.ok( percentError(expected, actual) < ACCURACY
     , 'Expected: ' + expected +', Actual: ' + actual);
 };
