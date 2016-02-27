@@ -136,15 +136,22 @@ Supported Units
 
 ### Volume
 
+ * mm3
+ * cm3
  * ml
  * ltr
+ * m3
+ * km3
  * tsp
  * tbsp
+ * in3
  * fl-oz
  * cup
  * pnt
  * qt
  * gal
+ * ft3
+ * yd3
 
 
 
