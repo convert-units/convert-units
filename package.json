@@ -8,7 +8,7 @@
     "lodash.foreach": "2.3.x"
   },
   "devDependencies": {
-    "jake": "0.7.x"
+    "jake": "8.0.x"
   },
   "scripts": {
     "test": "jake test --trace"
