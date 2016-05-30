@@ -15,7 +15,7 @@ Here's how you move between the metric units for volume:
 ```js
 var convert = require('convert-units')
 
-convert(1).from('ltr').to('ml')
+convert(1).from('l').to('ml')
 // 1000
 ```
 
@@ -49,8 +49,8 @@ convert().measures()
 If you ever want to know the possible conversions for a unit, just use `.possibilities`
 
 ```js
-convert().from('ltr').possibilities()
-// [ 'ml', 'ltr', 'tsp', 'tbsp', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ]
+convert().from('l').possibilities()
+// [ 'ml', 'l', 'tsp', 'tbsp', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ]
 
 convert().from('kg').possibilities()
 // [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ]
@@ -65,7 +65,7 @@ convert().possibilities('mass')
 You can also get the all the available units:
 ```js
 convert().possibilities()
-// [ 'mm', 'cm', 'm', 'in', 'ft', 'mi', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'ml', 'ltr', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea' ];
+// [ 'mm', 'cm', 'm', 'in', 'ft', 'mi', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'ml', 'l', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea' ];
 ```
 
 To get a detailed description of a unit, use `describe`
@@ -139,7 +139,7 @@ Supported Units
  * mm3
  * cm3
  * ml
- * ltr
+ * l
  * m3
  * km3
  * tsp

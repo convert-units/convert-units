@@ -2,9 +2,9 @@ var convert = require('../lib')
   , assert = require('assert')
   , tests = {};
 
-tests['ltr possibilities'] = function () {
-  var actual = convert().from('ltr').possibilities()
-    , expected = [ 'mm3', 'cm3', 'ml', 'ltr', 'm3', 'km3', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
+tests['l possibilities'] = function () {
+  var actual = convert().from('l').possibilities()
+    , expected = [ 'mm3', 'cm3', 'ml', 'l', 'm3', 'km3', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
   assert.deepEqual(actual, expected);
 };
 
@@ -34,7 +34,7 @@ tests['mass possibilities'] = function () {
 
 tests['volume possibilities'] = function () {
   var actual = convert().possibilities('volume')
-    , expected = [ 'mm3', 'cm3', 'ml', 'ltr', 'm3', 'km3', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
+    , expected = [ 'mm3', 'cm3', 'ml', 'l', 'm3', 'km3', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
   assert.deepEqual(actual, expected);
 };
 
@@ -64,7 +64,7 @@ tests['digital possibilities'] = function() {
 
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
-    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'ft', 'mi', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'mm3', 'cm3', 'ml', 'ltr', 'm3', 'km3', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3', 'ea', 'C', 'K', 'F', 'ms', 's', 'min', 'h','d', 'week', 'month', 'year', 'b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB' ];
+    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'ft', 'mi', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'mm3', 'cm3', 'ml', 'l', 'm3', 'km3', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3', 'ea', 'C', 'K', 'F', 'ms', 's', 'min', 'h','d', 'week', 'month', 'year', 'b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB' ];
   assert.deepEqual(actual, expected);
 };
 
