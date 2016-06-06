@@ -125,6 +125,18 @@ Supported Units
 * ft
 * mi
 
+### Area
+
+* mm2
+* cm2
+* m2
+* ha
+* km2
+* in2
+* ft2
+* ac
+* mi2
+
 ### Mass
 
  * mcg
