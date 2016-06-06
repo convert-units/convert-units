@@ -64,7 +64,7 @@ tests['digital possibilities'] = function() {
 
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
-    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'ft', 'mi', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'mm3', 'cm3', 'ml', 'l', 'm3', 'km3', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3', 'ea', 'C', 'K', 'F', 'ms', 's', 'min', 'h','d', 'week', 'month', 'year', 'b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB' ];
+    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'ft', 'mi', 'mm2', 'cm2', 'm2', 'ha', 'km2', 'in2', 'ft2', 'ac', 'mi2', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'mm3', 'cm3', 'ml', 'l', 'm3', 'km3', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3', 'ea', 'C', 'K', 'F', 'ms', 's', 'min', 'h','d', 'week', 'month', 'year', 'b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB' ];
   assert.deepEqual(actual, expected);
 };
 
