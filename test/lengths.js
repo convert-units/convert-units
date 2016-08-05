@@ -9,6 +9,10 @@ tests['ft to ft'] = function () {
   assert.strictEqual( convert(1).from('ft').to('ft') , 1);
 };
 
+tests['in to in'] = function () {
+  assert.strictEqual( convert(7).from('in').to('in') , 7);
+};
+
 tests['ft to in'] = function () {
   assert.strictEqual( convert(1).from('ft').to('in') , 12);
 };
