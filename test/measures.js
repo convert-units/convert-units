@@ -4,7 +4,7 @@ var convert = require('../lib')
 
 tests['measures'] = function () {
   var actual = convert().measures()
-    , expected = [ 'length', 'mass', 'volume', 'each', 'temperature', 'time', 'digital' ];
+    , expected = [ 'length', 'area', 'mass', 'volume', 'each', 'temperature', 'time', 'digital' ];
   assert.deepEqual(actual, expected);
 };
 
