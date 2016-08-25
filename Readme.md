@@ -115,7 +115,6 @@ convert().list('mass')
 
 Supported Units
 ---------------
-
 ### Length
 
 * mm
@@ -164,8 +163,60 @@ Supported Units
  * gal
  * ft3
  * yd3
+ 
+### Temperature
+ 
+ * C
+ * F
+ * K
+ 
+### Time
+  
+  * ms
+  * s
+  * min
+  * h
+  * d
+  * week
+  * month
+  * year
+  
+### Volume
+  
+  * mm3
+  * cm3
+  * ml
+  * l
+  * m3
+  * km3
+  * tsp
+  * Tbs
+  * in3
+  * fl-oz
+  * cup
+  * pnt
+  * qt
+  * gal
+  * ft3
+  * yd3
 
+### Digital
+  * b
+  * Kb
+  * Mb
+  * Gb
+  * Tb
+  * B
+  * KB
+  * MB
+  * GB
+  * TB
 
+### Parts-Per
+  * ppm
+  * ppb
+  * ppt
+  * ppq
 
 ### Want More?
 
