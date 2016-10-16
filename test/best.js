@@ -26,4 +26,28 @@ tests['excludes measurements'] = function () {
   assert.deepEqual(actual, expected);
 }
 
+tests['does not break when excluding from measurement'] = function () {
+  var actual = convert(10).from('km').toBest({ exclude: ['km'] })
+    , expected = {
+        val: 10000
+      , unit: 'm'
+      , singular: 'Meter'
+      , plural: 'Meters'
+      };
+
+  assert.deepEqual(actual, expected);
+}
+
+tests['if all measurements are excluded return from'] = function () {
+  var actual = convert(10).from('km').toBest({ exclude: ['mm, cm, m, km'] })
+    , expected = {
+        val: 10
+      , unit: 'km'
+      , singular: 'Kilometer'
+      , plural: 'Kilometers'
+      };
+
+  assert.deepEqual(actual, expected);
+}
+
 module.exports = tests;
