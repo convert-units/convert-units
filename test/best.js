@@ -14,4 +14,16 @@ tests['best mm'] = function () {
   assert.deepEqual(actual, expected);
 };
 
+tests['excludes measurements'] = function () {
+  var actual = convert(1200000).from('mm').toBest({ exclude: ['km', 'm'] })
+    , expected = {
+        val: 120000
+      , unit: 'cm'
+      , singular: 'Centimeter'
+      , plural: 'Centimeters'
+      };
+
+  assert.deepEqual(actual, expected);
+}
+
 module.exports = tests;
