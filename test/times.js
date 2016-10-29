@@ -27,10 +27,32 @@ tests['s to d'] = function () {
 
 tests['d to week'] = function () {
   assert.strictEqual( convert(7).from('d').to('week'), 1);
-}
+};
 
-tests['w to year'] = function () {
-  assert.strictEqual( convert(52).from('week').to('year'), 1);
+tests ['d to month'] = function () {
+  assert.strictEqual( convert(30.4375).from('d').to('month'), 1);
+};
+
+tests ['d to year'] = function () {
+  assert.strictEqual( convert(365.25).from('d').to('year'), 1);
+};
+
+tests['week to month'] = function () {
+  var expected = 1
+    , actual = convert(4.34821).from('week').to('month');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['week to year'] = function () {
+  var expected = 1
+    , actual = convert(52.17857).from('week').to('year');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['month to year'] = function () {
+  assert.strictEqual( convert(12).from('month').to('year'), 1);
 };
 
 module.exports = tests;
