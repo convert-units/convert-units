@@ -70,7 +70,7 @@ convert().possibilities()
 
 To get a detailed description of a unit, use `describe`
 
-```
+```js
 convert().describe('kg')
 /*
   {
@@ -85,7 +85,7 @@ convert().describe('kg')
 
 To get detailed descriptions of all units, use `list`.
 
-```
+```js
 convert().list()
 /*
   [{
@@ -100,7 +100,7 @@ convert().list()
 
 You can also get detailed descriptions of all units for a measure:
 
-```
+```js
 convert().list('mass')
 /*
   [{
