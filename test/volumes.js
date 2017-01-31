@@ -16,6 +16,14 @@ tests['cm3 to l'] = function () {
   assert.strictEqual( convert(100).from('cm3').to('l') , 1/10);
 };
 
+tests['dl to l'] = function () {
+  assert.strictEqual( convert(2).from('dl').to('l') , 0.2);
+};
+
+tests['cl to l'] = function () {
+  assert.strictEqual( convert(25).from('cl').to('l') , 0.25);
+};
+
 tests['ml to l'] = function () {
   assert.strictEqual( convert(100).from('ml').to('l') , 1/10);
 };
