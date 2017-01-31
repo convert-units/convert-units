@@ -32,6 +32,14 @@ tests['l to ml'] = function () {
   assert.strictEqual( convert(1).from('l').to('ml') , 1000);
 };
 
+tests['dl to ml'] = function () {
+  assert.strictEqual( convert(10).from('dl').to('ml') , 1000);
+};
+
+tests['cl to ml'] = function () {
+  assert.strictEqual( convert(100).from('cl').to('ml') , 1000);
+};
+
 tests['ml to ml'] = function () {
   assert.strictEqual( convert(13).from('ml').to('ml') , 13);
 };
