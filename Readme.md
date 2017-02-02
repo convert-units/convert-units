@@ -163,15 +163,15 @@ Supported Units
  * gal
  * ft3
  * yd3
- 
+
 ### Temperature
- 
+
  * C
  * F
  * K
- 
+
 ### Time
-  
+
   * ms
   * s
   * min
@@ -180,13 +180,14 @@ Supported Units
   * week
   * month
   * year
-  
+
 ### Volume
-  
+
   * mm3
   * cm3
   * ml
   * l
+  * dm3
   * m3
   * km3
   * tsp
@@ -217,6 +218,13 @@ Supported Units
   * ppb
   * ppt
   * ppq
+
+### Speed
+  * mps
+  * kph
+  * fps
+  * mph
+  * kn
 
 ### Want More?
 

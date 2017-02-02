@@ -8,6 +8,10 @@ tests['l to l'] = function () {
   assert.strictEqual( convert(2).from('l').to('l') , 2);
 };
 
+tests['dm3 to l'] = function () {
+  assert.strictEqual( convert(2).from('dm3').to('l') , 2);
+};
+
 tests['mm3 to l'] = function () {
   assert.strictEqual( convert(1000000).from('mm3').to('l') , 1);
 };
