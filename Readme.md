@@ -163,15 +163,17 @@ Supported Units
  * gal
  * ft3
  * yd3
- 
+
 ### Temperature
- 
+
  * C
  * F
  * K
- 
+
 ### Time
-  
+
+  * ns
+  * mu
   * ms
   * s
   * min
@@ -180,9 +182,9 @@ Supported Units
   * week
   * month
   * year
-  
+
 ### Volume
-  
+
   * mm3
   * cm3
   * ml
