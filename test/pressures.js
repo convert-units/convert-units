@@ -13,6 +13,10 @@ tests['Pa to kPa'] = function () {
   assert.strictEqual( convert(2000).from('Pa').to('kPa') , 2);
 };
 
+tests['kPa to Pa'] = function () {
+  assert.strictEqual( convert(1).from('kPa').to('Pa') , 1000);
+};
+
 tests['kPa to hPa'] = function () {
   assert.strictEqual( convert(20).from('kPa').to('hPa') , 200);
 };
@@ -54,3 +58,12 @@ tests['torr to ksi'] = function () {
     assert.ok( percentError(expected, actual) < ACCURACY
       , 'Expected: ' + expected +', Actual: ' + actual);
 };
+
+tests['psi to hPa'] = function () {
+    var expected = 689.47573
+      , actual = convert(10).from('psi').to('hPa');
+    assert.ok( percentError(expected, actual) < ACCURACY
+      , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+module.exports = tests;

@@ -44,4 +44,11 @@ tests['m/s to knot'] = function () {
       , 'Expected: ' + expected +', Actual: ' + actual);
 }
 
+tests['mph to km/h'] = function () {
+    var expected = 19.3121
+    var actual = convert(12).from('mph').to('km/h');
+    assert.ok( percentError(expected, actual) < ACCURACY
+      , 'Expected: ' + expected +', Actual: ' + actual);
+}
+
 module.exports = tests;
