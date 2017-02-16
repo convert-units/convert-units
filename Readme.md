@@ -163,15 +163,15 @@ Supported Units
  * gal
  * ft3
  * yd3
- 
+
 ### Temperature
- 
+
  * C
  * F
  * K
- 
+
 ### Time
-  
+
   * ms
   * s
   * min
@@ -180,25 +180,25 @@ Supported Units
   * week
   * month
   * year
-  
-### Volume
-  
-  * mm3
-  * cm3
-  * ml
-  * l
-  * m3
-  * km3
-  * tsp
-  * Tbs
-  * in3
-  * fl-oz
-  * cup
-  * pnt
-  * qt
-  * gal
-  * ft3
-  * yd3
+
+### Speed
+
+  * m/s
+  * km/h
+  * mph
+  * knot
+  * ft/s
+
+
+### Pressure
+  * Pa
+  * hPa
+  * kPa
+  * MPa
+  * bar
+  * torr
+  * psi
+  * ksi
 
 ### Digital
   * b
