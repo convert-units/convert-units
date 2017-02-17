@@ -1,5 +1,5 @@
 var convert = require('../lib')
-  , assert = require('assert')
+  , assert = require('assert-diff')
   , tests = {};
 
 tests['l possibilities'] = function () {
