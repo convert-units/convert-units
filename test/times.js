@@ -4,6 +4,16 @@ var convert = require('../lib')
   , ACCURACY = 1/1000
   , percentError = require('../lib/percentError');
 
+tests['s to ns'] = function() {
+  var expected = 1000000000
+    , actual = convert(1).from('s').to('ns');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+}
+
+tests['s to mu'] = function() {
+  assert.strictEqual( convert(1).from('s').to('mu'), 1000000 );
+};
 
 tests['s to ms'] = function () {
   assert.strictEqual( convert(1).from('s').to('ms') , 1000);
