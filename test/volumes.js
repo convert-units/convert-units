@@ -16,6 +16,14 @@ tests['cm3 to l'] = function () {
   assert.strictEqual( convert(100).from('cm3').to('l') , 1/10);
 };
 
+tests['dl to l'] = function () {
+  assert.strictEqual( convert(2).from('dl').to('l') , 0.2);
+};
+
+tests['cl to l'] = function () {
+  assert.strictEqual( convert(25).from('cl').to('l') , 0.25);
+};
+
 tests['ml to l'] = function () {
   assert.strictEqual( convert(100).from('ml').to('l') , 1/10);
 };
@@ -32,8 +40,64 @@ tests['l to ml'] = function () {
   assert.strictEqual( convert(1).from('l').to('ml') , 1000);
 };
 
+tests['dl to ml'] = function () {
+  assert.strictEqual( convert(10).from('dl').to('ml') , 1000);
+};
+
+tests['cl to ml'] = function () {
+  assert.strictEqual( convert(100).from('cl').to('ml') , 1000);
+};
+
 tests['ml to ml'] = function () {
   assert.strictEqual( convert(13).from('ml').to('ml') , 13);
+};
+
+tests['msk to ml'] = function () {
+  assert.strictEqual( convert(2).from('msk').to('ml') , 30);
+};
+
+tests['tsk to ml'] = function () {
+  assert.strictEqual( convert(3).from('tsk').to('ml') , 15);
+};
+
+tests['krm to ml'] = function () {
+  assert.strictEqual( convert(13).from('krm').to('ml') , 13);
+};
+
+tests['kanna to l'] = function () {
+  assert.strictEqual( convert(2).from('kanna').to('l') , 2 * 2.617);
+};
+
+tests['kkp to ml'] = function () {
+  assert.strictEqual( convert(2).from('kkp').to('ml') , 300);
+};
+
+tests['glas to ml'] = function () {
+  assert.strictEqual( convert(2).from('glas').to('ml') , 400);
+};
+
+tests['ml to msk'] = function () {
+  assert.strictEqual( convert(15).from('ml').to('msk') , 1);
+};
+
+tests['ml to tsk'] = function () {
+  assert.strictEqual( convert(5).from('ml').to('tsk') , 1);
+};
+
+tests['ml to krm'] = function () {
+  assert.strictEqual( convert(1).from('ml').to('krm') , 1);
+};
+
+tests['l to kanna'] = function () {
+  assert.strictEqual( convert(2.617).from('l').to('kanna') , 1);
+};
+
+tests['lm to kkp'] = function () {
+  assert.strictEqual( convert(150).from('ml').to('kkp') , 1);
+};
+
+tests['ml to glas'] = function () {
+  assert.strictEqual( convert(200).from('ml').to('glas') , 1);
 };
 
 tests['fl-oz to fl-oz'] = function () {

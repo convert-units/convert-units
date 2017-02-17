@@ -4,7 +4,7 @@ var convert = require('../lib')
 
 tests['l possibilities'] = function () {
   var actual = convert().from('l').possibilities()
-    , expected = [ 'mm3', 'cm3', 'ml', 'l', 'm3', 'km3', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
+    , expected = [ 'mm3', 'cm3', 'ml', 'cl', 'dl', 'l', 'm3', 'km3', 'krm', 'tsk', 'msk', 'kkp', 'glas', 'kanna', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
   assert.deepEqual(actual, expected);
 };
 
@@ -34,7 +34,7 @@ tests['mass possibilities'] = function () {
 
 tests['volume possibilities'] = function () {
   var actual = convert().possibilities('volume')
-    , expected = [ 'mm3', 'cm3', 'ml', 'l', 'm3', 'km3', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
+    , expected = [ 'mm3', 'cm3', 'ml', 'cl', 'dl', 'l', 'm3', 'km3', 'krm', 'tsk', 'msk', 'kkp', 'glas', 'kanna', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
   assert.deepEqual(actual, expected);
 };
 
@@ -70,7 +70,7 @@ tests['partsPer possibilities'] = function() {
 
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
-    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'yd', 'ft', 'mi', 'mm2', 'cm2', 'm2', 'ha', 'km2', 'in2', 'ft2', 'ac', 'mi2', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'mm3', 'cm3', 'ml', 'l', 'm3', 'km3', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3', 'ea', 'C', 'K', 'F', 'ns', 'mu', 'ms', 's', 'min', 'h','d', 'week', 'month', 'year', 'b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB', 'ppm', 'ppb', 'ppt', 'ppq' ];
+    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'yd', 'ft', 'mi', 'mm2', 'cm2', 'm2', 'ha', 'km2', 'in2', 'ft2', 'ac', 'mi2', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'mm3', 'cm3', 'ml', 'l', 'm3', 'km3', 'krm', 'tsk', 'msk', 'kkp', 'glas', 'kanna', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3', 'ea', 'C', 'K', 'F', 'ns', 'mu', 'ms', 's', 'min', 'h','d', 'week', 'month', 'year', 'b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB', 'ppm', 'ppb', 'ppt', 'ppq' ];
   assert.deepEqual(actual, expected);
 };
 
