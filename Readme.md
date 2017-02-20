@@ -172,6 +172,8 @@ Supported Units
 
 ### Time
 
+  * ns
+  * mu
   * ms
   * s
   * min
@@ -188,7 +190,6 @@ Supported Units
   * mph
   * knot
   * ft/s
-
 
 ### Pressure
   * Pa
@@ -224,7 +225,7 @@ Adding new measurement sets is easy. Take a look at [`lib/definitions`](https://
 
 License
 -------
-Copyright (c) 2013 Ben Ng, http://benng.me
+Copyright (c) 2013-2017 Ben Ng and Contributors, http://benng.me
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation

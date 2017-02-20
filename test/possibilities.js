@@ -1,10 +1,12 @@
 var convert = require('../lib')
-  , assert = require('assert')
+  , assert = require('assert-diff')
   , tests = {};
+
+assert.options.strict = true;
 
 tests['l possibilities'] = function () {
   var actual = convert().from('l').possibilities()
-    , expected = [ 'mm3', 'cm3', 'ml', 'l', 'm3', 'km3', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
+    , expected = [ 'mm3', 'cm3', 'ml', 'cl', 'dl', 'l', 'm3', 'km3', 'krm', 'tsk', 'msk', 'kkp', 'glas', 'kanna', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
   assert.deepEqual(actual, expected);
 };
 
@@ -34,7 +36,7 @@ tests['mass possibilities'] = function () {
 
 tests['volume possibilities'] = function () {
   var actual = convert().possibilities('volume')
-    , expected = [ 'mm3', 'cm3', 'ml', 'l', 'm3', 'km3', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
+    , expected = [ 'mm3', 'cm3', 'ml', 'cl', 'dl', 'l', 'm3', 'km3', 'krm', 'tsk', 'msk', 'kkp', 'glas', 'kanna', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
   assert.deepEqual(actual, expected);
 };
 
@@ -52,7 +54,7 @@ tests['temperature possibilities'] = function () {
 
 tests['time possibilities'] = function () {
   var actual = convert().possibilities('time')
-    , expected = ['ms', 's', 'min', 'h', 'd', 'week', 'month', 'year']
+    , expected = ['ns', 'mu', 'ms', 's', 'min', 'h', 'd', 'week', 'month', 'year']
   assert.deepEqual(actual, expected)
 };
 
@@ -82,8 +84,15 @@ tests['speed possibilities'] = function() {
 
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
-    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'yd', 'ft', 'mi', 'mm2', 'cm2', 'm2', 'ha', 'km2', 'in2', 'ft2', 'ac', 'mi2', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'mm3', 'cm3', 'ml', 'l', 'm3', 'km3', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3', 'ea', 'C', 'K', 'F', 'ms', 's', 'min', 'h','d', 'week', 'month', 'year', 'b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB', 'ppm', 'ppb', 'ppt', 'ppq', 'm/s', 'km/h', 'mph', 'knot', 'ft/s', 'Pa', 'kPa', 'MPa', 'hPa', 'bar', 'torr', 'psi', 'ksi' ];
-  assert.deepEqual(actual, expected);
+    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'yd', 'ft', 'mi', 'mm2', 'cm2', 'm2', 'ha', 'km2', 'in2', 'ft2', 'ac', 'mi2', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'mm3', 'cm3', 'ml', 'cl', 'dl', 'l', 'm3', 'km3', 'krm', 'tsk', 'msk', 'kkp', 'glas', 'kanna', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3', 'ea', 'C', 'K', 'F', 'ns', 'mu', 'ms', 's', 'min', 'h','d', 'week', 'month', 'year', 'b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB', 'ppm', 'ppb', 'ppt', 'ppq', 'm/s', 'km/h', 'mph', 'knot', 'ft/s', 'Pa', 'kPa', 'MPa', 'hPa', 'bar', 'torr', 'psi', 'ksi' ];
+  try {
+    assert.deepEqual(actual, expected)
+  }
+  catch (e) {
+    // This gets too long, and gets truncated
+    process.stderr.write(e + '\n');
+    throw e;
+  }
 };
 
 module.exports = tests;
