@@ -172,6 +172,7 @@ tests['all possibilities'] = function () {
       , 'tsp'
       , 'week'
       , 'yd'
+      , 'yd2'
       , 'yd3'
       , 'year'
   ];
