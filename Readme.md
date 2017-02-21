@@ -187,7 +187,7 @@ Supported Units
 
   * m/s
   * km/h
-  * mph
+  * m/h
   * knot
   * ft/s
 
