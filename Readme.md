@@ -183,24 +183,23 @@ Supported Units
   * month
   * year
 
-### Volume
+### Speed
 
-  * mm3
-  * cm3
-  * ml
-  * l
-  * m3
-  * km3
-  * tsp
-  * Tbs
-  * in3
-  * fl-oz
-  * cup
-  * pnt
-  * qt
-  * gal
-  * ft3
-  * yd3
+  * m/s
+  * km/h
+  * mph
+  * knot
+  * ft/s
+
+### Pressure
+  * Pa
+  * hPa
+  * kPa
+  * MPa
+  * bar
+  * torr
+  * psi
+  * ksi
 
 ### Digital
   * b
@@ -226,7 +225,7 @@ Adding new measurement sets is easy. Take a look at [`lib/definitions`](https://
 
 License
 -------
-Copyright (c) 2013 Ben Ng, http://benng.me
+Copyright (c) 2013-2017 Ben Ng and Contributors, http://benng.me
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
