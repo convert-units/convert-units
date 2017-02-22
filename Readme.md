@@ -1,7 +1,7 @@
 convert-units
 =============
 
-[![Build Status](https://travis-ci.org/ben-ng/convert-units.png)](https://travis-ci.org/ben-ng/convert-units)
+[![Build Status](https://travis-ci.org/ben-ng/convert-units.png)](https://travis-ci.org/ben-ng/convert-units) [![Downloads](https://img.shields.io/npm/dm/convert-units.svg)](https://www.npmjs.com/package/convert-units)
 
 A handy utility for converting between quantities in different units.
 
