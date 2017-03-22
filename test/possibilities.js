@@ -82,11 +82,18 @@ tests['speed possibilities'] = function() {
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
+tests['current possibilities'] = function() {
+  var actual = convert().possibilities('current')
+    , expected = [ 'A', 'mA', 'kA'];
+  assert.deepEqual(actual.sort(), expected.sort())
+};
+
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
     // Please keep these sorted for maintainability
     , expected = [
-        'B'
+        'A'
+      , 'B'
       , 'C'
       , 'F'
       , 'GB'
@@ -126,6 +133,7 @@ tests['all possibilities'] = function () {
       , 'in'
       , 'in2'
       , 'in3'
+      , 'kA'
       , 'kPa'
       , 'kanna'
       , 'kg'
@@ -145,6 +153,7 @@ tests['all possibilities'] = function () {
       , 'm/s'
       , 'm2'
       , 'm3'
+      , 'mA'
       , 'mcg'
       , 'mg'
       , 'mi'
