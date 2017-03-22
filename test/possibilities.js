@@ -88,6 +88,12 @@ tests['current possibilities'] = function() {
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
+tests['voltage possibilities'] = function() {
+  var actual = convert().possibilities('voltage')
+    , expected = [ 'V', 'mV', 'kV'];
+  assert.deepEqual(actual.sort(), expected.sort())
+};
+
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
     // Please keep these sorted for maintainability
@@ -146,6 +152,7 @@ tests['all possibilities'] = function () {
       , 'knot'
       , 'krm'
       , 'ksi'
+      , 'kV'
       , 'l'
       , 'lb'
       , 'm'
@@ -167,6 +174,7 @@ tests['all possibilities'] = function () {
       , 'ms'
       , 'msk'
       , 'mu'
+      , 'mV'
       , 'ns'
       , 'oz'
       , 'pnt'
@@ -180,6 +188,7 @@ tests['all possibilities'] = function () {
       , 'torr'
       , 'tsk'
       , 'tsp'
+      , 'V'
       , 'week'
       , 'yd'
       , 'yd2'
