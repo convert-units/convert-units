@@ -100,6 +100,12 @@ tests['power possibilities'] = function() {
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
+tests['reactive power possibilities'] = function() {
+  var actual = convert().possibilities('reactivePower')
+    , expected = [ 'VAR', 'mVAR', 'kVAR', 'MVAR', 'GVAR'];
+  assert.deepEqual(actual.sort(), expected.sort())
+};
+
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
     // Please keep these sorted for maintainability
@@ -139,6 +145,7 @@ tests['all possibilities'] = function () {
       , 'g'
       , 'gal'
       , 'glas'
+      , 'GVAR'
       , 'GW'
       , 'h'
       , 'hPa'
@@ -161,6 +168,7 @@ tests['all possibilities'] = function () {
       , 'ksi'
       , 'kV'
       , 'kW'
+      , 'kVAR'
       , 'l'
       , 'lb'
       , 'm'
@@ -183,6 +191,8 @@ tests['all possibilities'] = function () {
       , 'msk'
       , 'mu'
       , 'mV'
+      , 'mVAR'
+      , 'MVAR'
       , 'mW'
       , 'MW'
       , 'ns'
@@ -199,6 +209,7 @@ tests['all possibilities'] = function () {
       , 'tsk'
       , 'tsp'
       , 'V'
+      , 'VAR'
       , 'W'
       , 'week'
       , 'yd'
