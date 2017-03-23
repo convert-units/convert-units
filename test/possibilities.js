@@ -112,6 +112,12 @@ tests['apparent power possibilities'] = function() {
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
+tests['energy possibilities'] = function() {
+  var actual = convert().possibilities('energy')
+    , expected = [ 'Wh', 'mWh', 'kWh', 'MWh', 'GWh', 'J', 'kJ'];
+  assert.deepEqual(actual.sort(), expected.sort())
+};
+
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
     // Please keep these sorted for maintainability
@@ -154,17 +160,20 @@ tests['all possibilities'] = function () {
       , 'GVA'
       , 'GVAR'
       , 'GW'
+      , 'GWh'
       , 'h'
       , 'hPa'
       , 'ha'
       , 'in'
       , 'in2'
       , 'in3'
+      , 'J'
       , 'kA'
       , 'kPa'
       , 'kanna'
       , 'kg'
       , 'kkp'
+      , 'kJ'
       , 'kl'
       , 'km'
       , 'km/h'
@@ -177,6 +186,7 @@ tests['all possibilities'] = function () {
       , 'kVA'
       , 'kVAR'
       , 'kW'
+      , 'kWh'
       , 'l'
       , 'lb'
       , 'm'
@@ -205,6 +215,8 @@ tests['all possibilities'] = function () {
       , 'MVAR'
       , 'mW'
       , 'MW'
+      , 'mWh'
+      , 'MWh'
       , 'ns'
       , 'oz'
       , 'pnt'
@@ -223,6 +235,7 @@ tests['all possibilities'] = function () {
       , 'VAR'
       , 'W'
       , 'week'
+      , 'Wh'
       , 'yd'
       , 'yd2'
       , 'yd3'
