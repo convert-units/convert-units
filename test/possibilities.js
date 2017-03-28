@@ -6,7 +6,7 @@ assert.options.strict = true;
 
 tests['l possibilities'] = function () {
   var actual = convert().from('l').possibilities()
-    , expected = [ 'mm3', 'cm3', 'ml', 'cl', 'dl', 'l', 'm3', 'km3', 'krm', 'tsk', 'msk', 'kkp', 'glas', 'kanna', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
+    , expected = [ 'mm3', 'cm3', 'ml', 'cl', 'dl', 'l', 'kl', 'm3', 'km3', 'krm', 'tsk', 'msk', 'kkp', 'glas', 'kanna', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
@@ -36,7 +36,7 @@ tests['mass possibilities'] = function () {
 
 tests['volume possibilities'] = function () {
   var actual = convert().possibilities('volume')
-    , expected = [ 'mm3', 'cm3', 'ml', 'cl', 'dl', 'l', 'm3', 'km3', 'krm', 'tsk', 'msk', 'kkp', 'glas', 'kanna', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
+    , expected = [ 'mm3', 'cm3', 'ml', 'cl', 'dl', 'l', 'kl', 'm3', 'km3', 'krm', 'tsk', 'msk', 'kkp', 'glas', 'kanna', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
@@ -82,11 +82,54 @@ tests['speed possibilities'] = function() {
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
+tests['current possibilities'] = function() {
+  var actual = convert().possibilities('current')
+    , expected = [ 'A', 'mA', 'kA'];
+  assert.deepEqual(actual.sort(), expected.sort())
+};
+
+tests['voltage possibilities'] = function() {
+  var actual = convert().possibilities('voltage')
+    , expected = [ 'V', 'mV', 'kV'];
+  assert.deepEqual(actual.sort(), expected.sort())
+};
+
+tests['power possibilities'] = function() {
+  var actual = convert().possibilities('power')
+    , expected = [ 'W', 'mW', 'kW', 'MW', 'GW'];
+  assert.deepEqual(actual.sort(), expected.sort())
+};
+
+tests['reactive power possibilities'] = function() {
+  var actual = convert().possibilities('reactivePower')
+    , expected = [ 'VAR', 'mVAR', 'kVAR', 'MVAR', 'GVAR'];
+  assert.deepEqual(actual.sort(), expected.sort())
+};
+
+tests['apparent power possibilities'] = function() {
+  var actual = convert().possibilities('apparentPower')
+    , expected = [ 'VA', 'mVA', 'kVA', 'MVA', 'GVA'];
+  assert.deepEqual(actual.sort(), expected.sort())
+};
+
+tests['energy possibilities'] = function() {
+  var actual = convert().possibilities('energy')
+    , expected = [ 'Wh', 'mWh', 'kWh', 'MWh', 'GWh', 'J', 'kJ'];
+  assert.deepEqual(actual.sort(), expected.sort())
+};
+
+tests['reactive energy possibilities'] = function() {
+  var actual = convert().possibilities('reactiveEnergy')
+    , expected = [ 'VARh', 'mVARh', 'kVARh', 'MVARh', 'GVARh'];
+  assert.deepEqual(actual.sort(), expected.sort())
+};
+
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
     // Please keep these sorted for maintainability
     , expected = [
-        'B'
+        'A'
+      , 'B'
       , 'C'
       , 'F'
       , 'GB'
@@ -120,16 +163,25 @@ tests['all possibilities'] = function () {
       , 'g'
       , 'gal'
       , 'glas'
+      , 'GVA'
+      , 'GVAR'
+      , 'GVARh'
+      , 'GW'
+      , 'GWh'
       , 'h'
       , 'hPa'
       , 'ha'
       , 'in'
       , 'in2'
       , 'in3'
+      , 'J'
+      , 'kA'
       , 'kPa'
       , 'kanna'
       , 'kg'
       , 'kkp'
+      , 'kJ'
+      , 'kl'
       , 'km'
       , 'km/h'
       , 'km2'
@@ -137,6 +189,12 @@ tests['all possibilities'] = function () {
       , 'knot'
       , 'krm'
       , 'ksi'
+      , 'kV'
+      , 'kVA'
+      , 'kVAR'
+      , 'kVARh'
+      , 'kW'
+      , 'kWh'
       , 'l'
       , 'lb'
       , 'm'
@@ -144,6 +202,7 @@ tests['all possibilities'] = function () {
       , 'm/s'
       , 'm2'
       , 'm3'
+      , 'mA'
       , 'mcg'
       , 'mg'
       , 'mi'
@@ -157,6 +216,17 @@ tests['all possibilities'] = function () {
       , 'ms'
       , 'msk'
       , 'mu'
+      , 'mV'
+      , 'mVA'
+      , 'MVA'
+      , 'mVAR'
+      , 'MVAR'
+      , 'mVARh'
+      , 'MVARh'
+      , 'mW'
+      , 'MW'
+      , 'mWh'
+      , 'MWh'
       , 'ns'
       , 'oz'
       , 'pnt'
@@ -170,7 +240,13 @@ tests['all possibilities'] = function () {
       , 'torr'
       , 'tsk'
       , 'tsp'
+      , 'V'
+      , 'VA'
+      , 'VAR'
+      , 'VARh'
+      , 'W'
       , 'week'
+      , 'Wh'
       , 'yd'
       , 'yd2'
       , 'yd3'

@@ -222,6 +222,53 @@ Supported Units
   * ppt
   * ppq
 
+### Voltage
+  * V
+  * mV
+  * kV
+
+### Current
+  * A
+  * mA
+  * kA
+
+### Power
+  * W
+  * mW
+  * kW
+  * MW
+  * GW
+
+### Apparent Power
+  * VA
+  * mVA
+  * kVA
+  * MVA
+  * GVA
+
+### Reactive Power
+  * VAR
+  * mVAR
+  * kVAR
+  * MVAR
+  * GVAR
+
+### Energy
+  * Wh
+  * mWh
+  * kWh
+  * MWh
+  * GWh
+  * J
+  * kJ
+
+### Reactive Energy
+  * VARh
+  * mVARh
+  * kVARh
+  * MVARh
+  * GVARh
+
 ### Want More?
 
 Adding new measurement sets is easy. Take a look at [`lib/definitions`](https://github.com/ben-ng/convert-units/tree/master/lib/definitions) to see how it's done.
