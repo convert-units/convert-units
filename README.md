@@ -154,6 +154,7 @@ Supported Units
  * cm3
  * ml
  * l
+ * kl
  * m3
  * km3
  * tsp
