@@ -113,6 +113,21 @@ convert().list('mass')
 */
 ```
 
+You can also add support for units on the fly
+
+```
+convert().addUnit({
+    system: "metric" // "metric" or "imperial"
+  , measure: "mass" // One of convert().measures()
+  , abbr: "t"
+  , plural: "Tonnes"
+  , singular: "Tonne"
+  , toAnchor: 1000000
+  })
+
+Will return convert().describe('t') in the above example if successful.
+```
+
 Supported Units
 ---------------
 
