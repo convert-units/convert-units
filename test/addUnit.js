@@ -2,6 +2,9 @@ var convert = require('../lib')
   , assert = require('assert')
   , tests = {};
 
+// Test commented out as "addUnit" mutates "measures" and causes
+// subsequent tests that compare possibilities agains hard-coded lists
+// to fail
 tests['addUnit'] = function () {
   // var actual = convert().addUnit({
   //   system: 'metric',
