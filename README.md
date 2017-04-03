@@ -1,7 +1,7 @@
 convert-units
 =============
 
-[![Build Status](https://travis-ci.org/ben-ng/convert-units.png)](https://travis-ci.org/ben-ng/convert-units)
+[![Build Status](https://travis-ci.org/ben-ng/convert-units.png)](https://travis-ci.org/ben-ng/convert-units) [![Downloads](https://img.shields.io/npm/dm/convert-units.svg)](https://www.npmjs.com/package/convert-units)
 
 A handy utility for converting between quantities in different units.
 
@@ -33,10 +33,13 @@ convert(1).from('oz').to('fl-oz')
 // throws -- you can't go from mass to volume!
 ```
 
-You can ask `convert-units` to select the best unit for you:
+You can ask `convert-units` to select the best unit for you with optional exclusions:
 ```js
 convert(1200).from('mm').toBest()
 // 1.2 Meters (the smallest unit with a value above 1)
+
+convert(1200).from('mm').toBest({exclude: ['m']})
+// 120 Centimeters (the smallest unit excluding meters)
 ```
 
 You can get a list of the measurement types supported with `.measures`
@@ -70,7 +73,7 @@ convert().possibilities()
 
 To get a detailed description of a unit, use `describe`
 
-```
+```js
 convert().describe('kg')
 /*
   {
@@ -85,7 +88,7 @@ convert().describe('kg')
 
 To get detailed descriptions of all units, use `list`.
 
-```
+```js
 convert().list()
 /*
   [{
@@ -100,7 +103,7 @@ convert().list()
 
 You can also get detailed descriptions of all units for a measure:
 
-```
+```js
 convert().list('mass')
 /*
   [{
@@ -130,7 +133,6 @@ Will return convert().describe('t') in the above example if successful.
 
 Supported Units
 ---------------
-
 ### Length
 
 * mm
@@ -139,6 +141,18 @@ Supported Units
 * in
 * ft
 * mi
+
+### Area
+
+* mm2
+* cm2
+* m2
+* ha
+* km2
+* in2
+* ft2
+* ac
+* mi2
 
 ### Mass
 
@@ -155,6 +169,7 @@ Supported Units
  * cm3
  * ml
  * l
+ * kl
  * m3
  * km3
  * tsp
@@ -168,7 +183,107 @@ Supported Units
  * ft3
  * yd3
 
+### Temperature
 
+ * C
+ * F
+ * K
+
+### Time
+
+  * ns
+  * mu
+  * ms
+  * s
+  * min
+  * h
+  * d
+  * week
+  * month
+  * year
+
+### Speed
+
+  * m/s
+  * km/h
+  * m/h
+  * knot
+  * ft/s
+
+### Pressure
+  * Pa
+  * hPa
+  * kPa
+  * MPa
+  * bar
+  * torr
+  * psi
+  * ksi
+
+### Digital
+  * b
+  * Kb
+  * Mb
+  * Gb
+  * Tb
+  * B
+  * KB
+  * MB
+  * GB
+  * TB
+
+### Parts-Per
+  * ppm
+  * ppb
+  * ppt
+  * ppq
+
+### Voltage
+  * V
+  * mV
+  * kV
+
+### Current
+  * A
+  * mA
+  * kA
+
+### Power
+  * W
+  * mW
+  * kW
+  * MW
+  * GW
+
+### Apparent Power
+  * VA
+  * mVA
+  * kVA
+  * MVA
+  * GVA
+
+### Reactive Power
+  * VAR
+  * mVAR
+  * kVAR
+  * MVAR
+  * GVAR
+
+### Energy
+  * Wh
+  * mWh
+  * kWh
+  * MWh
+  * GWh
+  * J
+  * kJ
+
+### Reactive Energy
+  * VARh
+  * mVARh
+  * kVARh
+  * MVARh
+  * GVARh
 
 ### Want More?
 
@@ -176,7 +291,7 @@ Adding new measurement sets is easy. Take a look at [`lib/definitions`](https://
 
 License
 -------
-Copyright (c) 2013 Ben Ng, http://benng.me
+Copyright (c) 2013-2017 Ben Ng and Contributors, http://benng.me
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation

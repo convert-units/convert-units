@@ -15,4 +15,17 @@ tests['get kg'] = function () {
   assert.deepEqual(actual, expected);
 };
 
+tests['get ac'] = function () {
+  var actual = convert().describe('ac')
+    , expected = {
+        abbr: 'ac'
+      , measure: 'area'
+      , system: 'imperial'
+      , singular: 'Acre'
+      , plural: 'Acres'
+      };
+
+  assert.deepEqual(actual, expected);
+};
+
 module.exports = tests;
