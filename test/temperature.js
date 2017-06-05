@@ -19,7 +19,7 @@ tests['C to F'] = function () {
 };
 
 tests['R to F'] = function () {
-  assert.strictEqual( convert(600).from('R').to('F'), 140.33);
+  assert.strictEqual( convert(459.67).from('R').to('F'), 0);
 };
 
 tests['R to C'] = function () {
