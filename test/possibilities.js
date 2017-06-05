@@ -138,6 +138,7 @@ tests['all possibilities'] = function () {
       , 'B'
       , 'C'
       , 'F'
+      , 'R'
       , 'GB'
       , 'Gb'
       , 'K'
