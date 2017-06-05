@@ -213,6 +213,7 @@ Supported Units
  * C
  * F
  * K
+ * R
 
 ### Time
 
