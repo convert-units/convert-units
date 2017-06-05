@@ -27,7 +27,7 @@ tests['R to C'] = function () {
 };
 
 tests['R to K'] = function () {
-  assert.strictEqual( convert(612).from('R').to('K'), 340);
+  assert.strictEqual( convert(459.67).from('R').to('K'), 255.372222);
 };
 
 module.exports = tests;
