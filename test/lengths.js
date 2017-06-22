@@ -9,6 +9,14 @@ tests['ft to ft'] = function () {
   assert.strictEqual( convert(1).from('ft').to('ft') , 1);
 };
 
+tests['ft to ft-us'] = function () {
+  assert.strictEqual( convert(1).from('ft').to('ft-us') , 0.999998000004);
+};
+
+tests['ft-us to ft'] = function () {
+  assert.strictEqual( convert(1).from('ft-us').to('ft') , 1.000002);
+};
+
 tests['in to in'] = function () {
   assert.strictEqual( convert(7).from('in').to('in') , 7);
 };
@@ -53,6 +61,14 @@ tests['km to m'] = function () {
 tests['m to ft'] = function () {
   var expected = 3.28084
     , actual = convert(1).from('m').to('ft');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+// When converting between systems, expect < 0.1% error
+tests['m to ft-us'] = function () {
+  var expected = 3.28084
+    , actual = convert(1).from('m').to('ft-us');
   assert.ok( percentError(expected, actual) < ACCURACY
     , 'Expected: ' + expected +', Actual: ' + actual);
 };
