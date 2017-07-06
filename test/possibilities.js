@@ -28,6 +28,12 @@ tests['each possibilities'] = function () {
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
+tests['count possibilities'] = function () {
+  var actual = convert().possibilities('count')
+    , expected = [ 'pcs' ];
+  assert.deepEqual(actual.sort(), expected.sort())
+};
+
 tests['mass possibilities'] = function () {
   var actual = convert().possibilities('mass')
     , expected = [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ];
@@ -265,6 +271,7 @@ tests['all possibilities'] = function () {
       , 'MWh'
       , 'ns'
       , 'oz'
+      , 'pcs'
       , 'pnt'
       , 'pnt/h'
       , 'pnt/min'
@@ -283,6 +290,7 @@ tests['all possibilities'] = function () {
       , 'tsk'
       , 'tsp'
       , 'tsp/s'
+      , 'unknown'
       , 'V'
       , 'VA'
       , 'VAR'
