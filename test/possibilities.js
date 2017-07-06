@@ -24,7 +24,7 @@ tests['m possibilities'] = function () {
 
 tests['each possibilities'] = function () {
   var actual = convert().possibilities('each')
-    , expected = [ 'ea' ];
+    , expected = [ 'ea', 'dz' ];
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
@@ -164,6 +164,7 @@ tests['all possibilities'] = function () {
       , 'dl'
       , 'dl/s'
       , 'ea'
+      , 'dz'
       , 'fl-oz'
       , 'fl-oz/h'
       , 'fl-oz/min'
