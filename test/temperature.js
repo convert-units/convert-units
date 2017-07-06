@@ -18,4 +18,12 @@ tests['C to F'] = function () {
   assert.strictEqual( convert(0).from('C').to('F'), 32);
 };
 
+tests['K to R'] = function () {
+  assert.strictEqual( convert(200).from('K').to('R'), 360);
+};
+
+tests['F to R'] = function () {
+  assert.strictEqual( convert(70).from('F').to('R'), 529.67);
+};
+
 module.exports = tests;
