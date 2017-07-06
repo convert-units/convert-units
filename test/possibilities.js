@@ -287,6 +287,7 @@ tests['all possibilities'] = function () {
       , 'tsk'
       , 'tsp'
       , 'tsp/s'
+      , 'unknown'
       , 'V'
       , 'VA'
       , 'VAR'
