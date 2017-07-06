@@ -68,7 +68,7 @@ convert().possibilities('mass')
 You can also get the all the available units:
 ```js
 convert().possibilities()
-// [ 'mm', 'cm', 'm', 'in', 'ft', 'mi', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'ml', 'l', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea' ];
+// [ 'mm', 'cm', 'm', 'in', 'ft', 'mi', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'ml', 'l', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea', 'dz' ];
 ```
 
 To get a detailed description of a unit, use `describe`
