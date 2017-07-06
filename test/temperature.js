@@ -22,8 +22,12 @@ tests['F to K'] = function () {
   assert.strictEqual( convert(32).from('F').to('K'), 273.15);
 };
 
+tests['F to R'] = function () {
+  assert.strictEqual( convert(100).from('F').to('R'), 559.6700000000001);
+};
+
 tests['R to F'] = function () {
-  assert.strictEqual( convert(459.67).from('R').to('F'), 0);
+  assert.strictEqual( convert(670).from('R').to('F'), 210.32999999999998);
 };
 
 tests['R to C'] = function () {
@@ -31,7 +35,7 @@ tests['R to C'] = function () {
 };
 
 tests['R to K'] = function () {
-  assert.strictEqual( convert(459.67).from('R').to('K'), 255.372222);
+  assert.strictEqual( convert(459.67).from('R').to('K'), 255.3722222222222);
 };
 
 module.exports = tests;
