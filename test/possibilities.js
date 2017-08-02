@@ -30,7 +30,7 @@ tests['each possibilities'] = function () {
 
 tests['mass possibilities'] = function () {
   var actual = convert().possibilities('mass')
-    , expected = [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ];
+    , expected = [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'ton', 'tonne' ];
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
