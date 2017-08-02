@@ -279,7 +279,7 @@ tests['all possibilities'] = function () {
       , 's'
       , 'Tbs'
       , 'Tbs/s'
-      , 'Ton'
+      , 'ton'
       ,'tonne'
       , 'torr'
       , 'tsk'
