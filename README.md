@@ -229,6 +229,18 @@ Supported Units
   * month
   * year
 
+### Frequency
+
+  * Hz
+  * mHz
+  * kHz
+  * MHz
+  * GHz
+  * THz
+  * rpm
+  * deg/s
+  * rad/s
+
 ### Speed
 
   * m/s
