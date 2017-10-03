@@ -130,11 +130,19 @@ tests['reactive energy possibilities'] = function() {
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
+tests['angle possibilities'] = function() {
+  var actual = convert().possibilities('angle')
+    , expected = [ 'rad', 'deg', 'grad', 'arcmin', 'arcsec'];
+  assert.deepEqual(actual.sort(), expected.sort())
+};
+
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
     // Please keep these sorted for maintainability
     , expected = [
         'A'
+      , 'arcmin'
+      , 'arcsec'
       , 'B'
       , 'C'
       , 'F'
@@ -162,6 +170,7 @@ tests['all possibilities'] = function () {
       , 'cup'
       , 'cup/s'
       , 'd'
+      , 'deg'
       , 'dl'
       , 'dl/s'
       , 'ea'
@@ -184,6 +193,7 @@ tests['all possibilities'] = function () {
       , 'gal/min'
       , 'gal/s'
       , 'glas'
+      , 'grad'
       , 'GVA'
       , 'GVAR'
       , 'GVARh'
@@ -276,6 +286,7 @@ tests['all possibilities'] = function () {
       , 'psi'
       , 'qt'
       , 'qt/s'
+      , 'rad'
       , 's'
       , 'Tbs'
       , 'Tbs/s'
