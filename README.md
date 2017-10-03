@@ -53,7 +53,7 @@ If you ever want to know the possible conversions for a unit, just use `.possibi
 
 ```js
 convert().from('l').possibilities()
-// [ 'ml', 'l', 'tsp', 'tbsp', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ]
+// [ 'ml', 'l', 'tsp', 'tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ]
 
 convert().from('kg').possibilities()
 // [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ]
@@ -159,7 +159,7 @@ Supported Units
  * m3
  * km3
  * tsp
- * tbsp
+ * tbs
  * in3
  * fl-oz
  * cup
