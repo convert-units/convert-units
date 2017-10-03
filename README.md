@@ -312,7 +312,7 @@ Supported Units
   * MVARh
   * GVARh
 
-### angle
+### Angle
   * deg
   * rad
   * grad
