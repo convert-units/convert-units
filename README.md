@@ -148,6 +148,8 @@ Supported Units
  * kg
  * oz
  * lb
+ * mt
+ * t
 
 ### Volume
 
