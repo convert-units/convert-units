@@ -12,7 +12,7 @@ tests['l possibilities'] = function () {
 
 tests['kg possibilities'] = function () {
   var actual = convert().from('kg').possibilities()
-    , expected = [ 'mcg', 'mg', 'g', 'kg', 'tonne', 'oz', 'lb', 'ton' ];
+    , expected = [ 'mcg', 'mg', 'g', 'kg', 't', 'oz', 'lb', 't' ];
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
@@ -30,7 +30,7 @@ tests['each possibilities'] = function () {
 
 tests['mass possibilities'] = function () {
   var actual = convert().possibilities('mass')
-    , expected = [ 'mcg', 'mg', 'g', 'kg', 'tonne', 'oz', 'lb', 'ton' ];
+    , expected = [ 'mcg', 'mg', 'g', 'kg', 't', 'oz', 'lb', 't' ];
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
@@ -279,8 +279,8 @@ tests['all possibilities'] = function () {
       , 's'
       , 'Tbs'
       , 'Tbs/s'
-      , 'ton'
-      ,'tonne'
+      , 't'
+      , 't'
       , 'torr'
       , 'tsk'
       , 'tsp'
