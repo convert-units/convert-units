@@ -136,7 +136,6 @@ tests['all possibilities'] = function () {
     , expected = [
         'A'
       , 'B'
-      , 'saca'
       , 'bale (cotton/au)'
       , 'C'
       , 'F'
@@ -279,6 +278,7 @@ tests['all possibilities'] = function () {
       , 'qt'
       , 'qt/s'
       , 's'
+      , 'saca'
       , 'Tbs'
       , 'Tbs/s'
       , 't'
