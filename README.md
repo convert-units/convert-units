@@ -237,7 +237,15 @@ Supported Units
   * knot
   * ft/s
 
+### Pace
+
+    * s/m
+    * min/km
+    * s/ft
+    * min/km
+
 ### Pressure
+
   * Pa
   * hPa
   * kPa
