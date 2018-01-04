@@ -5,6 +5,13 @@ convert-units
 
 A handy utility for converting between quantities in different units.
 
+Installation
+-----
+
+```
+npm install convert-units --save
+```
+
 Usage
 -----
 
