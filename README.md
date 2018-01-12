@@ -5,6 +5,13 @@ convert-units
 
 A handy utility for converting between quantities in different units.
 
+Installation
+-----
+
+```
+npm install convert-units --save
+```
+
 Usage
 -----
 
@@ -62,13 +69,13 @@ convert().from('kg').possibilities()
 You can also get the possible conversions for a measure:
 ```js
 convert().possibilities('mass')
-// [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ]
+// [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'mt', 't' ]
 ```
 
 You can also get the all the available units:
 ```js
 convert().possibilities()
-// [ 'mm', 'cm', 'm', 'in', 'ft-us', 'ft', 'mi', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'ml', 'l', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea', 'dz' ];
+// [ 'mm', 'cm', 'm', 'in', 'ft-us', 'ft', 'mi', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'mt', 't', 'ml', 'l', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea', 'dz' ];
 ```
 
 To get a detailed description of a unit, use `describe`
@@ -148,6 +155,8 @@ Supported Units
  * kg
  * oz
  * lb
+ * mt
+ * t
 
 ### Volume
 
@@ -270,6 +279,10 @@ Supported Units
   * MB
   * GB
   * TB
+
+### Illuminance
+  * lx
+  * ft-cd
 
 ### Parts-Per
   * ppm
