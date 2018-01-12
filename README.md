@@ -255,6 +255,12 @@ Supported Units
 * knot
 * ft/s
 
+### Pace
+* s/m
+* min/km
+* s/ft
+* min/km
+
 ### Pressure
 * Pa
 * hPa
@@ -335,11 +341,11 @@ Supported Units
 * GVARh
 
 ### Angle
-  * deg
-  * rad
-  * grad
-  * arcmin
-  * arcsec
+* deg
+* rad
+* grad
+* arcmin
+* arcsec
 
 ### Want More?
 

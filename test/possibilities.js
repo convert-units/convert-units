@@ -88,6 +88,12 @@ tests['speed possibilities'] = function() {
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
+tests['pace possibilities'] = function() {
+  var actual = convert().possibilities('pace')
+    , expected = [ 's/m', 'min/km', 'min/mi', 's/ft'];
+  assert.deepEqual(actual.sort(), expected.sort())
+};
+
 tests['current possibilities'] = function() {
   var actual = convert().possibilities('current')
     , expected = [ 'A', 'mA', 'kA'];
@@ -270,6 +276,8 @@ tests['all possibilities'] = function () {
       , 'mi'
       , 'mi2'
       , 'min'
+      , 'min/km'
+      , 'min/mi'
       , 'ml'
       , 'ml/s'
       , 'mm'
@@ -311,6 +319,8 @@ tests['all possibilities'] = function () {
       , 'rad/s'
       , 'rpm'
       , 's'
+      , 's/m'
+      , 's/ft'
       , 't'
       , 'Tbs'
       , 'Tbs/s'
