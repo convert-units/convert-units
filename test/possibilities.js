@@ -133,13 +133,19 @@ tests['reactive energy possibilities'] = function() {
 tests['reactive energy possibilities'] = function() {
   var actual = convert().possibilities('frequency')
     , expected = [ 'Hz', 'mHz', 'kHz', 'MHz', 'GHz', 'THz', 'rpm', 'deg/s', 'rad/s'];
-  assert.deepEqual(actual.sort(), expected.sort())
+  assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['illuminance possibilities'] = function() {
-    var actual = convert().possibilities('illuminance')
-      , expected = [ 'lx', 'ft-cd'];
-    assert.deepEqual(actual.sort(), expected.sort())
+  var actual = convert().possibilities('illuminance')
+    , expected = [ 'lx', 'ft-cd'];
+  assert.deepEqual(actual.sort(), expected.sort());
+};
+
+tests['angle possibilities'] = function() {
+  var actual = convert().possibilities('angle')
+    , expected = [ 'rad', 'deg', 'grad', 'arcmin', 'arcsec'];
+  assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['all possibilities'] = function () {
@@ -147,6 +153,8 @@ tests['all possibilities'] = function () {
     // Please keep these sorted for maintainability
     , expected = [
         'A'
+      , 'arcmin'
+      , 'arcsec'
       , 'B'
       , 'C'
       , 'F'
@@ -174,6 +182,7 @@ tests['all possibilities'] = function () {
       , 'cup'
       , 'cup/s'
       , 'd'
+      , 'deg'
       , 'deg/s'
       , 'dl'
       , 'dl/s'
@@ -198,6 +207,7 @@ tests['all possibilities'] = function () {
       , 'gal/min'
       , 'gal/s'
       , 'glas'
+      , 'grad'
       , 'GHz'
       , 'GVA'
       , 'GVAR'
@@ -297,6 +307,7 @@ tests['all possibilities'] = function () {
       , 'psi'
       , 'qt'
       , 'qt/s'
+      , 'rad'
       , 'rad/s'
       , 'rpm'
       , 's'
@@ -323,6 +334,7 @@ tests['all possibilities'] = function () {
       , 'yd3/s'
       , 'year'
   ];
+  
   try {
     assert.deepEqual(actual.sort(), expected.sort());
   }
