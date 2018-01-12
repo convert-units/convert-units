@@ -268,6 +268,10 @@ Supported Units
   * GB
   * TB
 
+### Illuminance
+  * lx
+  * ft-cd
+
 ### Parts-Per
   * ppm
   * ppb

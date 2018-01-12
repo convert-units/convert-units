@@ -130,6 +130,13 @@ tests['reactive energy possibilities'] = function() {
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
+tests['illuminance possibilities'] = function() {
+    var actual = convert().possibilities('illuminance')
+      , expected = [ 'lx', 'ft-cd'];
+    assert.deepEqual(actual.sort(), expected.sort())
+  };
+  
+
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
     // Please keep these sorted for maintainability
@@ -172,6 +179,7 @@ tests['all possibilities'] = function () {
       , 'fl-oz/s'
       , 'ft-us'
       , 'ft'
+      , 'ft-cd'
       , 'ft/s'
       , 'ft2'
       , 'ft3'
@@ -228,6 +236,7 @@ tests['all possibilities'] = function () {
       , 'l/min'
       , 'l/s'
       , 'lb'
+      , 'lx'
       , 'm'
       , 'm/h'
       , 'm/s'
