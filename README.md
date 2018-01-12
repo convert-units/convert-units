@@ -5,6 +5,13 @@ convert-units
 
 A handy utility for converting between quantities in different units.
 
+Installation
+-----
+
+```
+npm install convert-units --save
+```
+
 Usage
 -----
 
@@ -33,13 +40,19 @@ convert(1).from('oz').to('fl-oz')
 // throws -- you can't go from mass to volume!
 ```
 
-You can ask `convert-units` to select the best unit for you with optional exclusions:
+You can ask `convert-units` to select the best unit for you. You can also optionally explicitly exclude orders of magnitude or specify a cut off number for selecting the best representation.
 ```js
-convert(1200).from('mm').toBest()
-// 1.2 Meters (the smallest unit with a value above 1)
+convert(12000).from('mm').toBest()
+// 12 Meters (the smallest unit with a value above 1)
 
-convert(1200).from('mm').toBest({exclude: ['m']})
-// 120 Centimeters (the smallest unit excluding meters)
+convert(12000).from('mm').toBest({ exclude: ['m'] })
+// 1200 Centimeters (the smallest unit excluding meters)
+
+convert(900).from('mm').toBest({ cutOffNumber: 10 });
+// 900 Centimeters (the smallest unit with a value equal to or above 10)
+
+convert(1000).from('mm').toBest({ cutOffNumber: 10 })
+// 10 Meters (the smallest unit with a value equal to or above 10)
 ```
 
 You can get a list of the measurement types supported with `.measures`
@@ -53,7 +66,7 @@ If you ever want to know the possible conversions for a unit, just use `.possibi
 
 ```js
 convert().from('l').possibilities()
-// [ 'ml', 'l', 'tsp', 'tbsp', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ]
+// [ 'ml', 'l', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ]
 
 convert().from('kg').possibilities()
 // [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ]
@@ -62,13 +75,13 @@ convert().from('kg').possibilities()
 You can also get the possible conversions for a measure:
 ```js
 convert().possibilities('mass')
-// [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ]
+// [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'mt', 't' ]
 ```
 
 You can also get the all the available units:
 ```js
 convert().possibilities()
-// [ 'mm', 'cm', 'm', 'in', 'ft-us', 'ft', 'mi', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'ml', 'l', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea', 'dz' ];
+// [ 'mm', 'cm', 'm', 'in', 'ft-us', 'ft', 'mi', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'mt', 't', 'ml', 'l', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea', 'dz' ];
 ```
 
 To get a detailed description of a unit, use `describe`
@@ -119,7 +132,6 @@ convert().list('mass')
 Supported Units
 ---------------
 ### Length
-
 * mm
 * cm
 * m
@@ -129,7 +141,6 @@ Supported Units
 * mi
 
 ### Area
-
 * mm2
 * cm2
 * m2
@@ -141,184 +152,200 @@ Supported Units
 * mi2
 
 ### Mass
-
- * mcg
- * mg
- * g
- * kg
- * oz
- * lb
+* mcg
+* mg
+* g
+* kg
+* oz
+* lb
+* mt
+* t
 
 ### Volume
-
- * mm3
- * cm3
- * ml
- * l
- * kl
- * m3
- * km3
- * tsp
- * tbsp
- * in3
- * fl-oz
- * cup
- * pnt
- * qt
- * gal
- * ft3
- * yd3
+* mm3
+* cm3
+* ml
+* l
+* kl
+* m3
+* km3
+* tsp
+* Tbs
+* in3
+* fl-oz
+* cup
+* pnt
+* qt
+* gal
+* ft3
+* yd3
 
 ### Volume Flow Rate
-
- * mm3/s
- * cm3/s
- * ml/s
- * cl/s
- * dl/s
- * l/s
- * l/min
- * l/h
- * kl/s
- * kl/min
- * kl/h
- * m3/s
- * m3/min
- * m3/h
- * km3/s
- * tsp/s
- * Tbs/s
- * in3/s
- * in3/min
- * in3/h
- * fl-oz/s
- * fl-oz/min
- * fl-oz/h
- * cup/s
- * pnt/s
- * pnt/min
- * pnt/h
- * qt/s
- * gal/s
- * gal/min
- * gal/h
- * ft3/s
- * ft3/min
- * ft3/h
- * yd3/s
- * yd3/min
- * yd3/h'
+* mm3/s
+* cm3/s
+* ml/s
+* cl/s
+* dl/s
+* l/s
+* l/min
+* l/h
+* kl/s
+* kl/min
+* kl/h
+* m3/s
+* m3/min
+* m3/h
+* km3/s
+* tsp/s
+* Tbs/s
+* in3/s
+* in3/min
+* in3/h
+* fl-oz/s
+* fl-oz/min
+* fl-oz/h
+* cup/s
+* pnt/s
+* pnt/min
+* pnt/h
+* qt/s
+* gal/s
+* gal/min
+* gal/h
+* ft3/s
+* ft3/min
+* ft3/h
+* yd3/s
+* yd3/min
+* yd3/h'
 
 ### Temperature
-
- * C
- * F
- * K
- * R
+* C
+* F
+* K
+* R
 
 ### Time
+* ns
+* mu
+* ms
+* s
+* min
+* h
+* d
+* week
+* month
+* year
 
-  * ns
-  * mu
-  * ms
-  * s
-  * min
-  * h
-  * d
-  * week
-  * month
-  * year
+### Frequency
+* Hz
+* mHz
+* kHz
+* MHz
+* GHz
+* THz
+* rpm
+* deg/s
+* rad/s
 
 ### Speed
-
-  * m/s
-  * km/h
-  * m/h
-  * knot
-  * ft/s
+* m/s
+* km/h
+* m/h
+* knot
+* ft/s
 
 ### Pace
-
-    * s/m
-    * min/km
-    * s/ft
-    * min/km
+* s/m
+* min/km
+* s/ft
+* min/km
 
 ### Pressure
-
-  * Pa
-  * hPa
-  * kPa
-  * MPa
-  * bar
-  * torr
-  * psi
-  * ksi
+* Pa
+* hPa
+* kPa
+* MPa
+* bar
+* torr
+* psi
+* ksi
 
 ### Digital
-  * b
-  * Kb
-  * Mb
-  * Gb
-  * Tb
-  * B
-  * KB
-  * MB
-  * GB
-  * TB
+* b
+* Kb
+* Mb
+* Gb
+* Tb
+* B
+* KB
+* MB
+* GB
+* TB
+
+### Illuminance
+* lx
+* ft-cd
 
 ### Parts-Per
-  * ppm
-  * ppb
-  * ppt
-  * ppq
+* ppm
+* ppb
+* ppt
+* ppq
 
 ### Voltage
-  * V
-  * mV
-  * kV
+* V
+* mV
+* kV
 
 ### Current
-  * A
-  * mA
-  * kA
+* A
+* mA
+* kA
 
 ### Power
-  * W
-  * mW
-  * kW
-  * MW
-  * GW
+* W
+* mW
+* kW
+* MW
+* GW
 
 ### Apparent Power
-  * VA
-  * mVA
-  * kVA
-  * MVA
-  * GVA
+* VA
+* mVA
+* kVA
+* MVA
+* GVA
 
 ### Reactive Power
-  * VAR
-  * mVAR
-  * kVAR
-  * MVAR
-  * GVAR
+* VAR
+* mVAR
+* kVAR
+* MVAR
+* GVAR
 
 ### Energy
-  * Wh
-  * mWh
-  * kWh
-  * MWh
-  * GWh
-  * J
-  * kJ
+* Wh
+* mWh
+* kWh
+* MWh
+* GWh
+* J
+* kJ
 
 ### Reactive Energy
-  * VARh
-  * mVARh
-  * kVARh
-  * MVARh
-  * GVARh
+* VARh
+* mVARh
+* kVARh
+* MVARh
+* GVARh
+
+### Angle
+* deg
+* rad
+* grad
+* arcmin
+* arcsec
 
 ### Want More?
 

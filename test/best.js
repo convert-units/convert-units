@@ -50,4 +50,28 @@ tests['if all measurements are excluded return from'] = function () {
   assert.deepEqual(actual, expected);
 }
 
+tests['pre-cut off number'] = function () {
+  var actual = convert(9000).from('mm').toBest({ cutOffNumber: 10 })
+    , expected = {
+        val: 900
+      , unit: 'cm'
+      , singular: 'Centimeter'
+      , plural: 'Centimeters'
+      };
+
+  assert.deepEqual(actual, expected);
+}
+
+tests['post-cut off number'] = function () {
+  var actual = convert(10000).from('mm').toBest({ cutOffNumber: 10 })
+    , expected = {
+        val: 10
+      , unit: 'm'
+      , singular: 'Meter'
+      , plural: 'Meters'
+      };
+
+  assert.deepEqual(actual, expected);
+}
+
 module.exports = tests;
