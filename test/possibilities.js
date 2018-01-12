@@ -130,12 +130,17 @@ tests['reactive energy possibilities'] = function() {
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
+tests['reactive energy possibilities'] = function() {
+  var actual = convert().possibilities('frequency')
+    , expected = [ 'Hz', 'mHz', 'kHz', 'MHz', 'GHz', 'THz', 'rpm', 'deg/s', 'rad/s'];
+  assert.deepEqual(actual.sort(), expected.sort())
+};
+
 tests['illuminance possibilities'] = function() {
     var actual = convert().possibilities('illuminance')
       , expected = [ 'lx', 'ft-cd'];
     assert.deepEqual(actual.sort(), expected.sort())
-  };
-  
+};
 
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
@@ -169,6 +174,7 @@ tests['all possibilities'] = function () {
       , 'cup'
       , 'cup/s'
       , 'd'
+      , 'deg/s'
       , 'dl'
       , 'dl/s'
       , 'ea'
@@ -192,6 +198,7 @@ tests['all possibilities'] = function () {
       , 'gal/min'
       , 'gal/s'
       , 'glas'
+      , 'GHz'
       , 'GVA'
       , 'GVAR'
       , 'GVARh'
@@ -200,6 +207,7 @@ tests['all possibilities'] = function () {
       , 'h'
       , 'hPa'
       , 'ha'
+      , 'Hz'
       , 'in'
       , 'in2'
       , 'in3'
@@ -225,6 +233,7 @@ tests['all possibilities'] = function () {
       , 'knot'
       , 'krm'
       , 'ksi'
+      , 'kHz'
       , 'kV'
       , 'kVA'
       , 'kVAR'
@@ -262,6 +271,8 @@ tests['all possibilities'] = function () {
       , 'msk'
       , 'mt'
       , 'mu'
+      , 'mHz'
+      , 'MHz'
       , 'mV'
       , 'mVA'
       , 'MVA'
@@ -286,10 +297,13 @@ tests['all possibilities'] = function () {
       , 'psi'
       , 'qt'
       , 'qt/s'
+      , 'rad/s'
+      , 'rpm'
       , 's'
       , 't'
       , 'Tbs'
       , 'Tbs/s'
+      , 'THz'
       , 'torr'
       , 'tsk'
       , 'tsp'
