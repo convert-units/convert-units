@@ -24,6 +24,22 @@ tests['cl/s to l/s'] = function () {
   assert.strictEqual( convert(25).from('cl/s').to('l/s') , 0.25);
 };
 
+tests['m3/d to l/s'] = function() {
+  assert.strictEqual(convert(86.4).from('m3/d').to('l/s'), 1);
+};
+
+tests['m3/day to l/s'] = function() {
+  assert.strictEqual(convert(86.4).from('m3/day').to('l/s'), 1);
+};
+
+tests['l/s to m3/d'] = function() {
+  assert.strictEqual(convert(1).from('l/s').to('m3/d'), 86.4);
+};
+
+tests['l/s to m3/day'] = function() {
+  assert.strictEqual(convert(1).from('l/s').to('m3/day'), 86.4);
+};
+
 tests['ml/s to l/s'] = function () {
   assert.strictEqual( convert(100).from('ml/s').to('l/s') , 1/10);
 };
