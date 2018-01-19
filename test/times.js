@@ -31,6 +31,10 @@ tests['s to h'] = function () {
   assert.strictEqual( convert(3600).from('s').to('h'), 1);
 };
 
+tests['s to hr'] = function() {
+  assert.strictEqual(convert(3600).from('s').to('hr'), 1);
+};
+
 tests['s to d'] = function () {
   assert.strictEqual( convert(86400).from('s').to('d'), 1);
 };
