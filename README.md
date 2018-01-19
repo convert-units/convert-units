@@ -195,6 +195,7 @@ Supported Units
 * m3/s
 * m3/min
 * m3/h
+* m3/d
 * km3/s
 * tsp/s
 * Tbs/s
