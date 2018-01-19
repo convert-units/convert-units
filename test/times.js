@@ -35,6 +35,21 @@ tests['s to d'] = function () {
   assert.strictEqual( convert(86400).from('s').to('d'), 1);
 };
 
+tests['s to days'] = function () {
+  assert.strictEqual(convert(86400).from('s').to('days'), 1);
+};
+
+tests['days to week'] = function () {
+  assert.strictEqual(convert(7).from('days').to('week'), 1);
+};
+
+tests['days to month'] = function () {
+  assert.strictEqual(convert(30.4375).from('days').to('month'), 1);
+};
+
+tests['days to year'] = function () {
+  assert.strictEqual(convert(365.25).from('days').to('year'), 1);
+};
 tests['d to week'] = function () {
   assert.strictEqual( convert(7).from('d').to('week'), 1);
 };

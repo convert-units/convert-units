@@ -60,7 +60,7 @@ tests['temperature possibilities'] = function () {
 
 tests['time possibilities'] = function () {
   var actual = convert().possibilities('time')
-    , expected = ['ns', 'mu', 'ms', 's', 'min', 'h', 'd', 'week', 'month', 'year'];
+    , expected = ['ns', 'mu', 'ms', 's', 'min', 'h', 'd', 'days', 'week', 'month', 'year'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -188,6 +188,7 @@ tests['all possibilities'] = function () {
       , 'cup'
       , 'cup/s'
       , 'd'
+      , 'days'
       , 'deg'
       , 'deg/s'
       , 'dl'
