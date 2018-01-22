@@ -108,6 +108,11 @@ tests['m3/s to m3/h'] = function () {
   assert.strictEqual( convert(1).from('kl/s').to('kl/h') , 3600);
 };
 
+tests['mld to l/s'] = function () {
+  assert.strictEqual(convert(1).from('MLD').to('l/s'), 11.574074074074074);
+};
+
+
 // When converting between systems, expect < 0.1% error
 tests['tsp/s to l/s'] = function () {
   var expected = 1.75
