@@ -196,6 +196,7 @@ Supported Units
 * m3/min
 * m3/h
 * m3/d
+* mld
 * km3/s
 * tsp/s
 * Tbs/s
@@ -347,6 +348,11 @@ Supported Units
 * grad
 * arcmin
 * arcsec
+
+### Mass Flow rate
+* g/day
+* kg/day
+* t/day
 
 ### Want More?
 
