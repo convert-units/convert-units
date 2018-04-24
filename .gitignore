@@ -2,6 +2,7 @@
 
 node_modules
 scratch
+.idea
 
 *.log
 *.swp
