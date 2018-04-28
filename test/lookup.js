@@ -30,7 +30,7 @@ function addAssertions(assertions) {
 
 addAssertions([
   {
-    query: 'Cups'
+    query: 'Cup'
   , unit: {
       abbr: 'cup'
     , measure: 'volume'
