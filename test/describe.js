@@ -10,6 +10,7 @@ tests['get kg'] = function () {
       , system: 'metric'
       , singular: 'Kilogram'
       , plural: 'Kilograms'
+      , alternates: []
       };
 
   assert.deepEqual(actual, expected);
@@ -23,6 +24,7 @@ tests['get ac'] = function () {
       , system: 'imperial'
       , singular: 'Acre'
       , plural: 'Acres'
+      , alternates: []
       };
 
   assert.deepEqual(actual, expected);
