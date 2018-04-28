@@ -70,6 +70,16 @@ addAssertions([
     }
   }
 , {
+    query: 'TBSP'
+  , unit: {
+      abbr: 'Tbs'
+    , measure: 'volume'
+    , system: 'imperial'
+    , singular: 'Tablespoon'
+    , plural: 'Tablespoons'
+    }
+  }
+, {
     query: 'Cups'
   , measure: 'volume'
   , unit: {
