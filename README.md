@@ -129,6 +129,32 @@ convert().list('mass')
 */
 ```
 
+You can lookup the unit name via its abbreviation, singular, or pluralized form
+specifying the optional unit of measurement to speed up the search:
+
+```js
+convert().lookup('Cups')
+/*
+  {
+    abbr: 'cup'
+  , measure: 'volume'
+  , system: 'imperial'
+  , singular: 'Cup'
+  , plural: 'Cups'
+  }
+*/
+convert().lookup('Kilograms', 'mass')
+/*
+  {
+    abbr: 'kg'
+  , measure: 'mass'
+  , system: 'metric'
+  , singular: 'Kilogram'
+  , plural: 'Kilograms'
+  }
+*/
+```
+
 Supported Units
 ---------------
 ### Length
