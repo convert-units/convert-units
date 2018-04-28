@@ -4,103 +4,136 @@ var convert = require('../lib')
   , keys = require('lodash.keys')
   , tests = {};
 
-tests['lookup'] = function () {
+var propertiesToTest = ['abbr', 'measure', 'system', 'singular', 'plural'];
 
-  var assertions = [
-    {
-      query: 'Cups'
-    , unit: {
-        abbr: 'cup'
-      , measure: 'volume'
-      , system: 'imperial'
-      , singular: 'Cup'
-      , plural: 'Cups'
-      }
-    }
-  , {
-      query: 'Cups'
-    , unit: {
-        abbr: 'cup'
-      , measure: 'volume'
-      , system: 'imperial'
-      , singular: 'Cup'
-      , plural: 'Cups'
-      }
-    }
-  , {
-      query: 'Pounds'
-    , unit: {
-        abbr: 'lb'
-      , measure: 'mass'
-      , system: 'imperial'
-      , singular: 'Pound'
-      , plural: 'Pounds'
-      }
-    }
-  ];
-
-  var propertiesToTest = keys(assertions[0].unit);
-
+function addAssertions(assertions) {
   each(assertions, function (assertion) {
-    var result = convert().lookup(assertion.query);
-    each(propertiesToTest, function (property) {
-      assert(result[property] == assertion.unit[property]
-        , 'lookup(' + assertion.query + ') -> ' + assertion.unit.abbr + '.' + property + ' == ' + assertion.unit[property]);
-    });
-  });
+    var testName;
 
-  assert(convert().lookup('Cats') == false, 'Non-existent unit returns false');
+    if (assertion.measure) {
+      testName = 'lookup(\'' + assertion.query + '\', \'' + assertion.measure
+        + '\') -> ' + assertion.unit.abbr;
+    } else {
+      testName = 'lookup(\'' + assertion.query
+        + '\') -> ' + assertion.unit.abbr;
+    }
+
+    tests[testName] = function() {
+      var result = convert().lookup(assertion.query);
+      each(propertiesToTest, function (property) {
+        assert(result[property] == assertion.unit[property], testName
+          + '.' + property + ' == \'' + assertion.unit[property] + '\'');
+      });
+    };
+  });
+}
+
+addAssertions([
+  {
+    query: 'Cups'
+  , unit: {
+      abbr: 'cup'
+    , measure: 'volume'
+    , system: 'imperial'
+    , singular: 'Cup'
+    , plural: 'Cups'
+    }
+  }
+, {
+    query: 'Cups'
+  , unit: {
+      abbr: 'cup'
+    , measure: 'volume'
+    , system: 'imperial'
+    , singular: 'Cup'
+    , plural: 'Cups'
+    }
+  }
+, {
+    query: 'Pounds'
+  , unit: {
+      abbr: 'lb'
+    , measure: 'mass'
+    , system: 'imperial'
+    , singular: 'Pound'
+    , plural: 'Pounds'
+    }
+  }
+, {
+    query: 'Cups'
+  , measure: 'volume'
+  , unit: {
+      abbr: 'cup'
+    , measure: 'volume'
+    , system: 'imperial'
+    , singular: 'Cup'
+    , plural: 'Cups'
+    }
+  }
+, {
+    query: 'Cups'
+  , measure: 'volume'
+  , unit: {
+      abbr: 'cup'
+    , measure: 'volume'
+    , system: 'imperial'
+    , singular: 'Cup'
+    , plural: 'Cups'
+    }
+  }
+, {
+    query: 'Pounds'
+  , measure: 'mass'
+  , unit: {
+      abbr: 'lb'
+    , measure: 'mass'
+    , system: 'imperial'
+    , singular: 'Pound'
+    , plural: 'Pounds'
+    }
+  }
+, {
+    query: 'cups'
+  , unit: {
+      abbr: 'cup'
+    , measure: 'volume'
+    , system: 'imperial'
+    , singular: 'Cup'
+    , plural: 'Cups'
+    }
+  }
+, {
+    query: 'pounds'
+  , unit: {
+      abbr: 'lb'
+    , measure: 'mass'
+    , system: 'imperial'
+    , singular: 'Pound'
+    , plural: 'Pounds'
+    }
+  }
+, {
+    query: 'POUNDS'
+  , unit: {
+      abbr: 'lb'
+    , measure: 'mass'
+    , system: 'imperial'
+    , singular: 'Pound'
+    , plural: 'Pounds'
+    }
+  }
+]);
+
+tests['lookup non-existent unit'] = function () {
+  assert(convert().lookup('Midi-chlorines') == false, 'Non-existent unit returns false');
 };
 
-tests['lookup within measure'] = function () {
+tests['lookup for wrong measure'] = function () {
+  assert(convert().lookup('Pounds', 'volume') == false, 'Wrong measure for unit returns false');
+};
 
-  var assertions = [
-    {
-      query: 'Cups'
-    , measure: 'volume'
-    , unit: {
-        abbr: 'cup'
-      , measure: 'volume'
-      , system: 'imperial'
-      , singular: 'Cup'
-      , plural: 'Cups'
-      }
-    }
-  , {
-      query: 'Cups'
-    , measure: 'volume'
-    , unit: {
-        abbr: 'cup'
-      , measure: 'volume'
-      , system: 'imperial'
-      , singular: 'Cup'
-      , plural: 'Cups'
-      }
-    }
-  , {
-      query: 'Pounds'
-    , measure: 'mass'
-    , unit: {
-        abbr: 'lb'
-      , measure: 'mass'
-      , system: 'imperial'
-      , singular: 'Pound'
-      , plural: 'Pounds'
-      }
-    }
-  ];
-
-  var propertiesToTest = keys(assertions[0].unit);
-
-  each(assertions, function (assertion) {
-    var result = convert().lookup(assertion.query, assertion.measure);
-    each(propertiesToTest, function (property) {
-      assert(result[property] == assertion.unit[property]
-        , 'lookup(' + assertion.query + ') -> ' + assertion.unit.abbr + '.' + property + ' == ' + assertion.unit[property]);
-    });
-  });
-
-  assert(convert().lookup('Cups', 'mass') == false, 'Wrong measure return false');
+tests['lookup for non-existent measure'] = function () {
+  assert(convert().lookup('Pounds', 'fuzziness') == false, 'Non-existent measure returns false');
 };
 
 module.exports = tests;
