@@ -49,10 +49,10 @@ convert(12000).from('mm').toBest({ exclude: ['m'] })
 // 1200 Centimeters (the smallest unit excluding meters)
 
 convert(900).from('mm').toBest({ cutOffNumber: 10 });
-// 900 Centimeters (the smallest unit with a value equal to or above 10)
+// 90 Centimeters (the smallest unit with a value equal to or above 10)
 
 convert(1000).from('mm').toBest({ cutOffNumber: 10 })
-// 10 Meters (the smallest unit with a value equal to or above 10)
+// 100 Centimeters (the smallest unit with a value equal to or above 10)
 ```
 
 You can get a list of the measurement types supported with `.measures`
