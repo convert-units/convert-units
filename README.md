@@ -359,6 +359,11 @@ Supported Units
 * kN
 * lbf
 
+### Acceleration
+* g (g-force)
+* m/s2
+
+
 ### Want More?
 
 Adding new measurement sets is easy. Take a look at [`lib/definitions`](https://github.com/ben-ng/convert-units/tree/master/lib/definitions) to see how it's done.
