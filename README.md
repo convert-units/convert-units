@@ -55,6 +55,15 @@ convert(1000).from('mm').toBest({ cutOffNumber: 10 })
 // 10 Meters (the smallest unit with a value equal to or above 10)
 ```
 
+You can also use `.toBest()` to have your values converted between systems
+```js
+convert(1).from('km').toBest({ system: "imperial" })
+// 1093.613... Yards
+
+convert(1.2427).from('mi').toBest({ system: "metric" })
+// 1.999... Km
+```
+
 You can get a list of the measurement types supported with `.measures`
 
 ```js
