@@ -172,6 +172,12 @@ tests['acceleration possibilities'] = function() {
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
+tests['torque possibilities'] = function() {
+  var actual = convert().possibilities('torque')
+    , expected = [ 'Nm', 'Ncm', 'lb-in', 'lb-ft'];
+  assert.deepEqual(actual.sort(), expected.sort());
+};
+
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
     // Please keep these sorted for maintainability
@@ -192,6 +198,8 @@ tests['all possibilities'] = function () {
       , 'MPa'
       , 'Mb'
       , 'N'
+      , 'Ncm'
+      , 'Nm'
       , 'Pa'
       , 'TB'
       , 'Tb'
@@ -283,6 +291,8 @@ tests['all possibilities'] = function () {
       , 'l/min'
       , 'l/s'
       , 'lb'
+      , 'lb-ft'
+      , 'lb-in'
       , 'lbf'
       , 'lx'
       , 'm'

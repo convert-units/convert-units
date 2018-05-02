@@ -363,6 +363,12 @@ Supported Units
 * g (g-force)
 * m/s2
 
+### Torque
+* Ncm
+* Nm
+* lb-in
+* lb-ft
+
 
 ### Want More?
 
