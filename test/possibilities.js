@@ -154,6 +154,24 @@ tests['angle possibilities'] = function() {
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
+tests['charge possibilities'] = function() {
+  var actual = convert().possibilities('charge')
+    , expected = [ 'c', 'mC', 'μC', 'nC', 'pC'];
+  assert.deepEqual(actual.sort(), expected.sort());
+};
+
+tests['force possibilities'] = function() {
+  var actual = convert().possibilities('force')
+    , expected = [ 'N', 'kN', 'lbf'];
+  assert.deepEqual(actual.sort(), expected.sort());
+};
+
+tests['acceleration possibilities'] = function() {
+  var actual = convert().possibilities('acceleration')
+    , expected = [ 'g-force', 'm/s2'];
+  assert.deepEqual(actual.sort(), expected.sort());
+};
+
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
     // Please keep these sorted for maintainability
@@ -173,12 +191,14 @@ tests['all possibilities'] = function () {
       , 'MB'
       , 'MPa'
       , 'Mb'
+      , 'N'
       , 'Pa'
       , 'TB'
       , 'Tb'
       , 'ac'
       , 'b'
       , 'bar'
+      , 'c'
       , 'cl'
       , 'cl/s'
       , 'cm'
@@ -209,6 +229,7 @@ tests['all possibilities'] = function () {
       , 'ft3/min'
       , 'ft3/s'
       , 'g'
+      , 'g-force'
       , 'gal'
       , 'gal/h'
       , 'gal/min'
@@ -238,6 +259,7 @@ tests['all possibilities'] = function () {
       , 'kg'
       , 'kkp'
       , 'kJ'
+      , 'kN'
       , 'kl'
       , 'kl/h'
       , 'kl/min'
@@ -262,16 +284,19 @@ tests['all possibilities'] = function () {
       , 'l/min'
       , 'l/s'
       , 'lb'
+      , 'lbf'
       , 'lx'
       , 'm'
       , 'm/h'
       , 'm/s'
+      , 'm/s2'
       , 'm2'
       , 'm3'
       , 'm3/h'
       , 'm3/min'
       , 'm3/s'
       , 'mA'
+      , 'mC'
       , 'mcg'
       , 'mg'
       , 'mi'
@@ -290,6 +315,7 @@ tests['all possibilities'] = function () {
       , 'msk'
       , 'mt'
       , 'mu'
+      , 'nC'
       , 'mHz'
       , 'MHz'
       , 'mV'
@@ -306,6 +332,7 @@ tests['all possibilities'] = function () {
       , 'nMi'
       , 'ns'
       , 'oz'
+      , 'pC'
       , 'pnt'
       , 'pnt/h'
       , 'pnt/min'
@@ -345,6 +372,7 @@ tests['all possibilities'] = function () {
       , 'yd3/min'
       , 'yd3/s'
       , 'year'
+      , 'μC'
   ];
 
   try {
