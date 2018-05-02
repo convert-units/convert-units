@@ -178,6 +178,12 @@ tests['torque possibilities'] = function() {
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
+tests['resistance possibilities'] = function() {
+  var actual = convert().possibilities('resistance')
+    , expected = [ 'Ω', 'kΩ', 'MΩ'];
+  assert.deepEqual(actual.sort(), expected.sort());
+};
+
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
     // Please keep these sorted for maintainability
@@ -197,6 +203,7 @@ tests['all possibilities'] = function () {
       , 'MB'
       , 'MPa'
       , 'Mb'
+      , 'MΩ'
       , 'N'
       , 'Ncm'
       , 'Nm'
@@ -279,6 +286,7 @@ tests['all possibilities'] = function () {
       , 'knot'
       , 'krm'
       , 'ksi'
+      , 'kΩ'
       , 'kHz'
       , 'kV'
       , 'kVA'
@@ -380,6 +388,7 @@ tests['all possibilities'] = function () {
       , 'yd3/min'
       , 'yd3/s'
       , 'year'
+      , 'Ω'
       , 'μC'
   ];
   
