@@ -369,6 +369,11 @@ Supported Units
 * lb-in
 * lb-ft
 
+### Resistance
+* Ω
+* kΩ
+* MΩ
+
 
 ### Want More?
 
