@@ -21,6 +21,11 @@ declare module "convert-units" {
     type uEnergy = "Wh" | "mWh" | "kWh" | "MWh" | "GWh" | "J" | "kJ"; // Energy
     type uReactiveEnergy = "VARh" | "mVARh" | "kVARh" | "MVARh" | "GVARH"; // Reactive Energy
     type uAngle = "deg" | "rad" | "grad" | "arcmin" | "arcsec"; // Angle
+    type uCharge = "c" | "mC" | "μC" | "nC" | "pC"; // Charge
+    type uForce = "N" | "kN" | "lbf"; // Force
+    type uAcceleration = "g-force" | "m/s2"; // Acceleration
+    type uTorque = "Nm" | "Ncm" | "lb-in" | "lb-ft"; // Torque
+    type uResistance = "Ω" | "kΩ" | "MΩ"; // Resistance
 
 
     type unit = uDistance 
@@ -44,9 +49,14 @@ declare module "convert-units" {
               | uReactivePower
               | uEnergy
               | uReactiveEnergy
-              | uAngle;
+              | uAngle
+              | uCharge
+              | uForce
+              | uAcceleration
+              | uTorque
+              | uResistance;
 
-    type measure = "distance" 
+    type measure = "distance"
                  | "area" 
                  | "mass" 
                  | "volume" 
@@ -67,7 +77,12 @@ declare module "convert-units" {
                  | "reactivePower"
                  | "energy"
                  | "reactiveEnergy"
-                 | "angle";
+                 | "angle"
+                 | "charge"
+                 | "force"
+                 | "acceleration"
+                 | "torque"
+                 | "resistance";
 
     type system = "metric"
                 | "imperial"
