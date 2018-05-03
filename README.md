@@ -138,7 +138,9 @@ Supported Units
 * in
 * ft-us
 * ft
+* fathom
 * mi
+* nMi
 
 ### Area
 * mm2
