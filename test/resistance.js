@@ -2,28 +2,28 @@ var convert = require('../lib')
   , assert = require('assert')
   , tests = {};
 
-tests['Ω to kΩ'] = function () {
-  assert.strictEqual(convert(1).from('Ω').to('kΩ') , 1/1000);
+tests['Ohm to kOhm'] = function () {
+  assert.strictEqual(convert(1).from('Ohm').to('kOhm') , 1/1000);
 };
 
-tests['Ω to MΩ'] = function () {
-  assert.strictEqual(convert(1).from('Ω').to('MΩ') ,1/ 1000000);
+tests['Ohm to MOhm'] = function () {
+  assert.strictEqual(convert(1).from('Ohm').to('MOhm') ,1/ 1000000);
 };
 
-tests['kΩ to MΩ'] = function () {
-  assert.strictEqual(convert(1).from('kΩ').to('MΩ') , 1/1000);
+tests['kOhm to MOhm'] = function () {
+  assert.strictEqual(convert(1).from('kOhm').to('MOhm') , 1/1000);
 };
 
-tests['kΩ to Ω'] = function () {
-  assert.strictEqual(convert(1).from('kΩ').to('Ω') , 1000);
+tests['kOhm to Ohm'] = function () {
+  assert.strictEqual(convert(1).from('kOhm').to('Ohm') , 1000);
 };
 
-tests['MΩ to Ω'] = function () {
-  assert.strictEqual(convert(1).from('MΩ').to('Ω') , 1000000);
+tests['MOhm to Ohm'] = function () {
+  assert.strictEqual(convert(1).from('MOhm').to('Ohm') , 1000000);
 };
 
-tests['MΩ to kΩ'] = function () {
-  assert.strictEqual(convert(1).from('MΩ').to('kΩ') , 1000);
+tests['MOhm to kOhm'] = function () {
+  assert.strictEqual(convert(1).from('MOhm').to('kOhm') , 1000);
 };
 
 module.exports = tests;

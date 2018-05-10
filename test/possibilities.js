@@ -180,7 +180,7 @@ tests['torque possibilities'] = function() {
 
 tests['resistance possibilities'] = function() {
   var actual = convert().possibilities('resistance')
-    , expected = [ 'Ω', 'kΩ', 'MΩ'];
+    , expected = [ 'Ohm', 'kOhm', 'MOhm'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -203,10 +203,10 @@ tests['all possibilities'] = function () {
       , 'MB'
       , 'MPa'
       , 'Mb'
-      , 'MΩ'
       , 'N'
       , 'Ncm'
       , 'Nm'
+      , 'Ohm'
       , 'Pa'
       , 'TB'
       , 'Tb'
@@ -275,6 +275,7 @@ tests['all possibilities'] = function () {
       , 'kkp'
       , 'kJ'
       , 'kN'
+      , 'kOhm'
       , 'kl'
       , 'kl/h'
       , 'kl/min'
@@ -287,7 +288,6 @@ tests['all possibilities'] = function () {
       , 'knot'
       , 'krm'
       , 'ksi'
-      , 'kΩ'
       , 'kHz'
       , 'kV'
       , 'kVA'
@@ -336,6 +336,7 @@ tests['all possibilities'] = function () {
       , 'nC'
       , 'mHz'
       , 'MHz'
+      , 'MOhm'
       , 'mV'
       , 'mVA'
       , 'MVA'
@@ -390,7 +391,6 @@ tests['all possibilities'] = function () {
       , 'yd3/min'
       , 'yd3/s'
       , 'year'
-      , 'Ω'
       , 'μC'
   ];
 
