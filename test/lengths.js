@@ -57,6 +57,25 @@ tests['m to mm'] = function () {
   assert.strictEqual( convert(1).from('m').to('mm') , 1000);
 };
 
+tests['m to nm'] = function() {
+  var expected = 1000000000
+    , actual = convert(1).from('m').to('nm')
+  assert.ok(percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['nm to m'] = function() {
+  assert.strictEqual(convert(1).from('nm').to('m') , 1/1000000000);
+};
+
+tests['m to μm'] = function() {
+  assert.strictEqual(convert(1).from('m').to('μm') , 1000000);
+};
+
+tests['μm to m'] = function() {
+  assert.strictEqual(convert(1).from('μm').to('m') , 1/1000000);
+};
+
 tests['km to m'] = function () {
   assert.strictEqual( convert(1).from('km').to('m'), 1000);
 };
