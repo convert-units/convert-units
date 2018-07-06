@@ -30,6 +30,10 @@ tests['kJ to kJ'] = function () {
   assert.strictEqual( convert(1).from('kJ').to('kJ') , 1);
 };
 
+tests['BTU to BTU'] = function() {
+  assert.strictEqual( convert(1).from('BTU').to('BTU') , 1);
+}
+
 tests['Wh to J'] = function () {
   assert.strictEqual( convert(1).from('Wh').to('J') , 3600);
 };
@@ -80,6 +84,10 @@ tests['kWh to Wh'] = function () {
 
 tests['kWh to kJ'] = function () {
   assert.strictEqual( convert(1).from('kWh').to('kJ'), 3600);
+}
+
+tests['BTU to J'] = function() {
+  assert.strictEqual( convert(1).from('BTU').to('J') , 1055.05585262);
 }
 
 module.exports = tests;

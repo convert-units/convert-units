@@ -126,7 +126,7 @@ tests['apparent power possibilities'] = function() {
 
 tests['energy possibilities'] = function() {
   var actual = convert().possibilities('energy')
-    , expected = [ 'Wh', 'mWh', 'kWh', 'MWh', 'GWh', 'J', 'kJ'];
+    , expected = [ 'BTU', 'Wh', 'mWh', 'kWh', 'MWh', 'GWh', 'J', 'kJ'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -180,6 +180,7 @@ tests['all possibilities'] = function () {
       , 'arcmin'
       , 'arcsec'
       , 'B'
+      , 'BTU'
       , 'C'
       , 'F'
       , 'R'
