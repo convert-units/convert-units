@@ -87,7 +87,7 @@ tests['kWh to kJ'] = function () {
 }
 
 tests['BTU to J'] = function() {
-  assert.strictEqual( convert(1).from('BTU').to('J') , 1055.05585262);
+  assert.strictEqual( convert(1).from('BTU').to('J') , 1055.06);
 }
 
 module.exports = tests;

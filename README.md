@@ -334,7 +334,7 @@ Supported Units
 * GWh
 * J
 * kJ
-* BTU
+* BTU (ISO)
 
 ### Reactive Energy
 * VARh
