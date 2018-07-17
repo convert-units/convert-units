@@ -82,4 +82,12 @@ tests['kWh to kJ'] = function () {
   assert.strictEqual( convert(1).from('kWh').to('kJ'), 3600);
 }
 
+tests['MJ to J'] = function () {
+  assert.strictEqual( convert(1).from('MJ').to('J'), 1000000);
+}
+
+tests['J to MJ'] = function () {
+  assert.strictEqual( convert(1).from('J').to('MJ'), 0.000001);
+}
+
 module.exports = tests;

@@ -126,7 +126,7 @@ tests['apparent power possibilities'] = function() {
 
 tests['energy possibilities'] = function() {
   var actual = convert().possibilities('energy')
-    , expected = [ 'Wh', 'mWh', 'kWh', 'MWh', 'GWh', 'J', 'kJ'];
+    , expected = [ 'Wh', 'mWh', 'kWh', 'MWh', 'GWh', 'J', 'kJ', 'MJ'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -299,6 +299,7 @@ tests['all possibilities'] = function () {
       , 'mC'
       , 'mcg'
       , 'mg'
+      , 'MJ'
       , 'mi'
       , 'mi2'
       , 'min'
