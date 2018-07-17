@@ -334,6 +334,7 @@ Supported Units
 * GWh
 * J
 * kJ
+* MJ
 
 ### Reactive Energy
 * VARh
