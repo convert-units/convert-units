@@ -1,6 +1,8 @@
 var convert = require('../lib')
   , assert = require('assert')
-  , tests = {};
+  , tests = {}
+  , ACCURACY = 1/1000
+  , percentError = require('../lib/percentError');
 
 tests['W to W'] = function () {
   assert.strictEqual( convert(1).from('W').to('W') , 1);
@@ -61,5 +63,47 @@ tests['mW to W'] = function () {
 tests['kW to W'] = function () {
   assert.strictEqual( convert(1).from('kW').to('W'), 1000);
 }
+
+
+tests['hp-i to hp-i'] = function () {
+  assert.strictEqual( convert(1).from('hp-i').to('hp-i'), 1);
+}
+
+
+// When converting between systems, expect < 0.1% error
+tests['W to hp-i'] = function () {
+  var expected = 745.6998715823 
+    , actual = convert(1).from('W').to('hp-i');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['mW to hp-i'] = function () {
+  var expected = 0.7456998715832 
+    , actual = convert(1).from('mW').to('hp-i');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['kW to hp-i'] = function () {
+  var expected = 745699.8715823
+    , actual = convert(1).from('kW').to('hp-i');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['MW to hp-i'] = function () {
+  var expected = 745699871.5823
+    , actual = convert(1).from('MW').to('hp-i');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['GW to hp-i'] = function () {
+  var expected = 745699871582.3
+    , actual = convert(1).from('GW').to('hp-i');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
 
 module.exports = tests;
