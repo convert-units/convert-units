@@ -106,4 +106,35 @@ tests['GW to hp-i'] = function () {
     , 'Expected: ' + expected +', Actual: ' + actual);
 };
 
+
+
+
+tests['hp-i to W'] = function () {
+  var expected = 0.00134102208959497437975129597236
+    , actual = convert(1).from('hp-i').to('W');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['hp-i to kW'] = function () {
+  var expected = 1.34102208959497437975129597236e-6
+    , actual = convert(1).from('hp-i').to('kW');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['hp-i to MW'] = function () {
+  var expected = 1.34102208959497437975129597236e-9
+    , actual = convert(1).from('hp-i').to('MW');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['hp-i to GW'] = function () {
+  var expected = 1.3410220895949743797512959723589e-12
+    , actual = convert(1).from('hp-i').to('GW');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
 module.exports = tests;
