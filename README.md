@@ -306,6 +306,7 @@ Supported Units
 * kA
 
 ### Power
+* hp-i
 * W
 * mW
 * kW
