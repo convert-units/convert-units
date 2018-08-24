@@ -22,6 +22,14 @@ tests['GWh to GWh'] = function () {
   assert.strictEqual( convert(1).from('GWh').to('GWh') , 1);
 };
 
+tests['cal to cal'] = function () {
+  assert.strictEqual( convert(1).from('cal').to('cal') , 1);
+};
+
+tests['kcal to kcal'] = function () {
+  assert.strictEqual( convert(1).from('kcal').to('kcal') , 1);
+};
+
 tests['J to J'] = function () {
   assert.strictEqual( convert(1).from('J').to('J') , 1);
 };
@@ -50,9 +58,21 @@ tests['Wh to GWh'] = function () {
   assert.strictEqual( convert(1).from('Wh').to('GWh') , 0.000000001);
 };
 
+tests['Wh to cal'] = function () {
+  assert.strictEqual( convert(1).from('Wh').to('cal') , 860.4206500956022);
+};
+
+tests['Wh to kcal'] = function () {
+  assert.strictEqual( convert(1).from('Wh').to('kcal') , 0.8604206500956023);
+};
+
 tests['GWh to mWh'] = function () {
   assert.strictEqual( convert(1).from('GWh').to('mWh'), 1000000000000);
 }
+
+tests['GWh to kcal'] = function () {
+  assert.strictEqual( convert(1).from('GWh').to('kcal') , 860420650.0956023);
+};
 
 tests['GWh to J'] = function () {
   assert.strictEqual( convert(1).from('GWh').to('J'), 3600000000000);
