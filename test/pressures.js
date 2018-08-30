@@ -49,7 +49,6 @@ tests['Pa to psi'] = function () {
       , actual = convert(10000).from('Pa').to('psi');
     assert.ok( percentError(expected, actual) < ACCURACY
       , 'Expected: ' + expected +', Actual: ' + actual);
-  assert.strictEqual( convert(1).from('GB').to('B') , 1073741824);
 };
 
 tests['torr to ksi'] = function () {
