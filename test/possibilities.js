@@ -64,8 +64,14 @@ tests['time possibilities'] = function () {
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
-tests['digital possibilities'] = function() {
-  var actual = convert().possibilities('digital')
+tests['digitalBin possibilities'] = function() {
+  var actual = convert().possibilities('digitalBin')
+    , expected = [ 'ib', 'Kib', 'Mib', 'Gib', 'Tib', 'iB', 'KiB', 'MiB', 'GiB', 'TiB' ];
+  assert.deepEqual(actual.sort(), expected.sort());
+};
+
+tests['digitalDec possibilities'] = function() {
+  var actual = convert().possibilities('digitalDec')
     , expected = [ 'b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB' ];
   assert.deepEqual(actual.sort(), expected.sort());
 };
@@ -373,6 +379,16 @@ tests['all possibilities'] = function () {
       , 'yd3/s'
       , 'year'
       , 'μC'
+      , 'GiB'
+      , 'Gib'
+      , 'KiB'
+      , 'Kib'
+      , 'MiB'
+      , 'Mib'
+      , 'TiB'
+      , 'Tib'
+      , 'iB'
+      , 'ib'
   ];
 
   try {

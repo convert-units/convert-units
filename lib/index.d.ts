@@ -10,7 +10,8 @@ declare module "convert-units" {
     type uSpeed = "m/s" | "km/h" | "m/h" | "knot" | "ft/s"; // Speed
     type uPace = "s/m" | "min/km" | "s/ft" | "min/km"; // Pace
     type uPressure = "Pa" | "hPa" | "kPa" | "MPa" | "bar" | "torr" | "psi" | "ksi"; // Pressure
-    type uDitgital = "b" | "Kb" | "Mb" | "Gb" | "Tb" | "B" | "KB" | "MB" | "GB" | "TB"; // Digital
+    type uDitgitalBin = "ib" | "Kib" | "Mib" | "Gib" | "Tib" | "iB" | "KiB" | "MiB" | "GiB" | "TiB"; // Digital (Binary)
+    type uDitgitalDec = "b" | "Kb" | "Mb" | "Gb" | "Tb" | "B" | "KB" | "MB" | "GB" | "TB"; // Digital (Decimal)
     type uIlluminance = "lx" | "ft-cd"; // Illumunance
     type uPartsPer = "ppm" | "ppb" | "ppt" | "ppq"; // Parts-Per
     type uVoltage = "V" | "mV" | "kV"; // Voltage
@@ -57,7 +58,8 @@ declare module "convert-units" {
                  | "speed" 
                  | "pace" 
                  | "pressure" 
-                 | "ditgital"
+                 | "digitalBin"
+                 | "digitalDec"
                  | "illuminance"
                  | "partsPer"
                  | "voltage"
@@ -71,8 +73,10 @@ declare module "convert-units" {
 
     type system = "metric"
                 | "imperial"
-                | "bits"
-                | "bytes";
+                | "bitsBin"
+                | "bytesBin"
+                | "bitsDec"
+                | "bytesDec";
 
     class Convert {
         constructor(numerator: number, denominator: number);

@@ -10,19 +10,19 @@ tests['b to b'] = function () {
 };
 
 tests['Kb to b'] = function () {
-  assert.strictEqual( convert(1).from('Kb').to('b') , 1024);
+  assert.strictEqual( convert(1).from('Kb').to('b') , 1000);
 };
 
 tests['Mb to b'] = function () {
-  assert.strictEqual( convert(1).from('Mb').to('b') , 1048576);
+  assert.strictEqual( convert(1).from('Mb').to('b') , 1000000);
 };
 
 tests['Gb to b'] = function () {
-  assert.strictEqual( convert(1).from('Gb').to('b') , 1073741824);
+  assert.strictEqual( convert(1).from('Gb').to('b') , 1000000000);
 };
 
 tests['Tb to b'] = function () {
-  assert.strictEqual( convert(1).from('Tb').to('b') , 1099511627776);
+  assert.strictEqual( convert(1).from('Tb').to('b') , 1000000000000);
 };
 
 tests['B to B'] = function () {
@@ -30,19 +30,19 @@ tests['B to B'] = function () {
 };
 
 tests['KB to B'] = function () {
-  assert.strictEqual( convert(1).from('KB').to('B') , 1024);
+  assert.strictEqual( convert(1).from('KB').to('B') , 1000);
 };
 
 tests['MB to B'] = function () {
-  assert.strictEqual( convert(1).from('MB').to('B') , 1048576);
+  assert.strictEqual( convert(1).from('MB').to('B') , 1000000);
 };
 
 tests['GB to B'] = function () {
-  assert.strictEqual( convert(1).from('GB').to('B') , 1073741824);
+  assert.strictEqual( convert(1).from('GB').to('B') , 1000000000);
 };
 
 tests['TB to B'] = function () {
-  assert.strictEqual( convert(1).from('TB').to('B') , 1099511627776);
+  assert.strictEqual( convert(1).from('TB').to('B') , 1000000000000);
 };
 
 // When converting between systems, expect < 0.1% error

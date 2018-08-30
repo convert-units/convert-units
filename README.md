@@ -273,7 +273,19 @@ Supported Units
 * psi
 * ksi
 
-### Digital
+### Digital (Binary)
+* ib
+* Kib
+* Mib
+* Gib
+* Tib
+* iB
+* KiB
+* MiB
+* GiB
+* TiB
+
+### Digital (Decimal)
 * b
 * Kb
 * Mb
