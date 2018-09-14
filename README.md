@@ -133,9 +133,13 @@ Supported Units
 ---------------
 ### Length
 * mm
+* um
+* nm
 * cm
 * m
 * in
+* uin
+* nin
 * ft-us
 * ft
 * fathom
@@ -220,6 +224,10 @@ Supported Units
 * yd3/s
 * yd3/min
 * yd3/h'
+
+### Mass Flow Rate
+* kg/h
+* lb/h
 
 ### Temperature
 * C
