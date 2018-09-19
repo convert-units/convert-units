@@ -57,6 +57,42 @@ tests['m to mm'] = function () {
   assert.strictEqual( convert(1).from('m').to('mm') , 1000);
 };
 
+tests['m to µm'] = function () {
+  assert.strictEqual( convert(1).from('m').to('µm') , 1e6);
+};
+
+tests['µm to m'] = function () {
+  assert.strictEqual( convert(1).from('µm').to('m') , 1e-6);
+};
+
+tests['m to nm'] = function () {
+  var expected = 1e9
+    , actual = convert(1).from('m').to('nm');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['nm to m'] = function () {
+  var expected = 1e-9
+    , actual = convert(1).from('nm').to('m');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['m to Å'] = function () {
+  var expected = 1e10
+    , actual = convert(1).from('m').to('Å');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['Å to m'] = function () {
+  var expected = 1e-10
+    , actual = convert(1).from('Å').to('m');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
 tests['km to m'] = function () {
   assert.strictEqual( convert(1).from('km').to('m'), 1000);
 };
