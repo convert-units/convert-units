@@ -39,6 +39,10 @@ tests['g/l to ng/m3'] = function () {
   assert.strictEqual( convert(1).from('g/l').to('ng/m3') , 1e12);
 };
 
+tests['g/l to NTU'] = function () {
+  assert.strictEqual( convert(1).from('g/l').to('NTU') , 1e3);
+};
+
 
 
 module.exports = tests;
