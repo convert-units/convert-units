@@ -163,18 +163,6 @@ Supported Units
 * mt
 * t
 
-### Mass Concentration
-* g/l
-* mg/l
-* ug/l
-* ng/l
-* pg/l
-* kg/m3
-* g/m3
-* mg/m3
-* ug/m3
-* ng/m3
-
 ### Volume
 * mm3
 * cm3
@@ -368,12 +356,6 @@ Supported Units
 * nC
 * pC
 
-### Conductivity
-* S/m
-* mS/m
-* mS/cm
-* uS/cm
-
 ### Force
 * N
 * kN
@@ -383,6 +365,24 @@ Supported Units
 * g (g-force)
 * m/s2
 
+### Conductivity
+* S/m
+* mS/m
+* mS/cm
+* uS/cm
+
+### Mass Concentration
+* g/l
+* mg/l
+* ug/l
+* ng/l
+* pg/l
+* kg/m3
+* g/m3
+* mg/m3
+* ug/m3
+* ng/m3
+* NTU
 
 ### Want More?
 
