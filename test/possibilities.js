@@ -172,6 +172,12 @@ tests['acceleration possibilities'] = function() {
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
+tests['fuel consumption possibilities'] = function() {
+  var actual = convert().possibilities('fuelConsumption')
+    , expected = [ 'l/100km', 'mpg'];
+  assert.deepEqual(actual.sort(), expected.sort());
+};
+
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
     // Please keep these sorted for maintainability
@@ -280,6 +286,7 @@ tests['all possibilities'] = function () {
       , 'kW'
       , 'kWh'
       , 'l'
+      , 'l/100km'
       , 'l/h'
       , 'l/min'
       , 'l/s'
@@ -311,6 +318,7 @@ tests['all possibilities'] = function () {
       , 'mm3'
       , 'mm3/s'
       , 'month'
+      , 'mpg'
       , 'ms'
       , 'msk'
       , 'mt'
