@@ -7,7 +7,7 @@ var d = new jake.PublishTask('convert-units', function() {
     'lib/**',
     'test/*',
     'Jakefile',
-    'package.json'
+    'package.json',
     'Readme.md'
   ]);
 });

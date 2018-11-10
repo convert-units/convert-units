@@ -90,11 +90,11 @@ To get a detailed description of a unit, use `describe`
 convert().describe('kg')
 /*
   {
-    abbr: 'kg'
-  , measure: 'mass'
-  , system: 'metric'
-  , singular: 'Kilogram'
-  , plural: 'Kilograms'
+    abbr: 'kg',
+    measure: 'mass',
+    system: 'metric',
+    singular: 'Kilogram',
+    plural: 'Kilograms'
   }
 */
 ```
@@ -105,11 +105,11 @@ To get detailed descriptions of all units, use `list`.
 convert().list()
 /*
   [{
-    abbr: 'kg'
-  , measure: 'mass'
-  , system: 'metric'
-  , singular: 'Kilogram'
-  , plural: 'Kilograms'
+    abbr: 'kg',
+    measure: 'mass',
+    system: 'metric',
+    singular: 'Kilogram',
+    plural: 'Kilograms'
   }, ...]
 */
 ```
@@ -120,11 +120,11 @@ You can also get detailed descriptions of all units for a measure:
 convert().list('mass')
 /*
   [{
-    abbr: 'kg'
-  , measure: 'mass'
-  , system: 'metric'
-  , singular: 'Kilogram'
-  , plural: 'Kilograms'
+    abbr: 'kg',
+    measure: 'mass',
+    system: 'metric',
+    singular: 'Kilogram',
+    plural: 'Kilograms'
   }, ...]
 */
 ```

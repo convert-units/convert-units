@@ -11,7 +11,7 @@ declare module "convert-units" {
     type uPace = "s/m" | "min/km" | "s/ft" | "min/km"; // Pace
     type uPressure = "Pa" | "hPa" | "kPa" | "MPa" | "bar" | "torr" | "psi" | "ksi"; // Pressure
     type uDitgital = "b" | "Kb" | "Mb" | "Gb" | "Tb" | "B" | "KB" | "MB" | "GB" | "TB"; // Digital
-    type uIlluminance = "lx" | "ft-cd"; // Illumunance
+    type uIlluminance = "lx" | "ft-cd"; // Illuminance
     type uPartsPer = "ppm" | "ppb" | "ppt" | "ppq"; // Parts-Per
     type uVoltage = "V" | "mV" | "kV"; // Voltage
     type uCurrent = "A" | "mA" | "kA"; // Current
