@@ -1,14 +1,13 @@
-var t = new jake.TestTask('convert-units', function () {
+var t = new jake.TestTask('convert-units', function() {
   this.testFiles.include('test/*');
 });
 
-var d = new jake.PublishTask('convert-units', function () {
+var d = new jake.PublishTask('convert-units', function() {
   this.packageFiles.include([
-    'lib/**'
-  , 'test/*'
-  , 'Jakefile'
-  , 'package.json'
-  , 'Readme.md'
-    ]);
+    'lib/**',
+    'test/*',
+    'Jakefile',
+    'package.json'
+    'Readme.md'
+  ]);
 });
-

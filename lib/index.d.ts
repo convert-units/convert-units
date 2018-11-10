@@ -1,4 +1,4 @@
-declare module "convert-units" { 
+declare module "convert-units" {
     type uDistance = "mm" | "cm" | "m" | "km" | "in" | "ft-us" | "ft" | "mi"; // Distance
     type uArea = "mm2" | "cm2" | "m2" | "ha" | "km2" | "in2" | "ft2" | "ac" | "mi2"; // Area
     type uMass = "mcg" | "mg" | "g" | "kg" | "oz" | "lb" | "mt" | "t" // Mass
@@ -23,17 +23,17 @@ declare module "convert-units" {
     type uAngle = "deg" | "rad" | "grad" | "arcmin" | "arcsec"; // Angle
 
 
-    type unit = uDistance 
-              | uArea 
-              | uMass 
-              | uVolume 
-              | uVolumeFlowRate 
-              | uTemperature 
-              | uTime 
-              | uFrequency 
-              | uSpeed 
-              | uPace 
-              | uPressure 
+    type unit = uDistance
+              | uArea
+              | uMass
+              | uVolume
+              | uVolumeFlowRate
+              | uTemperature
+              | uTime
+              | uFrequency
+              | uSpeed
+              | uPace
+              | uPressure
               | uDitgital
               | uIlluminance
               | uPartsPer
@@ -46,17 +46,17 @@ declare module "convert-units" {
               | uReactiveEnergy
               | uAngle;
 
-    type measure = "distance" 
-                 | "area" 
-                 | "mass" 
-                 | "volume" 
-                 | "volumeFlowRate" 
-                 | "temperature" 
-                 | "time" 
-                 | "frequency" 
-                 | "speed" 
-                 | "pace" 
-                 | "pressure" 
+    type measure = "distance"
+                 | "area"
+                 | "mass"
+                 | "volume"
+                 | "volumeFlowRate"
+                 | "temperature"
+                 | "time"
+                 | "frequency"
+                 | "speed"
+                 | "pace"
+                 | "pressure"
                  | "ditgital"
                  | "illuminance"
                  | "partsPer"
@@ -76,7 +76,7 @@ declare module "convert-units" {
 
     class Convert {
         constructor(numerator: number, denominator: number);
-        from(from: unit): this; 
+        from(from: unit): this;
         to(to: unit): number;
         toBest(options?: { exclude?: unit[], cutOffNumber?: number }): { val: number, unit: string, singular: string, plural: string };
         getUnit<T extends unit>(abbr: T): { abbr: T, measure: measure, system: system, unit: { name: { singular: string, plural: string }, to_anchor: number } };
