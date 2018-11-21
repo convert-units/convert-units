@@ -70,12 +70,6 @@ tests['digital possibilities'] = function() {
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
-tests['partsPer possibilities'] = function() {
-  var actual = convert().possibilities('partsPer')
-    , expected = [ 'ppm', 'ppb', 'ppt', 'ppq' ];
-  assert.deepEqual(actual.sort(), expected.sort());
-};
-
 tests['pressure possibilities'] = function() {
   var actual = convert().possibilities('pressure')
     , expected = [ 'Pa', 'kPa', 'MPa', 'hPa', 'bar', 'torr', 'psi', 'ksi'];
@@ -230,6 +224,8 @@ tests['all possibilities'] = function () {
       , 'ft3/s'
       , 'g'
       , 'g-force'
+      , 'g/l'
+      , 'g/m3'
       , 'gal'
       , 'gal/h'
       , 'gal/min'
@@ -257,6 +253,7 @@ tests['all possibilities'] = function () {
       , 'kPa'
       , 'kanna'
       , 'kg'
+      , 'kg/m3'
       , 'kkp'
       , 'kJ'
       , 'kN'
@@ -299,6 +296,8 @@ tests['all possibilities'] = function () {
       , 'mC'
       , 'mcg'
       , 'mg'
+      , 'mg/l'
+      , 'mg/m3'
       , 'mi'
       , 'mi2'
       , 'min'
@@ -317,6 +316,8 @@ tests['all possibilities'] = function () {
       , 'mu'
       , 'nC'
       , 'mHz'
+      , 'mS/cm'
+      , 'mS/m'
       , 'MHz'
       , 'mV'
       , 'mVA'
@@ -330,9 +331,13 @@ tests['all possibilities'] = function () {
       , 'mWh'
       , 'MWh'
       , 'nMi'
+      , 'ng/l'
+      , 'ng/m3'
       , 'ns'
+      , 'NTU'
       , 'oz'
       , 'pC'
+      , 'pg/l'
       , 'pnt'
       , 'pnt/h'
       , 'pnt/min'
@@ -348,6 +353,7 @@ tests['all possibilities'] = function () {
       , 'rad/s'
       , 'rpm'
       , 's'
+      , 'S/m'
       , 's/m'
       , 's/ft'
       , 't'
@@ -358,6 +364,9 @@ tests['all possibilities'] = function () {
       , 'tsk'
       , 'tsp'
       , 'tsp/s'
+      , 'uS/cm'
+      , 'ug/l'
+      , 'ug/m3'
       , 'V'
       , 'VA'
       , 'VAR'

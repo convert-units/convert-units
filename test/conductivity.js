@@ -4,7 +4,7 @@ var convert = require('../lib')
 
 
 tests['S/m to mS/m'] = function () {
-  assert.strictEqual( convert(1).from('S/m').to('mS/m') , 1e4);
+  assert.strictEqual( convert(1).from('S/m').to('mS/m') , 1e3);
 };
 
 tests['S/m to mS/cm'] = function () {
@@ -16,7 +16,7 @@ tests['S/m to uS/cm'] = function () {
 };
 
 tests['mS/m to S/m'] = function () {
-  assert.strictEqual( convert(1).from('mS/m').to('S/m') , 1e-2);
+  assert.strictEqual( convert(1).from('mS/m').to('S/m') , 1e-3);
 };
 
 tests['mS/cm to S/m'] = function () {
@@ -24,7 +24,7 @@ tests['mS/cm to S/m'] = function () {
 };
 
 tests['uS/cm to S/m'] = function () {
-  assert.strictEqual( convert(1).from('uS/cm').to('S/m') , 1e-3);
+  assert.strictEqual( convert(1).from('uS/cm').to('S/m') , 1e-4);
 };
 
 

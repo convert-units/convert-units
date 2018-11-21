@@ -12,7 +12,6 @@ declare module "convert-units" {
     type uPressure = "Pa" | "hPa" | "kPa" | "MPa" | "bar" | "torr" | "psi" | "ksi"; // Pressure
     type uDitgital = "b" | "Kb" | "Mb" | "Gb" | "Tb" | "B" | "KB" | "MB" | "GB" | "TB"; // Digital
     type uIlluminance = "lx" | "ft-cd"; // Illumunance
-    type uPartsPer = "ppm" | "ppb" | "ppt" | "ppq"; // Parts-Per
     type uVoltage = "V" | "mV" | "kV"; // Voltage
     type uCurrent = "A" | "mA" | "kA"; // Current
     type uPower = "W" | "mW" | "kM" | "MW" | "GW";
@@ -22,7 +21,7 @@ declare module "convert-units" {
     type uReactiveEnergy = "VARh" | "mVARh" | "kVARh" | "MVARh" | "GVARH"; // Reactive Energy
     type uAngle = "deg" | "rad" | "grad" | "arcmin" | "arcsec"; // Angle
     type uConductivity = "S/m" | "mS/m" | "mS/cm" | "uS/cm"; // Conductivity
-    type uMassConcentration = "g/l" | "mg/l" | "ug/l" | "ng/l" | "pg/l" | "kg/m3" | "g/m3" | "mg/m3" | "ug/m3" | "ng/m3"; // Mass Concentration
+    type uMassConcentration = "g/l" | "mg/l" | "ug/l" | "ng/l" | "pg/l" | "kg/m3" | "g/m3" | "mg/m3" | "ug/m3" | "ng/m3" | "ppm" | "ppb" | "ppt" | "ppq" | "NTU"; // Mass Concentration
 
     
     type unit = uDistance 
@@ -38,7 +37,6 @@ declare module "convert-units" {
               | uPressure 
               | uDitgital
               | uIlluminance
-              | uPartsPer
               | uVoltage
               | uCurrent
               | uPower
@@ -63,7 +61,6 @@ declare module "convert-units" {
                  | "pressure" 
                  | "ditgital"
                  | "illuminance"
-                 | "partsPer"
                  | "voltage"
                  | "current"
                  | "power"
