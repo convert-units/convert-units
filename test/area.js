@@ -72,4 +72,11 @@ tests['mm2 to ft2'] = function () {
     , 'Expected: ' + expected +', Actual: ' + actual);
 };
 
+tests['ft2 to acre'] = function () {
+  var expected = .02755
+    , actual = convert(1200).from('ft2').to('ac');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
 module.exports = tests;
