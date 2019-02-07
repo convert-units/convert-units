@@ -18,7 +18,7 @@ tests['kg possibilities'] = function () {
 
 tests['m possibilities'] = function () {
   var actual = convert().from('m').possibilities()
-    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'yd', 'ft-us', 'ft', 'fathom', 'mi', 'nMi' ];
+    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'yd', 'ft-us', 'ft', 'fathom', 'mi', 'nMi', 'um' ];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -48,7 +48,7 @@ tests['volume flow rate possibilities'] = function () {
 
 tests['length possibilities'] = function () {
   var actual = convert().possibilities('length')
-    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'yd', 'ft-us', 'ft', 'fathom', 'mi', 'nMi' ];
+    , expected = [ 'mm', 'cm', 'm', 'km', 'in', 'yd', 'ft-us', 'ft', 'fathom', 'mi', 'nMi', 'um' ];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -78,7 +78,7 @@ tests['partsPer possibilities'] = function() {
 
 tests['pressure possibilities'] = function() {
   var actual = convert().possibilities('pressure')
-    , expected = [ 'Pa', 'kPa', 'MPa', 'hPa', 'bar', 'torr', 'psi', 'ksi'];
+    , expected = [ 'Pa', 'kPa', 'MPa', 'hPa', 'bar', 'torr', 'psi', 'ksi', 'atm', 'millibar'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -168,7 +168,7 @@ tests['force possibilities'] = function() {
 
 tests['acceleration possibilities'] = function() {
   var actual = convert().possibilities('acceleration')
-    , expected = [ 'g-force', 'm/s2'];
+    , expected = [ 'g-force', 'm/s2', 'ft/s2', 'in/s2'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -196,6 +196,7 @@ tests['all possibilities'] = function () {
       , 'TB'
       , 'Tb'
       , 'ac'
+      , 'atm'
       , 'b'
       , 'bar'
       , 'c'
@@ -223,6 +224,7 @@ tests['all possibilities'] = function () {
       , 'fathom'
       , 'ft-cd'
       , 'ft/s'
+      , 'ft/s2'
       , 'ft2'
       , 'ft3'
       , 'ft3/h'
@@ -248,6 +250,7 @@ tests['all possibilities'] = function () {
       , 'Hz'
       , 'in'
       , 'in2'
+      , 'in/s2'
       , 'in3'
       , 'in3/h'
       , 'in3/min'
@@ -301,6 +304,7 @@ tests['all possibilities'] = function () {
       , 'mg'
       , 'mi'
       , 'mi2'
+      , 'millibar'
       , 'min'
       , 'min/km'
       , 'min/mi'
@@ -358,6 +362,7 @@ tests['all possibilities'] = function () {
       , 'tsk'
       , 'tsp'
       , 'tsp/s'
+      , 'um'
       , 'V'
       , 'VA'
       , 'VAR'
