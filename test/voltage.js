@@ -38,4 +38,16 @@ tests['kV to V'] = function () {
   assert.strictEqual( convert(1).from('kV').to('V'), 1000);
 }
 
+tests['kV to MV'] = function () {
+  assert.strictEqual( convert(100).from('kV').to('MV'), .1);
+}
+
+tests['μV to MV'] = function () {
+  assert.strictEqual( convert(1).from('μV').to('MV'), 1E-12);
+}
+
+tests['MV to μV'] = function () {
+  assert.strictEqual( convert(1).from('MV').to('μV'), 1E12);
+}
+
 module.exports = tests;

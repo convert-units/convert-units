@@ -102,7 +102,7 @@ tests['current possibilities'] = function() {
 
 tests['voltage possibilities'] = function() {
   var actual = convert().possibilities('voltage')
-    , expected = [ 'V', 'mV', 'kV'];
+    , expected = [ 'V', 'mV', 'kV', 'MV', 'μV'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -339,6 +339,7 @@ tests['all possibilities'] = function () {
       , 'mHz'
       , 'MHz'
       , 'mV'
+      , 'MV'
       , 'mVA'
       , 'MVA'
       , 'mVAR'
@@ -395,6 +396,7 @@ tests['all possibilities'] = function () {
       , 'year'
       , 'μC'
       , 'μA'
+      , 'μV'
   ];
 
   try {
