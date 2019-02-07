@@ -96,7 +96,7 @@ tests['pace possibilities'] = function() {
 
 tests['current possibilities'] = function() {
   var actual = convert().possibilities('current')
-    , expected = [ 'A', 'mA', 'kA'];
+    , expected = [ 'A', 'mA', 'kA', 'μA'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -394,6 +394,7 @@ tests['all possibilities'] = function () {
       , 'yd3/s'
       , 'year'
       , 'μC'
+      , 'μA'
   ];
 
   try {

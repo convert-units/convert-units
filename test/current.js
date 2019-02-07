@@ -38,4 +38,12 @@ tests['kA to A'] = function () {
   assert.strictEqual( convert(1).from('kA').to('A'), 1000);
 }
 
+tests['μA to A'] = function () {
+  assert.strictEqual( convert(1).from('μA').to('A'), 1E-6);
+}
+
+tests['kA to μA'] = function () {
+  assert.strictEqual( convert(1).from('kA').to('μA'), 1E9);
+}
+
 module.exports = tests;
