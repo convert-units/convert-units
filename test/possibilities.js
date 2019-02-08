@@ -174,7 +174,7 @@ tests['acceleration possibilities'] = function() {
 
 tests['angularVelocity possibilities'] = function() {
   var actual = convert().possibilities('angularVelocity')
-    , expected = ['av-deg/hr', 'av-deg/m', 'av-deg/s', 'av-rad/hr', 'av-rad/m', 'av-rad/s', 'av-rph', 'av-rpm', 'av-rps' ];
+    , expected = ['av-deg/hr', 'av-deg/m', 'av-deg/s', 'av-rad/hr', 'av-rad/m', 'av-rad/s', 'av-rpm' ];
 
   assert.deepEqual(actual.sort(), expected.sort());
 }
@@ -211,9 +211,7 @@ tests['all possibilities'] = function () {
       , 'av-rad/hr'
       , 'av-rad/m'
       , 'av-rad/s'
-      , 'av-rph'
       , 'av-rpm'
-      , 'av-rps'
       , 'b'
       , 'bar'
       , 'c'
