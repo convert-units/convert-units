@@ -193,6 +193,13 @@ tests['resistance possibilities'] = function() {
   assert.deepEqual(actual.sort(), expected.sort());
 }
 
+tests['torque possibilities'] = function() {
+  var actual = convert().possibilities('torque')
+    , expected = ['n-m', 'lbf-ft', 'lbf-in'];
+
+  assert.deepEqual(actual.sort(), expected.sort());
+}
+
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
     // Please keep these sorted for maintainability
@@ -438,6 +445,10 @@ tests['all possibilities'] = function () {
       , 'μΩ'
       , 'mΩ'
       , 'Ω'
+
+      , 'n-m'
+      , 'lbf-ft'
+      , 'lbf-in'
     ];
 
   try {
