@@ -78,7 +78,7 @@ tests['partsPer possibilities'] = function() {
 
 tests['pressure possibilities'] = function() {
   var actual = convert().possibilities('pressure')
-    , expected = [ 'Pa', 'kPa', 'MPa', 'hPa', 'bar', 'torr', 'psi', 'ksi', 'atm', 'millibar'];
+    , expected = [ 'Pa', 'kPa', 'MPa', 'hPa', 'bar', 'torr', 'psi', 'ksi', 'atm', 'millibar', "mmHg", "N/m2", 'inH2O'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -199,6 +199,7 @@ tests['all possibilities'] = function () {
       , 'MPa'
       , 'Mb'
       , 'N'
+      , "N/m2"
       , 'Pa'
       , 'TB'
       , 'Tb'
@@ -272,6 +273,7 @@ tests['all possibilities'] = function () {
       , 'in3/h'
       , 'in3/min'
       , 'in3/s'
+      , "inH2O"
       , 'J'
       , 'kA'
       , 'kPa'
@@ -333,6 +335,7 @@ tests['all possibilities'] = function () {
       , 'mm2'
       , 'mm3'
       , 'mm3/s'
+      , "mmHg"
       , 'month'
       , 'ms'
       , 'msk'

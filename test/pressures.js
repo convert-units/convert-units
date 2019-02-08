@@ -66,4 +66,25 @@ tests['psi to hPa'] = function () {
       , 'Expected: ' + expected +', Actual: ' + actual);
 };
 
+tests['N/m2 to inH2O'] = function () {
+  var expected = 0.00401865
+    , actual = convert(1).from('N/m2').to('inH2O');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['mmHg to inH2O'] = function () {
+  var expected = 0.53524
+    , actual = convert(1).from('mmHg').to('inH2O');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
+tests['inH2O to psi'] = function () {
+  var expected = 0.0360912
+    , actual = convert(1).from('inH2O').to('psi');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
 module.exports = tests;
