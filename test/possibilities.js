@@ -179,6 +179,20 @@ tests['angularVelocity possibilities'] = function() {
   assert.deepEqual(actual.sort(), expected.sort());
 }
 
+tests['capacitance possibilities'] = function() {
+  var actual = convert().possibilities('capacitance')
+    , expected = ['f', 'pF', 'nF', 'μF', 'mF'];
+
+  assert.deepEqual(actual.sort(), expected.sort());
+}
+
+tests['resistance possibilities'] = function() {
+  var actual = convert().possibilities('resistance')
+    , expected = ['Ω', 'μΩ', 'mΩ', 'kΩ', 'MΩ'];
+
+  assert.deepEqual(actual.sort(), expected.sort());
+}
+
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
     // Please keep these sorted for maintainability
@@ -409,6 +423,18 @@ tests['all possibilities'] = function () {
       , 'μA'
       , 'μV'
       , 'μW'
+
+      , 'pF'
+      , 'nF'
+      , 'μF'
+      , 'mF'
+      , 'f'
+
+      , 'MΩ'
+      , 'kΩ'
+      , 'μΩ'
+      , 'mΩ'
+      , 'Ω'
     ];
 
   try {

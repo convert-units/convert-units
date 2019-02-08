@@ -4,7 +4,7 @@ var convert = require('../lib')
 
 tests['measures'] = function () {
   var actual = convert().measures()
-    , expected = [ 'length', 'area', 'mass', 'volume', 'each', 'temperature', 'time', 'digital', 'partsPer', 'speed', 'pace', 'pressure', 'current', 'voltage', 'power', 'reactivePower', 'apparentPower', 'energy', 'reactiveEnergy', 'volumeFlowRate', 'illuminance', 'frequency', 'angle', 'charge', 'force', 'acceleration', 'angularVelocity' ];
+    , expected = [ 'length', 'area', 'mass', 'volume', 'each', 'temperature', 'time', 'digital', 'partsPer', 'speed', 'pace', 'pressure', 'current', 'voltage', 'power', 'reactivePower', 'apparentPower', 'energy', 'reactiveEnergy', 'volumeFlowRate', 'illuminance', 'frequency', 'angle', 'charge', 'capacitance', 'force', 'acceleration', 'angularVelocity', 'resistance' ];
   assert.deepEqual(actual, expected);
 };
 
