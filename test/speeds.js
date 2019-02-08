@@ -8,6 +8,14 @@ tests['m/s to m/s'] = function () {
   assert.strictEqual( convert(1).from('m/s').to('m/s') , 1);
 };
 
+
+tests['mm/s to in/s'] = function () {
+  var expected = 0.0393701
+  var actual = convert(1).from('mm/s').to('in/s');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
+
 tests['m/s to km/h'] = function () {
   assert.strictEqual( convert(1).from('m/s').to('km/h') , 3.6);
 };
@@ -51,9 +59,9 @@ tests['m/h to km/h'] = function () {
       , 'Expected: ' + expected +', Actual: ' + actual);
 }
 
-tests['i/s to km/h'] = function () {
+tests['in/s to km/h'] = function () {
   var expected = 0.09144
-  var actual = convert(1).from('i/s').to('km/h');
+  var actual = convert(1).from('in/s').to('km/h');
   assert.ok( percentError(expected, actual) < ACCURACY
     , 'Expected: ' + expected +', Actual: ' + actual);
 }
