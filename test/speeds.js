@@ -51,4 +51,13 @@ tests['m/h to km/h'] = function () {
       , 'Expected: ' + expected +', Actual: ' + actual);
 }
 
+tests['i/s to km/h'] = function () {
+  var expected = 0.09144
+  var actual = convert(1).from('i/s').to('km/h');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+}
+
+
+
 module.exports = tests;

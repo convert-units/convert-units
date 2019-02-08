@@ -84,7 +84,7 @@ tests['pressure possibilities'] = function() {
 
 tests['speed possibilities'] = function() {
   var actual = convert().possibilities('speed')
-    , expected = [ 'm/s', 'km/h', 'm/h', 'knot', 'ft/s'];
+    , expected = [ 'm/s', 'km/h', 'm/h', 'knot', 'ft/s', 'i/s'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -266,6 +266,7 @@ tests['all possibilities'] = function () {
       , 'hPa'
       , 'ha'
       , 'Hz'
+      , 'i/s'
       , 'in'
       , 'in2'
       , 'in/s2'
