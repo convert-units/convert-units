@@ -1,5 +1,7 @@
 var convert = require('../lib')
   , assert = require('assert')
+  , ACCURACY = 1/1000
+  , percentError = require('../lib/percentError')
   , tests = {};
 
 tests['W to W'] = function () {
@@ -61,5 +63,33 @@ tests['mW to W'] = function () {
 tests['kW to W'] = function () {
   assert.strictEqual( convert(1).from('kW').to('W'), 1000);
 }
+
+tests['hp to W'] = function () {
+  assert.strictEqual( convert(1).from('hp').to('W'), 745.7);
+}
+
+tests['hp to kvar'] = function () {
+  assert.strictEqual( convert(1).from('hp').to('kvar'), .7457);
+}
+
+tests['W to μW'] = function () {
+  assert.strictEqual( convert(1).from('W').to('μW'), 1E6);
+}
+
+tests['W to var'] = function () {
+  assert.strictEqual( convert(1).from('W').to('var'), 1);
+}
+
+tests['kW to W'] = function () {
+  assert.strictEqual( convert(1).from('kW').to('W'), 1000);
+}
+
+tests['mW to μW'] = function () {
+  var expected = 1000
+    , actual = convert(1).from('mW').to('μW');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+}
+
 
 module.exports = tests;

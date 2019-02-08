@@ -108,7 +108,7 @@ tests['voltage possibilities'] = function() {
 
 tests['power possibilities'] = function() {
   var actual = convert().possibilities('power')
-    , expected = [ 'W', 'mW', 'kW', 'MW', 'GW'];
+    , expected = [ 'W', 'mW', 'kW', 'MW', 'GW', 'μW', 'var', 'kva', 'kvar', 'hp'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -261,6 +261,7 @@ tests['all possibilities'] = function () {
       , 'GW'
       , 'GWh'
       , 'h'
+      , 'hp'
       , 'hPa'
       , 'ha'
       , 'Hz'
@@ -291,10 +292,12 @@ tests['all possibilities'] = function () {
       , 'knot'
       , 'krm'
       , 'ksi'
+      , 'kva'
       , 'kHz'
       , 'kV'
       , 'kVA'
       , 'kVAR'
+      , 'kvar'
       , 'kVARh'
       , 'kW'
       , 'kWh'
@@ -382,6 +385,7 @@ tests['all possibilities'] = function () {
       , 'um'
       , 'V'
       , 'VA'
+      , 'var'
       , 'VAR'
       , 'VARh'
       , 'W'
@@ -397,7 +401,8 @@ tests['all possibilities'] = function () {
       , 'μC'
       , 'μA'
       , 'μV'
-  ];
+      , 'μW'
+    ];
 
   try {
     assert.deepEqual(actual.sort(), expected.sort());
