@@ -65,4 +65,23 @@ tests['g to lb'] = function () {
     , 'Expected: ' + expected +', Actual: ' + actual);
 };
 
+tests['slug to gram'] = function() {
+  var expected = 14593.9
+  , actual = convert(1).from('slug').to('g');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+}
+
+tests['dram to gram'] = function() {
+  var expected = 1.77185
+  , actual = convert(1).from('dram').to('g');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+}
+
+tests['lbm lb'] = function () {
+  assert.strictEqual( convert(1).from('lbm').to('lb') , 1);
+};
+
+
 module.exports = tests;
