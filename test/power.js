@@ -91,5 +91,4 @@ tests['mW to μW'] = function () {
     , 'Expected: ' + expected +', Actual: ' + actual);
 }
 
-
 module.exports = tests;
