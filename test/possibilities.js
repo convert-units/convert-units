@@ -126,7 +126,7 @@ tests['apparent power possibilities'] = function() {
 
 tests['energy possibilities'] = function() {
   var actual = convert().possibilities('energy')
-    , expected = [ 'Wh', 'mWh', 'kWh', 'MWh', 'GWh', 'J', 'kJ', 'btu', 'cal', 'kcal'];
+    , expected = [ 'Wh', 'mWh', 'kWh', 'MWh', 'GWh', 'J', 'kJ', 'btu', 'cal', 'kcal', 'lb-ft'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -453,6 +453,8 @@ tests['all possibilities'] = function () {
       , "tf"
       , "mtf"
       , "ozf"
+
+      , 'lb-ft'
     ];
 
   try {

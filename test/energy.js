@@ -91,4 +91,18 @@ tests['cal to btu'] = function () {
     , 'Expected: ' + expected +', Actual: ' + actual);
 }
 
+tests['lb-ft to J'] = function () {
+  var expected = 0.737562
+    , actual = convert(1).from('lb-ft').to('J');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+}
+
+tests['J to lb-ft'] = function () {
+  var expected = 1/0.737562
+    , actual = convert(1).from('J').to('lb-ft');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+}
+
 module.exports = tests;
