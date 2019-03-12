@@ -3,6 +3,7 @@
 node_modules
 scratch
 .idea
+*.iml
 
 *.log
 *.swp
