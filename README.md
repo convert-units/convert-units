@@ -252,6 +252,7 @@ Supported Units
 
 ### Speed
 * m/s
+* m/min
 * km/h
 * m/h
 * knot
