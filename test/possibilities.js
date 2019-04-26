@@ -162,7 +162,7 @@ tests['charge possibilities'] = function() {
 
 tests['force possibilities'] = function() {
   var actual = convert().possibilities('force')
-    , expected = [ 'N', 'kN', 'lbf'];
+    , expected = [ 'N', 'kN', 'lbf', 'klbf'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -261,6 +261,7 @@ tests['all possibilities'] = function () {
       , 'kJ'
       , 'kN'
       , 'kl'
+      , 'klbf'
       , 'kl/h'
       , 'kl/min'
       , 'kl/s'

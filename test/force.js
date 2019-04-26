@@ -2,7 +2,7 @@ var convert = require('../lib')
   , assert = require('assert')
   , tests = {};
 
-var EPSILON = 0.000001
+var EPSILON = 0.000001;
 
 tests['N to kN'] = function () {
   assert.strictEqual(convert(1).from('N').to('kN') , 1/1000);
@@ -14,6 +14,10 @@ tests['kN to N'] = function () {
 
 tests['N to lbf'] = function () {
   assert.strictEqual(true, Math.abs(convert(1).from('N').to('lbf') - 0.224809) < EPSILON);
+};
+
+tests['kN to klbf'] = function () {
+  assert.strictEqual(true, Math.abs(convert(1).from('kN').to('klbf') - 0.224809) < EPSILON);
 };
 
 tests['lbf to N'] = function () {
