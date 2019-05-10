@@ -6,13 +6,13 @@ assert.options.strict = true;
 
 tests['l possibilities'] = function () {
   var actual = convert().from('l').possibilities()
-    , expected = [ 'mm3', 'cm3', 'ml', 'cl', 'dl', 'l', 'kl', 'm3', 'km3', 'krm', 'tsk', 'msk', 'kkp', 'glas', 'kanna', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
+    , expected = [ 'mm3', 'cm3', 'ml', 'cl', 'dl', 'l', 'kl', 'm3', 'km3', 'krm', 'tsk', 'msk', 'kkp', 'glas', 'kanna', 'tsp', 'Tbs', 'in3', 'floz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3', 'case', 'case', 'cases', 'jug', 'jug', 'jugs' ];
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
 tests['kg possibilities'] = function () {
   var actual = convert().from('kg').possibilities()
-    , expected = [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ];
+    , expected = [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', '1,000 seeds', '10,000 seeds', 'US ton', 'bags', 'lbs', 'mt' ];
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
@@ -30,19 +30,19 @@ tests['each possibilities'] = function () {
 
 tests['mass possibilities'] = function () {
   var actual = convert().possibilities('mass')
-    , expected = [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ];
+    , expected = [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', '1,000 seeds', '10,000 seeds', 'US ton', 'bags', 'lbs', 'mt' ];
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
 tests['volume possibilities'] = function () {
   var actual = convert().possibilities('volume')
-    , expected = [ 'mm3', 'cm3', 'ml', 'cl', 'dl', 'l', 'kl', 'm3', 'km3', 'krm', 'tsk', 'msk', 'kkp', 'glas', 'kanna', 'tsp', 'Tbs', 'in3', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3' ];
+    , expected = [ 'mm3', 'cm3', 'ml', 'cl', 'dl', 'l', 'kl', 'm3', 'km3', 'krm', 'tsk', 'msk', 'kkp', 'glas', 'kanna', 'tsp', 'Tbs', 'in3', 'floz', 'cup', 'pnt', 'qt', 'gal', 'ft3', 'yd3', 'case', 'case', 'cases', 'jug', 'jug', 'jugs' ];
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
 tests['volume flow rate possibilities'] = function () {
   var actual = convert().possibilities('volumeFlowRate')
-    , expected = [ 'mm3/s', 'cm3/s', 'ml/s', 'cl/s', 'dl/s', 'l/s', 'l/min', 'l/h', 'kl/s', 'kl/min', 'kl/h', 'm3/s', 'm3/min', 'm3/h', 'km3/s', 'tsp/s', 'Tbs/s', 'in3/s', 'in3/min', 'in3/h', 'fl-oz/s', 'fl-oz/min', 'fl-oz/h', 'cup/s', 'pnt/s', 'pnt/min', 'pnt/h', 'qt/s', 'gal/s', 'gal/min', 'gal/h', 'ft3/s', 'ft3/min', 'ft3/h', 'yd3/s', 'yd3/min', 'yd3/h' ];
+    , expected = [ 'mm3/s', 'cm3/s', 'ml/s', 'cl/s', 'dl/s', 'l/s', 'l/min', 'l/h', 'kl/s', 'kl/min', 'kl/h', 'm3/s', 'm3/min', 'm3/h', 'km3/s', 'tsp/s', 'Tbs/s', 'in3/s', 'in3/min', 'in3/h', 'floz/s', 'floz/min', 'floz/h', 'cup/s', 'pnt/s', 'pnt/min', 'pnt/h', 'qt/s', 'gal/s', 'gal/min', 'gal/h', 'ft3/s', 'ft3/min', 'ft3/h', 'yd3/s', 'yd3/min', 'yd3/h' ];
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
@@ -164,10 +164,10 @@ tests['all possibilities'] = function () {
       , 'dl'
       , 'dl/s'
       , 'ea'
-      , 'fl-oz'
-      , 'fl-oz/h'
-      , 'fl-oz/min'
-      , 'fl-oz/s'
+      , 'floz'
+      , 'floz/h'
+      , 'floz/min'
+      , 'floz/s'
       , 'ft'
       , 'ft/s'
       , 'ft2'
@@ -293,7 +293,61 @@ tests['all possibilities'] = function () {
       , 'yd3/h'
       , 'yd3/min'
       , 'yd3/s'
-      , 'year'
+      , 'year',
+      "1,000 seeds",
+      "1,000 seeds/ac",
+      "1,000 seeds/ha",
+      "10,000 seeds",
+      "10,000 seeds/ac",
+      "10,000 seeds/ha",
+      "US ton",
+      "ac/case",
+      "ac/jug",
+      "bags",
+      "bags/ac",
+      "bags/ha",
+      "bu/ac",
+      "bu/ha",
+      "case",
+      "case",
+      "cases",
+      "cases/ac",
+      "cases/ha",
+      "floz/ac",
+      "floz/ha",
+      "g/ac",
+      "g/ha",
+      "gal/ac",
+      "gal/ha",
+      "ha/case",
+      "ha/jug",
+      "jug",
+      "jug",
+      "jugs",
+      "jugs/ac",
+      "jugs/ha",
+      "kg/ac",
+      "kg/ha",
+      "l/ac",
+      "l/ha",
+      "lb/ac",
+      "lb/ha",
+      "lbs",
+      "lbs/ac",
+      "lbs/ha",
+      "ml/ac",
+      "ml/ha",
+      "mt",
+      "mt/ac",
+      "mt/ac",
+      "mt/ha",
+      "mt/ha",
+      "oz/ac",
+      "oz/ha",
+      "qt/ac",
+      "qt/ha",
+      "seeds/ac",
+      "seeds/ha",
   ];
   try {
     assert.deepEqual(actual.sort(), expected.sort())

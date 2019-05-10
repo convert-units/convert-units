@@ -100,16 +100,16 @@ tests['ml to glas'] = function () {
   assert.strictEqual( convert(200).from('ml').to('glas') , 1);
 };
 
-tests['fl-oz to fl-oz'] = function () {
-  assert.strictEqual( convert(62).from('fl-oz').to('fl-oz') , 62);
+tests['floz to floz'] = function () {
+  assert.strictEqual( convert(62).from('floz').to('floz') , 62);
 };
 
-tests['fl-oz to tbsp'] = function () {
-  assert.strictEqual( convert(4).from('fl-oz').to('Tbs') , 8);
+tests['floz to tbsp'] = function () {
+  assert.strictEqual( convert(4).from('floz').to('Tbs') , 8);
 };
 
-tests['Tbs to fl-oz'] = function () {
-  assert.strictEqual( convert(2).from('Tbs').to('fl-oz') , 1);
+tests['Tbs to floz'] = function () {
+  assert.strictEqual( convert(2).from('Tbs').to('floz') , 1);
 };
 
 tests['Tbs to Tbs'] = function () {
@@ -131,9 +131,9 @@ tests['in3 to l'] = function () {
     , 'Expected: ' + expected +', Actual: ' + actual);
 };
 
-tests['in3 to fl-oz'] = function () {
+tests['in3 to floz'] = function () {
   var expected = 0.554113
-    , actual = convert(1).from('in3').to('fl-oz');
+    , actual = convert(1).from('in3').to('floz');
   assert.ok( percentError(expected, actual) < ACCURACY
     , 'Expected: ' + expected +', Actual: ' + actual);
 };
