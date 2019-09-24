@@ -66,7 +66,7 @@ tests['time possibilities'] = function () {
 
 tests['digital possibilities'] = function() {
   var actual = convert().possibilities('digital')
-    , expected = [ 'b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB' ];
+    , expected = [ 'b', 'Kb', 'kb', 'Mb', 'mb', 'Gb', 'gb', 'Tb', 'tb', 'B', 'KB', 'kB', 'MB', 'mB', 'GB', 'gB', 'TB', 'tB' ];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -184,17 +184,25 @@ tests['all possibilities'] = function () {
       , 'F'
       , 'R'
       , 'GB'
+      , 'gB'
       , 'Gb'
+      , 'gb'
       , 'K'
       , 'KB'
+      , 'kB'
       , 'Kb'
+      , 'kb'
       , 'MB'
+      , 'mB'
       , 'MPa'
       , 'Mb'
+      , 'mb'
       , 'N'
       , 'Pa'
       , 'TB'
+      , 'tB'
       , 'Tb'
+      , 'tb'
       , 'ac'
       , 'b'
       , 'bar'
