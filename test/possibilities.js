@@ -66,7 +66,7 @@ tests['time possibilities'] = function () {
 
 tests['digital possibilities'] = function() {
   var actual = convert().possibilities('digital')
-    , expected = [ 'b', 'Kb', 'kb', 'Mb', 'mb', 'Gb', 'gb', 'Tb', 'tb', 'B', 'KB', 'kB', 'MB', 'mB', 'GB', 'gB', 'TB', 'tB' ];
+    , expected = [ 'b', 'Kb', 'kbps', 'Kib', 'Kibps', 'Mb', 'Mbps', 'Mib', 'Mibps', 'Gb', 'Gbps', 'Gib', 'Gibps', 'Tb', 'Tbps', 'Tib', 'Tibps', 'Pb', 'Pbps', 'Pib', 'Pibps', 'B', 'KB', 'KBps', 'KiB', 'KiBps', 'MB', 'MBps', 'MiB', 'MiBps', 'GB', 'GBps', 'GiB', 'GiBps', 'TB', 'TBps', 'TiB', 'TiBps', 'PiB', 'PiBps', 'PB', 'PBps' ];  
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -176,7 +176,39 @@ tests['all possibilities'] = function () {
   var actual = convert().possibilities()
     // Please keep these sorted for maintainability
     , expected = [
-        'A'
+      'kbps'
+      , 'TiB'
+      , 'TiBps'
+      , 'Tib'
+      , 'Tibps'
+      , 'Tbps'
+      , 'TBps'
+      , 'Pb'
+      , 'PB'
+      , 'Mbps'
+      , 'MBps'
+      , 'KiB'
+      , 'KBps'
+      , 'Gbps'
+      , 'GBps'
+      , 'GiB'
+      , 'GiBps'
+      , 'Gib'
+      , 'Gibps'
+      , 'KiBps'
+      , 'Kib'
+      , 'Kibps'
+      , 'MiB'
+      , 'MiBps'
+      , 'Mib'
+      , 'Mibps'
+      , 'PBps'
+      , 'Pbps'
+      , 'PiB'
+      , 'PiBps'
+      , 'Pib'
+      , 'Pibps'
+      , 'A'
       , 'arcmin'
       , 'arcsec'
       , 'B'
@@ -184,25 +216,17 @@ tests['all possibilities'] = function () {
       , 'F'
       , 'R'
       , 'GB'
-      , 'gB'
       , 'Gb'
-      , 'gb'
       , 'K'
       , 'KB'
-      , 'kB'
       , 'Kb'
-      , 'kb'
-      , 'MB'
-      , 'mB'
       , 'MPa'
       , 'Mb'
-      , 'mb'
+      , 'MB'
       , 'N'
       , 'Pa'
       , 'TB'
-      , 'tB'
       , 'Tb'
-      , 'tb'
       , 'ac'
       , 'b'
       , 'bar'
@@ -382,7 +406,7 @@ tests['all possibilities'] = function () {
       , 'year'
       , 'μC'
   ];
-
+  
   try {
     assert.deepEqual(actual.sort(), expected.sort());
   }
