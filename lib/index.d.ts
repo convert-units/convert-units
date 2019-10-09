@@ -21,6 +21,7 @@ declare module "convert-units" {
     type uEnergy = "Wh" | "mWh" | "kWh" | "MWh" | "GWh" | "J" | "kJ"; // Energy
     type uReactiveEnergy = "VARh" | "mVARh" | "kVARh" | "MVARh" | "GVARH"; // Reactive Energy
     type uAngle = "deg" | "rad" | "grad" | "arcmin" | "arcsec"; // Angle
+    type uFluxDensity = "nJy" | "μJy" | "mJy" | "Jy"; // Flux Density
 
 
     type unit = uDistance 
@@ -44,7 +45,8 @@ declare module "convert-units" {
               | uReactivePower
               | uEnergy
               | uReactiveEnergy
-              | uAngle;
+              | uAngle
+              | uFluxDensity;
 
     type measure = "distance" 
                  | "area" 
@@ -67,7 +69,8 @@ declare module "convert-units" {
                  | "reactivePower"
                  | "energy"
                  | "reactiveEnergy"
-                 | "angle";
+                 | "angle"
+                 | "fluxDensity";
 
     type system = "metric"
                 | "imperial"

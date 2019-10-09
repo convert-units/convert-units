@@ -4,8 +4,9 @@
   "description": "Convert between quantities in different units",
   "main": "lib",
   "dependencies": {
+    "lodash.foreach": "2.3.x",
     "lodash.keys": "2.3.x",
-    "lodash.foreach": "2.3.x"
+    "mocha": "^6.2.1"
   },
   "devDependencies": {
     "assert-diff": "^1.1.0",

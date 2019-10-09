@@ -253,6 +253,7 @@ tests['all possibilities'] = function () {
       , 'in3/min'
       , 'in3/s'
       , 'J'
+      , 'Jy'
       , 'kA'
       , 'kPa'
       , 'kanna'
@@ -304,6 +305,7 @@ tests['all possibilities'] = function () {
       , 'min'
       , 'min/km'
       , 'min/mi'
+      , 'mJy'
       , 'ml'
       , 'ml/s'
       , 'mm'
@@ -329,6 +331,7 @@ tests['all possibilities'] = function () {
       , 'MW'
       , 'mWh'
       , 'MWh'
+      , 'nJy'
       , 'nMi'
       , 'ns'
       , 'oz'
@@ -373,6 +376,7 @@ tests['all possibilities'] = function () {
       , 'yd3/s'
       , 'year'
       , 'μC'
+      , 'μJy'
   ];
 
   try {
