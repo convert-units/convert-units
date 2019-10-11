@@ -150,7 +150,7 @@ tests['illuminance possibilities'] = function() {
 
 tests['angle possibilities'] = function() {
   var actual = convert().possibilities('angle')
-    , expected = [ 'rad', 'deg', 'grad', 'arcmin', 'arcsec'];
+    , expected = [ 'rad', 'deg', 'grad', 'arcmin', 'arcsec', 'mas'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -297,6 +297,7 @@ tests['all possibilities'] = function () {
       , 'm3/min'
       , 'm3/s'
       , 'mA'
+      , 'mas'
       , 'mC'
       , 'mcg'
       , 'mg'

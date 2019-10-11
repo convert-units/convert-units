@@ -24,6 +24,10 @@ tests['arcsec to arcsec'] = function () {
   assert.strictEqual( convert(1).from('arcsec').to('arcsec') , 1);
 };
 
+tests['mas to mas'] = function () {
+  assert.strictEqual( convert(1).from('mas').to('mas') , 1);
+};
+
 tests['deg to rad'] = function () {
   var expected = 6.28319
     , actual = convert(360).from('deg').to('rad');
@@ -55,21 +59,28 @@ tests['rad to arcsec'] = function () {
     , actual = convert(10).from('rad').to('arcsec');
   assert.ok( percentError(expected, actual) < ACCURACY
     , 'Expected: ' + expected +', Actual: ' + actual);
-}
+};
 
 tests['grad to arcmin'] = function () {
   assert.strictEqual( convert(5).from('grad').to('arcmin'), 270);
-}
+};
 
 tests['grad to deg'] = function () {
   assert.strictEqual( convert(5).from('grad').to('deg'), 4.5);
-}
+};
 
 tests['arcmin to rad'] = function () {
   var expected = 2.908882
     , actual = convert(10000).from('arcmin').to('rad');
   assert.ok( percentError(expected, actual) < ACCURACY
     , 'Expected: ' + expected +', Actual: ' + actual);
-}
+};
+
+tests['mas to arcsec'] = function () {
+  var expected = 10
+    , actual = convert(10000).from('mas').to('arcsec');
+  assert.ok( percentError(expected, actual) < ACCURACY
+    , 'Expected: ' + expected +', Actual: ' + actual);
+};
 
 module.exports = tests;
