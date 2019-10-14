@@ -87,8 +87,16 @@ tests['deg to dms'] = function () {
   assert.strictEqual( convert(60).from('deg').to('dms'), '60:00:00');
 };
 
+tests['dms to deg'] = function () {
+  assert.strictEqual( convert('60:00:00').from('dms').to('deg'), 60);
+};
+
 tests['deg to hms'] = function () {
   assert.strictEqual( convert(60).from('deg').to('hms'), '04:00:00');
+};
+
+tests['dms to deg'] = function () {
+  assert.strictEqual( convert('04:00:00').from('hms').to('deg'), 60);
 };
 
 module.exports = tests;
