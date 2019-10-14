@@ -83,4 +83,12 @@ tests['mas to arcsec'] = function () {
     , 'Expected: ' + expected +', Actual: ' + actual);
 };
 
+tests['deg to dms'] = function () {
+  assert.strictEqual( convert(60).from('deg').to('dms'), '60:00:00');
+};
+
+tests['deg to hms'] = function () {
+  assert.strictEqual( convert(60).from('deg').to('hms'), '04:00:00');
+};
+
 module.exports = tests;
