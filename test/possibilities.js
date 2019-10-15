@@ -54,7 +54,7 @@ tests['length possibilities'] = function () {
 
 tests['temperature possibilities'] = function () {
   var actual = convert().possibilities('temperature')
-    , expected = ['C', 'K', 'F', 'R'];
+    , expected = ['C', 'K', 'mK', 'F', 'R'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -321,6 +321,7 @@ tests['all possibilities'] = function () {
       , 'nC'
       , 'mHz'
       , 'MHz'
+      , 'mK'
       , 'mV'
       , 'mVA'
       , 'MVA'

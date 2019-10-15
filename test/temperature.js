@@ -38,4 +38,12 @@ tests['R to K'] = function () {
   assert.strictEqual( convert(459.67).from('R').to('K'), 255.3722222222222);
 };
 
+tests['mK to K'] = function () {
+  assert.strictEqual(convert(10000).from('mK').to('K'), 10)
+};
+
+tests['K to mK'] = function () {
+  assert.strictEqual(convert(10).from('K').to('mK'), 10000)
+};
+
 module.exports = tests;
