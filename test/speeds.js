@@ -12,6 +12,14 @@ tests['m/s to km/h'] = function () {
   assert.strictEqual( convert(1).from('m/s').to('km/h') , 3.6);
 };
 
+tests['m/s to km/s'] = function () {
+    assert.strictEqual(convert(1).from('m/s').to('km/s'), 0.001)
+};
+
+tests['km/s to m/s'] = function () {
+    assert.strictEqual(convert(1).from('km/s').to('m/s'), 1000)
+};
+
 tests['m/h to m/h'] = function () {
   assert.strictEqual( convert(6).from('m/h').to('m/h') , 6);
 };
