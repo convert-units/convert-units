@@ -64,12 +64,6 @@ tests['time possibilities'] = function () {
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
-tests['digital possibilities'] = function() {
-  var actual = convert().possibilities('digital')
-    , expected = [ 'b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB' ];
-  assert.deepEqual(actual.sort(), expected.sort());
-};
-
 tests['partsPer possibilities'] = function() {
   var actual = convert().possibilities('partsPer')
     , expected = [ 'ppm', 'ppb', 'ppt', 'ppq' ];
@@ -178,11 +172,9 @@ tests['all possibilities'] = function () {
     , expected = [
          'A'
       ,  'B'
-      ,  'B'
       ,  'Bps'
       ,  'C'
       ,  'F'
-      ,  'GB'
       ,  'GB'
       ,  'GBps'
       ,  'GHz'
@@ -191,7 +183,6 @@ tests['all possibilities'] = function () {
       ,  'GVARh'
       ,  'GW'
       ,  'GWh'
-      ,  'Gb'
       ,  'Gb'
       ,  'Gbps'
       ,  'GiB'
@@ -202,16 +193,13 @@ tests['all possibilities'] = function () {
       ,  'J'
       ,  'K'
       ,  'KB'
-      ,  'KB'
       ,  'KBps'
-      ,  'Kb'
       ,  'Kb'
       ,  'Kbps'
       ,  'KiB'
       ,  'KiBps'
       ,  'Kib'
       ,  'Kibps'
-      ,  'MB'
       ,  'MB'
       ,  'MBps'
       ,  'MHz'
@@ -222,7 +210,6 @@ tests['all possibilities'] = function () {
       ,  'MW'
       ,  'MWh'
       ,  'Mb'
-      ,  'Mb'
       ,  'Mbps'
       ,  'MiB'
       ,  'MiBps'
@@ -232,10 +219,8 @@ tests['all possibilities'] = function () {
       ,  'Pa'
       ,  'R'
       ,  'TB'
-      ,  'TB'
       ,  'TBps'
       ,  'THz'
-      ,  'Tb'
       ,  'Tb'
       ,  'Tbps'
       ,  'Tbs'
@@ -253,7 +238,6 @@ tests['all possibilities'] = function () {
       ,  'ac'
       ,  'arcmin'
       ,  'arcsec'
-      ,  'b'
       ,  'b'
       ,  'bar'
       ,  'bps'
