@@ -66,7 +66,7 @@ tests['time possibilities'] = function () {
 
 tests['digital possibilities'] = function() {
   var actual = convert().possibilities('digital')
-    , expected = [ 'b', 'Kb', 'kbps', 'Kib', 'Kibps', 'Mb', 'Mbps', 'Mib', 'Mibps', 'Gb', 'Gbps', 'Gib', 'Gibps', 'Tb', 'Tbps', 'Tib', 'Tibps', 'Pb', 'Pbps', 'Pib', 'Pibps', 'B', 'KB', 'KBps', 'KiB', 'KiBps', 'MB', 'MBps', 'MiB', 'MiBps', 'GB', 'GBps', 'GiB', 'GiBps', 'TB', 'TBps', 'TiB', 'TiBps', 'PiB', 'PiBps', 'PB', 'PBps' ];  
+    , expected = [ 'b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB', 'bps', 'Kbps', 'Mbps', 'Gbps', 'Tbps', 'Bps', 'KBps', 'MBps', 'GBps', 'TBps', 'KiB', 'MiB', 'GiB', 'TiB', 'KiBps', 'MiBps', 'GiBps', 'TiBps', 'Kib', 'Mib', 'Gib', 'Tib', 'Kibps', 'Mibps', 'Gibps', 'Tibps' ];  
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
@@ -176,39 +176,7 @@ tests['all possibilities'] = function () {
   var actual = convert().possibilities()
     // Please keep these sorted for maintainability
     , expected = [
-      'kbps'
-      , 'TiB'
-      , 'TiBps'
-      , 'Tib'
-      , 'Tibps'
-      , 'Tbps'
-      , 'TBps'
-      , 'Pb'
-      , 'PB'
-      , 'Mbps'
-      , 'MBps'
-      , 'KiB'
-      , 'KBps'
-      , 'Gbps'
-      , 'GBps'
-      , 'GiB'
-      , 'GiBps'
-      , 'Gib'
-      , 'Gibps'
-      , 'KiBps'
-      , 'Kib'
-      , 'Kibps'
-      , 'MiB'
-      , 'MiBps'
-      , 'Mib'
-      , 'Mibps'
-      , 'PBps'
-      , 'Pbps'
-      , 'PiB'
-      , 'PiBps'
-      , 'Pib'
-      , 'Pibps'
-      , 'A'
+        'A'
       , 'arcmin'
       , 'arcsec'
       , 'B'
@@ -220,9 +188,9 @@ tests['all possibilities'] = function () {
       , 'K'
       , 'KB'
       , 'Kb'
+      , 'MB'
       , 'MPa'
       , 'Mb'
-      , 'MB'
       , 'N'
       , 'Pa'
       , 'TB'
@@ -405,8 +373,34 @@ tests['all possibilities'] = function () {
       , 'yd3/s'
       , 'year'
       , 'μC'
+      , 'bps'
+      , 'Kbps'
+      , 'Mbps'
+      , 'Gbps'
+      , 'Tbps'
+      , 'Bps'
+      , 'KBps'
+      , 'MBps'
+      , 'GBps'
+      , 'TBps'
+      , 'KiB'
+      , 'MiB'
+      , 'GiB'
+      , 'TiB'
+      , 'KiBps'
+      , 'MiBps'
+      , 'GiBps'
+      , 'TiBps'
+      , 'Kib'
+      , 'Mib'
+      , 'Gib'
+      , 'Tib'
+      , 'Kibps'
+      , 'Mibps'
+      , 'Gibps'
+      , 'Tibps'
   ];
-  
+
   try {
     assert.deepEqual(actual.sort(), expected.sort());
   }

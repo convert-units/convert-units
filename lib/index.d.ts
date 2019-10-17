@@ -72,7 +72,13 @@ declare module "convert-units" {
     type system = "metric"
                 | "imperial"
                 | "bits"
-                | "bytes";
+                | "bitspersecond"
+                | "bytes"
+                | "bytespersecond"
+                | "bibits"
+                | "bibitspersecond"
+                | "bibytes"
+                | "bibytespersecond";
 
     class Convert {
         constructor(numerator: number, denominator: number);
