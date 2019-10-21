@@ -74,4 +74,14 @@ tests['post-cut off number'] = function () {
   assert.deepEqual(actual, expected);
 }
 
+tests['test arcsec to milliarcsec'] = function () {
+    var actual = convert(0.00139).from('arcsec').toBest({ exclude: ['deg', 'rad', 'grad', 'arcmin']})
+        , expected = {
+        val: 1.39
+        , unit: 'mas'
+        , singular: 'milliarcsecond'
+        , plural: 'milliarcseconds'
+    };
+}
+
 module.exports = tests;
