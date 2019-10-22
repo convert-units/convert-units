@@ -76,15 +76,43 @@ tests['post-cut off number'] = function () {
   assert.deepEqual(actual, expected);
 }
 
+tests['test K to mK'] = function () {
+  var actual = convert(0.001001).from('K').toBest({exclude: ['C', 'F', 'R']})
+    , expected = {
+        val: 1.001
+      , unit: 'mK'
+      , singular: 'milliKelvin'
+      , plural: 'milliKelvins'
+      };
+    // assert.deepEqual(actual, expected);
+        assert.ok( percentError(expected.val, actual.val) < ACCURACY
+            , 'Expected: ' + expected.val +', Actual: ' + actual.val);
+}
+
+tests['test K to K'] = function () {
+  var actual = convert(6000.0).from('K').toBest({exclude: ['C', 'F', 'R']})
+    , expected = {
+        val: 6000.0
+      , unit: 'K'
+      , singular: 'Kelvin'
+      , plural: 'Kelvins'
+      };
+    // assert.deepEqual(actual, expected);
+        assert.ok( percentError(expected.val, actual.val) < ACCURACY
+            , 'Expected: ' + expected.val +', Actual: ' + actual.val);
+}
+
 tests['test arcsec to milliarcsec'] = function () {
-    var actual = convert(0.0014).from('arcsec').toBest({ exclude: ['deg', 'rad', 'grad', 'arcmin']})
+    var actual = convert(0.0014).from('arcsec').toBest({exclude: ['deg', 'rad', 'grad', 'arcmin']})
         , expected = {
         val: 1.4
         , unit: 'mas'
         , singular: 'milliarcsecond'
         , plural: 'milliarcseconds'
     };
+    //assert.deepEqual(actual, expected);
     assert.ok( percentError(expected.val, actual.val) < ACCURACY
-        , 'Expected: ' + expected.val +', Actual: ' + actual.val);}
+        , 'Expected: ' + expected.val +', Actual: ' + actual.val);
+}
 
 module.exports = tests;
