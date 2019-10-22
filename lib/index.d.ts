@@ -20,7 +20,7 @@ declare module "convert-units" {
     type uReactivePower = "VAR" | "mVAR" | "kVAR" | "MVAR" | "GVAR"; // Reactive Power
     type uEnergy = "Wh" | "mWh" | "kWh" | "MWh" | "GWh" | "J" | "kJ"; // Energy
     type uReactiveEnergy = "VARh" | "mVARh" | "kVARh" | "MVARh" | "GVARH"; // Reactive Energy
-    type uAngle = "deg" | "rad" | "grad" | "arcmin" | "arcsec" | "mas"; // Angle
+    type uAngle = "deg" | "rad" | "grad" | "arcmin" | "arcsec"; // Angle
     type uFluxDensity = "nJy" | "μJy" | "mJy" | "Jy"; // Flux Density
 
 

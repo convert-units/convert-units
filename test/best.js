@@ -1,6 +1,8 @@
 var convert = require('../lib')
   , assert = require('assert')
-  , tests = {};
+  , tests = {}
+  , ACCURACY = 1/1000
+  , percentError = require('../lib/percentError');
 
 tests['best mm'] = function () {
   var actual = convert(1200).from('mm').toBest()
@@ -82,7 +84,7 @@ tests['test arcsec to milliarcsec'] = function () {
         , singular: 'milliarcsecond'
         , plural: 'milliarcseconds'
     };
-    assert.deepEqual(actual, expected);
-}
+    assert.ok( percentError(expected.val, actual.val) < ACCURACY
+        , 'Expected: ' + expected.val +', Actual: ' + actual.val);}
 
 module.exports = tests;
