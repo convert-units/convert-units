@@ -83,4 +83,11 @@ tests['mas to arcsec'] = function () {
     , 'Expected: ' + expected +', Actual: ' + actual);
 };
 
+tests['arcsec to mas'] = function () {
+  var expected = 10000
+      , actual = convert(10).from('arcsec').to('mas');
+  assert.ok( percentError(expected, actual) < ACCURACY
+      , 'Expected: ' + expected +', Actual: ' + actual);
+}
+
 module.exports = tests;
