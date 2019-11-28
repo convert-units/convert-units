@@ -365,6 +365,14 @@ Supported Units
 * g (g-force)
 * m/s2
 
+### Density
+* kg/m3
+* kg/l
+* t/m3
+* lb/cuft
+* lb/gal
+* oz/cuin
+* lb/cuyd
 
 ### Want More?
 
