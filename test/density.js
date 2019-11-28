@@ -10,7 +10,7 @@ tests['kg/m3 to kg/m3'] = function () {
 };
 
 tests['kg/m3 to kg/l'] = function () {
-  assert.strictEqual( convert(1).from('kg/m3').to('kg/l') , 1/1000);
+  assert.strictEqual( convert(1).from('kg/m3').to('kg/l') , 1000);
 };
 
 // When converting between systems, expect < 0.1% error
