@@ -21,7 +21,7 @@ declare module "convert-units" {
     type uEnergy = "Wh" | "mWh" | "kWh" | "MWh" | "GWh" | "J" | "kJ"; // Energy
     type uReactiveEnergy = "VARh" | "mVARh" | "kVARh" | "MVARh" | "GVARH"; // Reactive Energy
     type uAngle = "deg" | "rad" | "grad" | "arcmin" | "arcsec"; // Angle
-
+    type uDencity = "kg/m3" | "kg/l" | "t/m3" | "lb/cuft" | "lb/gal" | "oz/cuin" | "lb/cuyd"; //Dencity
 
     type unit = uDistance 
               | uArea 
@@ -44,7 +44,8 @@ declare module "convert-units" {
               | uReactivePower
               | uEnergy
               | uReactiveEnergy
-              | uAngle;
+              | uAngle
+              | uDencity;
 
     type measure = "distance" 
                  | "area" 
@@ -67,7 +68,8 @@ declare module "convert-units" {
                  | "reactivePower"
                  | "energy"
                  | "reactiveEnergy"
-                 | "angle";
+                 | "angle"
+                 | "dencity";
 
     type system = "metric"
                 | "imperial"
