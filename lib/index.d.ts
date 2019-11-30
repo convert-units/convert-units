@@ -21,7 +21,7 @@ declare module "convert-units" {
     type uEnergy = "Wh" | "mWh" | "kWh" | "MWh" | "GWh" | "J" | "kJ"; // Energy
     type uReactiveEnergy = "VARh" | "mVARh" | "kVARh" | "MVARh" | "GVARH"; // Reactive Energy
     type uAngle = "deg" | "rad" | "grad" | "arcmin" | "arcsec"; // Angle
-    type uDensity = "kg/m3" | "kg/l" | "t/m3" | "lb/cuft" | "lb/gal" | "oz/cuin" | "lb/cuyd"; //Density
+    type uDensity = "kg/m3" | "kg/l" | "t/m3" | "lb/cu-ft" | "lb/gal" | "oz/cu-in" | "lb/cu-yd"; //Density
 
     type unit = uDistance 
               | uArea 
