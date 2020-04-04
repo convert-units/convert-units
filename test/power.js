@@ -62,4 +62,7 @@ tests['kW to W'] = function () {
   assert.strictEqual( convert(1).from('kW').to('W'), 1000);
 }
 
+tests['hp to W'] = function () {
+  assert.strictEqual( convert(1).from('hp').to('W'), 745.699872);
+}
 module.exports = tests;
