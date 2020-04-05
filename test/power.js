@@ -22,6 +22,10 @@ tests['GW to GW'] = function () {
   assert.strictEqual( convert(1).from('GW').to('GW') , 1);
 };
 
+tests['hp to hp'] = function () {
+  assert.strictEqual( convert(1).from('hp').to('hp') , 1);
+};
+
 tests['W to mW'] = function () {
   assert.strictEqual( convert(1).from('W').to('mW') , 1000);
 };
@@ -38,31 +42,32 @@ tests['W to GW'] = function () {
   assert.strictEqual( convert(1).from('W').to('GW') , 0.000000001);
 };
 
+tests['W to hp'] = function () {
+  assert.strictEqual( convert(1).from('W').to('hp') , 0.00134102209);
+};
+
 tests['GW to mW'] = function () {
   assert.strictEqual( convert(1).from('GW').to('mW'), 1000000000000);
-}
+};
 
 tests['MW to mW'] = function () {
   assert.strictEqual( convert(1).from('MW').to('mW'), 1000000000);
-}
+};
 
 tests['kW to mW'] = function () {
   assert.strictEqual( convert(1).from('kW').to('mW'), 1000000);
-}
+};
 
 tests['mW to kW'] = function () {
   assert.strictEqual( convert(1).from('mW').to('kW'), 0.000001);
-}
+};
 
 tests['mW to W'] = function () {
   assert.strictEqual( convert(1).from('mW').to('W'), 0.001);
-}
+};
 
 tests['kW to W'] = function () {
   assert.strictEqual( convert(1).from('kW').to('W'), 1000);
 }
 
-tests['hp to W'] = function () {
-  assert.strictEqual( convert(1).from('hp').to('W'), 745.699872);
-}
 module.exports = tests;
