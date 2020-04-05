@@ -311,6 +311,7 @@ Supported Units
 * kW
 * MW
 * GW
+* HP
 
 ### Apparent Power
 * VA

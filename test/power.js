@@ -22,8 +22,8 @@ tests['GW to GW'] = function () {
   assert.strictEqual( convert(1).from('GW').to('GW') , 1);
 };
 
-tests['hp to hp'] = function () {
-  assert.strictEqual( convert(1).from('hp').to('hp') , 1);
+tests['HP to HP'] = function () {
+  assert.strictEqual( convert(1).from('HP').to('HP') , 1);
 };
 
 tests['W to mW'] = function () {
@@ -42,8 +42,8 @@ tests['W to GW'] = function () {
   assert.strictEqual( convert(1).from('W').to('GW') , 0.000000001);
 };
 
-tests['W to hp'] = function () {
-  assert.strictEqual( convert(1).from('W').to('hp') , 0.00134102209);
+tests['W to HP'] = function () {
+  assert.strictEqual( convert(1).from('W').to('HP') , 0.00134102209);
 };
 
 tests['GW to mW'] = function () {
