@@ -16,6 +16,22 @@ tests['s/m to min/km'] = function () {
     , 'Expected: ' + expected +', Actual: ' + actual);
 };
 
+tests['s/km to s/km'] = function () {
+  assert.strictEqual( convert(1).from('s/km').to('s/km') , 1);
+};
+
+tests['s/km to s/m'] = function () {
+  assert.strictEqual( convert(300).from('s/km').to('s/m') , 0.3);
+};
+
+tests['s/km to min/km'] = function () {
+  assert.strictEqual( convert(306).from('s/km').to('min/km') , 5.1);
+};
+
+tests['s/km to s/ft'] = function () {
+  assert.strictEqual( convert(300).from('s/km').to('s/ft') , 0,09144);
+};
+
 tests['s/ft to s/ft'] = function () {
   assert.strictEqual( convert(1).from('s/ft').to('s/ft') , 1);
 };
