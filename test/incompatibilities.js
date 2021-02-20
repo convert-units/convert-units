@@ -1,6 +1,6 @@
-var convert = require('../lib')
-  , assert = require('assert')
-  , tests = {};
+var convert = require('../lib'),
+  assert = require('assert'),
+  tests = {};
 
 tests['ltr to kg throws'] = function () {
   assert.throws(function () {
