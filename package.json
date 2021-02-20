@@ -4,8 +4,8 @@
   "description": "Convert between quantities in different units",
   "main": "lib",
   "dependencies": {
-    "lodash.foreach": "2.3.x",
-    "lodash.keys": "2.3.x"
+    "lodash.foreach": "4.5.x",
+    "lodash.keys": "4.2.x"
   },
   "devDependencies": {
     "assert-diff": "^1.1.0",
@@ -15,7 +15,9 @@
     "prettier": "2.2.1"
   },
   "scripts": {
-    "test": "jake test --trace"
+    "test": "jake test --trace",
+    "linter": "eslint",
+    "formatter": "prettier --write lib test"
   },
   "repository": {
     "type": "git",
