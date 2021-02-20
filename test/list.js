@@ -7,15 +7,15 @@ tests['list'] = function () {
     firstItem = list[0];
 
   assert(list.length > 0);
-  assert(firstItem.hasOwnProperty('abbr'));
+  assert('abbr' in firstItem);
   assert(typeof firstItem.abbr === 'string');
-  assert(firstItem.hasOwnProperty('measure'));
+  assert('measure' in firstItem);
   assert(typeof firstItem.measure === 'string');
-  assert(firstItem.hasOwnProperty('system'));
+  assert('system' in firstItem);
   assert(typeof firstItem.system === 'string');
-  assert(firstItem.hasOwnProperty('singular'));
+  assert('singular' in firstItem);
   assert(typeof firstItem.singular === 'string');
-  assert(firstItem.hasOwnProperty('plural'));
+  assert('plural' in firstItem);
   assert(typeof firstItem.plural === 'string');
 };
 
