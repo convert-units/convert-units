@@ -4,12 +4,15 @@
   "description": "Convert between quantities in different units",
   "main": "lib",
   "dependencies": {
-    "lodash.keys": "2.3.x",
-    "lodash.foreach": "2.3.x"
+    "lodash.foreach": "2.3.x",
+    "lodash.keys": "2.3.x"
   },
   "devDependencies": {
     "assert-diff": "^1.1.0",
-    "jake": "8.0.12"
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^4.1.0",
+    "jake": "10.8.2",
+    "prettier": "2.2.1"
   },
   "scripts": {
     "test": "jake test --trace"
