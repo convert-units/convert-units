@@ -261,7 +261,7 @@ Supported Units
 * s/m
 * min/km
 * s/ft
-* min/km
+* min/mi
 
 ### Pressure
 * Pa
