@@ -121,7 +121,7 @@ declare module 'convert-units' {
   type uEnergy = 'Wh' | 'mWh' | 'kWh' | 'MWh' | 'GWh' | 'J' | 'kJ'; // Energy
   type uReactiveEnergy = 'VARh' | 'mVARh' | 'kVARh' | 'MVARh' | 'GVARH'; // Reactive Energy
   type uAngle = 'deg' | 'rad' | 'grad' | 'arcmin' | 'arcsec'; // Angle
-
+  type uPieces = 'pcs' | 'bk-doz' | 'cp' | 'doz-doz' | 'doz' | 'gr-gr' | 'gros' | 'half-dozen' | 'long-hundred' | 'ream' | 'scores' | 'sm-gr' | 'trio' ;
   type unit =
     | uDistance
     | uArea
