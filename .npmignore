@@ -1,0 +1,6 @@
+**/__tests__
+coverage
+.eslintrc.js
+.github/**/*
+.prettierignore
+.prettierrc.json
