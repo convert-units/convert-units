@@ -365,6 +365,21 @@ Supported Units
 * g (g-force)
 * m/s2
 
+### Pieces
+* pcs
+* bk-doz
+* cp
+* doz-doz
+* doz
+* gr-gr
+* gros 
+* half-dozen
+* long-hundred
+* ream
+* scores
+* sm-gr
+* trio 
+
 
 ### Want More?
 
