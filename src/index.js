@@ -25,16 +25,16 @@ function postConversion(result, postOption) {
       if (transform) {
         // check input is valid
         if (
-          (typeof transform !== 'function')
-                    && !(transform instanceof Array)
-                    && (transform instanceof Array
-                        && !transform.reduce(
-                          (isFunc, func) => isFunc && typeof func === 'function',
-                          true,
-                        ))
+          typeof transform !== 'function' &&
+          !(transform instanceof Array) &&
+          transform instanceof Array &&
+          !transform.reduce(
+            (isFunc, func) => isFunc && typeof func === 'function',
+            true
+          )
         ) {
           throw new Error(
-            'Invalid parameter, transform should be function or array of function',
+            'Invalid parameter, transform should be function or array of function'
           );
         }
         // unify input to array of function
@@ -49,16 +49,19 @@ function postConversion(result, postOption) {
         obj = transformArray.reduce((res, func) => {
           const newResult = func(res);
           // validation, make sure result has 'val' and 'unit'
-          obj = newResult
-                            && Object.prototype.hasOwnProperty.call(newResult, 'val')
-                            && Object.prototype.hasOwnProperty.call(newResult, 'unit')
-            ? newResult
-            : res;
-          if (Object.prototype.hasOwnProperty.call(obj, 'str')
-                        && Object.prototype.hasOwnProperty.call(res, 'str')
-                        && obj.str !== res.str) {
+          obj =
+            newResult &&
+            Object.prototype.hasOwnProperty.call(newResult, 'val') &&
+            Object.prototype.hasOwnProperty.call(newResult, 'unit')
+              ? newResult
+              : res;
+          if (
+            Object.prototype.hasOwnProperty.call(obj, 'str') &&
+            Object.prototype.hasOwnProperty.call(res, 'str') &&
+            obj.str !== res.str
+          ) {
             console.warn(
-              'The result has already been format, previous result will be lost',
+              'The result has already been format, previous result will be lost'
             );
           }
           return obj;
@@ -74,8 +77,8 @@ function postConversion(result, postOption) {
 }
 
 class ConvertWithFormat {
-  constructor(value) {
-    this.convertor = convert(value);
+  constructor(value, option) {
+    this.convertor = option ? convert(value, option) : convert(value);
     // type =  { val: number; unit: string; str?:string;}
     this.result = undefined;
     this.value = undefined;
@@ -100,10 +103,10 @@ class ConvertWithFormat {
   }
 
   /**
-         *
-         * @param {string} to abbreviation for target unit type
-         * @return {ThisParameterType} return this for chaining
-         */
+   *
+   * @param {string} to abbreviation for target unit type
+   * @return {ThisParameterType} return this for chaining
+   */
   to(to) {
     // type={alias?: {[key: unit]: string}, transform?: function, hasSpace}
     const result = this.convertor.to(to);
@@ -125,13 +128,13 @@ class ConvertWithFormat {
   }
 
   /**
-         * select the best unit for you.
-         * You can also optionally explicitly exclude orders of magnitude
-         * or specify a cut off number for selecting the best representation.
-         *
-         * @param {object} options function from unit-converts
-         * @return {ThisParameterType}
-         */
+   * select the best unit for you.
+   * You can also optionally explicitly exclude orders of magnitude
+   * or specify a cut off number for selecting the best representation.
+   *
+   * @param {object} options function from unit-converts
+   * @return {ThisParameterType}
+   */
   toBest(options) {
     this.result = this.convertor.toBest(options);
 
@@ -144,19 +147,20 @@ class ConvertWithFormat {
   }
 
   /**
-         * transform the result from unit-conversion,
-         * use postOption.alias to change unit
-         * use postOption.transform, a function, to change the result value
-         * or unit before changing alias
-         * @param {object} postOption
-         * @return {ThisParameterType}
-         */
+   * transform the result from unit-conversion,
+   * use postOption.alias to change unit
+   * use postOption.transform, a function, to change the result value
+   * or unit before changing alias
+   * @param {object} postOption
+   * @return {ThisParameterType}
+   */
   transform(postOption) {
     if (this.hasResult()) {
       // change value or abbr after conversion,
-      this.result = this.result && postOption
-        ? postConversion(this.result, postOption)
-        : this.result;
+      this.result =
+        this.result && postOption
+          ? postConversion(this.result, postOption)
+          : this.result;
     }
     // throw new Error('transform should be invoked after toBest or to')
 
@@ -165,16 +169,16 @@ class ConvertWithFormat {
 
   hasResult() {
     return (
-      this.result !== undefined
-            && Object.prototype.hasOwnProperty.call(this.result, 'val')
-            && typeof this.result.val === 'number'
+      this.result !== undefined &&
+      Object.prototype.hasOwnProperty.call(this.result, 'val') &&
+      typeof this.result.val === 'number'
     );
   }
 
   /**
-         * get the result as number
-         * @return {number}
-         */
+   * get the result as number
+   * @return {number}
+   */
   toNumber() {
     if (this.hasResult()) {
       return this.result.val;
@@ -183,15 +187,14 @@ class ConvertWithFormat {
   }
 
   /**
-         * use numeral to format string, call to toString will only contain number
-         * @param {string} str parameter for numeral
-         * @return {ThisParameterType}
-         */
+   * use numeral to format string, call to toString will only contain number
+   * @param {string} str parameter for numeral
+   * @return {ThisParameterType}
+   */
   format(str) {
-    if (Object.prototype.hasOwnProperty.call(this.result, 'str')
-    ) {
+    if (Object.prototype.hasOwnProperty.call(this.result, 'str')) {
       console.warn(
-        'The result has been formatted,previous result will be lost.',
+        'The result has been formatted,previous result will be lost.'
       );
     }
 
@@ -208,15 +211,14 @@ class ConvertWithFormat {
   }
 
   /**
-         * use numeral to format, call to toString will contain number and unit
-         * @param {string} str parameter for numeral
-         * @return {ThisParameterType}
-         */
+   * use numeral to format, call to toString will contain number and unit
+   * @param {string} str parameter for numeral
+   * @return {ThisParameterType}
+   */
   formatWithUnit(str) {
-    if (Object.prototype.hasOwnProperty.call(this.result, 'str')
-    ) {
+    if (Object.prototype.hasOwnProperty.call(this.result, 'str')) {
       console.warn(
-        'The result has been formatted,previous result will be lost.',
+        'The result has been formatted,previous result will be lost.'
       );
     }
 
@@ -225,9 +227,10 @@ class ConvertWithFormat {
     }
 
     // hard code to erase integer and ratio
-    const unit = this.result.unit === 'integer' || this.result.unit === 'ratio'
-      ? ''
-      : ` ${this.result.unit}`;
+    const unit =
+      this.result.unit === 'integer' || this.result.unit === 'ratio'
+        ? ''
+        : ` ${this.result.unit}`;
 
     if (str !== undefined) {
       this.format(str);
@@ -247,6 +250,13 @@ class ConvertWithFormat {
   }
 }
 
-module.exports = function UC(value) {
-  return new ConvertWithFormat(value);
+module.exports = {
+  UC(value) {
+    return new ConvertWithFormat(value);
+  },
+  UCWithNewRule(option) {
+    return function (value) {
+      return new ConvertWithFormat(value, option);
+    };
+  },
 };

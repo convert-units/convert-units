@@ -1,6 +1,7 @@
-var convert = require('../lib/originalConvert'),
-  assert = require('assert'),
-  tests = {};
+  const assert = require('assert');
+const convert = require('../src/originalConvert');
+
+  const tests = {};
 
 tests['ppm to ppm'] = function () {
   assert.strictEqual(convert(1).from('ppm').to('ppm'), 1);

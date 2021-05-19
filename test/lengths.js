@@ -1,8 +1,9 @@
-var convert = require('../lib/originalConvert'),
-  assert = require('assert'),
-  tests = {},
-  ACCURACY = 1 / 1000,
-  percentError = require('../lib/percentError');
+  const assert = require('assert');
+const convert = require('../src/originalConvert');
+
+  const tests = {};
+  const ACCURACY = 1 / 1000;
+  const percentError = require('../lib/percentError');
 
 tests['ft to ft'] = function () {
   assert.strictEqual(convert(1).from('ft').to('ft'), 1);
@@ -62,57 +63,57 @@ tests['km to m'] = function () {
 
 // When converting between systems, expect < 0.1% error
 tests['m to ft'] = function () {
-  var expected = 3.28084,
-    actual = convert(1).from('m').to('ft');
+  const expected = 3.28084;
+    const actual = convert(1).from('m').to('ft');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 
 // When converting between systems, expect < 0.1% error
 tests['m to ft-us'] = function () {
-  var expected = 3.28084,
-    actual = convert(1).from('m').to('ft-us');
+  const expected = 3.28084;
+    const actual = convert(1).from('m').to('ft-us');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 
 tests['mm to ft'] = function () {
-  var expected = 0.00328084,
-    actual = convert(1).from('mm').to('ft');
+  const expected = 0.00328084;
+    const actual = convert(1).from('mm').to('ft');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 
 tests['nMi to m'] = function () {
-  var expected = 1852,
-    actual = convert(1).from('nMi').to('m');
+  const expected = 1852;
+    const actual = convert(1).from('nMi').to('m');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 
 tests['km to nMi'] = function () {
-  var expected = 0.539956803,
-    actual = convert(1).from('km').to('nMi');
+  const expected = 0.539956803;
+    const actual = convert(1).from('km').to('nMi');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 
 tests['fathm to m'] = function () {
-  var expected = 1.8288,
-    actual = convert(1).from('fathom').to('m');
+  const expected = 1.8288;
+    const actual = convert(1).from('fathom').to('m');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 

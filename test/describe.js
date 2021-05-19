@@ -1,10 +1,11 @@
-var convert = require('../lib/originalConvert'),
-  assert = require('assert'),
-  tests = {};
+  const assert = require('assert');
+const convert = require('../src/originalConvert');
+
+  const tests = {};
 
 tests['get kg'] = function () {
-  var actual = convert().describe('kg'),
-    expected = {
+  const actual = convert().describe('kg');
+    const expected = {
       abbr: 'kg',
       measure: 'mass',
       system: 'metric',
@@ -16,8 +17,8 @@ tests['get kg'] = function () {
 };
 
 tests['get ac'] = function () {
-  var actual = convert().describe('ac'),
-    expected = {
+  const actual = convert().describe('ac');
+    const expected = {
       abbr: 'ac',
       measure: 'area',
       system: 'imperial',

@@ -1,10 +1,11 @@
-var convert = require('../lib/originalConvert'),
-  assert = require('assert'),
-  tests = {};
+  const assert = require('assert');
+const convert = require('../src/originalConvert');
 
-tests['measures'] = function () {
-  var actual = convert().measures(),
-    expected = [
+  const tests = {};
+
+tests.measures = function () {
+  const actual = convert().measures();
+    const expected = [
       'length',
       'area',
       'mass',
@@ -32,7 +33,7 @@ tests['measures'] = function () {
       'force',
       'acceleration',
       'count',
-      'percent'
+      'percent',
     ];
   assert.deepEqual(actual, expected);
 };

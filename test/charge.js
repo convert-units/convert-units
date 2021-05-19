@@ -1,8 +1,9 @@
-var convert = require('../lib/originalConvert'),
-  assert = require('assert'),
-  tests = {};
+  const assert = require('assert');
+const convert = require('../src/originalConvert');
 
-var EPSILON = 0.000001;
+  const tests = {};
+
+const EPSILON = 0.000001;
 
 tests['Co to Co'] = function () {
   assert.strictEqual(convert(1).from('c').to('c'), 1);

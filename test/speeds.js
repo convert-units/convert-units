@@ -1,8 +1,9 @@
-var convert = require('../lib/originalConvert'),
-  assert = require('assert'),
-  tests = {},
-  ACCURACY = 1 / 1000,
-  percentError = require('../lib/percentError');
+  const assert = require('assert');
+const convert = require('../src/originalConvert');
+
+  const tests = {};
+  const ACCURACY = 1 / 1000;
+  const percentError = require('../lib/percentError');
 
 tests['m/s to m/s'] = function () {
   assert.strictEqual(convert(1).from('m/s').to('m/s'), 1);
@@ -17,47 +18,47 @@ tests['m/h to m/h'] = function () {
 };
 
 tests['m/h to knot'] = function () {
-  var expected = 1.73795;
-  var actual = convert(2).from('m/h').to('knot');
+  const expected = 1.73795;
+  const actual = convert(2).from('m/h').to('knot');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 
 tests['m/h to ft/s'] = function () {
-  var expected = 4.4;
-  var actual = convert(3).from('m/h').to('ft/s');
+  const expected = 4.4;
+  const actual = convert(3).from('m/h').to('ft/s');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 
 tests['m/s to m/h'] = function () {
-  var expected = 22.3694;
-  var actual = convert(10).from('m/s').to('m/h');
+  const expected = 22.3694;
+  const actual = convert(10).from('m/s').to('m/h');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 
 tests['m/s to knot'] = function () {
-  var expected = 15.5508;
-  var actual = convert(8).from('m/s').to('knot');
+  const expected = 15.5508;
+  const actual = convert(8).from('m/s').to('knot');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 
 tests['m/h to km/h'] = function () {
-  var expected = 19.3121;
-  var actual = convert(12).from('m/h').to('km/h');
+  const expected = 19.3121;
+  const actual = convert(12).from('m/h').to('km/h');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 

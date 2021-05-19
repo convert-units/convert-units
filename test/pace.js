@@ -1,19 +1,20 @@
-var convert = require('../lib/originalConvert'),
-  assert = require('assert'),
-  tests = {},
-  ACCURACY = 1 / 1000,
-  percentError = require('../lib/percentError');
+  const assert = require('assert');
+const convert = require('../src/originalConvert');
+
+  const tests = {};
+  const ACCURACY = 1 / 1000;
+  const percentError = require('../lib/percentError');
 
 tests['s/m to s/m'] = function () {
   assert.strictEqual(convert(1).from('s/m').to('s/m'), 1);
 };
 
 tests['s/m to min/km'] = function () {
-  var expected = 16.6667;
-  var actual = convert(1).from('s/m').to('min/km');
+  const expected = 16.6667;
+  const actual = convert(1).from('s/m').to('min/km');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 
@@ -26,20 +27,20 @@ tests['min/mi to s/ft'] = function () {
 };
 
 tests['min/mi to min/km'] = function () {
-  var expected = 0.621371;
-  var actual = convert(1).from('min/mi').to('min/km');
+  const expected = 0.621371;
+  const actual = convert(1).from('min/mi').to('min/km');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 
 tests['min/km to min/mi'] = function () {
-  var expected = 1.60934;
-  var actual = convert(1).from('min/km').to('min/mi');
+  const expected = 1.60934;
+  const actual = convert(1).from('min/km').to('min/mi');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 

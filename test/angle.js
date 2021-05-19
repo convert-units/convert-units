@@ -1,8 +1,9 @@
-var convert = require('../lib/originalConvert'),
-  assert = require('assert'),
-  tests = {},
-  ACCURACY = 1 / 1000,
-  percentError = require('../lib/percentError');
+  const assert = require('assert');
+const convert = require('../src/originalConvert');
+
+  const tests = {};
+  const ACCURACY = 1 / 1000;
+  const percentError = require('../lib/percentError');
 
 tests['rad to rad'] = function () {
   assert.strictEqual(convert(1).from('rad').to('rad'), 1);
@@ -25,11 +26,11 @@ tests['arcsec to arcsec'] = function () {
 };
 
 tests['deg to rad'] = function () {
-  var expected = 6.28319,
-    actual = convert(360).from('deg').to('rad');
+  const expected = 6.28319;
+    const actual = convert(360).from('deg').to('rad');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 
@@ -46,20 +47,20 @@ tests['deg to arcsec'] = function () {
 };
 
 tests['rad to grad'] = function () {
-  var expected = 636.62,
-    actual = convert(10).from('rad').to('grad');
+  const expected = 636.62;
+    const actual = convert(10).from('rad').to('grad');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 
 tests['rad to arcsec'] = function () {
-  var expected = 2.063e6,
-    actual = convert(10).from('rad').to('arcsec');
+  const expected = 2.063e6;
+    const actual = convert(10).from('rad').to('arcsec');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 
@@ -72,11 +73,11 @@ tests['grad to deg'] = function () {
 };
 
 tests['arcmin to rad'] = function () {
-  var expected = 2.908882,
-    actual = convert(10000).from('arcmin').to('rad');
+  const expected = 2.908882;
+    const actual = convert(10000).from('arcmin').to('rad');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 

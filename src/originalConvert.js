@@ -31,10 +31,35 @@ const measures = {
   count: require('./definitions/count'),
   percent: require('./definitions/percent'),
 };
-
-const Converter = function (numerator, denominator) {
-  if (denominator) this.val = numerator / denominator;
-  else this.val = numerator;
+/**
+ *
+ * @param {number} numerator
+ * @param {{includes: string[],newMeasures: object]}=} option ,if have includes then will only include chosen one, otherwise includes all
+ */
+const Converter = function (numerator, option) {
+  let rules = {};
+  for (let [key, value] of Object.entries(measures)) {
+    rules[key] = value;
+  }
+  if (option && option.includes && option.includes instanceof Array) {
+    rules = option.includes.reduce((newRules, keyName) => {
+      if (rules[keyName]) {
+        newRules[keyName] = rules[keyName];
+      }
+      return newRules;
+    }, {});
+  }
+  if (option && option.newMeasures) {
+    rules = {
+      ...rules,
+      ...option.newMeasures,
+    };
+  }
+  this.rules = rules;
+  // const Converter = function (numerator, denominator) {
+  // if (denominator) this.val = numerator / denominator;
+  // else this.val = numerator;
+  this.val = numerator;
 };
 
 /**
@@ -60,7 +85,8 @@ Converter.prototype.to = function (to) {
 
   this.destination = this.getUnit(to);
 
-  let result; let transform;
+  let result;
+  let transform;
 
   if (!this.destination) {
     this.throwUnsupportedUnitError(to);
@@ -74,10 +100,7 @@ Converter.prototype.to = function (to) {
   // You can't go from liquid to mass, for example
   if (this.destination.measure != this.origin.measure) {
     throw new Error(
-      `Cannot convert incompatible measures of ${
-        this.destination.measure
-      } and ${
-        this.origin.measure}`,
+      `Cannot convert incompatible measures of ${this.destination.measure} and ${this.origin.measure}`
     );
   }
 
@@ -101,12 +124,13 @@ Converter.prototype.to = function (to) {
    * transform here to provide the direct result
    */
   if (this.origin.system != this.destination.system) {
-    transform = measures[this.origin.measure]._anchors[this.origin.system].transform;
+    transform = this.rules[this.origin.measure]._anchors[this.origin.system]
+      .transform;
     if (typeof transform === 'function') {
       result = transform(result);
     } else {
-      result
-        *= measures[this.origin.measure]._anchors[this.origin.system].ratio;
+      result *= this.rules[this.origin.measure]._anchors[this.origin.system]
+        .ratio;
     }
   }
 
@@ -141,25 +165,22 @@ Converter.prototype.toBest = function (options) {
     i.e. Where the value has the fewest numbers before the decimal point,
     but is still higher than 1.
   */
-  each(
-    this.possibilities(),
-    (possibility) => {
-      const unit = this.describe(possibility);
-      const isIncluded = options.exclude.indexOf(possibility) === -1;
+  each(this.possibilities(), (possibility) => {
+    const unit = this.describe(possibility);
+    const isIncluded = options.exclude.indexOf(possibility) === -1;
 
-      if (isIncluded && unit.system === this.origin.system) {
-        const result = this.to(possibility);
-        if (!best || (result >= options.cutOffNumber && result < best.val)) {
-          best = {
-            val: result,
-            unit: possibility,
-            singular: unit.singular,
-            plural: unit.plural,
-          };
-        }
+    if (isIncluded && unit.system === this.origin.system) {
+      const result = this.to(possibility);
+      if (!best || (result >= options.cutOffNumber && result < best.val)) {
+        best = {
+          val: result,
+          unit: possibility,
+          singular: unit.singular,
+          plural: unit.plural,
+        };
       }
-    },
-  );
+    }
+  });
 
   return best;
 };
@@ -170,7 +191,7 @@ Converter.prototype.toBest = function (options) {
 Converter.prototype.getUnit = function (abbr) {
   let found;
 
-  each(measures, (systems, measure) => {
+  each(this.rules, (systems, measure) => {
     each(systems, (units, system) => {
       if (system == '_anchors') return false;
 
@@ -209,7 +230,7 @@ const describe = function (resp) {
  * An alias for getUnit
  */
 Converter.prototype.describe = function (abbr) {
-  const resp = Converter.prototype.getUnit(abbr);
+  const resp = this.getUnit(abbr);
   let desc = null;
 
   try {
@@ -227,7 +248,7 @@ Converter.prototype.describe = function (abbr) {
 Converter.prototype.list = function (measure) {
   let list = [];
 
-  each(measures, (systems, testMeasure) => {
+  each(this.rules, (systems, testMeasure) => {
     if (measure && measure !== testMeasure) return;
 
     each(systems, (units, system) => {
@@ -240,7 +261,7 @@ Converter.prototype.list = function (measure) {
             measure: testMeasure,
             system,
             unit,
-          }),
+          })
         );
       });
     });
@@ -252,7 +273,7 @@ Converter.prototype.list = function (measure) {
 Converter.prototype.throwUnsupportedUnitError = function (what) {
   let validUnits = [];
 
-  each(measures, (systems) => {
+  each(this.rules, (systems) => {
     each(systems, (units, system) => {
       if (system == '_anchors') return false;
 
@@ -261,7 +282,7 @@ Converter.prototype.throwUnsupportedUnitError = function (what) {
   });
 
   throw new Error(
-    `Unsupported unit ${what}, use one of: ${validUnits.join(', ')}`,
+    `Unsupported unit ${what}, use one of: ${validUnits.join(', ')}`
   );
 };
 
@@ -272,8 +293,8 @@ Converter.prototype.throwUnsupportedUnitError = function (what) {
 Converter.prototype.possibilities = function (measure) {
   let possibilities = [];
   if (!this.origin && !measure) {
-    each(Object.keys(measures), (measure) => {
-      each(measures[measure], (units, system) => {
+    each(Object.keys(this.rules), (measure) => {
+      each(this.rules[measure], (units, system) => {
         if (system == '_anchors') return false;
 
         possibilities = possibilities.concat(Object.keys(units));
@@ -281,7 +302,7 @@ Converter.prototype.possibilities = function (measure) {
     });
   } else {
     measure = measure || this.origin.measure;
-    each(measures[measure], (units, system) => {
+    each(this.rules[measure], (units, system) => {
       if (system == '_anchors') return false;
 
       possibilities = possibilities.concat(Object.keys(units));
@@ -296,11 +317,11 @@ Converter.prototype.possibilities = function (measure) {
  * converted to.
  */
 Converter.prototype.measures = function () {
-  return Object.keys(measures);
+  return Object.keys(this.rules);
 };
 
-const convert = function (value) {
-  return new Converter(value);
+const convert = function (value, option) {
+  return new Converter(value, option);
 };
 
 module.exports = convert;

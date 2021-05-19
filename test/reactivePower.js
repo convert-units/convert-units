@@ -1,6 +1,7 @@
-var convert = require('../lib/originalConvert'),
-  assert = require('assert'),
-  tests = {};
+  const assert = require('assert');
+const convert = require('../src/originalConvert');
+
+  const tests = {};
 
 tests['VAR to VAR'] = function () {
   assert.strictEqual(convert(1).from('VAR').to('VAR'), 1);

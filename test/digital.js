@@ -1,8 +1,9 @@
-var convert = require('../lib/originalConvert'),
-  assert = require('assert'),
-  tests = {},
-  ACCURACY = 1 / 1000,
-  percentError = require('../lib/percentError');
+  const assert = require('assert');
+const convert = require('../src/originalConvert');
+
+  const tests = {};
+  const ACCURACY = 1 / 1000;
+  const percentError = require('../lib/percentError');
 
 tests['b to b'] = function () {
   assert.strictEqual(convert(1).from('b').to('b'), 1);
@@ -46,20 +47,20 @@ tests['TB to B'] = function () {
 
 // When converting between systems, expect < 0.1% error
 tests['B to b'] = function () {
-  var expected = 8,
-    actual = convert(1).from('B').to('b');
+  const expected = 8;
+    const actual = convert(1).from('B').to('b');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 
 tests['b to B'] = function () {
-  var expected = 0.125,
-    actual = convert(1).from('b').to('B');
+  const expected = 0.125;
+    const actual = convert(1).from('b').to('B');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    'Expected: ' + expected + ', Actual: ' + actual
+    `Expected: ${  expected  }, Actual: ${  actual}`
   );
 };
 

@@ -1,6 +1,7 @@
-var convert = require('../lib/originalConvert'),
-  assert = require('assert'),
-  tests = {};
+  const assert = require('assert');
+const convert = require('../src/originalConvert');
+
+  const tests = {};
 
 tests['C to K'] = function () {
   assert.strictEqual(convert(0).from('C').to('K'), 273.15);

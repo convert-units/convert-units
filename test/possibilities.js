@@ -1,12 +1,13 @@
-var convert = require('../lib/originalConvert'),
-  assert = require('assert-diff'),
-  tests = {};
+  const assert = require('assert-diff');
+const convert = require('../src/originalConvert');
+
+  const tests = {};
 
 assert.options.strict = true;
 
 tests['l possibilities'] = function () {
-  var actual = convert().from('l').possibilities(),
-    expected = [
+  const actual = convert().from('l').possibilities();
+    const expected = [
       'mm3',
       'cm3',
       'ml',
@@ -37,14 +38,14 @@ tests['l possibilities'] = function () {
 };
 
 tests['kg possibilities'] = function () {
-  var actual = convert().from('kg').possibilities(),
-    expected = ['mcg', 'mg', 'g', 'kg', 'mt', 'oz', 'lb', 't'];
+  const actual = convert().from('kg').possibilities();
+    const expected = ['mcg', 'mg', 'g', 'kg', 'mt', 'oz', 'lb', 't'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['m possibilities'] = function () {
-  var actual = convert().from('m').possibilities(),
-    expected = [
+  const actual = convert().from('m').possibilities();
+    const expected = [
       'mm',
       'cm',
       'm',
@@ -61,20 +62,20 @@ tests['m possibilities'] = function () {
 };
 
 tests['each possibilities'] = function () {
-  var actual = convert().possibilities('each'),
-    expected = ['ea', 'dz'];
+  const actual = convert().possibilities('each');
+    const expected = ['ea', 'dz'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['mass possibilities'] = function () {
-  var actual = convert().possibilities('mass'),
-    expected = ['mcg', 'mg', 'g', 'kg', 'mt', 'oz', 'lb', 't'];
+  const actual = convert().possibilities('mass');
+    const expected = ['mcg', 'mg', 'g', 'kg', 'mt', 'oz', 'lb', 't'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['volume possibilities'] = function () {
-  var actual = convert().possibilities('volume'),
-    expected = [
+  const actual = convert().possibilities('volume');
+    const expected = [
       'mm3',
       'cm3',
       'ml',
@@ -105,8 +106,8 @@ tests['volume possibilities'] = function () {
 };
 
 tests['volume flow rate possibilities'] = function () {
-  var actual = convert().possibilities('volumeFlowRate'),
-    expected = [
+  const actual = convert().possibilities('volumeFlowRate');
+    const expected = [
       'mm3/s',
       'cm3/s',
       'ml/s',
@@ -149,8 +150,8 @@ tests['volume flow rate possibilities'] = function () {
 };
 
 tests['length possibilities'] = function () {
-  var actual = convert().possibilities('length'),
-    expected = [
+  const actual = convert().possibilities('length');
+    const expected = [
       'mm',
       'cm',
       'm',
@@ -167,14 +168,14 @@ tests['length possibilities'] = function () {
 };
 
 tests['temperature possibilities'] = function () {
-  var actual = convert().possibilities('temperature'),
-    expected = ['C', 'K', 'F', 'R'];
+  const actual = convert().possibilities('temperature');
+    const expected = ['C', 'K', 'F', 'R'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['time possibilities'] = function () {
-  var actual = convert().possibilities('time'),
-    expected = [
+  const actual = convert().possibilities('time');
+    const expected = [
       'ns',
       'mu',
       'ms',
@@ -190,80 +191,80 @@ tests['time possibilities'] = function () {
 };
 
 tests['digital possibilities'] = function () {
-  var actual = convert().possibilities('digital'),
-    expected = ['b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB'];
+  const actual = convert().possibilities('digital');
+    const expected = ['b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['partsPer possibilities'] = function () {
-  var actual = convert().possibilities('partsPer'),
-    expected = ['ppm', 'ppb', 'ppt', 'ppq'];
+  const actual = convert().possibilities('partsPer');
+    const expected = ['ppm', 'ppb', 'ppt', 'ppq'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['pressure possibilities'] = function () {
-  var actual = convert().possibilities('pressure'),
-    expected = ['Pa', 'kPa', 'MPa', 'hPa', 'bar', 'torr', 'psi', 'ksi'];
+  const actual = convert().possibilities('pressure');
+    const expected = ['Pa', 'kPa', 'MPa', 'hPa', 'bar', 'torr', 'psi', 'ksi'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['speed possibilities'] = function () {
-  var actual = convert().possibilities('speed'),
-    expected = ['m/s', 'km/h', 'm/h', 'knot', 'ft/s'];
+  const actual = convert().possibilities('speed');
+    const expected = ['m/s', 'km/h', 'm/h', 'knot', 'ft/s'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['pace possibilities'] = function () {
-  var actual = convert().possibilities('pace'),
-    expected = ['s/m', 'min/km', 'min/mi', 's/ft'];
+  const actual = convert().possibilities('pace');
+    const expected = ['s/m', 'min/km', 'min/mi', 's/ft'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['current possibilities'] = function () {
-  var actual = convert().possibilities('current'),
-    expected = ['A', 'mA', 'kA'];
+  const actual = convert().possibilities('current');
+    const expected = ['A', 'mA', 'kA'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['voltage possibilities'] = function () {
-  var actual = convert().possibilities('voltage'),
-    expected = ['V', 'mV', 'kV'];
+  const actual = convert().possibilities('voltage');
+    const expected = ['V', 'mV', 'kV'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['power possibilities'] = function () {
-  var actual = convert().possibilities('power'),
-    expected = ['W', 'mW', 'kW', 'MW', 'GW'];
+  const actual = convert().possibilities('power');
+    const expected = ['W', 'mW', 'kW', 'MW', 'GW'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['reactive power possibilities'] = function () {
-  var actual = convert().possibilities('reactivePower'),
-    expected = ['VAR', 'mVAR', 'kVAR', 'MVAR', 'GVAR'];
+  const actual = convert().possibilities('reactivePower');
+    const expected = ['VAR', 'mVAR', 'kVAR', 'MVAR', 'GVAR'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['apparent power possibilities'] = function () {
-  var actual = convert().possibilities('apparentPower'),
-    expected = ['VA', 'mVA', 'kVA', 'MVA', 'GVA'];
+  const actual = convert().possibilities('apparentPower');
+    const expected = ['VA', 'mVA', 'kVA', 'MVA', 'GVA'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['energy possibilities'] = function () {
-  var actual = convert().possibilities('energy'),
-    expected = ['Wh', 'mWh', 'kWh', 'MWh', 'GWh', 'J', 'kJ'];
+  const actual = convert().possibilities('energy');
+    const expected = ['Wh', 'mWh', 'kWh', 'MWh', 'GWh', 'J', 'kJ'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['reactive energy possibilities'] = function () {
-  var actual = convert().possibilities('reactiveEnergy'),
-    expected = ['VARh', 'mVARh', 'kVARh', 'MVARh', 'GVARh'];
+  const actual = convert().possibilities('reactiveEnergy');
+    const expected = ['VARh', 'mVARh', 'kVARh', 'MVARh', 'GVARh'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['reactive energy possibilities'] = function () {
-  var actual = convert().possibilities('frequency'),
-    expected = [
+  const actual = convert().possibilities('frequency');
+    const expected = [
       'Hz',
       'mHz',
       'kHz',
@@ -278,39 +279,39 @@ tests['reactive energy possibilities'] = function () {
 };
 
 tests['illuminance possibilities'] = function () {
-  var actual = convert().possibilities('illuminance'),
-    expected = ['lx', 'ft-cd'];
+  const actual = convert().possibilities('illuminance');
+    const expected = ['lx', 'ft-cd'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['angle possibilities'] = function () {
-  var actual = convert().possibilities('angle'),
-    expected = ['rad', 'deg', 'grad', 'arcmin', 'arcsec'];
+  const actual = convert().possibilities('angle');
+    const expected = ['rad', 'deg', 'grad', 'arcmin', 'arcsec'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['charge possibilities'] = function () {
-  var actual = convert().possibilities('charge'),
-    expected = ['c', 'mC', 'μC', 'nC', 'pC'];
+  const actual = convert().possibilities('charge');
+    const expected = ['c', 'mC', 'μC', 'nC', 'pC'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['force possibilities'] = function () {
-  var actual = convert().possibilities('force'),
-    expected = ['N', 'kN', 'lbf'];
+  const actual = convert().possibilities('force');
+    const expected = ['N', 'kN', 'lbf'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['acceleration possibilities'] = function () {
-  var actual = convert().possibilities('acceleration'),
-    expected = ['g-force', 'm/s2'];
+  const actual = convert().possibilities('acceleration');
+    const expected = ['g-force', 'm/s2'];
   assert.deepEqual(actual.sort(), expected.sort());
 };
 
 tests['all possibilities'] = function () {
-  var actual = convert().possibilities(),
+  const actual = convert().possibilities();
     // Please keep these sorted for maintainability
-    expected = [
+    const expected = [
       'A',
       'arcmin',
       'arcsec',
@@ -523,14 +524,14 @@ tests['all possibilities'] = function () {
       'E',
       'G',
       'Y',
-      'Z'
+      'Z',
     ];
 
   try {
     assert.deepEqual(actual.sort(), expected.sort());
   } catch (e) {
     // This gets too long, and gets truncated
-    process.stderr.write(e + '\n');
+    process.stderr.write(`${e  }\n`);
     throw e;
   }
 };
