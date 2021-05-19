@@ -1,7 +1,7 @@
-  const assert = require('assert');
+const assert = require('assert');
 const convert = require('../src/originalConvert');
 
-  const tests = {};
+const tests = {};
 
 tests['V to V'] = function () {
   assert.strictEqual(convert(1).from('V').to('V'), 1);

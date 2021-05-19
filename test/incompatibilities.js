@@ -1,7 +1,7 @@
-  const assert = require('assert');
+const assert = require('assert');
 const convert = require('../src/originalConvert');
 
-  const tests = {};
+const tests = {};
 
 tests['ltr to kg throws'] = function () {
   assert.throws(function () {

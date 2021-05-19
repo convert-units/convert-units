@@ -1,9 +1,9 @@
-  const assert = require('assert');
+const assert = require('assert');
 const convert = require('../src/originalConvert');
 
-  const tests = {};
-  const ACCURACY = 1 / 1000;
-  const percentError = require('../lib/percentError');
+const tests = {};
+const ACCURACY = 1 / 1000;
+const percentError = require('../lib/percentError');
 
 tests['l/s to l/s'] = function () {
   assert.strictEqual(convert(2).from('l/s').to('l/s'), 2);
@@ -96,154 +96,154 @@ tests['m3/s to m3/h'] = function () {
 // When converting between systems, expect < 0.1% error
 tests['tsp/s to l/s'] = function () {
   const expected = 1.75;
-    const actual = convert(355).from('tsp/s').to('l/s');
+  const actual = convert(355).from('tsp/s').to('l/s');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['in3/s to l/s'] = function () {
   const expected = 0.0163871;
-    const actual = convert(1).from('in3/s').to('l/s');
+  const actual = convert(1).from('in3/s').to('l/s');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['in3/s to fl-oz/s'] = function () {
   const expected = 0.554113;
-    const actual = convert(1).from('in3/s').to('fl-oz/s');
+  const actual = convert(1).from('in3/s').to('fl-oz/s');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['m3/s to yd3/s'] = function () {
   const expected = 1.30795;
-    const actual = convert(1).from('m3/s').to('yd3/s');
+  const actual = convert(1).from('m3/s').to('yd3/s');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['ft3/s to cm3/s'] = function () {
   const expected = 28316.8;
-    const actual = convert(1).from('ft3/s').to('cm3/s');
+  const actual = convert(1).from('ft3/s').to('cm3/s');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['pnt/s to ml/s'] = function () {
   const expected = 2366;
-    const actual = convert(5).from('pnt/s').to('ml/s');
+  const actual = convert(5).from('pnt/s').to('ml/s');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['ml/s to gal/s'] = function () {
   const expected = 2.609;
-    const actual = convert(9876).from('ml/s').to('gal/s');
+  const actual = convert(9876).from('ml/s').to('gal/s');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['gal/s to l/s'] = function () {
   const expected = 3.78541178;
-    const actual = convert(1).from('gal/s').to('l/s');
+  const actual = convert(1).from('gal/s').to('l/s');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['kl/s to kl/min'] = function () {
   const expected = 60;
-    const actual = convert(1).from('kl/s').to('kl/min');
+  const actual = convert(1).from('kl/s').to('kl/min');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['l/s to kl/h'] = function () {
   const expected = 3.6;
-    const actual = convert(1).from('l/s').to('kl/h');
+  const actual = convert(1).from('l/s').to('kl/h');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['kl/min to l/h'] = function () {
   const expected = 60000;
-    const actual = convert(1).from('kl/min').to('l/h');
+  const actual = convert(1).from('kl/min').to('l/h');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['l/s to m3/h'] = function () {
   const expected = 3.6;
-    const actual = convert(1).from('l/s').to('m3/h');
+  const actual = convert(1).from('l/s').to('m3/h');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['m3/s to kl/h'] = function () {
   const expected = 3600;
-    const actual = convert(1).from('m3/s').to('kl/h');
+  const actual = convert(1).from('m3/s').to('kl/h');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['fl-oz/s to m3/min'] = function () {
   const expected = 0.00177441177;
-    const actual = convert(1).from('fl-oz/s').to('m3/min');
+  const actual = convert(1).from('fl-oz/s').to('m3/min');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['ft3/min to l/s'] = function () {
   const expected = 0.471947443;
-    const actual = convert(1).from('ft3/min').to('l/s');
+  const actual = convert(1).from('ft3/min').to('l/s');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['pnt/min to kl/h'] = function () {
   const expected = 0.0283905884;
-    const actual = convert(1).from('pnt/min').to('kl/h');
+  const actual = convert(1).from('pnt/min').to('kl/h');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['yd3/h to m3/min'] = function () {
   const expected = 0.012742581;
-    const actual = convert(1).from('yd3/h').to('m3/min');
+  const actual = convert(1).from('yd3/h').to('m3/min');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 

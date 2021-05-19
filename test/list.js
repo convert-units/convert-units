@@ -1,11 +1,11 @@
-  const assert = require('assert');
+const assert = require('assert');
 const convert = require('../src/originalConvert');
 
-  const tests = {};
+const tests = {};
 
 tests.list = function () {
   const list = convert().list();
-    const firstItem = list[0];
+  const firstItem = list[0];
 
   assert(list.length > 0);
   assert('abbr' in firstItem);
@@ -22,7 +22,7 @@ tests.list = function () {
 
 tests['list by measure'] = function () {
   const full = convert().list();
-    const measures = convert().measures();
+  const measures = convert().measures();
 
   measures.map(function (measure) {
     const list = convert().list(measure);

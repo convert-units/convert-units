@@ -1,9 +1,9 @@
-  const assert = require('assert');
+const assert = require('assert');
 const convert = require('../src/originalConvert');
 
-  const tests = {};
-  const ACCURACY = 1 / 1000;
-  const percentError = require('../lib/percentError');
+const tests = {};
+const ACCURACY = 1 / 1000;
+const percentError = require('../lib/percentError');
 
 tests['m/s to m/s'] = function () {
   assert.strictEqual(convert(1).from('m/s').to('m/s'), 1);
@@ -22,7 +22,7 @@ tests['m/h to knot'] = function () {
   const actual = convert(2).from('m/h').to('knot');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
@@ -31,7 +31,7 @@ tests['m/h to ft/s'] = function () {
   const actual = convert(3).from('m/h').to('ft/s');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
@@ -40,7 +40,7 @@ tests['m/s to m/h'] = function () {
   const actual = convert(10).from('m/s').to('m/h');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
@@ -49,7 +49,7 @@ tests['m/s to knot'] = function () {
   const actual = convert(8).from('m/s').to('knot');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
@@ -58,7 +58,7 @@ tests['m/h to km/h'] = function () {
   const actual = convert(12).from('m/h').to('km/h');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 

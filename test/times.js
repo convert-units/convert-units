@@ -1,16 +1,16 @@
-  const assert = require('assert');
+const assert = require('assert');
 const convert = require('../src/originalConvert');
 
-  const tests = {};
-  const ACCURACY = 1 / 1000;
-  const percentError = require('../lib/percentError');
+const tests = {};
+const ACCURACY = 1 / 1000;
+const percentError = require('../lib/percentError');
 
 tests['s to ns'] = function () {
   const expected = 1000000000;
-    const actual = convert(1).from('s').to('ns');
+  const actual = convert(1).from('s').to('ns');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
@@ -52,19 +52,19 @@ tests['d to year'] = function () {
 
 tests['week to month'] = function () {
   const expected = 1;
-    const actual = convert(4.34821).from('week').to('month');
+  const actual = convert(4.34821).from('week').to('month');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['week to year'] = function () {
   const expected = 1;
-    const actual = convert(52.17857).from('week').to('year');
+  const actual = convert(52.17857).from('week').to('year');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 

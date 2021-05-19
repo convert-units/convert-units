@@ -1,7 +1,7 @@
 {
-  "name": "convert-units",
+  "name": "@hotstar/convert-units",
   "version": "2.3.4",
-  "description": "Convert between quantities in different units",
+  "description": "Convert between quantities in different units With foramat",
   "main": "lib",
   "dependencies": {
     "lodash.foreach": "4.5.x",
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ben-ng/convert-units.git"
+    "url": "https://github.com/Strongbow19/convert-units"
   },
   "keywords": [
     "metric",
@@ -38,6 +38,6 @@
     "ratio",
     "fraction"
   ],
-  "author": "Ben Ng <me@benng.me> (http://benng.me)",
+  "author": "Ben Ng <me@benng.me> (http://benng.me)forked by Fan Cao<fan.cao@hotstar.com>",
   "license": "MIT"
 }

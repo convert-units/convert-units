@@ -1,7 +1,7 @@
-  const assert = require('assert');
+const assert = require('assert');
 const convert = require('../src/originalConvert');
 
-  const tests = {};
+const tests = {};
 
 tests['Wh to Wh'] = function () {
   assert.strictEqual(convert(1).from('Wh').to('Wh'), 1);

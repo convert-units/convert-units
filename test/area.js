@@ -1,9 +1,9 @@
-  const assert = require('assert');
+const assert = require('assert');
 const convert = require('../src/originalConvert');
 
-  const tests = {};
-  const ACCURACY = 1 / 1000;
-  const percentError = require('../lib/percentError');
+const tests = {};
+const ACCURACY = 1 / 1000;
+const percentError = require('../lib/percentError');
 
 tests['ft2 to ft2'] = function () {
   assert.strictEqual(convert(1).from('ft2').to('ft2'), 1);
@@ -60,19 +60,19 @@ tests['km2 to m2'] = function () {
 // When converting between systems, expect < 0.1% error
 tests['m2 to ft2'] = function () {
   const expected = 10.7639;
-    const actual = convert(1).from('m2').to('ft2');
+  const actual = convert(1).from('m2').to('ft2');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['mm2 to ft2'] = function () {
   const expected = 1.07639e-5;
-    const actual = convert(1).from('mm2').to('ft2');
+  const actual = convert(1).from('mm2').to('ft2');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 

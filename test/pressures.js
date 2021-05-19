@@ -1,9 +1,9 @@
-  const assert = require('assert');
+const assert = require('assert');
 const convert = require('../src/originalConvert');
 
-  const tests = {};
-  const ACCURACY = 1 / 1000;
-  const percentError = require('../lib/percentError');
+const tests = {};
+const ACCURACY = 1 / 1000;
+const percentError = require('../lib/percentError');
 
 tests['Pa to Pa'] = function () {
   assert.strictEqual(convert(1).from('Pa').to('Pa'), 1);
@@ -31,10 +31,10 @@ tests['kPa to bar'] = function () {
 
 tests['kPa to torr'] = function () {
   const expected = 3990.33;
-    const actual = convert(532).from('kPa').to('torr');
+  const actual = convert(532).from('kPa').to('torr');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
@@ -48,29 +48,29 @@ tests['psi to ksi'] = function () {
 
 tests['Pa to psi'] = function () {
   const expected = 1.450377;
-    const actual = convert(10000).from('Pa').to('psi');
+  const actual = convert(10000).from('Pa').to('psi');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
   assert.strictEqual(convert(1).from('GB').to('B'), 1073741824);
 };
 
 tests['torr to ksi'] = function () {
   const expected = 1;
-    const actual = convert(51714.931860168974).from('torr').to('ksi');
+  const actual = convert(51714.931860168974).from('torr').to('ksi');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['psi to hPa'] = function () {
   const expected = 689.47573;
-    const actual = convert(10).from('psi').to('hPa');
+  const actual = convert(10).from('psi').to('hPa');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 

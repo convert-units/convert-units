@@ -1,9 +1,9 @@
-  const assert = require('assert');
+const assert = require('assert');
 const convert = require('../src/originalConvert');
 
-  const tests = {};
-  const ACCURACY = 1 / 1000;
-  const percentError = require('../lib/percentError');
+const tests = {};
+const ACCURACY = 1 / 1000;
+const percentError = require('../lib/percentError');
 
 tests['rad to rad'] = function () {
   assert.strictEqual(convert(1).from('rad').to('rad'), 1);
@@ -27,10 +27,10 @@ tests['arcsec to arcsec'] = function () {
 
 tests['deg to rad'] = function () {
   const expected = 6.28319;
-    const actual = convert(360).from('deg').to('rad');
+  const actual = convert(360).from('deg').to('rad');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
@@ -48,19 +48,19 @@ tests['deg to arcsec'] = function () {
 
 tests['rad to grad'] = function () {
   const expected = 636.62;
-    const actual = convert(10).from('rad').to('grad');
+  const actual = convert(10).from('rad').to('grad');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
 tests['rad to arcsec'] = function () {
   const expected = 2.063e6;
-    const actual = convert(10).from('rad').to('arcsec');
+  const actual = convert(10).from('rad').to('arcsec');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 
@@ -74,10 +74,10 @@ tests['grad to deg'] = function () {
 
 tests['arcmin to rad'] = function () {
   const expected = 2.908882;
-    const actual = convert(10000).from('arcmin').to('rad');
+  const actual = convert(10000).from('arcmin').to('rad');
   assert.ok(
     percentError(expected, actual) < ACCURACY,
-    `Expected: ${  expected  }, Actual: ${  actual}`
+    `Expected: ${expected}, Actual: ${actual}`
   );
 };
 

@@ -1,7 +1,7 @@
-  const assert = require('assert');
+const assert = require('assert');
 const convert = require('../src/originalConvert');
 
-  const tests = {};
+const tests = {};
 
 tests['ft-cd to lx'] = function () {
   assert.strictEqual(convert(1).from('ft-cd').to('lx'), 10.76391);

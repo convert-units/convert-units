@@ -1,7 +1,7 @@
-  const assert = require('assert');
+const assert = require('assert');
 const convert = require('../src/originalConvert');
 
-  const tests = {};
+const tests = {};
 
 tests['A to A'] = function () {
   assert.strictEqual(convert(1).from('A').to('A'), 1);

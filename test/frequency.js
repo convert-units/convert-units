@@ -1,7 +1,7 @@
-  const assert = require('assert');
+const assert = require('assert');
 const convert = require('../src/originalConvert');
 
-  const tests = {};
+const tests = {};
 
 tests['Hz to Hz'] = function () {
   assert.strictEqual(convert(1).from('Hz').to('Hz'), 1);

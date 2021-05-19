@@ -1,7 +1,7 @@
-  const assert = require('assert');
+const assert = require('assert');
 const convert = require('../src/originalConvert');
 
-  const tests = {};
+const tests = {};
 
 tests['g to m/s2'] = function () {
   assert.strictEqual(convert(1).from('g-force').to('m/s2'), 9.80665);
