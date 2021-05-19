@@ -1,4 +1,4 @@
-var convert = require('../lib'),
+var convert = require('../lib/originalConvert'),
   assert = require('assert-diff'),
   tests = {};
 
@@ -508,6 +508,22 @@ tests['all possibilities'] = function () {
       'yd3/s',
       'year',
       'μC',
+      'percentage',
+      'per mile',
+      'ratio',
+      'bp',
+      '%',
+      '‰',
+      '‱',
+      'integer',
+      'k',
+      'M',
+      'T',
+      'P',
+      'E',
+      'G',
+      'Y',
+      'Z'
     ];
 
   try {

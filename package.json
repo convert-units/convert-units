@@ -5,12 +5,20 @@
   "main": "lib",
   "dependencies": {
     "lodash.foreach": "4.5.x",
-    "lodash.keys": "4.2.x"
+    "lodash.keys": "4.2.x",
+    "numeral": "^2.0.6"
   },
   "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
     "assert-diff": "^1.1.0",
-    "eslint": "^7.19.0",
-    "eslint-config-prettier": "^4.1.0",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-import": "^2.23.2",
+    "eslint-plugin-prettier": "^3.4.0",
     "jake": "10.8.2",
     "prettier": "2.2.1"
   },

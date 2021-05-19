@@ -1,4 +1,4 @@
-var convert = require('../lib'),
+var convert = require('../lib/originalConvert'),
   assert = require('assert'),
   tests = {};
 
@@ -31,6 +31,8 @@ tests['measures'] = function () {
       'charge',
       'force',
       'acceleration',
+      'count',
+      'percent'
     ];
   assert.deepEqual(actual, expected);
 };

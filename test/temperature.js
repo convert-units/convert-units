@@ -1,4 +1,4 @@
-var convert = require('../lib'),
+var convert = require('../lib/originalConvert'),
   assert = require('assert'),
   tests = {};
 
