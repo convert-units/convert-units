@@ -4,3 +4,6 @@ coverage
 .github/**/*
 .prettierignore
 .prettierrc.json
+babel.config.js
+tsconfig*.json
+src

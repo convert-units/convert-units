@@ -23,6 +23,6 @@ jobs:
     - name: Install modules
       run: npm ci
     - name: Run ESLint
-      run: npm run linter
+      run: npm run lint
     - name: Run tests
       run: npm run test

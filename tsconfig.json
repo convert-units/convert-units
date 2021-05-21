@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "ES2020",
+    "allowJs": false,
+    "checkJs": false,
+    "noImplicitAny": true,
+    "declaration": true,
+    "outDir": "./lib/esm",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "moduleResolution": "Node"
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib",
+    "src/__tests__",
+    "src/definitions/__tests__"
+  ]
+}

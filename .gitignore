@@ -8,3 +8,4 @@ scratch
 *.swp
 
 coverage
+lib
