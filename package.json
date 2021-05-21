@@ -2,23 +2,30 @@
   "name": "convert-units",
   "version": "2.3.4",
   "description": "Convert between quantities in different units",
-  "main": "lib",
-  "dependencies": {
-    "lodash.foreach": "4.5.x",
-    "lodash.keys": "4.2.x"
-  },
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "files": [
+    "lib/"
+  ],
   "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.23.0",
     "eslint": "^7.19.0",
-    "eslint-config-prettier": "^4.1.0",
+    "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-prettier": "^3.4.0",
     "jest": "^26.6.3",
-    "prettier": "2.2.1"
+    "prettier": "2.2.1",
+    "ts-jest": "^26.5.6",
+    "typescript": "^4.2.4"
   },
   "scripts": {
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "linter": "eslint",
-    "formatter": "prettier --write lib"
+    "lint": "eslint src",
+    "format": "prettier --write src",
+    "compile": "tsc -p ./tsconfig.json && tsc -p ./tsconfig-cjs.json && tsc -p ./tsconfig-umd.json"
   },
   "repository": {
     "type": "git",
