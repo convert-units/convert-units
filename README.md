@@ -43,16 +43,16 @@ convert(1).from('oz').to('fl-oz')
 You can ask `convert-units` to select the best unit for you. You can also optionally explicitly exclude orders of magnitude or specify a cut off number for selecting the best representation.
 ```js
 convert(12000).from('mm').toBest()
-// 12 Meters (the smallest unit with a value above 1)
+// { val: 12, unit: 'm', plural: 'Meters' } (the smallest unit with a value above 1)
 
 convert(12000).from('mm').toBest({ exclude: ['m'] })
-// 1200 Centimeters (the smallest unit excluding meters)
+// { val: 1200, unit: 'cm', plural: 'Centimeters' } (the smallest unit excluding meters)
 
 convert(900).from('mm').toBest({ cutOffNumber: 10 });
-// 90 Centimeters (the smallest unit with a value equal to or above 10)
+// { val: 90, unit: 'cm', plural: 'Centimeters' } (the smallest unit with a value equal to or above 10)
 
 convert(1000).from('mm').toBest({ cutOffNumber: 10 })
-// 100 Centimeters (the smallest unit with a value equal to or above 10)
+// { val: 100, unit: 'cm', plural: 'Centimeters' } (the smallest unit with a value equal to or above 10)
 ```
 
 You can get a list of the measurement types supported with `.measures`
