@@ -135,7 +135,9 @@ Supported Units
 * mm
 * cm
 * m
+* km
 * in
+* yd
 * ft-us
 * ft
 * fathom
