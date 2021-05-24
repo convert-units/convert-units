@@ -229,7 +229,7 @@ test('voltage possibilities', () => {
 
 test('power possibilities', () => {
   const actual = convert().possibilities('power'),
-    expected = ['W', 'mW', 'kW', 'MW', 'GW'];
+    expected = ['W', 'mW', 'kW', 'MW', 'GW', 'BTU/s', 'ft-lb/s', 'hp'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -311,6 +311,7 @@ test('all possibilities', () => {
       'arcmin',
       'arcsec',
       'B',
+      'BTU/s',
       'C',
       'F',
       'R',
@@ -353,6 +354,7 @@ test('all possibilities', () => {
       'ft',
       'fathom',
       'ft-cd',
+      'ft-lb/s',
       'ft/s',
       'ft2',
       'ft3',
@@ -376,6 +378,7 @@ test('all possibilities', () => {
       'h',
       'hPa',
       'ha',
+      'hp',
       'Hz',
       'in',
       'in2',

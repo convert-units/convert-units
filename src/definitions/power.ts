@@ -34,6 +34,27 @@ const power = {
     },
     to_anchor: 1000000000,
   },
+  'BTU/s': {
+    name: {
+      singular: 'British thermal unit per second',
+      plural: 'British thermal units per second',
+    },
+    to_anchor: 1055.05585,
+  },
+  'ft-lb/s': {
+    name: {
+      singular: 'Foot-pound per second',
+      plural: 'Foot-pounds per second',
+    },
+    to_anchor: 1.3558,
+  },
+  hp: {
+    name: {
+      singular: 'Horsepower',
+      plural: 'Horsepower',
+    },
+    to_anchor: 745.7,
+  },
 };
 
 export default {
