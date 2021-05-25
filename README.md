@@ -385,7 +385,9 @@ Supported Units
 
 ### Want More?
 
-Adding new measurement sets is easy. Take a look at [`lib/definitions`](https://github.com/ben-ng/convert-units/tree/master/lib/definitions) to see how it's done.
+Adding new measurement sets is easy. Take a look at
+[`src/definitions`](https://github.com/convert-units/convert-units/tree/main/src/definitions)
+to see how it's done.
 
 License
 -------
