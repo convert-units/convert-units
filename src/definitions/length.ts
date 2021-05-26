@@ -1,17 +1,31 @@
 const metric = {
+  nm: {
+    name: {
+      singular: 'Nanometer',
+      plural: 'Nanometers',
+    },
+    to_anchor: 1e-9,
+  },
+  μm: {
+    name: {
+      singular: 'Micrometer',
+      plural: 'Micrometers',
+    },
+    to_anchor: 1e-6,
+  },
   mm: {
     name: {
       singular: 'Millimeter',
       plural: 'Millimeters',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: 1e-3,
   },
   cm: {
     name: {
       singular: 'Centimeter',
       plural: 'Centimeters',
     },
-    to_anchor: 1 / 100,
+    to_anchor: 1e-2,
   },
   m: {
     name: {
@@ -25,7 +39,7 @@ const metric = {
       singular: 'Kilometer',
       plural: 'Kilometers',
     },
-    to_anchor: 1000,
+    to_anchor: 1e3,
   },
 };
 

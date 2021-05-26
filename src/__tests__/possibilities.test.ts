@@ -41,6 +41,8 @@ test('kg possibilities', () => {
 test('m possibilities', () => {
   const actual = convert().from('m').possibilities(),
     expected = [
+      'nm',
+      'μm',
       'mm',
       'cm',
       'm',
@@ -147,6 +149,8 @@ test('volume flow rate possibilities', () => {
 test('length possibilities', () => {
   const actual = convert().possibilities('length'),
     expected = [
+      'nm',
+      'μm',
       'mm',
       'cm',
       'm',
@@ -447,6 +451,7 @@ test('all possibilities', () => {
       'mt',
       'mu',
       'nC',
+      'nm',
       'mHz',
       'MHz',
       'mV',
@@ -503,6 +508,7 @@ test('all possibilities', () => {
       'yd3/min',
       'yd3/s',
       'year',
+      'μm',
       'μC',
       'pcs',
       'bk-doz',

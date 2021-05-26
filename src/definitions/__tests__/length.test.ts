@@ -79,3 +79,19 @@ test('km to nMi', () => {
 test('fathom to m', () => {
   expect(convert(1).from('fathom').to('m')).toBeCloseTo(1.8288);
 });
+
+test('nm to nm', () => {
+  expect(convert(1).from('nm').to('nm')).toBe(1);
+});
+
+test('nm to m', () => {
+  expect(convert(1).from('nm').to('m')).toBe(1e-9);
+});
+
+test('μm to μm', () => {
+  expect(convert(1).from('μm').to('μm')).toBe(1);
+});
+
+test('μm to m', () => {
+  expect(convert(1).from('μm').to('m')).toBe(1e-6);
+});
