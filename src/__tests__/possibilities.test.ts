@@ -229,7 +229,7 @@ test('voltage possibilities', () => {
 
 test('power possibilities', () => {
   const actual = convert().possibilities('power'),
-    expected = ['W', 'mW', 'kW', 'MW', 'GW', 'BTU/s', 'ft-lb/s', 'hp'];
+    expected = ['W', 'mW', 'kW', 'MW', 'GW', 'Btu/s', 'ft-lb/s', 'hp'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
