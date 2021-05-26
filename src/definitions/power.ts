@@ -34,7 +34,7 @@ const power = {
     },
     to_anchor: 1000000000,
   },
-  'BTU/s': {
+  'Btu/s': {
     name: {
       singular: 'British thermal unit per second',
       plural: 'British thermal units per second',
