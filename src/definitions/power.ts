@@ -46,7 +46,7 @@ const power = {
       singular: 'Foot-pound per second',
       plural: 'Foot-pounds per second',
     },
-    to_anchor: 1.3558,
+    to_anchor: 1.3558179483314,
   },
   hp: {
     name: {
