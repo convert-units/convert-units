@@ -23,3 +23,27 @@ test('get ac', () => {
     };
   expect(actual).toEqual(expected);
 });
+
+test('get PS', () => {
+  const actual = convert().describe('PS'),
+    expected = {
+      abbr: 'PS',
+      measure: 'power',
+      system: 'metric',
+      singular: 'Horsepower (metric)',
+      plural: 'Horsepower (metric)',
+    };
+  expect(actual).toEqual(expected);
+});
+
+test('get hp', () => {
+  const actual = convert().describe('hp'),
+    expected = {
+      abbr: 'hp',
+      measure: 'power',
+      system: 'imperial',
+      singular: 'Horsepower (British)',
+      plural: 'Horsepower (British)',
+    };
+  expect(actual).toEqual(expected);
+});

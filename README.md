@@ -313,6 +313,10 @@ Supported Units
 * kW
 * MW
 * GW
+* PS
+* Btu/s
+* ft-lb/s
+* hp
 
 ### Apparent Power
 * VA
