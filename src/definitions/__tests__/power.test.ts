@@ -72,8 +72,8 @@ test('kW to W', () => {
   expect(convert(1).from('kW').to('W')).toBe(1000);
 });
 
-test('BTU/s to W', () => {
-  expect(convert(1).from('BTU/s').to('W')).toBe(1055.05585);
+test('Btu/s to W', () => {
+  expect(convert(1).from('Btu/s').to('W')).toBe(1055.05585);
 });
 
 test('ft-lb/s to W', () => {
