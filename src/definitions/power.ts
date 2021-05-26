@@ -53,7 +53,7 @@ const power = {
       singular: 'Horsepower',
       plural: 'Horsepower',
     },
-    to_anchor: 745.7,
+    to_anchor: 745.6998715822702,
   },
 };
 
