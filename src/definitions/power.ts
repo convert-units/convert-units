@@ -75,11 +75,11 @@ export default {
   anchors: {
     metric: {
       unit: 'W',
-      ratio: 0.737562,
+      ratio: 0.737562149,
     },
     imperial: {
       unit: 'ft-lb/s',
-      ratio: 1 / 0.737562,
+      ratio: 1 / 0.737562149,
     },
   },
 };

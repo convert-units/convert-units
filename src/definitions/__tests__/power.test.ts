@@ -20,6 +20,10 @@ test('GW to GW', () => {
   expect(convert(1).from('GW').to('GW')).toBe(1);
 });
 
+test('PS to PS', () => {
+  expect(convert(1).from('PS').to('PS')).toBe(1);
+});
+
 test('Btu/s to Btu/s', () => {
   expect(convert(1).from('Btu/s').to('Btu/s')).toBe(1);
 });
@@ -72,14 +76,14 @@ test('kW to W', () => {
   expect(convert(1).from('kW').to('W')).toBe(1000);
 });
 
-test('Btu/s to W', () => {
-  expect(convert(1).from('Btu/s').to('W')).toBe(1055.05585);
+test('PS to W', () => {
+  expect(convert(1).from('PS').to('W')).toBe(735.49875);
 });
 
-test('ft-lb/s to W', () => {
-  expect(convert(1).from('ft-lb/s').to('W')).toBe(1.3558179483314);
+test('hp to ft-lb/s', () => {
+  expect(convert(1).from('hp').to('ft-lb/s')).toBe(550);
 });
 
-test('hp to W', () => {
-  expect(convert(1).from('hp').to('W')).toBe(745.6998715822702);
+test('Btu/s to ft-lb/s', () => {
+  expect(convert(1).from('Btu/s').to('ft-lb/s')).toBe(778.16937);
 });
