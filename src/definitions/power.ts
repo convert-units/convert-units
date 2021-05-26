@@ -1,4 +1,4 @@
-const power = {
+const metric = {
   W: {
     name: {
       singular: 'Watt',
@@ -34,37 +34,52 @@ const power = {
     },
     to_anchor: 1000000000,
   },
+  PS: {
+    name: {
+      singular: 'Horsepower (metric)',
+      plural: 'Horsepower (metric)',
+    },
+    to_anchor: 735.49875,
+  },
+};
+
+const imperial = {
   'Btu/s': {
     name: {
       singular: 'British thermal unit per second',
       plural: 'British thermal units per second',
     },
-    to_anchor: 1055.05585,
+    to_anchor: 778.16937,
   },
   'ft-lb/s': {
     name: {
       singular: 'Foot-pound per second',
       plural: 'Foot-pounds per second',
     },
-    to_anchor: 1.3558179483314,
+    to_anchor: 1,
   },
   hp: {
     name: {
-      singular: 'Horsepower',
-      plural: 'Horsepower',
+      singular: 'Horsepower (British)',
+      plural: 'Horsepower (British)',
     },
-    to_anchor: 745.6998715822702,
+    to_anchor: 550,
   },
 };
 
 export default {
   systems: {
-    power,
+    metric,
+    imperial,
   },
   anchors: {
     metric: {
       unit: 'W',
-      ratio: 1,
+      ratio: 0.737562,
+    },
+    imperial: {
+      unit: 'ft-lb/s',
+      ratio: 1 / 0.737562,
     },
   },
 };
