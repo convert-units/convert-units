@@ -1,61 +1,3 @@
-import length from './definitions/length';
-import area from './definitions/area';
-import mass from './definitions/mass';
-import volume from './definitions/volume';
-import each from './definitions/each';
-import temperature from './definitions/temperature';
-import time from './definitions/time';
-import digital from './definitions/digital';
-import partsPer from './definitions/partsPer';
-import speed from './definitions/speed';
-import pace from './definitions/pace';
-import pressure from './definitions/pressure';
-import current from './definitions/current';
-import voltage from './definitions/voltage';
-import power from './definitions/power';
-import reactivePower from './definitions/reactivePower';
-import apparentPower from './definitions/apparentPower';
-import energy from './definitions/energy';
-import reactiveEnergy from './definitions/reactiveEnergy';
-import volumeFlowRate from './definitions/volumeFlowRate';
-import illuminance from './definitions/illuminance';
-import frequency from './definitions/frequency';
-import angle from './definitions/angle';
-import charge from './definitions/charge';
-import force from './definitions/force';
-import acceleration from './definitions/acceleration';
-import pieces from './definitions/pieces';
-
-const measures: Record<string, SystemExport> = {
-  length,
-  area,
-  mass,
-  volume,
-  each,
-  temperature,
-  time,
-  digital,
-  partsPer,
-  speed,
-  pace,
-  pressure,
-  current,
-  voltage,
-  power,
-  reactivePower,
-  apparentPower,
-  energy,
-  reactiveEnergy,
-  volumeFlowRate,
-  illuminance,
-  frequency,
-  angle,
-  charge,
-  force,
-  acceleration,
-  pieces,
-};
-
 export type Unit = {
   name: {
     singular: string;
@@ -93,6 +35,10 @@ export interface SystemExport {
   anchors: Record<string, Anchor>;
 }
 
+export interface Measures {
+  [key: string]: SystemExport;
+}
+
 /**
  * Represents a conversion path
  */
@@ -100,12 +46,19 @@ class Converter {
   private val = 0;
   private destination: Conversion | null = null;
   private origin: Conversion | null = null;
+  private measureData: Measures;
 
-  constructor(numerator?: number, denominator?: number) {
+  constructor(measures: Measures, numerator?: number, denominator?: number) {
     if (typeof numerator === 'number') {
       this.val = numerator;
       if (typeof denominator === 'number') this.val = numerator / denominator;
     }
+
+    if (typeof measures !== 'object') {
+      throw new Error('Measures cannot be blank');
+    }
+
+    this.measureData = measures;
   }
 
   /**
@@ -171,10 +124,12 @@ class Converter {
      * transform here to provide the direct result
      */
     if (origin.system != destination.system) {
-      const transform: unknown =
-        measures[origin.measure].anchors[origin.system].transform;
-      const ratio: unknown =
-        measures[origin.measure].anchors[origin.system].ratio;
+      const transform: unknown = this.measureData[origin.measure].anchors[
+        origin.system
+      ].transform;
+      const ratio: unknown = this.measureData[origin.measure].anchors[
+        origin.system
+      ].ratio;
       if (typeof transform === 'function') {
         result = transform(result);
       } else if (typeof ratio === 'number') {
@@ -246,7 +201,7 @@ class Converter {
   getUnit(abbr: string): Conversion | null {
     const found = null;
 
-    for (const [measureName, measure] of Object.entries(measures)) {
+    for (const [measureName, measure] of Object.entries(this.measureData)) {
       for (const [systemName, system] of Object.entries(measure.systems)) {
         for (const [testAbbr, unit] of Object.entries(system)) {
           if (testAbbr == abbr) {
@@ -302,7 +257,7 @@ class Converter {
     const list = [];
 
     if (measureName == null) {
-      for (const [name, measure] of Object.entries(measures)) {
+      for (const [name, measure] of Object.entries(this.measureData)) {
         for (const [systemName, units] of Object.entries(
           (measure as SystemExport).systems
         )) {
@@ -318,10 +273,10 @@ class Converter {
           }
         }
       }
-    } else if (!(measureName in measures)) {
+    } else if (!(measureName in this.measureData)) {
       throw new Error(`Meausre "${measureName}" not found.`);
     } else {
-      const measure = measures[measureName];
+      const measure = this.measureData[measureName];
       for (const [systemName, units] of Object.entries(
         (measure as SystemExport).systems
       )) {
@@ -344,7 +299,7 @@ class Converter {
   private throwUnsupportedUnitError(what: string): never {
     let validUnits: string[] = [];
 
-    for (const measure of Object.values(measures)) {
+    for (const measure of Object.values(this.measureData)) {
       for (const systems of Object.values((measure as SystemExport).systems)) {
         validUnits = validUnits.concat(Object.keys(systems));
       }
@@ -368,12 +323,13 @@ class Converter {
     } else if (this.origin != null) {
       list_measures.push(this.origin.measure);
     } else {
-      list_measures = Object.keys(measures);
+      list_measures = Object.keys(this.measureData);
     }
 
     for (const measure of list_measures) {
-      const systems: Record<string, Record<string, Unit>> =
-        measures[measure].systems;
+      const systems: Record<string, Record<string, Unit>> = this.measureData[
+        measure
+      ].systems;
 
       for (const system of Object.values(systems)) {
         possibilities = [...possibilities, ...Object.keys(system)];
@@ -388,10 +344,12 @@ class Converter {
    * converted to.
    */
   measures() {
-    return Object.keys(measures);
+    return Object.keys(this.measureData);
   }
 }
 
-export default function (value?: number): Converter {
-  return new Converter(value);
+type convertFactory = (value?: number) => Converter;
+
+export default function (measures: Measures): convertFactory {
+  return (value?: number) => new Converter(measures, value);
 }

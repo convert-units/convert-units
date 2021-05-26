@@ -1,6 +1,10 @@
-import convert from '..';
+import configureMeasurements from '..';
+import length from '../definitions/length';
 
 test('best mm', () => {
+  const convert = configureMeasurements({
+    length,
+  });
   const actual = convert(1200).from('mm').toBest(),
     expected = {
       val: 1.2,
@@ -12,6 +16,9 @@ test('best mm', () => {
 });
 
 test('excludes measurements', () => {
+  const convert = configureMeasurements({
+    length,
+  });
   const actual = convert(1200000)
       .from('mm')
       .toBest({ exclude: ['km', 'm'] }),
@@ -25,6 +32,9 @@ test('excludes measurements', () => {
 });
 
 test('does not break when excluding from measurement', () => {
+  const convert = configureMeasurements({
+    length,
+  });
   const actual = convert(10)
       .from('km')
       .toBest({ exclude: ['km'] }),
@@ -38,6 +48,9 @@ test('does not break when excluding from measurement', () => {
 });
 
 test('if all measurements are excluded return from', () => {
+  const convert = configureMeasurements({
+    length,
+  });
   const actual = convert(10)
       .from('km')
       .toBest({ exclude: ['mm, cm, m, km'] }),
@@ -51,6 +64,9 @@ test('if all measurements are excluded return from', () => {
 });
 
 test('pre-cut off number', () => {
+  const convert = configureMeasurements({
+    length,
+  });
   const actual = convert(9000).from('mm').toBest({ cutOffNumber: 10 }),
     expected = {
       val: 900,
@@ -62,6 +78,9 @@ test('pre-cut off number', () => {
 });
 
 test('post-cut off number', () => {
+  const convert = configureMeasurements({
+    length,
+  });
   const actual = convert(10000).from('mm').toBest({ cutOffNumber: 10 }),
     expected = {
       val: 10,
