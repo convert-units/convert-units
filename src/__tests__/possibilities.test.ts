@@ -311,7 +311,7 @@ test('all possibilities', () => {
       'arcmin',
       'arcsec',
       'B',
-      'BTU/s',
+      'Btu/s',
       'C',
       'F',
       'R',
