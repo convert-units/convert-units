@@ -41,19 +41,19 @@ test('m to m', () => {
 });
 
 test('m to cm', () => {
-  expect(convert(1).from('m').to('cm')).toBe(100);
+  expect(convert(1).from('m').to('cm')).toBe(1e2);
 });
 
 test('cm to m', () => {
-  expect(convert(1).from('cm').to('m')).toBe(1 / 100);
+  expect(convert(1).from('cm').to('m')).toBe(1e-2);
 });
 
 test('m to mm', () => {
-  expect(convert(1).from('m').to('mm')).toBe(1000);
+  expect(convert(1).from('m').to('mm')).toBe(1e3);
 });
 
 test('km to m', () => {
-  expect(convert(1).from('km').to('m')).toBe(1000);
+  expect(convert(1).from('km').to('m')).toBe(1e3);
 });
 
 test('m to ft', () => {
