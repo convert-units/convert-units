@@ -81,5 +81,5 @@ test('ft-lb/s to W', () => {
 });
 
 test('hp to W', () => {
-  expect(convert(1).from('hp').to('W')).toBe(745.7);
+  expect(convert(1).from('hp').to('W')).toBe(745.6998715822702);
 });
