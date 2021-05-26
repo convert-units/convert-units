@@ -20,8 +20,8 @@ test('GW to GW', () => {
   expect(convert(1).from('GW').to('GW')).toBe(1);
 });
 
-test('BTU/s to BTU/s', () => {
-  expect(convert(1).from('BTU/s').to('BTU/s')).toBe(1);
+test('Btu/s to Btu/s', () => {
+  expect(convert(1).from('Btu/s').to('Btu/s')).toBe(1);
 });
 
 test('ft-lb/s to ft-lb/s', () => {
