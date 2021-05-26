@@ -132,6 +132,8 @@ convert().list('mass')
 Supported Units
 ---------------
 ### Length
+* nm
+* μm
 * mm
 * cm
 * m
