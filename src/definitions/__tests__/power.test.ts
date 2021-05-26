@@ -77,7 +77,7 @@ test('Btu/s to W', () => {
 });
 
 test('ft-lb/s to W', () => {
-  expect(convert(1).from('ft-lb/s').to('W')).toBe(1.3558);
+  expect(convert(1).from('ft-lb/s').to('W')).toBe(1.3558179483314);
 });
 
 test('hp to W', () => {
