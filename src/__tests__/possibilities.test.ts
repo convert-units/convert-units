@@ -209,7 +209,7 @@ test('pressure possibilities', () => {
 
 test('speed possibilities', () => {
   const actual = convert().possibilities('speed'),
-    expected = ['m/s', 'km/h', 'm/h', 'knot', 'ft/s'];
+    expected = ['m/s', 'km/h', 'mph', 'knot', 'ft/s'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -425,7 +425,6 @@ test('all possibilities', () => {
       'lbf',
       'lx',
       'm',
-      'm/h',
       'm/s',
       'm/s2',
       'm2',
@@ -449,6 +448,7 @@ test('all possibilities', () => {
       'mm3',
       'mm3/s',
       'month',
+      'mph',
       'ms',
       'msk',
       'mt',
