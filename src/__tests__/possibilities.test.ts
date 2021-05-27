@@ -77,6 +77,8 @@ test('m possibilities', () => {
   });
   const actual = convert().from('m').possibilities(),
     expected = [
+      'nm',
+      'μm',
       'mm',
       'cm',
       'm',
@@ -198,6 +200,8 @@ test('length possibilities', () => {
   });
   const actual = convert().possibilities('length'),
     expected = [
+      'nm',
+      'μm',
       'mm',
       'cm',
       'm',
@@ -274,7 +278,7 @@ test('speed possibilities', () => {
     speed,
   });
   const actual = convert().possibilities('speed'),
-    expected = ['m/s', 'km/h', 'm/h', 'knot', 'ft/s'];
+    expected = ['m/s', 'km/h', 'mph', 'knot', 'ft/s'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -310,7 +314,7 @@ test('power possibilities', () => {
     power,
   });
   const actual = convert().possibilities('power'),
-    expected = ['W', 'mW', 'kW', 'MW', 'GW'];
+    expected = ['W', 'mW', 'kW', 'MW', 'GW', 'PS', 'Btu/s', 'ft-lb/s', 'hp'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -451,6 +455,7 @@ test('all possibilities', () => {
       'arcmin',
       'arcsec',
       'B',
+      'Btu/s',
       'C',
       'F',
       'R',
@@ -493,6 +498,7 @@ test('all possibilities', () => {
       'ft',
       'fathom',
       'ft-cd',
+      'ft-lb/s',
       'ft/s',
       'ft2',
       'ft3',
@@ -516,6 +522,7 @@ test('all possibilities', () => {
       'h',
       'hPa',
       'ha',
+      'hp',
       'Hz',
       'in',
       'in2',
@@ -558,7 +565,6 @@ test('all possibilities', () => {
       'lbf',
       'lx',
       'm',
-      'm/h',
       'm/s',
       'm/s2',
       'm2',
@@ -582,11 +588,13 @@ test('all possibilities', () => {
       'mm3',
       'mm3/s',
       'month',
+      'mph',
       'ms',
       'msk',
       'mt',
       'mu',
       'nC',
+      'nm',
       'mHz',
       'MHz',
       'mV',
@@ -613,6 +621,7 @@ test('all possibilities', () => {
       'ppq',
       'ppt',
       'psi',
+      'PS',
       'qt',
       'qt/s',
       'rad',
@@ -643,6 +652,7 @@ test('all possibilities', () => {
       'yd3/min',
       'yd3/s',
       'year',
+      'μm',
       'μC',
       'pcs',
       'bk-doz',

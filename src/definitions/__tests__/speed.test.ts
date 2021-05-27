@@ -15,25 +15,25 @@ test('m/s to km/h', () => {
   expect(convert(1).from('m/s').to('km/h')).toBe(3.6);
 });
 
-test('m/h to m/h', () => {
+test('mph to mph', () => {
   const convert = configureMeasurements({
     speed,
   });
-  expect(convert(6).from('m/h').to('m/h')).toBe(6);
+  expect(convert(6).from('mph').to('mph')).toBe(6);
 });
 
-test('m/h to knot', () => {
+test('mph to knot', () => {
   const convert = configureMeasurements({
     speed,
   });
-  expect(convert(2).from('m/h').to('knot')).toBeCloseTo(1.73795);
+  expect(convert(2).from('mph').to('knot')).toBeCloseTo(1.73795);
 });
 
-test('m/h to ft/s', () => {
+test('mph to ft/s', () => {
   const convert = configureMeasurements({
     speed,
   });
-  expect(convert(3).from('m/h').to('ft/s')).toBeCloseTo(4.4);
+  expect(convert(3).from('mph').to('ft/s')).toBeCloseTo(4.4);
 });
 
 test('m/s to knot', () => {
@@ -43,9 +43,9 @@ test('m/s to knot', () => {
   expect(convert(8).from('m/s').to('knot')).toBeCloseTo(15.5508);
 });
 
-test('m/h to km/h', () => {
+test('mph to km/h', () => {
   const convert = configureMeasurements({
     speed,
   });
-  expect(convert(12).from('m/h').to('km/h')).toBeCloseTo(19.3121);
+  expect(convert(12).from('mph').to('km/h')).toBeCloseTo(19.3121);
 });

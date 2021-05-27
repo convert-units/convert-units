@@ -75,28 +75,28 @@ test('m to cm', () => {
   const convert = configureMeasurements({
     length,
   });
-  expect(convert(1).from('m').to('cm')).toBe(100);
+  expect(convert(1).from('m').to('cm')).toBe(1e2);
 });
 
 test('cm to m', () => {
   const convert = configureMeasurements({
     length,
   });
-  expect(convert(1).from('cm').to('m')).toBe(1 / 100);
+  expect(convert(1).from('cm').to('m')).toBe(1e-2);
 });
 
 test('m to mm', () => {
   const convert = configureMeasurements({
     length,
   });
-  expect(convert(1).from('m').to('mm')).toBe(1000);
+  expect(convert(1).from('m').to('mm')).toBe(1e3);
 });
 
 test('km to m', () => {
   const convert = configureMeasurements({
     length,
   });
-  expect(convert(1).from('km').to('m')).toBe(1000);
+  expect(convert(1).from('km').to('m')).toBe(1e3);
 });
 
 test('m to ft', () => {
@@ -139,4 +139,32 @@ test('fathom to m', () => {
     length,
   });
   expect(convert(1).from('fathom').to('m')).toBeCloseTo(1.8288);
+});
+
+test('nm to nm', () => {
+  const convert = configureMeasurements({
+    length,
+  });
+  expect(convert(1).from('nm').to('nm')).toBe(1);
+});
+
+test('nm to m', () => {
+  const convert = configureMeasurements({
+    length,
+  });
+  expect(convert(1).from('nm').to('m')).toBe(1e-9);
+});
+
+test('μm to μm', () => {
+  const convert = configureMeasurements({
+    length,
+  });
+  expect(convert(1).from('μm').to('μm')).toBe(1);
+});
+
+test('μm to m', () => {
+  const convert = configureMeasurements({
+    length,
+  });
+  expect(convert(1).from('μm').to('m')).toBe(1e-6);
 });

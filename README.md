@@ -363,7 +363,7 @@ Packaged Units
 ### Speed
 * m/s
 * km/h
-* m/h
+* mph
 * knot
 * ft/s
 
