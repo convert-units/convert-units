@@ -16,7 +16,7 @@ const metric = {
 };
 
 const imperial = {
-  'm/h': {
+  mph: {
     name: {
       singular: 'Mile per hour',
       plural: 'Miles per hour',
@@ -50,7 +50,7 @@ export default {
       ratio: 1 / 1.609344,
     },
     imperial: {
-      unit: 'm/h',
+      unit: 'mph',
       ratio: 1.609344,
     },
   },
