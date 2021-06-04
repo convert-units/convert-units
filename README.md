@@ -8,8 +8,13 @@ A handy utility for converting between quantities in different units.
 Installation
 -----
 
-```
+```bash
 npm install convert-units --save
+```
+
+```bash
+# beta builds are also available with
+npm install convert-units@next --save
 ```
 
 Usage
@@ -20,7 +25,16 @@ Usage
 The code snippet below shows everything needed to get going:
 
 ```js
+import configureMeasurements from 'convert-units';
+// `allMeasures` includes all the measures packaged with this library
+import allMeasures from 'convert-units/definitions';
 
+const convert = configureMeasurements(allMeausres);
+```
+
+It's also possible to limit the measures configured to only the ones your application needs:
+
+```js
 import configureMeasurements from 'convert-units';
 
 import volume from 'convert-units/definitions/volume';
@@ -28,8 +42,8 @@ import mass from 'convert-units/definitions/mass';
 import length from 'convert-units/definitions/length';
 
 /*
-  The function `configureMeasurements` is a closure that accepts
-  directory of measures and returns a factory function (`convert`) that uses
+  `configureMeasurements` is a closure that accepts a directory
+  of measures and returns a factory function (`convert`) that uses
   only those measures.
 */
 const convert = configureMeasurements({
@@ -79,7 +93,7 @@ You can get a list of the measures available to the current instance with `.meas
 
 ```js
 convert().measures();
-// [ 'length', 'mass', 'volume' ]
+// [ 'length', 'mass', 'volume', ... ]
 
 const differentConvert = configureMeasurements({
     volume,
@@ -229,11 +243,15 @@ convert(1).from('m').to('ft');
 `convert.js`
 ```js
 import configureMeasurements from 'convert-units';
-import length from 'convert-units/definitions/length';
-import area from 'convert-units/definitions/area';
+import allMeasures from 'convert-units/definitions';
 
-export default configureMeasurements({ length, area });
+export default configureMeasurements(allMeasures);
 ```
+
+Request Measures & Units
+-----------------------
+
+All new measures and additional units are welcome! Take a look at [`src/definitions`](https://github.com/convert-units/convert-units/tree/main/src/definitions) to see some examples.
 
 Packaged Units
 --------------
@@ -494,12 +512,6 @@ Packaged Units
 * sm-gr
 * trio 
 
-
-### Want More?
-
-Adding new measurement sets is easy. Take a look at
-[`src/definitions`](https://github.com/convert-units/convert-units/tree/main/src/definitions)
-to see how it's done.
 
 License
 -------

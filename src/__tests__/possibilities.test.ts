@@ -1,6 +1,5 @@
 import configureMeasurements from '..';
 import length from '../definitions/length';
-import area from '../definitions/area';
 import mass from '../definitions/mass';
 import volume from '../definitions/volume';
 import each from '../definitions/each';
@@ -26,6 +25,8 @@ import charge from '../definitions/charge';
 import force from '../definitions/force';
 import acceleration from '../definitions/acceleration';
 import pieces from '../definitions/pieces';
+
+import allMeausures from '../definitions';
 
 test('l possibilities', () => {
   const convert = configureMeasurements({
@@ -419,35 +420,7 @@ test('acceleration possibilities', () => {
 });
 
 test('all possibilities', () => {
-  const convert = configureMeasurements({
-    length,
-    area,
-    mass,
-    volume,
-    each,
-    temperature,
-    time,
-    digital,
-    partsPer,
-    speed,
-    pace,
-    pressure,
-    current,
-    voltage,
-    power,
-    reactivePower,
-    apparentPower,
-    energy,
-    reactiveEnergy,
-    volumeFlowRate,
-    illuminance,
-    frequency,
-    angle,
-    charge,
-    force,
-    acceleration,
-    pieces,
-  });
+  const convert = configureMeasurements(allMeausures);
   const actual = convert().possibilities(),
     // Please keep these sorted for maintainability
     expected = [
