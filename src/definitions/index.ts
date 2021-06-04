@@ -54,6 +54,6 @@ const allMeausures = {
   force,
   acceleration,
   pieces,
-}
+};
 
 export default allMeausures;
