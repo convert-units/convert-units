@@ -14,7 +14,7 @@ npm install convert-units --save
 
 ```bash
 # beta builds are also available with
-npm install convert-units@next --save
+npm install convert-units@beta --save
 ```
 
 Usage
