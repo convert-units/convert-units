@@ -1,6 +1,12 @@
-import convert from '..';
+import configureMeasurements from '..';
+import area from '../definitions/area';
+import mass from '../definitions/mass';
+import power from '../definitions/power';
 
 test('get kg', () => {
+  const convert = configureMeasurements({
+    mass,
+  });
   const actual = convert().describe('kg'),
     expected = {
       abbr: 'kg',
@@ -13,6 +19,9 @@ test('get kg', () => {
 });
 
 test('get ac', () => {
+  const convert = configureMeasurements({
+    area,
+  });
   const actual = convert().describe('ac'),
     expected = {
       abbr: 'ac',
@@ -25,6 +34,9 @@ test('get ac', () => {
 });
 
 test('get PS', () => {
+  const convert = configureMeasurements({
+    power,
+  });
   const actual = convert().describe('PS'),
     expected = {
       abbr: 'PS',
@@ -37,6 +49,9 @@ test('get PS', () => {
 });
 
 test('get hp', () => {
+  const convert = configureMeasurements({
+    power,
+  });
   const actual = convert().describe('hp'),
     expected = {
       abbr: 'hp',

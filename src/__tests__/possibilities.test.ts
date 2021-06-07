@@ -1,6 +1,36 @@
-import convert from '..';
+import configureMeasurements from '..';
+import allMeausures from '../definitions';
+import acceleration from '../definitions/acceleration';
+import angle from '../definitions/angle';
+import apparentPower from '../definitions/apparentPower';
+import charge from '../definitions/charge';
+import current from '../definitions/current';
+import digital from '../definitions/digital';
+import each from '../definitions/each';
+import energy from '../definitions/energy';
+import force from '../definitions/force';
+import frequency from '../definitions/frequency';
+import illuminance from '../definitions/illuminance';
+import length from '../definitions/length';
+import mass from '../definitions/mass';
+import pace from '../definitions/pace';
+import partsPer from '../definitions/partsPer';
+import pieces from '../definitions/pieces';
+import power from '../definitions/power';
+import pressure from '../definitions/pressure';
+import reactiveEnergy from '../definitions/reactiveEnergy';
+import reactivePower from '../definitions/reactivePower';
+import speed from '../definitions/speed';
+import temperature from '../definitions/temperature';
+import time from '../definitions/time';
+import voltage from '../definitions/voltage';
+import volume from '../definitions/volume';
+import volumeFlowRate from '../definitions/volumeFlowRate';
 
 test('l possibilities', () => {
+  const convert = configureMeasurements({
+    volume,
+  });
   const actual = convert().from('l').possibilities(),
     expected = [
       'mm3',
@@ -33,12 +63,18 @@ test('l possibilities', () => {
 });
 
 test('kg possibilities', () => {
+  const convert = configureMeasurements({
+    mass,
+  });
   const actual = convert().from('kg').possibilities(),
     expected = ['mcg', 'mg', 'g', 'kg', 'mt', 'oz', 'lb', 't'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('m possibilities', () => {
+  const convert = configureMeasurements({
+    length,
+  });
   const actual = convert().from('m').possibilities(),
     expected = [
       'nm',
@@ -59,18 +95,27 @@ test('m possibilities', () => {
 });
 
 test('each possibilities', () => {
+  const convert = configureMeasurements({
+    each,
+  });
   const actual = convert().possibilities('each'),
     expected = ['ea', 'dz'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('mass possibilities', () => {
+  const convert = configureMeasurements({
+    mass,
+  });
   const actual = convert().possibilities('mass'),
     expected = ['mcg', 'mg', 'g', 'kg', 'mt', 'oz', 'lb', 't'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('volume possibilities', () => {
+  const convert = configureMeasurements({
+    volume,
+  });
   const actual = convert().possibilities('volume'),
     expected = [
       'mm3',
@@ -103,6 +148,9 @@ test('volume possibilities', () => {
 });
 
 test('volume flow rate possibilities', () => {
+  const convert = configureMeasurements({
+    volumeFlowRate,
+  });
   const actual = convert().possibilities('volumeFlowRate'),
     expected = [
       'mm3/s',
@@ -147,6 +195,9 @@ test('volume flow rate possibilities', () => {
 });
 
 test('length possibilities', () => {
+  const convert = configureMeasurements({
+    length,
+  });
   const actual = convert().possibilities('length'),
     expected = [
       'nm',
@@ -167,12 +218,18 @@ test('length possibilities', () => {
 });
 
 test('temperature possibilities', () => {
+  const convert = configureMeasurements({
+    temperature,
+  });
   const actual = convert().possibilities('temperature'),
     expected = ['C', 'K', 'F', 'R'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('time possibilities', () => {
+  const convert = configureMeasurements({
+    time,
+  });
   const actual = convert().possibilities('time'),
     expected = [
       'ns',
@@ -190,78 +247,117 @@ test('time possibilities', () => {
 });
 
 test('digital possibilities', () => {
+  const convert = configureMeasurements({
+    digital,
+  });
   const actual = convert().possibilities('digital'),
     expected = ['b', 'Kb', 'Mb', 'Gb', 'Tb', 'B', 'KB', 'MB', 'GB', 'TB'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('partsPer possibilities', () => {
+  const convert = configureMeasurements({
+    partsPer,
+  });
   const actual = convert().possibilities('partsPer'),
     expected = ['ppm', 'ppb', 'ppt', 'ppq'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('pressure possibilities', () => {
+  const convert = configureMeasurements({
+    pressure,
+  });
   const actual = convert().possibilities('pressure'),
     expected = ['Pa', 'kPa', 'MPa', 'hPa', 'bar', 'torr', 'psi', 'ksi'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('speed possibilities', () => {
+  const convert = configureMeasurements({
+    speed,
+  });
   const actual = convert().possibilities('speed'),
     expected = ['m/s', 'km/h', 'mph', 'knot', 'ft/s'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('pace possibilities', () => {
+  const convert = configureMeasurements({
+    pace,
+  });
   const actual = convert().possibilities('pace'),
     expected = ['min/km', 's/m', 'min/mi', 's/ft'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('current possibilities', () => {
+  const convert = configureMeasurements({
+    current,
+  });
   const actual = convert().possibilities('current'),
     expected = ['A', 'mA', 'kA'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('voltage possibilities', () => {
+  const convert = configureMeasurements({
+    voltage,
+  });
   const actual = convert().possibilities('voltage'),
     expected = ['V', 'mV', 'kV'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('power possibilities', () => {
+  const convert = configureMeasurements({
+    power,
+  });
   const actual = convert().possibilities('power'),
     expected = ['W', 'mW', 'kW', 'MW', 'GW', 'PS', 'Btu/s', 'ft-lb/s', 'hp'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('reactive power possibilities', () => {
+  const convert = configureMeasurements({
+    reactivePower,
+  });
   const actual = convert().possibilities('reactivePower'),
     expected = ['VAR', 'mVAR', 'kVAR', 'MVAR', 'GVAR'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('apparent power possibilities', () => {
+  const convert = configureMeasurements({
+    apparentPower,
+  });
   const actual = convert().possibilities('apparentPower'),
     expected = ['VA', 'mVA', 'kVA', 'MVA', 'GVA'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('energy possibilities', () => {
+  const convert = configureMeasurements({
+    energy,
+  });
   const actual = convert().possibilities('energy'),
     expected = ['Wh', 'mWh', 'kWh', 'MWh', 'GWh', 'J', 'kJ'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('reactive energy possibilities', () => {
+  const convert = configureMeasurements({
+    reactiveEnergy,
+  });
   const actual = convert().possibilities('reactiveEnergy'),
     expected = ['VARh', 'mVARh', 'kVARh', 'MVARh', 'GVARh'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('frequency possibilities', () => {
+  const convert = configureMeasurements({
+    frequency,
+  });
   const actual = convert().possibilities('frequency'),
     expected = [
       'mHz',
@@ -278,36 +374,52 @@ test('frequency possibilities', () => {
 });
 
 test('illuminance possibilities', () => {
+  const convert = configureMeasurements({
+    illuminance,
+  });
   const actual = convert().possibilities('illuminance'),
     expected = ['lx', 'ft-cd'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('angle possibilities', () => {
+  const convert = configureMeasurements({
+    angle,
+  });
   const actual = convert().possibilities('angle'),
     expected = ['rad', 'deg', 'grad', 'arcmin', 'arcsec'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('charge possibilities', () => {
+  const convert = configureMeasurements({
+    charge,
+  });
   const actual = convert().possibilities('charge'),
     expected = ['c', 'mC', 'μC', 'nC', 'pC'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('force possibilities', () => {
+  const convert = configureMeasurements({
+    force,
+  });
   const actual = convert().possibilities('force'),
     expected = ['N', 'kN', 'lbf'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('acceleration possibilities', () => {
+  const convert = configureMeasurements({
+    acceleration,
+  });
   const actual = convert().possibilities('acceleration'),
     expected = ['g-force', 'm/s2'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
 test('all possibilities', () => {
+  const convert = configureMeasurements(allMeausures);
   const actual = convert().possibilities(),
     // Please keep these sorted for maintainability
     expected = [
@@ -532,6 +644,9 @@ test('all possibilities', () => {
 });
 
 test('pieces possibilities', () => {
+  const convert = configureMeasurements({
+    pieces,
+  });
   const actual = convert().possibilities('pieces'),
     expected = [
       'pcs',

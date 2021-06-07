@@ -8,93 +8,136 @@ A handy utility for converting between quantities in different units.
 Installation
 -----
 
-```
+```bash
 npm install convert-units --save
+```
+
+```bash
+# beta builds are also available with
+npm install convert-units@next --save
 ```
 
 Usage
 -----
 
-`convert-units` has a simple chained API that is easy to read.
+`convert-units` has a simple chained API that is easy to read. It can also be configured with the measures that are packaged with it or custom measures.
+
+The code snippet below shows everything needed to get going:
+
+```js
+import configureMeasurements from 'convert-units';
+// `allMeasures` includes all the measures packaged with this library
+import allMeasures from 'convert-units/definitions';
+
+const convert = configureMeasurements(allMeausres);
+```
+
+It's also possible to limit the measures configured to only the ones your application needs:
+
+```js
+import configureMeasurements from 'convert-units';
+
+import volume from 'convert-units/definitions/volume';
+import mass from 'convert-units/definitions/mass';
+import length from 'convert-units/definitions/length';
+
+/*
+  `configureMeasurements` is a closure that accepts a directory
+  of measures and returns a factory function (`convert`) that uses
+  only those measures.
+*/
+const convert = configureMeasurements({
+    volume,
+    mass,
+    length,
+});
+```
 
 Here's how you move between the metric units for volume:
 
 ```js
-var convert = require('convert-units')
-
-convert(1).from('l').to('ml')
+convert(1).from('l').to('ml');
 // 1000
 ```
 
 Jump from imperial to metric units the same way:
 
 ```js
-convert(1).from('lb').to('kg')
+convert(1).from('lb').to('kg');
 // 0.4536... (tested to 4 significant figures)
 ```
 
 Just be careful not to ask for an impossible conversion:
 
 ```js
-convert(1).from('oz').to('fl-oz')
+convert(1).from('oz').to('fl-oz');
 // throws -- you can't go from mass to volume!
 ```
 
 You can ask `convert-units` to select the best unit for you. You can also optionally explicitly exclude orders of magnitude or specify a cut off number for selecting the best representation.
 ```js
-convert(12000).from('mm').toBest()
+convert(12000).from('mm').toBest();
 // { val: 12, unit: 'm', plural: 'Meters' } (the smallest unit with a value above 1)
 
-convert(12000).from('mm').toBest({ exclude: ['m'] })
+convert(12000).from('mm').toBest({ exclude: ['m'] });
 // { val: 1200, unit: 'cm', plural: 'Centimeters' } (the smallest unit excluding meters)
 
 convert(900).from('mm').toBest({ cutOffNumber: 10 });
 // { val: 90, unit: 'cm', plural: 'Centimeters' } (the smallest unit with a value equal to or above 10)
 
-convert(1000).from('mm').toBest({ cutOffNumber: 10 })
+convert(1000).from('mm').toBest({ cutOffNumber: 10 });
 // { val: 100, unit: 'cm', plural: 'Centimeters' } (the smallest unit with a value equal to or above 10)
 ```
 
-You can get a list of the measurement types supported with `.measures`
+You can get a list of the measures available to the current instance with `.measures`
 
 ```js
-convert().measures()
-// [ 'length', 'mass', 'volume' ]
+convert().measures();
+// [ 'length', 'mass', 'volume', ... ]
+
+const differentConvert = configureMeasurements({
+    volume,
+    mass,
+    length,
+    area,
+});
+differentConvert().measures();
+// [ 'length', 'mass', 'volume', 'area' ]
 ```
 
 If you ever want to know the possible conversions for a unit, just use `.possibilities`
 
 ```js
-convert().from('l').possibilities()
+convert().from('l').possibilities();
 // [ 'ml', 'l', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal' ]
 
-convert().from('kg').possibilities()
+convert().from('kg').possibilities();
 // [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ]
 ```
 
 You can also get the possible conversions for a measure:
 ```js
-convert().possibilities('mass')
+convert().possibilities('mass');
 // [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'mt', 't' ]
 ```
 
 You can also get the all the available units:
 ```js
-convert().possibilities()
+convert().possibilities();
 // [ 'mm', 'cm', 'm', 'in', 'ft-us', 'ft', 'mi', 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 'mt', 't', 'ml', 'l', 'tsp', 'Tbs', 'fl-oz', 'cup', 'pnt', 'qt', 'gal', 'ea', 'dz' ];
 ```
 
 To get a detailed description of a unit, use `describe`
 
 ```js
-convert().describe('kg')
+convert().describe('kg');
 /*
   {
-    abbr: 'kg'
-  , measure: 'mass'
-  , system: 'metric'
-  , singular: 'Kilogram'
-  , plural: 'Kilograms'
+    abbr: 'kg',
+    measure: 'mass',
+    system: 'metric',
+    singular: 'Kilogram',
+    plural: 'Kilograms',
   }
 */
 ```
@@ -102,14 +145,14 @@ convert().describe('kg')
 To get detailed descriptions of all units, use `list`.
 
 ```js
-convert().list()
+convert().list();
 /*
   [{
-    abbr: 'kg'
-  , measure: 'mass'
-  , system: 'metric'
-  , singular: 'Kilogram'
-  , plural: 'Kilograms'
+    abbr: 'kg',
+    measure: 'mass',
+    system: 'metric',
+    singular: 'Kilogram',
+    plural: 'Kilograms',
   }, ...]
 */
 ```
@@ -117,20 +160,101 @@ convert().list()
 You can also get detailed descriptions of all units for a measure:
 
 ```js
-convert().list('mass')
+convert().list('mass');
 /*
   [{
-    abbr: 'kg'
-  , measure: 'mass'
-  , system: 'metric'
-  , singular: 'Kilogram'
-  , plural: 'Kilograms'
+    abbr: 'kg',
+    measure: 'mass',
+    system: 'metric',
+    singular: 'Kilogram',
+    plural: 'Kilograms',
   }, ...]
 */
 ```
 
-Supported Units
+Custom Measures
 ---------------
+
+```js
+import configureMeasurements from 'convert-units';
+import length from 'convert-units/definitions/length';
+import area from 'convert-units/definitions/area';
+
+const customEach = {
+  systems: {
+    metric: {
+      ea: {
+        name: {
+          singular: 'Each',
+          plural: 'Each',
+        },
+        to_anchor: 1,
+      },
+      dz: {
+        name: {
+          singular: 'Dozen',
+          plural: 'Dozens',
+        },
+        to_anchor: 12,
+      },
+      hdz: {
+        name: {
+          singular: 'Half Dozen',
+          plural: 'Half Dozens',
+        },
+        to_anchor: 6,
+      },
+    },
+  },
+  anchors: {
+    metric: {
+      unit: 'ea',
+      ratio: 1,
+    },
+  },
+};
+
+export default configureMeasurements({ length, area, each: customEach });
+```
+
+Migrating from Old API
+---------------------
+
+This only applies if moving from `<=2.3.4` to `>=3.x`.
+ 
+`index.js`
+```js
+import convert from 'convert-units';
+
+convert(1).from('m').to('mm');
+convert(1).from('m').to('ft');
+```
+
+The code above could be changed to match the following:
+
+`index.js`
+```js
+import convert from './convert';  // defined below
+
+convert(1).from('m').to('mm');
+convert(1).from('m').to('ft');
+```
+
+`convert.js`
+```js
+import configureMeasurements from 'convert-units';
+import allMeasures from 'convert-units/definitions';
+
+export default configureMeasurements(allMeasures);
+```
+
+Request Measures & Units
+-----------------------
+
+All new measures and additional units are welcome! Take a look at [`src/definitions`](https://github.com/convert-units/convert-units/tree/main/src/definitions) to see some examples.
+
+Packaged Units
+--------------
 ### Length
 * nm
 * μm
@@ -389,12 +513,6 @@ Supported Units
 * trio 
 
 
-### Want More?
-
-Adding new measurement sets is easy. Take a look at
-[`src/definitions`](https://github.com/convert-units/convert-units/tree/main/src/definitions)
-to see how it's done.
-
 License
 -------
 Copyright (c) 2013-2017 Ben Ng and Contributors, http://benng.me
@@ -419,3 +537,4 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
+
