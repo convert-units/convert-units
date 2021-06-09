@@ -27,7 +27,7 @@ import voltage from './voltage';
 import volume from './volume';
 import volumeFlowRate from './volumeFlowRate';
 
-const allMeausures: Measures = {
+const allMeasures: Measures = {
   acceleration,
   angle,
   apparentPower,
@@ -57,7 +57,7 @@ const allMeausures: Measures = {
   volumeFlowRate,
 };
 
-export default allMeausures;
+export default allMeasures;
 export {
   acceleration,
   angle,
