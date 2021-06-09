@@ -1,4 +1,11 @@
-const metric = {
+import { Measure, Unit } from './../index';
+export type PressureUnits = PressureMetricUnits | PressureImperialUnits;
+export type PressureSystems = 'metric' | 'imperial';
+
+export type PressureMetricUnits = 'Pa' | 'kPa' | 'MPa' | 'hPa' | 'bar' | 'torr';
+export type PressureImperialUnits = 'psi' | 'ksi';
+
+const metric: Record<PressureMetricUnits, Unit> = {
   Pa: {
     name: {
       singular: 'pascal',
@@ -43,7 +50,7 @@ const metric = {
   },
 };
 
-const imperial = {
+const imperial: Record<PressureImperialUnits, Unit> = {
   psi: {
     name: {
       singular: 'pound per square inch',
@@ -60,19 +67,23 @@ const imperial = {
   },
 };
 
-export default {
+const measure: Measure<PressureSystems, PressureUnits> = {
   systems: {
     metric,
     imperial,
   },
   anchors: {
     metric: {
-      unit: 'kPa',
-      ratio: 0.00014503768078,
+      imperial: {
+        ratio: 0.00014503768078,
+      },
     },
     imperial: {
-      unit: 'psi',
-      ratio: 1 / 0.00014503768078,
+      metric: {
+        ratio: 1 / 0.00014503768078,
+      },
     },
   },
 };
+
+export default measure;

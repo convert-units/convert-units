@@ -1,4 +1,11 @@
-const metric = {
+import { Measure, Unit } from './../index';
+export type PowerUnits = PowerMetricUnits | PowerImperialUnits;
+export type PowerSystems = 'metric' | 'imperial';
+
+export type PowerMetricUnits = 'W' | 'mW' | 'kW' | 'MW' | 'GW' | 'PS';
+export type PowerImperialUnits = 'Btu/s' | 'ft-lb/s' | 'hp';
+
+const metric: Record<PowerMetricUnits, Unit> = {
   W: {
     name: {
       singular: 'Watt',
@@ -43,7 +50,7 @@ const metric = {
   },
 };
 
-const imperial = {
+const imperial: Record<PowerImperialUnits, Unit> = {
   'Btu/s': {
     name: {
       singular: 'British thermal unit per second',
@@ -67,19 +74,23 @@ const imperial = {
   },
 };
 
-export default {
+const measure: Measure<PowerSystems, PowerUnits> = {
   systems: {
     metric,
     imperial,
   },
   anchors: {
     metric: {
-      unit: 'W',
-      ratio: 0.737562149,
+      imperial: {
+        ratio: 0.737562149,
+      },
     },
     imperial: {
-      unit: 'ft-lb/s',
-      ratio: 1 / 0.737562149,
+      metric: {
+        ratio: 1 / 0.737562149,
+      },
     },
   },
 };
+
+export default measure;

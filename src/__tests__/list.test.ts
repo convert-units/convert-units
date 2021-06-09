@@ -1,34 +1,13 @@
 import configureMeasurements from '..';
-import acceleration from '../definitions/acceleration';
-import angle from '../definitions/angle';
-import apparentPower from '../definitions/apparentPower';
-import area from '../definitions/area';
-import charge from '../definitions/charge';
-import current from '../definitions/current';
-import digital from '../definitions/digital';
-import each from '../definitions/each';
-import energy from '../definitions/energy';
-import force from '../definitions/force';
-import frequency from '../definitions/frequency';
-import illuminance from '../definitions/illuminance';
-import length from '../definitions/length';
-import mass from '../definitions/mass';
-import pace from '../definitions/pace';
-import partsPer from '../definitions/partsPer';
-import pieces from '../definitions/pieces';
-import power from '../definitions/power';
-import pressure from '../definitions/pressure';
-import reactiveEnergy from '../definitions/reactiveEnergy';
-import reactivePower from '../definitions/reactivePower';
-import speed from '../definitions/speed';
-import temperature from '../definitions/temperature';
-import time from '../definitions/time';
-import voltage from '../definitions/voltage';
-import volume from '../definitions/volume';
-import volumeFlowRate from '../definitions/volumeFlowRate';
+import allMeausures, {
+  AllMeasures,
+  AllMeasuresSystems,
+  AllMeasuresUnits,
+} from '../definitions';
+import length, { LengthSystems, LengthUnits } from '../definitions/length';
 
 test('list length not 0', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const list = convert().list();
@@ -42,7 +21,7 @@ test('list length should be 0', () => {
 });
 
 test('list has abbr key', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const list = convert().list(),
@@ -51,7 +30,7 @@ test('list has abbr key', () => {
 });
 
 test('list abbr key is string', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const list = convert().list(),
@@ -60,7 +39,7 @@ test('list abbr key is string', () => {
 });
 
 test('list has measure key', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const list = convert().list(),
@@ -69,7 +48,7 @@ test('list has measure key', () => {
 });
 
 test('list measure key is string', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const list = convert().list(),
@@ -78,7 +57,7 @@ test('list measure key is string', () => {
 });
 
 test('list has system key', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const list = convert().list(),
@@ -87,7 +66,7 @@ test('list has system key', () => {
 });
 
 test('list system key is string', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const list = convert().list(),
@@ -96,7 +75,7 @@ test('list system key is string', () => {
 });
 
 test('list has singular key', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const list = convert().list(),
@@ -105,7 +84,7 @@ test('list has singular key', () => {
 });
 
 test('list singular key is string', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const list = convert().list(),
@@ -114,7 +93,7 @@ test('list singular key is string', () => {
 });
 
 test('list has plural key', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const list = convert().list(),
@@ -123,7 +102,7 @@ test('list has plural key', () => {
 });
 
 test('list plural key is string', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const list = convert().list(),
@@ -132,40 +111,16 @@ test('list plural key is string', () => {
 });
 
 test('list by measure', () => {
-  const convert = configureMeasurements({
-    length,
-    area,
-    mass,
-    volume,
-    each,
-    temperature,
-    time,
-    digital,
-    partsPer,
-    speed,
-    pace,
-    pressure,
-    current,
-    voltage,
-    power,
-    reactivePower,
-    apparentPower,
-    energy,
-    reactiveEnergy,
-    volumeFlowRate,
-    illuminance,
-    frequency,
-    angle,
-    charge,
-    force,
-    acceleration,
-    pieces,
-  });
+  const convert = configureMeasurements<
+    AllMeasures,
+    AllMeasuresSystems,
+    AllMeasuresUnits
+  >(allMeausures);
   const full = convert().list();
   const measures = convert().measures();
 
   measures.map(function (measure) {
-    const list = convert().list(measure);
+    const list = convert().list(measure as AllMeasures);
 
     expect(list.length > 0).toBeTruthy();
     expect(list.length < full.length).toBeTruthy();
@@ -175,6 +130,8 @@ test('list by measure', () => {
 test('unsupported measure should throw', () => {
   const convert = configureMeasurements({});
   expect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     convert().list('BadMeasure');
   }).toThrow();
 });

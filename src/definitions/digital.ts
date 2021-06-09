@@ -1,4 +1,11 @@
-const bits = {
+import { Measure, Unit } from './../index';
+export type DigitalUnits = DigitalBitsUnits | DigitalBytesUnits;
+export type DigitalSystems = 'bits' | 'bytes';
+
+export type DigitalBitsUnits = 'b' | 'Kb' | 'Mb' | 'Gb' | 'Tb';
+export type DigitalBytesUnits = 'B' | 'KB' | 'MB' | 'GB' | 'TB';
+
+const bits: Record<DigitalBitsUnits, Unit> = {
   b: {
     name: {
       singular: 'Bit',
@@ -36,7 +43,7 @@ const bits = {
   },
 };
 
-const bytes = {
+const bytes: Record<DigitalBytesUnits, Unit> = {
   B: {
     name: {
       singular: 'Byte',
@@ -74,19 +81,23 @@ const bytes = {
   },
 };
 
-export default {
+const measure: Measure<DigitalSystems, DigitalUnits> = {
   systems: {
     bits,
     bytes,
   },
   anchors: {
     bits: {
-      unit: 'b',
-      ratio: 1 / 8,
+      bytes: {
+        ratio: 1 / 8,
+      },
     },
     bytes: {
-      unit: 'B',
-      ratio: 8,
+      bits: {
+        ratio: 8,
+      },
     },
   },
 };
+
+export default measure;

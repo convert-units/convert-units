@@ -1,4 +1,13 @@
-const metric = {
+import { Measure, Unit } from './../index';
+export type TemperatureUnits =
+  | TemperatureMetricUnits
+  | TemperatureImperialUnits;
+export type TemperatureSystems = 'metric' | 'imperial';
+
+export type TemperatureMetricUnits = 'C' | 'K';
+export type TemperatureImperialUnits = 'F' | 'R';
+
+const metric: Record<TemperatureMetricUnits, Unit> = {
   C: {
     name: {
       singular: 'degree Celsius',
@@ -17,7 +26,7 @@ const metric = {
   },
 };
 
-const imperial = {
+const imperial: Record<TemperatureImperialUnits, Unit> = {
   F: {
     name: {
       singular: 'degree Fahrenheit',
@@ -35,23 +44,27 @@ const imperial = {
   },
 };
 
-export default {
+const measure: Measure<TemperatureSystems, TemperatureUnits> = {
   systems: {
     metric,
     imperial,
   },
   anchors: {
     metric: {
-      unit: 'C',
-      transform: function (C: number): number {
-        return C / (5 / 9) + 32;
+      imperial: {
+        transform: function (C: number): number {
+          return C / (5 / 9) + 32;
+        },
       },
     },
     imperial: {
-      unit: 'F',
-      transform: function (F: number): number {
-        return (F - 32) * (5 / 9);
+      metric: {
+        transform: function (F: number): number {
+          return (F - 32) * (5 / 9);
+        },
       },
     },
   },
 };
+
+export default measure;

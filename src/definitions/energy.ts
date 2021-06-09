@@ -1,4 +1,10 @@
-const energy = {
+import { Measure, Unit } from './../index';
+export type EnergyUnits = EnergySIUnits;
+export type EnergySystems = 'SI';
+
+export type EnergySIUnits = 'Wh' | 'mWh' | 'kWh' | 'MWh' | 'GWh' | 'J' | 'kJ';
+
+const SI: Record<EnergySIUnits, Unit> = {
   Wh: {
     name: {
       singular: 'Watt-hour',
@@ -50,14 +56,10 @@ const energy = {
   },
 };
 
-export default {
+const measure: Measure<EnergySystems, EnergyUnits> = {
   systems: {
-    energy,
-  },
-  anchors: {
-    metric: {
-      unit: 'J',
-      ratio: 1,
-    },
+    SI,
   },
 };
+
+export default measure;

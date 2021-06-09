@@ -1,4 +1,11 @@
-const metric = {
+import { Measure, Unit } from './../index';
+export type MassUnits = MassMetricUnits | MassImperialUnits;
+export type MassSystems = 'metric' | 'imperial';
+
+export type MassMetricUnits = 'mcg' | 'mg' | 'g' | 'kg' | 'mt';
+export type MassImperialUnits = 'oz' | 'lb' | 't';
+
+const metric: Record<MassMetricUnits, Unit> = {
   mcg: {
     name: {
       singular: 'Microgram',
@@ -36,7 +43,7 @@ const metric = {
   },
 };
 
-const imperial = {
+const imperial: Record<MassImperialUnits, Unit> = {
   oz: {
     name: {
       singular: 'Ounce',
@@ -60,19 +67,23 @@ const imperial = {
   },
 };
 
-export default {
+const measure: Measure<MassSystems, MassUnits> = {
   systems: {
     metric,
     imperial,
   },
   anchors: {
     metric: {
-      unit: 'g',
-      ratio: 1 / 453.592,
+      imperial: {
+        ratio: 1 / 453.592,
+      },
     },
     imperial: {
-      unit: 'lb',
-      ratio: 453.592,
+      metric: {
+        ratio: 453.592,
+      },
     },
   },
 };
+
+export default measure;

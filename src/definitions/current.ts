@@ -1,4 +1,10 @@
-const current = {
+import { Measure, Unit } from './../index';
+export type CurrentUnits = CurrentSIUnits;
+export type CurrentSystems = 'SI';
+
+export type CurrentSIUnits = 'A' | 'mA' | 'kA';
+
+const SI: Record<CurrentSIUnits, Unit> = {
   A: {
     name: {
       singular: 'Ampere',
@@ -22,14 +28,9 @@ const current = {
   },
 };
 
-export default {
+const measure: Measure<CurrentSystems, CurrentUnits> = {
   systems: {
-    current,
-  },
-  anchors: {
-    metric: {
-      unit: 'A',
-      ratio: 1,
-    },
+    SI,
   },
 };
+export default measure;

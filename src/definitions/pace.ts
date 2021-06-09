@@ -1,4 +1,11 @@
-const metric = {
+import { Measure, Unit } from './../index';
+export type PaceUnits = PaceMetricUnits | PaceImperialUnits;
+export type PaceSystems = 'metric' | 'imperial';
+
+export type PaceMetricUnits = 'min/km' | 's/m';
+export type PaceImperialUnits = 'min/mi' | 's/ft';
+
+const metric: Record<PaceMetricUnits, Unit> = {
   'min/km': {
     name: {
       singular: 'Minute per kilometre',
@@ -15,7 +22,7 @@ const metric = {
   },
 };
 
-const imperial = {
+const imperial: Record<PaceImperialUnits, Unit> = {
   'min/mi': {
     name: {
       singular: 'Minute per mile',
@@ -32,19 +39,23 @@ const imperial = {
   },
 };
 
-export default {
+const measure: Measure<PaceSystems, PaceUnits> = {
   systems: {
     metric,
     imperial,
   },
   anchors: {
     metric: {
-      unit: 's/m',
-      ratio: 0.3048,
+      imperial: {
+        ratio: 0.3048,
+      },
     },
     imperial: {
-      unit: 's/ft',
-      ratio: 1 / 0.3048,
+      metric: {
+        ratio: 1 / 0.3048,
+      },
     },
   },
 };
+
+export default measure;

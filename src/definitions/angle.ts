@@ -1,4 +1,10 @@
-const angle = {
+import { Measure, Unit } from './../index';
+export type AngleUnits = AngleSIUnits;
+export type AngleSystems = 'SI';
+
+export type AngleSIUnits = 'rad' | 'deg' | 'grad' | 'arcmin' | 'arcsec';
+
+const SI: Record<AngleSIUnits, Unit> = {
   rad: {
     name: {
       singular: 'radian',
@@ -36,14 +42,10 @@ const angle = {
   },
 };
 
-export default {
+const measure: Measure<AngleSystems, AngleUnits> = {
   systems: {
-    angle,
-  },
-  anchors: {
-    metric: {
-      unit: 'deg',
-      ratio: 1,
-    },
+    SI,
   },
 };
+
+export default measure;

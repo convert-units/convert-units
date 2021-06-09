@@ -1,68 +1,92 @@
-import configureMeasurements from '..';
-import length from '../definitions/length';
-import mass from '../definitions/mass';
-import volume from '../definitions/volume';
+import configureMeasurements, { Measure, Unit } from '..';
+import length, { LengthSystems, LengthUnits } from '../definitions/length';
+import mass, { MassSystems, MassUnits } from '../definitions/mass';
+import volume, { VolumeSystems, VolumeUnits } from '../definitions/volume';
 
 test('l to kg throws', () => {
-  const convert = configureMeasurements({
+  type Measures = 'volume' | 'mass';
+  type Systems = VolumeSystems | MassSystems;
+  type Units = VolumeUnits | MassUnits;
+  const convert = configureMeasurements<Measures, Systems, Units>({
     volume,
     mass,
   });
   expect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     convert(2).from('ltr').to('kg');
   }).toThrow();
 });
 
 test('fl-oz to oz throws', () => {
-  const convert = configureMeasurements({
+  type Measures = 'volume' | 'mass';
+  type Systems = VolumeSystems | MassSystems;
+  type Units = VolumeUnits | MassUnits;
+  const convert = configureMeasurements<Measures, Systems, Units>({
     volume,
     mass,
   });
   expect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     convert(4).from('fl-oz').to('oz');
   }).toThrow();
 });
 
 test('kg to fl-oz throws', () => {
-  const convert = configureMeasurements({
+  type Measures = 'volume' | 'mass';
+  type Systems = VolumeSystems | MassSystems;
+  type Units = VolumeUnits | MassUnits;
+  const convert = configureMeasurements<Measures, Systems, Units>({
     volume,
     mass,
   });
   expect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     convert(4).from('kg').to('fl-oz');
   }).toThrow();
 });
 
 test('kg to ft throws', () => {
-  const convert = configureMeasurements({
+  type Measures = 'length' | 'mass';
+  type Systems = LengthSystems | MassSystems;
+  type Units = LengthUnits | MassUnits;
+  const convert = configureMeasurements<Measures, Systems, Units>({
     length,
     mass,
   });
   expect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     convert(4).from('kg').to('ft');
   }).toThrow();
 });
 
 test('kg to nonexistant unit throws', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'mass', MassSystems, MassUnits>({
     mass,
   });
   expect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     convert(4).from('kg').to('garbage');
   }).toThrow();
 });
 
 test('nonexistant unit to kg throws', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'mass', MassSystems, MassUnits>({
     mass,
   });
   expect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     convert(4).from('garbage').to('kg');
   }).toThrow();
 });
 
 test('.to before .from throws', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'mass', MassSystems, MassUnits>({
     mass,
   });
   expect(() => {
@@ -81,5 +105,111 @@ test('.describe throws is unit abbr is not found', () => {
   const convert = configureMeasurements({});
   expect(() => {
     convert().describe('no-a-unit');
+  }).toThrow();
+});
+
+test('Missing anchors should throw an error', () => {
+  type TestUnits = TestAUnits | TestBUnits;
+  type TestSystems = 'A' | 'B';
+
+  type TestAUnits = 'a';
+  type TestBUnits = 'b';
+
+  const A: Record<TestAUnits, Unit> = {
+    a: {
+      name: {
+        singular: 'a',
+        plural: 'as',
+      },
+      to_anchor: 1,
+    },
+  };
+
+  const B: Record<TestBUnits, Unit> = {
+    b: {
+      name: {
+        singular: 'b',
+        plural: 'bs',
+      },
+      to_anchor: 1,
+    },
+  };
+
+  const measures: Measure<TestSystems, TestUnits> = {
+    systems: {
+      A,
+      B,
+    },
+  };
+
+  const convert = configureMeasurements<'AB', TestSystems, TestUnits>({
+    AB: measures,
+  });
+
+  expect(() => {
+    convert().from('a').to('b');
+  }).toThrow();
+});
+
+test('Missing system to system anchor should throw an error', () => {
+  type TestUnits = TestAUnits | TestBUnits | TestCUnits;
+  type TestSystems = 'A' | 'B' | 'C';
+
+  type TestAUnits = 'a';
+  type TestBUnits = 'b';
+  type TestCUnits = 'c';
+
+  const A: Record<TestAUnits, Unit> = {
+    a: {
+      name: {
+        singular: 'a',
+        plural: 'as',
+      },
+      to_anchor: 1,
+    },
+  };
+
+  const B: Record<TestBUnits, Unit> = {
+    b: {
+      name: {
+        singular: 'b',
+        plural: 'bs',
+      },
+      to_anchor: 1,
+    },
+  };
+
+  const C: Record<TestCUnits, Unit> = {
+    c: {
+      name: {
+        singular: 'a',
+        plural: 'as',
+      },
+      to_anchor: 1,
+    },
+  };
+
+  const measures: Measure<TestSystems, TestUnits> = {
+    systems: {
+      A,
+      B,
+      C,
+    },
+    anchors: {
+      // Missing A -> C anchor!
+      A: {
+        B: {
+          ratio: 2,
+        },
+      },
+    },
+  };
+
+  const convert = configureMeasurements<'AB', TestSystems, TestUnits>({
+    AB: measures,
+  });
+
+  expect(() => {
+    convert().from('a').to('c');
   }).toThrow();
 });

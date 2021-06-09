@@ -1,4 +1,37 @@
-const metric = {
+import { Measure, Unit } from './../index';
+export type VolumeUnits = VolumeMetricUnits | VolumeImperialUnits;
+export type VolumeSystems = 'metric' | 'imperial';
+
+export type VolumeMetricUnits =
+  | 'mm3'
+  | 'cm3'
+  | 'ml'
+  | 'l'
+  | 'kl'
+  | 'm3'
+  | 'km3'
+  | 'cl'
+  | 'dl'
+  | 'krm'
+  | 'tsk'
+  | 'msk'
+  | 'kkp'
+  | 'glas'
+  | 'kanna';
+
+export type VolumeImperialUnits =
+  | 'tsp'
+  | 'Tbs'
+  | 'in3'
+  | 'fl-oz'
+  | 'cup'
+  | 'pnt'
+  | 'qt'
+  | 'gal'
+  | 'ft3'
+  | 'yd3';
+
+const metric: Record<VolumeMetricUnits, Unit> = {
   mm3: {
     name: {
       singular: 'Cubic Millimeter',
@@ -108,7 +141,7 @@ const metric = {
   },
 };
 
-const imperial = {
+const imperial: Record<VolumeImperialUnits, Unit> = {
   tsp: {
     name: {
       singular: 'Teaspoon',
@@ -181,19 +214,23 @@ const imperial = {
   },
 };
 
-export default {
+const measure: Measure<VolumeSystems, VolumeUnits> = {
   systems: {
     metric,
     imperial,
   },
   anchors: {
     metric: {
-      unit: 'l',
-      ratio: 33.8140226,
+      imperial: {
+        ratio: 33.8140226,
+      },
     },
     imperial: {
-      unit: 'fl-oz',
-      ratio: 1 / 33.8140226,
+      metric: {
+        ratio: 1 / 33.8140226,
+      },
     },
   },
 };
+
+export default measure;

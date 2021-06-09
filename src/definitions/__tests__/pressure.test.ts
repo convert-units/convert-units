@@ -1,8 +1,12 @@
 import configureMeasurements from '../..';
-import pressure from '../pressure';
+import pressure, { PressureSystems, PressureUnits } from '../pressure';
 
 test('Pa to Pa', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<
+    'pressure',
+    PressureSystems,
+    PressureUnits
+  >({
     pressure,
   });
   expect(convert(1).from('Pa').to('Pa')).toBe(1);
@@ -58,28 +62,44 @@ test('psi to psi', () => {
 });
 
 test('psi to ksi', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<
+    'pressure',
+    PressureSystems,
+    PressureUnits
+  >({
     pressure,
   });
   expect(convert(10000).from('psi').to('ksi')).toBe(10);
 });
 
 test('Pa to psi', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<
+    'pressure',
+    PressureSystems,
+    PressureUnits
+  >({
     pressure,
   });
   expect(convert(10000).from('Pa').to('psi')).toBeCloseTo(1.450377);
 });
 
 test('torr to ksi', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<
+    'pressure',
+    PressureSystems,
+    PressureUnits
+  >({
     pressure,
   });
   expect(convert(51714.931860168974).from('torr').to('ksi')).toBeCloseTo(1);
 });
 
 test('psi to hPa', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<
+    'pressure',
+    PressureSystems,
+    PressureUnits
+  >({
     pressure,
   });
   expect(convert(10).from('psi').to('hPa')).toBeCloseTo(689.47573);

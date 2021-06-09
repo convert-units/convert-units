@@ -1,4 +1,10 @@
-const voltage = {
+import { Measure, Unit } from './../index';
+export type VoltageUnits = VoltageSIUnits;
+export type VoltageSystems = 'SI';
+
+export type VoltageSIUnits = 'V' | 'mV' | 'kV';
+
+const SI: Record<VoltageSIUnits, Unit> = {
   V: {
     name: {
       singular: 'Volt',
@@ -22,14 +28,10 @@ const voltage = {
   },
 };
 
-export default {
+const measure: Measure<VoltageSystems, VoltageUnits> = {
   systems: {
-    voltage,
-  },
-  anchors: {
-    metric: {
-      unit: 'V',
-      ratio: 1,
-    },
+    SI,
   },
 };
+
+export default measure;

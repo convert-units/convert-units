@@ -1,6 +1,22 @@
+import { Measure, Unit } from './../index';
+export type TimeUnits = TimeSIUnits;
+export type TimeSystems = 'SI';
+
+export type TimeSIUnits =
+  | 'ns'
+  | 'mu'
+  | 'ms'
+  | 's'
+  | 'min'
+  | 'h'
+  | 'd'
+  | 'week'
+  | 'month'
+  | 'year';
+
 const daysInYear = 365.25;
 
-const time = {
+const SI: Record<TimeSIUnits, Unit> = {
   ns: {
     name: {
       singular: 'Nanosecond',
@@ -73,14 +89,10 @@ const time = {
   },
 };
 
-export default {
+const measure: Measure<TimeSystems, TimeUnits> = {
   systems: {
-    time,
-  },
-  anchors: {
-    metric: {
-      unit: 's',
-      ratio: 1,
-    },
+    SI,
   },
 };
+
+export default measure;

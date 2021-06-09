@@ -1,4 +1,10 @@
-const metric = {
+import { Measure, Unit } from './../index';
+export type PartsPerUnits = PArtsPerSIUnits;
+export type PartsPerSystems = 'SI';
+
+export type PArtsPerSIUnits = 'ppm' | 'ppb' | 'ppt' | 'ppq';
+
+const SI: Record<PArtsPerSIUnits, Unit> = {
   ppm: {
     name: {
       singular: 'Part-per Million',
@@ -29,14 +35,10 @@ const metric = {
   },
 };
 
-export default {
+const measure: Measure<PartsPerSystems, PartsPerUnits> = {
   systems: {
-    metric,
-  },
-  anchors: {
-    metric: {
-      unit: 'ppm',
-      ratio: 0.000001,
-    },
+    SI,
   },
 };
+
+export default measure;

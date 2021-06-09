@@ -1,4 +1,10 @@
-const force = {
+import { Measure, Unit } from './../index';
+export type ForceUnits = ForceSIUnits;
+export type ForceSystems = 'SI';
+
+export type ForceSIUnits = 'N' | 'kN' | 'lbf';
+
+const SI: Record<ForceSIUnits, Unit> = {
   N: {
     name: {
       singular: 'Newton',
@@ -22,14 +28,10 @@ const force = {
   },
 };
 
-export default {
+const measure: Measure<ForceSystems, ForceUnits> = {
   systems: {
-    force,
-  },
-  anchors: {
-    metric: {
-      unit: 'N',
-      ratio: 1,
-    },
+    SI,
   },
 };
+
+export default measure;

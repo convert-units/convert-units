@@ -1,8 +1,8 @@
 import configureMeasurements from '..';
-import length from '../definitions/length';
+import length, { LengthSystems, LengthUnits } from '../definitions/length';
 
 test('best mm', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const actual = convert(1200).from('mm').toBest(),
@@ -16,7 +16,7 @@ test('best mm', () => {
 });
 
 test('excludes measurements', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const actual = convert(1200000)
@@ -32,7 +32,7 @@ test('excludes measurements', () => {
 });
 
 test('does not break when excluding from measurement', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const actual = convert(10)
@@ -48,23 +48,17 @@ test('does not break when excluding from measurement', () => {
 });
 
 test('if all measurements are excluded return from', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const actual = convert(10)
-      .from('km')
-      .toBest({ exclude: ['mm, cm, m, km'] }),
-    expected = {
-      val: 10,
-      unit: 'km',
-      singular: 'Kilometer',
-      plural: 'Kilometers',
-    };
-  expect(actual).toEqual(expected);
+    .from('km')
+    .toBest({ exclude: ['mm', 'cm', 'm', 'km', 'nm', 'μm'] });
+  expect(actual).toEqual(null);
 });
 
 test('pre-cut off number', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const actual = convert(9000).from('mm').toBest({ cutOffNumber: 10 }),
@@ -78,7 +72,7 @@ test('pre-cut off number', () => {
 });
 
 test('post-cut off number', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const actual = convert(10000).from('mm').toBest({ cutOffNumber: 10 }),

@@ -1,4 +1,19 @@
-const frequency = {
+import { Measure, Unit } from './../index';
+export type FrequencyUnits = FrequencySIUnits;
+export type FrequencySystems = 'SI';
+
+export type FrequencySIUnits =
+  | 'mHz'
+  | 'Hz'
+  | 'kHz'
+  | 'MHz'
+  | 'GHz'
+  | 'THz'
+  | 'rpm'
+  | 'deg/s'
+  | 'rad/s';
+
+const SI: Record<FrequencySIUnits, Unit> = {
   mHz: {
     name: {
       singular: 'millihertz',
@@ -64,14 +79,10 @@ const frequency = {
   },
 };
 
-export default {
+const measure: Measure<FrequencySystems, FrequencyUnits> = {
   systems: {
-    frequency,
-  },
-  anchors: {
-    frequency: {
-      unit: 'hz',
-      ratio: 1,
-    },
+    SI,
   },
 };
+
+export default measure;

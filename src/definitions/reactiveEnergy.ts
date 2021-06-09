@@ -1,4 +1,15 @@
-const reactiveEnergy = {
+import { Measure, Unit } from './../index';
+export type ReactiveEnergyUnits = ReactiveEnergySIUnits;
+export type ReactiveEnergySystems = 'SI';
+
+export type ReactiveEnergySIUnits =
+  | 'VARh'
+  | 'mVARh'
+  | 'kVARh'
+  | 'MVARh'
+  | 'GVARh';
+
+const SI: Record<ReactiveEnergySIUnits, Unit> = {
   VARh: {
     name: {
       singular: 'Volt-Ampere Reactive Hour',
@@ -36,14 +47,10 @@ const reactiveEnergy = {
   },
 };
 
-export default {
+const measure: Measure<ReactiveEnergySystems, ReactiveEnergyUnits> = {
   systems: {
-    reactiveEnergy,
-  },
-  anchors: {
-    metric: {
-      unit: 'VARh',
-      ratio: 1,
-    },
+    SI,
   },
 };
+
+export default measure;

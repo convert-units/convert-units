@@ -1,4 +1,11 @@
-const metric = {
+import { Measure, Unit } from './../index';
+export type AreaUnits = AreaMetricUnits | AreaImperialUnits;
+export type AreaSystems = 'metric' | 'imperial';
+
+export type AreaMetricUnits = 'mm2' | 'cm2' | 'm2' | 'ha' | 'km2';
+export type AreaImperialUnits = 'in2' | 'yd2' | 'ft2' | 'ac' | 'mi2';
+
+const metric: Record<AreaMetricUnits, Unit> = {
   mm2: {
     name: {
       singular: 'Square Millimeter',
@@ -36,7 +43,7 @@ const metric = {
   },
 };
 
-const imperial = {
+const imperial: Record<AreaImperialUnits, Unit> = {
   in2: {
     name: {
       singular: 'Square Inch',
@@ -74,19 +81,23 @@ const imperial = {
   },
 };
 
-export default {
+const measure: Measure<AreaSystems, AreaUnits> = {
   systems: {
     metric,
     imperial,
   },
   anchors: {
     metric: {
-      unit: 'm2',
-      ratio: 10.7639,
+      imperial: {
+        ratio: 10.7639,
+      },
     },
     imperial: {
-      unit: 'ft2',
-      ratio: 1 / 10.7639,
+      metric: {
+        ratio: 1 / 10.7639,
+      },
     },
   },
 };
+
+export default measure;

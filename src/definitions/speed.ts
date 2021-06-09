@@ -1,4 +1,11 @@
-const metric = {
+import { Measure, Unit } from './../index';
+export type SpeedUnits = SpeedMetricUnits | SpeedImperialUnits;
+export type SpeedSystems = 'metric' | 'imperial';
+
+export type SpeedMetricUnits = 'm/s' | 'km/h';
+export type SpeedImperialUnits = 'mph' | 'knot' | 'ft/s';
+
+const metric: Record<SpeedMetricUnits, Unit> = {
   'm/s': {
     name: {
       singular: 'Metre per second',
@@ -15,7 +22,7 @@ const metric = {
   },
 };
 
-const imperial = {
+const imperial: Record<SpeedImperialUnits, Unit> = {
   mph: {
     name: {
       singular: 'Mile per hour',
@@ -39,19 +46,23 @@ const imperial = {
   },
 };
 
-export default {
+const measure: Measure<SpeedSystems, SpeedUnits> = {
   systems: {
     metric,
     imperial,
   },
   anchors: {
     metric: {
-      unit: 'km/h',
-      ratio: 1 / 1.609344,
+      imperial: {
+        ratio: 1 / 1.609344,
+      },
     },
     imperial: {
-      unit: 'mph',
-      ratio: 1.609344,
+      metric: {
+        ratio: 1.609344,
+      },
     },
   },
 };
+
+export default measure;
