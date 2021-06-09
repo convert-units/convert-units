@@ -145,7 +145,8 @@ class Converter<
         );
       }
 
-      const anchor = anchors[origin.system];
+      const anchor: Partial<Record<TSystems, Anchor>> | undefined =
+        anchors[origin.system];
       if (anchor == null) {
         throw new Error(
           `Unable to find anchor for "${origin.measure}" to "${destination.measure}". Please make sure it is defined`

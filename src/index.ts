@@ -1,5 +1,5 @@
 import configMeasurements from './convert';
-import allMeausures from './definitions';
+import allMeasures from './definitions';
 export default configMeasurements;
 export type {
   Anchor,
@@ -9,4 +9,4 @@ export type {
   UnitDescription,
 } from './convert';
 export * from './definitions';
-export { allMeausures };
+export { allMeasures };

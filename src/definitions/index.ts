@@ -135,7 +135,7 @@ export type AllMeasures =
   | 'volume'
   | 'volumeFlowRate';
 
-const allMeausures: Record<
+const allMeasures: Record<
   AllMeasures,
   Measure<AllMeasuresSystems, AllMeasuresUnits>
 > = {
@@ -168,7 +168,7 @@ const allMeausures: Record<
   volumeFlowRate,
 };
 
-export default allMeausures;
+export default allMeasures;
 
 export type {
   AccelerationSystems,

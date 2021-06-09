@@ -170,44 +170,159 @@ convert().list('mass');
 Custom Measures
 ---------------
 
-```js
-import configureMeasurements, { length, area } from 'convert-units';
+It's possible to define custom measures if the ones packaged aren't what you need:
 
-const customEach = {
+```js
+import configureMeasurements from 'convert-units';
+
+const customMeasure = {
   systems: {
-    metric: {
-      ea: {
+    A: {
+      a: {
         name: {
-          singular: 'Each',
-          plural: 'Each',
+          singular: 'a',
+          plural: 'as',
+        },
+        // to_anchor: The factor used to reach the base unit
+        // The base unit should have a to_anchor value of 1
+        // Eg. 1 a -> al = 1a * 1e-1 (to_anchor of al) = 10 al
+        to_anchor: 1,
+      },
+      al: {
+        name: {
+          singular: 'al',
+          plural: 'als',
+        },
+        to_anchor: 1e-1,
+      },
+    },
+    B: {
+      b: {
+        name: {
+          singular: 'b',
+          plural: 'bs',
         },
         to_anchor: 1,
       },
-      dz: {
+      bl: {
         name: {
-          singular: 'Dozen',
-          plural: 'Dozens',
+          singular: 'bl',
+          plural: 'bls',
         },
-        to_anchor: 12,
+        to_anchor: 1e-1,
       },
-      hdz: {
+    },
+    C: {
+      c: {
         name: {
-          singular: 'Half Dozen',
-          plural: 'Half Dozens',
+          singular: 'c',
+          plural: 'cs',
         },
-        to_anchor: 6,
+        to_anchor: 1,
+      },
+      cl: {
+        name: {
+          singular: 'cl',
+          plural: 'cls',
+        },
+        to_anchor: 1e-1,
       },
     },
   },
   anchors: {
-    metric: {
-      unit: 'ea',
-      ratio: 1,
+    A: {
+      // unit a -> unit b
+      B: {
+        ratio: 2,
+      },
+      // unit a -> unit c
+      C: {
+        ratio: 3,
+      },
+    },
+    B: {
+      // unit b -> unit a
+      A: {
+        ratio: 1 / 2,
+      },
+      // unit b -> unit c
+      C: {
+        ratio: 3 / 2,
+      },
+    },
+    C: {
+      // unit c -> unit a
+      A: {
+        ratio: 1 / 3,
+      },
+      // unit c -> unit b
+      B: {
+        ratio: 2 / 3,
+      },
     },
   },
 };
 
-export default configureMeasurements({ length, area, each: customEach });
+const convert = configureMeasurements({ customMeasure });
+convert(1).from('a').to('bl')
+// 20
+```
+
+The order of opperations goes as follows:
+
+```js
+// a -> bl
+let v = 1  // 1 a
+let a_to_anchor = 1  // systems.A.a.to_anchor
+let r = v * a_to_anchor
+// r = 1 a
+let ratio = 2  // anchors.A.B.ratio
+r *= ratio
+// r = 2 b
+let bl_to_anchor = 1e-1  // systems.B.bl.to_anchor
+r /= b_to_anchor
+// r = 20 bl
+```
+
+It's also possible to extend existing measures:
+
+```ts
+import configureMeasurements, {
+  length,
+  LengthSystems,
+  LengthUnits,
+  Measure
+} from 'convert-units';
+
+type NewLengthUnits = LengthUnits | 'px';
+const DPI = 96;
+const extendedLength: Measure<LengthSystems, NewLengthUnits> = {
+  systems: {
+    metric: {
+      ...length.systems.metric,
+      px: {
+        name: {
+          singular: 'Pixel',
+          plural: 'Pixels',
+        },
+        to_anchor: 0.0254 / DPI,
+      },
+    },
+    imperial: {
+      ...length.systems.imperial,
+    },
+  },
+  anchors: {
+    ...length.anchors,
+  },
+};
+
+const convert = configureMeasurements<'length', LengthSystems, NewLengthUnits>(
+  { length: extendedLength }
+);
+
+convert(4).from('cm').to('px');
+// 151.18110236220474
 ```
 
 Migrating from Old API
@@ -238,6 +353,50 @@ convert(1).from('m').to('ft');
 import configureMeasurements, { allMeasures } from 'convert-units';
 
 export default configureMeasurements(allMeasures);
+```
+
+Typescript
+----------
+
+Defining types can provide the benefit of exposing issues while working on your application.
+
+```ts
+import configureMeasurements, {
+  AllMeasures,
+  allMeasures,
+  AllMeasuresSystems,
+  AllMeasuresUnits,
+  area,
+  AreaSystems,
+  AreaUnits,
+  length,
+  LengthSystems,
+  LengthUnits,
+} from 'convert-units';
+
+// Meausres: The names of the measures being used
+type Measures = 'length' | 'area';
+// Systems: The systems being used across all measures
+type Systems = LengthSystems | AreaSystems;
+// Units: All the units across all measures and their systems
+type Units = LengthUnits | AreaUnits;
+const convert = configureMeasurements<Measures, Systems, Units>({
+  length,
+  area,
+});
+
+convert(4).from('m').to('cm');
+// 400
+
+// If you'd like to use all the packages measures that can be done like so
+const convertAll = configureMeasurements<
+  AllMeasures,
+  AllMeasuresSystems,
+  AllMeasuresUnits
+>(allMeasures);
+
+convertAll(4).from('m2').to('cm2');
+// 400000
 ```
 
 Request Measures & Units
