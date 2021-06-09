@@ -1,3 +1,4 @@
+import { Measures } from '../convert';
 import acceleration from './acceleration';
 import angle from './angle';
 import apparentPower from './apparentPower';
@@ -26,7 +27,7 @@ import voltage from './voltage';
 import volume from './volume';
 import volumeFlowRate from './volumeFlowRate';
 
-const allMeausures = {
+const allMeausures: Measures = {
   acceleration,
   angle,
   apparentPower,
@@ -57,3 +58,32 @@ const allMeausures = {
 };
 
 export default allMeausures;
+export {
+  acceleration,
+  angle,
+  apparentPower,
+  area,
+  charge,
+  current,
+  digital,
+  each,
+  energy,
+  force,
+  frequency,
+  illuminance,
+  length,
+  mass,
+  pace,
+  partsPer,
+  pieces,
+  power,
+  pressure,
+  reactiveEnergy,
+  reactivePower,
+  speed,
+  temperature,
+  time,
+  voltage,
+  volume,
+  volumeFlowRate,
+};

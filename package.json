@@ -2,8 +2,7 @@
   "name": "convert-units",
   "version": "3.0.0-beta.0",
   "description": "Convert between quantities in different units",
-  "main": "./lib/cjs/index.js",
-  "module": "./lib/esm/index.js",
+  "main": "lib/cjs/index.js",
   "files": [
     "lib/"
   ],
@@ -13,8 +12,8 @@
     "@typescript-eslint/parser": "^4.23.0",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jest": "^24.3.6",
-    "eslint-plugin-ordered-imports": "^0.5.0",
     "eslint-plugin-prettier": "^3.4.0",
     "jest": "^26.6.3",
     "prettier": "2.2.1",

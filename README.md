@@ -25,9 +25,8 @@ Usage
 The code snippet below shows everything needed to get going:
 
 ```js
-import configureMeasurements from 'convert-units';
 // `allMeasures` includes all the measures packaged with this library
-import allMeasures from 'convert-units/definitions';
+import configureMeasurements, { allMeasures } from 'convert-units';
 
 const convert = configureMeasurements(allMeausres);
 ```
@@ -35,11 +34,7 @@ const convert = configureMeasurements(allMeausres);
 It's also possible to limit the measures configured to only the ones your application needs:
 
 ```js
-import configureMeasurements from 'convert-units';
-
-import volume from 'convert-units/definitions/volume';
-import mass from 'convert-units/definitions/mass';
-import length from 'convert-units/definitions/length';
+import configureMeasurements, { volumn, mass, length } from 'convert-units';
 
 /*
   `configureMeasurements` is a closure that accepts a directory
@@ -176,9 +171,7 @@ Custom Measures
 ---------------
 
 ```js
-import configureMeasurements from 'convert-units';
-import length from 'convert-units/definitions/length';
-import area from 'convert-units/definitions/area';
+import configureMeasurements, { length, area } from 'convert-units';
 
 const customEach = {
   systems: {
@@ -242,8 +235,7 @@ convert(1).from('m').to('ft');
 
 `convert.js`
 ```js
-import configureMeasurements from 'convert-units';
-import allMeasures from 'convert-units/definitions';
+import configureMeasurements, { allMeasures } from 'convert-units';
 
 export default configureMeasurements(allMeasures);
 ```
