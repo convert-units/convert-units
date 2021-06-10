@@ -15,6 +15,54 @@ test('best mm', () => {
   expect(actual).toEqual(expected);
 });
 
+test('best mm even if an empty object is given', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  const actual = convert(1200).from('mm').toBest({}),
+    expected = {
+      val: 1.2,
+      unit: 'm',
+      singular: 'Meter',
+      plural: 'Meters',
+    };
+  expect(actual).toEqual(expected);
+});
+
+test('Should ignore exclude values that are not in the list of possibilities', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  const actual = convert(1200)
+      .from('mm')
+      // Have to ignore TS errors since providing an invalid string to exclude
+      // will cause the compiler to fail
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      .toBest({ exclude: ['not_possible'] }),
+    expected = {
+      val: 1.2,
+      unit: 'm',
+      singular: 'Meter',
+      plural: 'Meters',
+    };
+  expect(actual).toEqual(expected);
+});
+
+test('Should ignore exclude if it is null or undefined', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  const actual = convert(1200).from('mm').toBest({ exclude: undefined }),
+    expected = {
+      val: 1.2,
+      unit: 'm',
+      singular: 'Meter',
+      plural: 'Meters',
+    };
+  expect(actual).toEqual(expected);
+});
+
 test('excludes measurements', () => {
   const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
@@ -67,6 +115,20 @@ test('pre-cut off number', () => {
       unit: 'cm',
       singular: 'Centimeter',
       plural: 'Centimeters',
+    };
+  expect(actual).toEqual(expected);
+});
+
+test('Should ignore the cut off number if it is undefined (use default)', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  const actual = convert(9000).from('mm').toBest({ cutOffNumber: undefined }),
+    expected = {
+      val: 9,
+      unit: 'm',
+      singular: 'Meter',
+      plural: 'Meters',
     };
   expect(actual).toEqual(expected);
 });

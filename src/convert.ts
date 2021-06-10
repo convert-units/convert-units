@@ -53,12 +53,10 @@ class Converter<
 
   constructor(
     measures: Record<TMeasures, Measure<TSystems, TUnits>>,
-    numerator?: number,
-    denominator?: number
+    value?: number
   ) {
-    if (typeof numerator === 'number') {
-      this.val = numerator;
-      if (typeof denominator === 'number') this.val = numerator / denominator;
+    if (typeof value === 'number') {
+      this.val = value;
     }
 
     if (typeof measures !== 'object') {
@@ -148,7 +146,7 @@ class Converter<
         anchors[origin.system];
       if (anchor == null) {
         throw new Error(
-          `Unable to find anchor for "${origin.measure}" to "${destination.measure}". Please make sure it is defined`
+          `Unable to find anchor for "${origin.measure}" to "${destination.measure}". Please make sure it is defined.`
         );
       }
 
@@ -186,13 +184,12 @@ class Converter<
     if (this.origin == null)
       throw new Error('.toBest must be called after .from');
 
-    options = Object.assign(
-      {
-        exclude: [],
-        cutOffNumber: 1,
-      },
-      options
-    );
+    let exclude: TUnits[] = [];
+    let cutOffNumber = 1;
+    if (typeof options === 'object') {
+      exclude = options.exclude ?? [];
+      cutOffNumber = options.cutOffNumber ?? 1;
+    }
 
     let best = null;
     /**
@@ -202,11 +199,10 @@ class Converter<
     */
     for (const possibility of this.possibilities()) {
       const unit = this.describe(possibility);
-      const isIncluded = options?.exclude?.indexOf(possibility) === -1;
+      const isIncluded = exclude.indexOf(possibility) === -1;
 
       if (isIncluded && unit.system === this.origin.system) {
         const result = this.to(possibility);
-        const cutOffNumber = options?.cutOffNumber ?? 0;
         if (best == null || (result >= cutOffNumber && result < best.val)) {
           best = {
             val: result,
