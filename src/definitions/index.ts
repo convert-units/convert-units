@@ -169,7 +169,6 @@ const allMeasures: Record<
 };
 
 export default allMeasures;
-
 export type {
   AccelerationSystems,
   AngleSystems,
