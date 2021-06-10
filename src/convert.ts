@@ -29,7 +29,6 @@ export interface UnitDescription {
 type TransformFunc = (value: number) => number;
 
 export interface Anchor {
-  unit?: string;
   ratio?: number;
   transform?: TransformFunc;
 }
