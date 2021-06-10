@@ -1,11 +1,11 @@
-export type Unit = {
+export interface Unit {
   name: {
     singular: string;
     plural: string;
   };
   to_anchor: number;
   anchor_shift?: number;
-};
+}
 
 export interface Conversion {
   abbr: string;

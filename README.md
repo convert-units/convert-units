@@ -34,7 +34,7 @@ const convert = configureMeasurements(allMeausres);
 It's also possible to limit the measures configured to only the ones your application needs:
 
 ```js
-import configureMeasurements, { volumn, mass, length } from 'convert-units';
+import configureMeasurements, { volume, mass, length } from 'convert-units';
 
 /*
   `configureMeasurements` is a closure that accepts a directory
