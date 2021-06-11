@@ -354,7 +354,7 @@ class Converter<
     let list_measures: TMeasures[] = [];
 
     if (typeof forMeasure == 'string') {
-      list_measures.push(forMeasure as TMeasures);
+      list_measures.push(forMeasure);
     } else if (this.origin != null) {
       list_measures.push(this.origin.measure);
     } else {
@@ -362,7 +362,7 @@ class Converter<
     }
 
     for (const measure of list_measures) {
-      const systems = this.measureData[measure as TMeasures].systems;
+      const systems = this.measureData[measure].systems;
 
       for (const system of Object.values(systems)) {
         possibilities = [
