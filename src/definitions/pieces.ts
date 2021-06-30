@@ -1,4 +1,23 @@
-const pieces = {
+import { Measure, Unit } from './../index';
+export type PiecesUnits = PiecesUnitUnits;
+export type PiecesSystems = 'unit';
+
+export type PiecesUnitUnits =
+  | 'pcs'
+  | 'bk-doz'
+  | 'cp'
+  | 'doz-doz'
+  | 'doz'
+  | 'gr-gr'
+  | 'gros'
+  | 'half-dozen'
+  | 'long-hundred'
+  | 'ream'
+  | 'scores'
+  | 'sm-gr'
+  | 'trio';
+
+const unit: Record<PiecesUnitUnits, Unit> = {
   pcs: {
     name: {
       singular: 'Piece',
@@ -92,14 +111,10 @@ const pieces = {
   },
 };
 
-export default {
+const measure: Measure<PiecesSystems, PiecesUnits> = {
   systems: {
-    pieces,
-  },
-  anchors: {
-    metric: {
-      unit: 'pcs',
-      ratio: 1,
-    },
+    unit,
   },
 };
+
+export default measure;

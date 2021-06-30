@@ -1,4 +1,10 @@
-const metric = {
+import { Measure, Unit } from './../index';
+export type AccelerationUnits = AccelerationMetricUnits;
+export type AccelerationSystems = 'metric';
+
+export type AccelerationMetricUnits = 'g-force' | 'm/s2';
+
+const metric: Record<AccelerationMetricUnits, Unit> = {
   'g-force': {
     name: {
       singular: 'g-force',
@@ -15,14 +21,10 @@ const metric = {
   },
 };
 
-export default {
+const measure: Measure<AccelerationSystems, AccelerationUnits> = {
   systems: {
     metric,
   },
-  anchors: {
-    metric: {
-      unit: 'g-force',
-      ratio: 1,
-    },
-  },
 };
+
+export default measure;

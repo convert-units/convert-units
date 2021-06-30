@@ -1,8 +1,8 @@
 import configureMeasurements from '..';
-import length from '../definitions/length';
+import length, { LengthSystems, LengthUnits } from '../definitions/length';
 
 test('best mm', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const actual = convert(1200).from('mm').toBest(),
@@ -15,8 +15,56 @@ test('best mm', () => {
   expect(actual).toEqual(expected);
 });
 
+test('best mm even if an empty object is given', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  const actual = convert(1200).from('mm').toBest({}),
+    expected = {
+      val: 1.2,
+      unit: 'm',
+      singular: 'Meter',
+      plural: 'Meters',
+    };
+  expect(actual).toEqual(expected);
+});
+
+test('Should ignore exclude values that are not in the list of possibilities', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  const actual = convert(1200)
+      .from('mm')
+      // Have to ignore TS errors since providing an invalid string to exclude
+      // will cause the compiler to fail
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      .toBest({ exclude: ['not_possible'] }),
+    expected = {
+      val: 1.2,
+      unit: 'm',
+      singular: 'Meter',
+      plural: 'Meters',
+    };
+  expect(actual).toEqual(expected);
+});
+
+test('Should ignore exclude if it is null or undefined', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  const actual = convert(1200).from('mm').toBest({ exclude: undefined }),
+    expected = {
+      val: 1.2,
+      unit: 'm',
+      singular: 'Meter',
+      plural: 'Meters',
+    };
+  expect(actual).toEqual(expected);
+});
+
 test('excludes measurements', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const actual = convert(1200000)
@@ -32,7 +80,7 @@ test('excludes measurements', () => {
 });
 
 test('does not break when excluding from measurement', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const actual = convert(10)
@@ -48,23 +96,17 @@ test('does not break when excluding from measurement', () => {
 });
 
 test('if all measurements are excluded return from', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const actual = convert(10)
-      .from('km')
-      .toBest({ exclude: ['mm, cm, m, km'] }),
-    expected = {
-      val: 10,
-      unit: 'km',
-      singular: 'Kilometer',
-      plural: 'Kilometers',
-    };
-  expect(actual).toEqual(expected);
+    .from('km')
+    .toBest({ exclude: ['mm', 'cm', 'm', 'km', 'nm', 'μm'] });
+  expect(actual).toEqual(null);
 });
 
 test('pre-cut off number', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const actual = convert(9000).from('mm').toBest({ cutOffNumber: 10 }),
@@ -77,8 +119,22 @@ test('pre-cut off number', () => {
   expect(actual).toEqual(expected);
 });
 
+test('Should ignore the cut off number if it is undefined (use default)', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  const actual = convert(9000).from('mm').toBest({ cutOffNumber: undefined }),
+    expected = {
+      val: 9,
+      unit: 'm',
+      singular: 'Meter',
+      plural: 'Meters',
+    };
+  expect(actual).toEqual(expected);
+});
+
 test('post-cut off number', () => {
-  const convert = configureMeasurements({
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
   const actual = convert(10000).from('mm').toBest({ cutOffNumber: 10 }),

@@ -1,4 +1,18 @@
-const metric = {
+import { Measure, Unit } from './../index';
+export type LengthUnits = LengthMetricUnits | LengthImperialUnits;
+export type LengthSystems = 'metric' | 'imperial';
+
+export type LengthMetricUnits = 'nm' | 'μm' | 'mm' | 'cm' | 'm' | 'km';
+export type LengthImperialUnits =
+  | 'in'
+  | 'yd'
+  | 'ft-us'
+  | 'ft'
+  | 'fathom'
+  | 'mi'
+  | 'nMi';
+
+const metric: Record<LengthMetricUnits, Unit> = {
   nm: {
     name: {
       singular: 'Nanometer',
@@ -43,7 +57,7 @@ const metric = {
   },
 };
 
-const imperial = {
+const imperial: Record<LengthImperialUnits, Unit> = {
   in: {
     name: {
       singular: 'Inch',
@@ -95,19 +109,23 @@ const imperial = {
   },
 };
 
-export default {
+const measure: Measure<LengthSystems, LengthUnits> = {
   systems: {
     metric,
     imperial,
   },
   anchors: {
     metric: {
-      unit: 'm',
-      ratio: 3.28084,
+      imperial: {
+        ratio: 3.28084,
+      },
     },
     imperial: {
-      unit: 'ft',
-      ratio: 1 / 3.28084,
+      metric: {
+        ratio: 1 / 3.28084,
+      },
     },
   },
 };
+
+export default measure;

@@ -4,8 +4,7 @@ export default configMeasurements;
 export type {
   Anchor,
   Conversion,
-  Measures,
-  SystemExport,
+  Measure,
   Unit,
   UnitDescription,
 } from './convert';

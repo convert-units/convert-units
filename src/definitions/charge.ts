@@ -1,4 +1,10 @@
-const charge = {
+import { Measure, Unit } from './../index';
+export type ChargeUnits = ChargeSIUnits;
+export type ChargeSystems = 'SI';
+
+export type ChargeSIUnits = 'c' | 'mC' | 'μC' | 'nC' | 'pC';
+
+const SI: Record<ChargeSIUnits, Unit> = {
   c: {
     name: {
       singular: 'Coulomb',
@@ -36,14 +42,10 @@ const charge = {
   },
 };
 
-export default {
+const measure: Measure<ChargeSystems, ChargeUnits> = {
   systems: {
-    charge,
-  },
-  anchors: {
-    metric: {
-      unit: 'c',
-      ratio: 1,
-    },
+    SI,
   },
 };
+
+export default measure;

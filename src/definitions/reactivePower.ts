@@ -1,4 +1,10 @@
-const reactivePower = {
+import { Measure, Unit } from './../index';
+export type ReactivePowerUnits = ReactivePowerSIUnits;
+export type ReactivePowerSystems = 'SI';
+
+export type ReactivePowerSIUnits = 'VAR' | 'mVAR' | 'kVAR' | 'MVAR' | 'GVAR';
+
+const SI: Record<ReactivePowerSIUnits, Unit> = {
   VAR: {
     name: {
       singular: 'Volt-Ampere Reactive',
@@ -36,14 +42,10 @@ const reactivePower = {
   },
 };
 
-export default {
+const measure: Measure<ReactivePowerSystems, ReactivePowerUnits> = {
   systems: {
-    reactivePower,
-  },
-  anchors: {
-    metric: {
-      unit: 'VAR',
-      ratio: 1,
-    },
+    SI,
   },
 };
+
+export default measure;

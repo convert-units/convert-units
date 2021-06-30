@@ -1,4 +1,10 @@
-const metric = {
+import { Measure, Unit } from './../index';
+export type EachUnits = EachMetricUnits;
+export type EachSystems = 'metric';
+
+export type EachMetricUnits = 'ea' | 'dz';
+
+const metric: Record<EachMetricUnits, Unit> = {
   ea: {
     name: {
       singular: 'Each',
@@ -15,14 +21,10 @@ const metric = {
   },
 };
 
-export default {
+const measure: Measure<EachSystems, EachUnits> = {
   systems: {
     metric,
   },
-  anchors: {
-    metric: {
-      unit: 'ea',
-      ratio: 1,
-    },
-  },
 };
+
+export default measure;

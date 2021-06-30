@@ -1,4 +1,10 @@
-const apparentPower = {
+import { Measure, Unit } from './../index';
+export type ApparentPowerUnits = ApparentPowerMetricUnits;
+export type ApparentPowerSystems = 'SI';
+
+export type ApparentPowerMetricUnits = 'VA' | 'mVA' | 'kVA' | 'MVA' | 'GVA';
+
+const SI: Record<ApparentPowerMetricUnits, Unit> = {
   VA: {
     name: {
       singular: 'Volt-Ampere',
@@ -36,14 +42,10 @@ const apparentPower = {
   },
 };
 
-export default {
+const measure: Measure<ApparentPowerSystems, ApparentPowerUnits> = {
   systems: {
-    apparentPower,
-  },
-  anchors: {
-    metric: {
-      unit: 'VA',
-      ratio: 1,
-    },
+    SI,
   },
 };
+
+export default measure;

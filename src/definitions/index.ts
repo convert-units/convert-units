@@ -1,33 +1,144 @@
-import { Measures } from '../convert';
-import acceleration from './acceleration';
-import angle from './angle';
-import apparentPower from './apparentPower';
-import area from './area';
-import charge from './charge';
-import current from './current';
-import digital from './digital';
-import each from './each';
-import energy from './energy';
-import force from './force';
-import frequency from './frequency';
-import illuminance from './illuminance';
-import length from './length';
-import mass from './mass';
-import pace from './pace';
-import partsPer from './partsPer';
-import pieces from './pieces';
-import power from './power';
-import pressure from './pressure';
-import reactiveEnergy from './reactiveEnergy';
-import reactivePower from './reactivePower';
-import speed from './speed';
-import temperature from './temperature';
-import time from './time';
-import voltage from './voltage';
-import volume from './volume';
-import volumeFlowRate from './volumeFlowRate';
+import { Measure } from '../convert';
+import acceleration, {
+  AccelerationSystems,
+  AccelerationUnits,
+} from './acceleration';
+import angle, { AngleSystems, AngleUnits } from './angle';
+import apparentPower, {
+  ApparentPowerSystems,
+  ApparentPowerUnits,
+} from './apparentPower';
+import area, { AreaSystems, AreaUnits } from './area';
+import charge, { ChargeSystems, ChargeUnits } from './charge';
+import current, { CurrentSystems, CurrentUnits } from './current';
+import digital, { DigitalSystems, DigitalUnits } from './digital';
+import each, { EachSystems, EachUnits } from './each';
+import energy, { EnergySystems, EnergyUnits } from './energy';
+import force, { ForceSystems, ForceUnits } from './force';
+import frequency, { FrequencySystems, FrequencyUnits } from './frequency';
+import illuminance, {
+  IlluminanceSystems,
+  IlluminanceUnits,
+} from './illuminance';
+import length, { LengthSystems, LengthUnits } from './length';
+import mass, { MassSystems, MassUnits } from './mass';
+import pace, { PaceSystems, PaceUnits } from './pace';
+import partsPer, { PartsPerSystems, PartsPerUnits } from './partsPer';
+import pieces, { PiecesSystems, PiecesUnits } from './pieces';
+import power, { PowerSystems, PowerUnits } from './power';
+import pressure, { PressureSystems, PressureUnits } from './pressure';
+import reactiveEnergy, {
+  ReactiveEnergySystems,
+  ReactiveEnergyUnits,
+} from './reactiveEnergy';
+import reactivePower, {
+  ReactivePowerSystems,
+  ReactivePowerUnits,
+} from './reactivePower';
+import speed, { SpeedSystems, SpeedUnits } from './speed';
+import temperature, {
+  TemperatureSystems,
+  TemperatureUnits,
+} from './temperature';
+import time, { TimeSystems, TimeUnits } from './time';
+import voltage, { VoltageSystems, VoltageUnits } from './voltage';
+import volume, { VolumeSystems, VolumeUnits } from './volume';
+import volumeFlowRate, {
+  VolumeFlowRateSystems,
+  VolumeFlowRateUnits,
+} from './volumeFlowRate';
 
-const allMeasures: Measures = {
+export type AllMeasuresSystems =
+  | AccelerationSystems
+  | AngleSystems
+  | ApparentPowerSystems
+  | AreaSystems
+  | ChargeSystems
+  | CurrentSystems
+  | DigitalSystems
+  | EachSystems
+  | EnergySystems
+  | ForceSystems
+  | FrequencySystems
+  | IlluminanceSystems
+  | LengthSystems
+  | MassSystems
+  | PaceSystems
+  | PartsPerSystems
+  | PiecesSystems
+  | PowerSystems
+  | PressureSystems
+  | ReactiveEnergySystems
+  | ReactivePowerSystems
+  | SpeedSystems
+  | TemperatureSystems
+  | TimeSystems
+  | VoltageSystems
+  | VolumeSystems
+  | VolumeFlowRateSystems;
+
+export type AllMeasuresUnits =
+  | AccelerationUnits
+  | AngleUnits
+  | ApparentPowerUnits
+  | AreaUnits
+  | ChargeUnits
+  | CurrentUnits
+  | DigitalUnits
+  | EachUnits
+  | EnergyUnits
+  | ForceUnits
+  | FrequencyUnits
+  | IlluminanceUnits
+  | LengthUnits
+  | MassUnits
+  | PaceUnits
+  | PartsPerUnits
+  | PiecesUnits
+  | PowerUnits
+  | PressureUnits
+  | ReactiveEnergyUnits
+  | ReactivePowerUnits
+  | SpeedUnits
+  | TemperatureUnits
+  | TimeUnits
+  | VoltageUnits
+  | VolumeUnits
+  | VolumeFlowRateUnits;
+
+export type AllMeasures =
+  | 'acceleration'
+  | 'angle'
+  | 'apparentPower'
+  | 'area'
+  | 'charge'
+  | 'current'
+  | 'digital'
+  | 'each'
+  | 'energy'
+  | 'force'
+  | 'frequency'
+  | 'illuminance'
+  | 'length'
+  | 'mass'
+  | 'pace'
+  | 'partsPer'
+  | 'pieces'
+  | 'power'
+  | 'pressure'
+  | 'reactiveEnergy'
+  | 'reactivePower'
+  | 'speed'
+  | 'temperature'
+  | 'time'
+  | 'voltage'
+  | 'volume'
+  | 'volumeFlowRate';
+
+const allMeasures: Record<
+  AllMeasures,
+  Measure<AllMeasuresSystems, AllMeasuresUnits>
+> = {
   acceleration,
   angle,
   apparentPower,
@@ -58,6 +169,62 @@ const allMeasures: Measures = {
 };
 
 export default allMeasures;
+export type {
+  AccelerationSystems,
+  AngleSystems,
+  ApparentPowerSystems,
+  AreaSystems,
+  ChargeSystems,
+  CurrentSystems,
+  DigitalSystems,
+  EachSystems,
+  EnergySystems,
+  ForceSystems,
+  FrequencySystems,
+  IlluminanceSystems,
+  LengthSystems,
+  MassSystems,
+  PaceSystems,
+  PartsPerSystems,
+  PiecesSystems,
+  PowerSystems,
+  PressureSystems,
+  ReactiveEnergySystems,
+  ReactivePowerSystems,
+  SpeedSystems,
+  TemperatureSystems,
+  TimeSystems,
+  VoltageSystems,
+  VolumeSystems,
+  VolumeFlowRateSystems,
+  AccelerationUnits,
+  AngleUnits,
+  ApparentPowerUnits,
+  AreaUnits,
+  ChargeUnits,
+  CurrentUnits,
+  DigitalUnits,
+  EachUnits,
+  EnergyUnits,
+  ForceUnits,
+  FrequencyUnits,
+  IlluminanceUnits,
+  LengthUnits,
+  MassUnits,
+  PaceUnits,
+  PartsPerUnits,
+  PiecesUnits,
+  PowerUnits,
+  PressureUnits,
+  ReactiveEnergyUnits,
+  ReactivePowerUnits,
+  SpeedUnits,
+  TemperatureUnits,
+  TimeUnits,
+  VoltageUnits,
+  VolumeUnits,
+  VolumeFlowRateUnits,
+};
 export {
   acceleration,
   angle,

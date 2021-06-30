@@ -7,10 +7,14 @@ export interface Unit {
   anchor_shift?: number;
 }
 
-export interface Conversion {
-  abbr: string;
-  measure: string;
-  system: string;
+export interface Conversion<
+  TMeasures extends string,
+  TSystems extends string,
+  TUnits extends string
+> {
+  abbr: TUnits;
+  measure: TMeasures;
+  system: TSystems;
   unit: Unit;
 }
 
@@ -25,33 +29,34 @@ export interface UnitDescription {
 type TransformFunc = (value: number) => number;
 
 export interface Anchor {
-  unit: string;
   ratio?: number;
   transform?: TransformFunc;
 }
 
-export interface SystemExport {
-  systems: Record<string, Record<string, Unit>>;
-  anchors: Record<string, Anchor>;
-}
-
-export interface Measures {
-  [key: string]: SystemExport;
+export interface Measure<TSystems extends string, TUnits extends string> {
+  systems: Partial<Record<TSystems, Partial<Record<TUnits, Unit>>>>;
+  anchors?: Partial<Record<TSystems, Partial<Record<TSystems, Anchor>>>>;
 }
 
 /**
  * Represents a conversion path
  */
-class Converter {
+class Converter<
+  TMeasures extends string,
+  TSystems extends string,
+  TUnits extends string
+> {
   private val = 0;
-  private destination: Conversion | null = null;
-  private origin: Conversion | null = null;
-  private measureData: Measures;
+  private destination: Conversion<TMeasures, TSystems, TUnits> | null = null;
+  private origin: Conversion<TMeasures, TSystems, TUnits> | null = null;
+  private measureData: Record<TMeasures, Measure<TSystems, TUnits>>;
 
-  constructor(measures: Measures, numerator?: number, denominator?: number) {
-    if (typeof numerator === 'number') {
-      this.val = numerator;
-      if (typeof denominator === 'number') this.val = numerator / denominator;
+  constructor(
+    measures: Record<TMeasures, Measure<TSystems, TUnits>>,
+    value?: number
+  ) {
+    if (typeof value === 'number') {
+      this.val = value;
     }
 
     if (typeof measures !== 'object') {
@@ -64,7 +69,7 @@ class Converter {
   /**
    * Lets the converter know the source unit abbreviation
    */
-  from(from: string): this {
+  from(from: TUnits): this {
     if (this.destination != null)
       throw new Error('.from must be called before .to');
 
@@ -80,7 +85,7 @@ class Converter {
   /**
    * Converts the unit and returns the value
    */
-  to(to: string): number {
+  to(to: TUnits): number {
     if (this.origin == null) throw new Error('.to must be called after .from');
 
     this.destination = this.getUnit(to);
@@ -89,8 +94,12 @@ class Converter {
       this.throwUnsupportedUnitError(to);
     }
 
-    const destination = this.destination as Conversion;
-    const origin = this.origin as Conversion;
+    const destination = this.destination as Conversion<
+      TMeasures,
+      TSystems,
+      TUnits
+    >;
+    const origin = this.origin as Conversion<TMeasures, TSystems, TUnits>;
 
     // Don't change the value if origin and destination are the same
     if (origin.abbr === destination.abbr) {
@@ -124,12 +133,26 @@ class Converter {
      * transform here to provide the direct result
      */
     if (origin.system != destination.system) {
-      const transform: unknown = this.measureData[origin.measure].anchors[
-        origin.system
-      ].transform;
-      const ratio: unknown = this.measureData[origin.measure].anchors[
-        origin.system
-      ].ratio;
+      const measure = this.measureData[origin.measure];
+
+      const anchors = measure.anchors;
+      if (anchors == null) {
+        throw new Error(
+          `Unable to convert units. Anchors are missing for "${origin.measure}" and "${destination.measure}" measures.`
+        );
+      }
+
+      const anchor: Partial<Record<TSystems, Anchor>> | undefined =
+        anchors[origin.system];
+      if (anchor == null) {
+        throw new Error(
+          `Unable to find anchor for "${origin.measure}" to "${destination.measure}". Please make sure it is defined.`
+        );
+      }
+
+      const transform: unknown = anchor[destination.system]?.transform;
+      const ratio: unknown = anchor[destination.system]?.ratio;
+
       if (typeof transform === 'function') {
         result = transform(result);
       } else if (typeof ratio === 'number') {
@@ -157,17 +180,16 @@ class Converter {
   /**
    * Converts the unit to the best available unit.
    */
-  toBest(options?: { exclude?: string[]; cutOffNumber?: number }) {
+  toBest(options?: { exclude?: TUnits[]; cutOffNumber?: number }) {
     if (this.origin == null)
       throw new Error('.toBest must be called after .from');
 
-    options = Object.assign(
-      {
-        exclude: [],
-        cutOffNumber: 1,
-      },
-      options
-    );
+    let exclude: TUnits[] = [];
+    let cutOffNumber = 1;
+    if (typeof options === 'object') {
+      exclude = options.exclude ?? [];
+      cutOffNumber = options.cutOffNumber ?? 1;
+    }
 
     let best = null;
     /**
@@ -177,11 +199,10 @@ class Converter {
     */
     for (const possibility of this.possibilities()) {
       const unit = this.describe(possibility);
-      const isIncluded = options?.exclude?.indexOf(possibility) === -1;
+      const isIncluded = exclude.indexOf(possibility) === -1;
 
       if (isIncluded && unit.system === this.origin.system) {
         const result = this.to(possibility);
-        const cutOffNumber = options?.cutOffNumber ?? 0;
         if (best == null || (result >= cutOffNumber && result < best.val)) {
           best = {
             val: result,
@@ -198,18 +219,22 @@ class Converter {
   /**
    * Finds the unit
    */
-  getUnit(abbr: string): Conversion | null {
+  getUnit(abbr: TUnits): Conversion<TMeasures, TSystems, TUnits> | null {
     const found = null;
 
     for (const [measureName, measure] of Object.entries(this.measureData)) {
-      for (const [systemName, system] of Object.entries(measure.systems)) {
-        for (const [testAbbr, unit] of Object.entries(system)) {
+      for (const [systemName, system] of Object.entries(
+        (measure as Measure<TSystems, TUnits>).systems
+      )) {
+        for (const [testAbbr, unit] of Object.entries(
+          system as Partial<Record<TUnits, Unit>>
+        )) {
           if (testAbbr == abbr) {
             return {
-              abbr: abbr,
-              measure: measureName,
-              system: systemName,
-              unit: unit,
+              abbr: abbr as TUnits,
+              measure: measureName as TMeasures,
+              system: systemName as TSystems,
+              unit: unit as Unit,
             };
           }
         }
@@ -222,7 +247,7 @@ class Converter {
   /**
    * An alias for getUnit
    */
-  describe(abbr: string): UnitDescription | never {
+  describe(abbr: TUnits): UnitDescription | never {
     const result = this.getUnit(abbr);
 
     if (result != null) {
@@ -232,7 +257,9 @@ class Converter {
     this.throwUnsupportedUnitError(abbr);
   }
 
-  private describeUnit(unit: Conversion): UnitDescription {
+  private describeUnit(
+    unit: Conversion<TMeasures, TSystems, TUnits>
+  ): UnitDescription {
     return {
       abbr: unit.abbr,
       measure: unit.measure,
@@ -253,21 +280,23 @@ class Converter {
    * returned
    *
    */
-  list(measureName?: string): UnitDescription[] | never {
+  list(measureName?: TMeasures): UnitDescription[] | never {
     const list = [];
 
     if (measureName == null) {
       for (const [name, measure] of Object.entries(this.measureData)) {
         for (const [systemName, units] of Object.entries(
-          (measure as SystemExport).systems
+          (measure as Measure<TSystems, TUnits>).systems
         )) {
-          for (const [abbr, unit] of Object.entries(units)) {
+          for (const [abbr, unit] of Object.entries(
+            units as Partial<Record<TUnits, Unit>>
+          )) {
             list.push(
               this.describeUnit({
-                abbr: abbr,
-                measure: name,
-                system: systemName,
-                unit: unit,
+                abbr: abbr as TUnits,
+                measure: name as TMeasures,
+                system: systemName as TSystems,
+                unit: unit as Unit,
               })
             );
           }
@@ -278,15 +307,17 @@ class Converter {
     } else {
       const measure = this.measureData[measureName];
       for (const [systemName, units] of Object.entries(
-        (measure as SystemExport).systems
+        (measure as Measure<TSystems, TUnits>).systems
       )) {
-        for (const [abbr, unit] of Object.entries(units)) {
+        for (const [abbr, unit] of Object.entries(
+          units as Partial<Record<TUnits, Unit>>
+        )) {
           list.push(
             this.describeUnit({
-              abbr: abbr,
-              measure: measureName,
-              system: systemName,
-              unit: unit,
+              abbr: abbr as TUnits,
+              measure: measureName as TMeasures,
+              system: systemName as TSystems,
+              unit: unit as Unit,
             })
           );
         }
@@ -300,8 +331,12 @@ class Converter {
     let validUnits: string[] = [];
 
     for (const measure of Object.values(this.measureData)) {
-      for (const systems of Object.values((measure as SystemExport).systems)) {
-        validUnits = validUnits.concat(Object.keys(systems));
+      for (const systems of Object.values(
+        (measure as Measure<TSystems, TUnits>).systems
+      )) {
+        validUnits = validUnits.concat(
+          Object.keys(systems as Record<TUnits, Unit>)
+        );
       }
     }
 
@@ -314,25 +349,26 @@ class Converter {
    * Returns the abbreviated measures that the value can be
    * converted to.
    */
-  possibilities(forMeasure?: unknown) {
-    let possibilities: string[] = [];
-    let list_measures: string[] = [];
+  possibilities(forMeasure?: TMeasures) {
+    let possibilities: TUnits[] = [];
+    let list_measures: TMeasures[] = [];
 
     if (typeof forMeasure == 'string') {
       list_measures.push(forMeasure);
     } else if (this.origin != null) {
       list_measures.push(this.origin.measure);
     } else {
-      list_measures = Object.keys(this.measureData);
+      list_measures = Object.keys(this.measureData) as TMeasures[];
     }
 
     for (const measure of list_measures) {
-      const systems: Record<string, Record<string, Unit>> = this.measureData[
-        measure
-      ].systems;
+      const systems = this.measureData[measure].systems;
 
       for (const system of Object.values(systems)) {
-        possibilities = [...possibilities, ...Object.keys(system)];
+        possibilities = [
+          ...possibilities,
+          ...(Object.keys(system as Record<TUnits, Unit>) as TUnits[]),
+        ];
       }
     }
 
@@ -348,8 +384,13 @@ class Converter {
   }
 }
 
-type convertFactory = (value?: number) => Converter;
-
-export default function (measures: Measures): convertFactory {
-  return (value?: number) => new Converter(measures, value);
+export default function <
+  TMeasures extends string,
+  TSystems extends string,
+  TUnits extends string
+>(
+  measures: Record<TMeasures, Measure<TSystems, TUnits>>
+): (value?: number) => Converter<TMeasures, TSystems, TUnits> {
+  return (value?: number) =>
+    new Converter<TMeasures, TSystems, TUnits>(measures, value);
 }
