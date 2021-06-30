@@ -28,7 +28,7 @@ The code snippet below shows everything needed to get going:
 // `allMeasures` includes all the measures packaged with this library
 import configureMeasurements, { allMeasures } from 'convert-units';
 
-const convert = configureMeasurements(allMeausres);
+const convert = configureMeasurements(allMeasures);
 ```
 
 It's also possible to limit the measures configured to only the ones your application needs:
