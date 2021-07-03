@@ -38,10 +38,17 @@ export interface Measure<TSystems extends string, TUnits extends string> {
   anchors?: Partial<Record<TSystems, Partial<Record<TSystems, Anchor>>>>;
 }
 
+export interface BestResult {
+  val: number;
+  unit: string;
+  singular: string;
+  plural: string;
+}
+
 /**
  * Represents a conversion path
  */
-class Converter<
+export class Converter<
   TMeasures extends string,
   TSystems extends string,
   TUnits extends string
@@ -180,7 +187,10 @@ class Converter<
   /**
    * Converts the unit to the best available unit.
    */
-  toBest(options?: { exclude?: TUnits[]; cutOffNumber?: number }) {
+  toBest(options?: {
+    exclude?: TUnits[];
+    cutOffNumber?: number;
+  }): BestResult | null {
     if (this.origin == null)
       throw new Error('.toBest must be called after .from');
 
@@ -349,7 +359,7 @@ class Converter<
    * Returns the abbreviated measures that the value can be
    * converted to.
    */
-  possibilities(forMeasure?: TMeasures) {
+  possibilities(forMeasure?: TMeasures): TUnits[] {
     let possibilities: TUnits[] = [];
     let list_measures: TMeasures[] = [];
 
@@ -379,8 +389,8 @@ class Converter<
    * Returns the abbreviated measures that the value can be
    * converted to.
    */
-  measures() {
-    return Object.keys(this.measureData);
+  measures(): TMeasures[] {
+    return Object.keys(this.measureData) as TMeasures[];
   }
 }
 
