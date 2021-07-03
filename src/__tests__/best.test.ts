@@ -146,3 +146,15 @@ test('post-cut off number', () => {
     };
   expect(actual).toEqual(expected);
 });
+
+test('return null if all possible units are excluded', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  const convertLenght = convert(10);
+  const actual = convertLenght
+      .from('km')
+      .toBest({ exclude: convertLenght.possibilities() }),
+    expected = null;
+  expect(actual).toEqual(expected);
+});
