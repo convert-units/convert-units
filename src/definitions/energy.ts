@@ -2,7 +2,7 @@ import { Measure, Unit } from './../index';
 export type EnergyUnits = EnergySIUnits;
 export type EnergySystems = 'SI';
 
-export type EnergySIUnits = 'Wh' | 'mWh' | 'kWh' | 'MWh' | 'GWh' | 'J' | 'kJ';
+export type EnergySIUnits = 'Wh' | 'mWh' | 'kWh' | 'MWh' | 'GWh' | 'J' | 'kJ' | 'GJ' | 'MJ' | 'KCal' | 'BTU';
 
 const SI: Record<EnergySIUnits, Unit> = {
   Wh: {
@@ -53,6 +53,34 @@ const SI: Record<EnergySIUnits, Unit> = {
       plural: 'Kilojoules',
     },
     to_anchor: 1000,
+  },
+  GJ: {
+    name: {
+      singular: 'Gigajoule',
+      plural: 'Gigajoules',
+    },
+    to_anchor: 1000000000,
+  },
+  MJ: {
+    name: {
+      singular: 'Megajoule',
+      plural: 'Megajoules',
+    },
+    to_anchor: 1000000,
+  },
+  KCal: {
+    name: {
+      singular: 'KiloCalory',
+      plural: 'KiloCalories',
+    },
+    to_anchor: 4184,
+  },
+  BTU: {
+    name: {
+      singular: 'BTU',
+      plural: 'BTUs',
+    },
+    to_anchor: 1055.06,
   },
 };
 
