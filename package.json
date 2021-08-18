@@ -1,7 +1,7 @@
 {
-  "name": "convert-units",
-  "version": "4.1.0",
-  "description": "Convert between quantities in different units",
+  "name": "@normative/convert-units",
+  "version": "4.2.0",
+  "description": "Convert between quantities in different units used by Normative",
   "main": "lib/cjs/index.js",
   "types": "lib/cjs/index.d.ts",
   "module": "lib/esm/index.js",
@@ -32,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/convert-units/convert-units.git"
+    "url": "https://github.com/normative-io/convert-units"
   },
   "keywords": [
     "metric",
