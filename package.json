@@ -1,8 +1,9 @@
 {
   "name": "convert-units",
-  "version": "3.0.0-beta.2",
+  "version": "4.1.0",
   "description": "Convert between quantities in different units",
   "main": "lib/cjs/index.js",
+  "types": "lib/cjs/index.d.ts",
   "module": "lib/esm/index.js",
   "files": [
     "lib/"
