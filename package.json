@@ -1,6 +1,6 @@
 {
   "name": "@normative/convert-units",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "description": "Convert between quantities in different units used by Normative",
   "main": "lib/cjs/index.js",
   "types": "lib/cjs/index.d.ts",
