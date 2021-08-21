@@ -190,15 +190,18 @@ export class Converter<
   toBest(options?: {
     exclude?: TUnits[];
     cutOffNumber?: number;
+    system?: TSystems;
   }): BestResult | null {
     if (this.origin == null)
       throw new Error('.toBest must be called after .from');
 
     let exclude: TUnits[] = [];
     let cutOffNumber = 1;
+    let system = this.origin.system;
     if (typeof options === 'object') {
       exclude = options.exclude ?? [];
       cutOffNumber = options.cutOffNumber ?? 1;
+      system = options.system ?? this.origin.system;
     }
 
     let best = null;
@@ -211,7 +214,7 @@ export class Converter<
       const unit = this.describe(possibility);
       const isIncluded = exclude.indexOf(possibility) === -1;
 
-      if (isIncluded && unit.system === this.origin.system) {
+      if (isIncluded && unit.system === system) {
         const result = this.to(possibility);
         if (best == null || (result >= cutOffNumber && result < best.val)) {
           best = {

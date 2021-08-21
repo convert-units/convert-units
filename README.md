@@ -82,6 +82,10 @@ convert(900).from('mm').toBest({ cutOffNumber: 10 });
 
 convert(1000).from('mm').toBest({ cutOffNumber: 10 });
 // { val: 100, unit: 'cm', plural: 'Centimeters' } (the smallest unit with a value equal to or above 10)
+
+// by default the system of the origin is used, the `system` option overwrites this behaviour
+convert(254).from('mm').toBest({ system: 'imperial' }); // ('mm' is metric)
+// { val: 10, unit: 'in', plural: 'Inches' }            // ('in' is imperial)
 ```
 
 You can get a list of the measures available to the current instance with `.measures`
@@ -688,4 +692,3 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
-

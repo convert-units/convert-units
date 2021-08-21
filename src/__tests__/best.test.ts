@@ -79,6 +79,36 @@ test('excludes measurements', () => {
   expect(actual).toEqual(expected);
 });
 
+test('should convert to the chosen system', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  const actual = convert(1200000).from('mm').toBest({ system: 'imperial' }),
+    expected = {
+      val: 656.168,
+      unit: 'fathom',
+      singular: 'Fathom',
+      plural: 'Fathoms',
+    };
+  expect(actual).toEqual(expected);
+});
+
+test('should exlude values and convert to the chosen system', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  const actual = convert(1200000)
+      .from('mm')
+      .toBest({ exclude: ['fathom'], system: 'imperial' }),
+    expected = {
+      val: 1312.336,
+      unit: 'yd',
+      singular: 'Yard',
+      plural: 'Yards',
+    };
+  expect(actual).toEqual(expected);
+});
+
 test('does not break when excluding from measurement', () => {
   const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
