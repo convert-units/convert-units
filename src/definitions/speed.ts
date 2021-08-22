@@ -51,7 +51,6 @@ const imperial: Record<SpeedImperialUnits, Unit> = {
     },
     to_anchor: 0.0113636,
   },
-
 };
 
 const measure: Measure<SpeedSystems, SpeedUnits> = {
