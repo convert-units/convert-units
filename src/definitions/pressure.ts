@@ -67,8 +67,8 @@ const imperial: Record<PressureImperialUnits, Unit> = {
   },
   inHg: {
     name: {
-      singular: 'inch of mercury',
-      plural: 'inches of mercury',
+      singular: 'Inch of mercury',
+      plural: 'Inches of mercury',
     },
     to_anchor: 0.000491154,
   },
