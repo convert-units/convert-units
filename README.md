@@ -90,7 +90,11 @@ convert(900).from('mm').toBest({ cutOffNumber: 10 });
 // { val: 90, unit: 'cm', ... } (the smallest unit with a value equal to or above 10)
 
 convert(1000).from('mm').toBest({ cutOffNumber: 10 });
-// { val: 100, unit: 'cm', ... } (the smallest unit with a value equal to or above 10)
+// { val: 100, unit: 'cm', plural: 'Centimeters' } (the smallest unit with a value equal to or above 10)
+
+// by default the system of the origin is used, the `system` option overwrites this behaviour
+convert(254).from('mm').toBest({ system: 'imperial' }); // ('mm' is metric)
+// { val: 10, unit: 'in', plural: 'Inches' }            // ('in' is imperial)
 ```
 
 List all available measures:

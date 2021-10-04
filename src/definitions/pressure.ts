@@ -3,7 +3,7 @@ export type PressureUnits = PressureMetricUnits | PressureImperialUnits;
 export type PressureSystems = 'metric' | 'imperial';
 
 export type PressureMetricUnits = 'Pa' | 'kPa' | 'MPa' | 'hPa' | 'bar' | 'torr';
-export type PressureImperialUnits = 'psi' | 'ksi';
+export type PressureImperialUnits = 'psi' | 'ksi' | 'inHg';
 
 const metric: Record<PressureMetricUnits, Unit> = {
   Pa: {
@@ -64,6 +64,13 @@ const imperial: Record<PressureImperialUnits, Unit> = {
       plural: 'kilopound per square inch',
     },
     to_anchor: 1,
+  },
+  inHg: {
+    name: {
+      singular: 'Inch of mercury',
+      plural: 'Inches of mercury',
+    },
+    to_anchor: 0.000491154,
   },
 };
 

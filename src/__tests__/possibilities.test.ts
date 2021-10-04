@@ -323,7 +323,7 @@ test('pressure possibilities', () => {
     pressure,
   });
   const actual = convert().possibilities('pressure'),
-    expected = ['Pa', 'kPa', 'MPa', 'hPa', 'bar', 'torr', 'psi', 'ksi'];
+    expected = ['Pa', 'kPa', 'MPa', 'hPa', 'bar', 'torr', 'psi', 'ksi', 'inHg'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -332,7 +332,7 @@ test('speed possibilities', () => {
     speed,
   });
   const actual = convert().possibilities('speed'),
-    expected = ['m/s', 'km/h', 'mph', 'knot', 'ft/s'];
+    expected = ['m/s', 'km/h', 'mph', 'knot', 'ft/s', 'ft/min'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -561,6 +561,7 @@ test('all possibilities', () => {
       'fathom',
       'ft-cd',
       'ft-lb/s',
+      'ft/min',
       'ft/s',
       'ft2',
       'ft3',
@@ -592,6 +593,7 @@ test('all possibilities', () => {
       'in3/h',
       'in3/min',
       'in3/s',
+      'inHg',
       'J',
       'kA',
       'kPa',

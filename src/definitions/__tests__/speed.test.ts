@@ -49,3 +49,17 @@ test('mph to km/h', () => {
   });
   expect(convert(12).from('mph').to('km/h')).toBeCloseTo(19.3121);
 });
+
+test('ft/s to ft/min', () => {
+  const convert = configureMeasurements<'speed', SpeedSystems, SpeedUnits>({
+    speed,
+  });
+  expect(convert(1).from('ft/s').to('ft/min')).toBeCloseTo(60);
+});
+
+test('m/s to ft/min', () => {
+  const convert = configureMeasurements<'speed', SpeedSystems, SpeedUnits>({
+    speed,
+  });
+  expect(convert(1).from('m/s').to('ft/min')).toBeCloseTo(196.85);
+});

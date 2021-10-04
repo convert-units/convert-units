@@ -104,3 +104,47 @@ test('psi to hPa', () => {
   });
   expect(convert(10).from('psi').to('hPa')).toBeCloseTo(689.47573);
 });
+
+test('psi to inHg', () => {
+  const convert = configureMeasurements<
+    'pressure',
+    PressureSystems,
+    PressureUnits
+  >({
+    pressure,
+  });
+  expect(convert(1).from('psi').to('inHg')).toBeCloseTo(2.03602);
+});
+
+test('inHg to psi', () => {
+  const convert = configureMeasurements<
+    'pressure',
+    PressureSystems,
+    PressureUnits
+  >({
+    pressure,
+  });
+  expect(convert(1).from('inHg').to('psi')).toBeCloseTo(0.491154);
+});
+
+test('inHg to Pa', () => {
+  const convert = configureMeasurements<
+    'pressure',
+    PressureSystems,
+    PressureUnits
+  >({
+    pressure,
+  });
+  expect(convert(1).from('inHg').to('Pa')).toBeCloseTo(3386.389);
+});
+
+test('Pa to inHg', () => {
+  const convert = configureMeasurements<
+    'pressure',
+    PressureSystems,
+    PressureUnits
+  >({
+    pressure,
+  });
+  expect(convert(1013.25).from('hPa').to('inHg')).toBeCloseTo(29.92);
+});
