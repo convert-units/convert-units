@@ -99,8 +99,8 @@ const metric: Record<VolumeMetricUnits, Unit> = {
   // Swedish units
   krm: {
     name: {
-      singular: 'Matsked',
-      plural: 'Matskedar',
+      singular: 'Kryddmått',
+      plural: 'Kryddmått',
     },
     to_anchor: 1 / 1000,
   },
