@@ -359,6 +359,19 @@ export class Converter<
   }
 
   /**
+  * Returns TUnits[] ordered by the Unit.to_anchor property
+  */
+  private getTUnitsFromOrderedToAnchor(system: Record<TUnits, Unit>): TUnits[] {
+    return Object.entries(system as Record<TUnits, Unit>)
+      .sort((a, b) => {
+        if ((a[1] as Unit).to_anchor > (b[1] as Unit).to_anchor) return 1;
+        if ((a[1] as Unit).to_anchor < (b[1] as Unit).to_anchor) return -1;
+        return 0;
+      })
+      .map(([key]) => key) as TUnits[];
+  }
+
+  /**
    * Returns the abbreviated measures that the value can be
    * converted to.
    */
@@ -380,7 +393,7 @@ export class Converter<
       for (const system of Object.values(systems)) {
         possibilities = [
           ...possibilities,
-          ...(Object.keys(system as Record<TUnits, Unit>) as TUnits[]),
+          ...this.getTUnitsFromOrderedToAnchor(system as Record<TUnits, Unit>),
         ];
       }
     }
