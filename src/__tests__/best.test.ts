@@ -1,4 +1,5 @@
 import configureMeasurements from '..';
+import charge, { ChargeSystems, ChargeUnits } from '../definitions/charge';
 import length, { LengthSystems, LengthUnits } from '../definitions/length';
 
 test('best mm', () => {
@@ -11,6 +12,20 @@ test('best mm', () => {
       unit: 'm',
       singular: 'Meter',
       plural: 'Meters',
+    };
+  expect(actual).toEqual(expected);
+});
+
+test('best mC', () => {
+  const convert = configureMeasurements<'charge', ChargeSystems, ChargeUnits>({
+    charge,
+  });
+  const actual = convert(10).from('mC').toBest(),
+    expected = {
+      val: 10,
+      unit: 'mC',
+      singular: 'Millicoulomb',
+      plural: 'Millicoulombs',
     };
   expect(actual).toEqual(expected);
 });
