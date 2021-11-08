@@ -192,7 +192,11 @@ test('return null if all possible units are excluded', () => {
 test('Make sure that the first unit tested cannot become the best value if it is less than the cutOffNumber', () => {
   type TestMeasureSystems = 'test';
   type TestMeasureUnits = 'a' | 'al' | 'axl';
-  const convert = configureMeasurements<'testmeasure', TestMeasureSystems, TestMeasureUnits>({
+  const convert = configureMeasurements<
+    'testmeasure',
+    TestMeasureSystems,
+    TestMeasureUnits
+  >({
     testmeasure: {
       systems: {
         test: {
@@ -217,13 +221,11 @@ test('Make sure that the first unit tested cannot become the best value if it is
             },
             to_anchor: 1 / 1000000,
           },
-        }
-      }
+        },
+      },
     },
   });
-  const actual = convert(10)
-      .from('al')
-      .toBest(),
+  const actual = convert(10).from('al').toBest(),
     expected = {
       val: 10,
       unit: 'al',
