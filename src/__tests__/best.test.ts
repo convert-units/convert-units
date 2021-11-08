@@ -189,7 +189,7 @@ test('return null if all possible units are excluded', () => {
   expect(actual).toEqual(expected);
 });
 
-test('no good options available should produce the same value and unit', () => {
+test('Make sure that the first unit tested cannot become the best value if it is less than the cutOffNumber', () => {
   type TestMeasureSystems = 'test';
   type TestMeasureUnits = 'a' | 'al' | 'axl';
   const convert = configureMeasurements<'testmeasure', TestMeasureSystems, TestMeasureUnits>({
