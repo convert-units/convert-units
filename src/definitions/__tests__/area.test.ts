@@ -105,3 +105,45 @@ test('mm2 to ft2', () => {
   });
   expect(convert(1).from('mm2').to('ft2')).toBeCloseTo(1.07639e-5);
 });
+
+test('mm2 to μm2', () => {
+  const convert = configureMeasurements<'area', AreaSystems, AreaUnits>({
+    area,
+  });
+  expect(convert(1).from('mm2').to('μm2')).toBe(1e6);
+});
+
+test('μm2 to m2', () => {
+  const convert = configureMeasurements<'area', AreaSystems, AreaUnits>({
+    area,
+  });
+  expect(convert(1).from('μm2').to('m2')).toBe(1e-12);
+});
+
+test('μm2 to yd2', () => {
+  const convert = configureMeasurements<'area', AreaSystems, AreaUnits>({
+    area,
+  });
+  expect(convert(1).from('μm2').to('yd2')).toBeCloseTo(1.196e-12);
+});
+
+test('mm2 to nm2', () => {
+  const convert = configureMeasurements<'area', AreaSystems, AreaUnits>({
+    area,
+  });
+  expect(convert(1).from('mm2').to('nm2')).toBeCloseTo(1e12);
+});
+
+test('nm2 to m2', () => {
+  const convert = configureMeasurements<'area', AreaSystems, AreaUnits>({
+    area,
+  });
+  expect(convert(1).from('nm2').to('m2')).toBe(1e-18);
+});
+
+test('nm2 to yd2', () => {
+  const convert = configureMeasurements<'area', AreaSystems, AreaUnits>({
+    area,
+  });
+  expect(convert(1).from('nm2').to('yd2')).toBeCloseTo(1.196e-18);
+});

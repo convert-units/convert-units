@@ -168,3 +168,17 @@ test('μm to m', () => {
   });
   expect(convert(1).from('μm').to('m')).toBe(1e-6);
 });
+
+test('m to µm', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  expect(convert(1).from('m').to('μm')).toEqual(1e6);
+});
+
+test('m to nm', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  expect(convert(1).from('m').to('nm')).toBeCloseTo(1e9);
+});

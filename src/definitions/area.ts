@@ -2,10 +2,31 @@ import { Measure, Unit } from './../index';
 export type AreaUnits = AreaMetricUnits | AreaImperialUnits;
 export type AreaSystems = 'metric' | 'imperial';
 
-export type AreaMetricUnits = 'mm2' | 'cm2' | 'm2' | 'ha' | 'km2';
+export type AreaMetricUnits =
+  | 'nm2'
+  | 'μm2'
+  | 'mm2'
+  | 'cm2'
+  | 'm2'
+  | 'ha'
+  | 'km2';
 export type AreaImperialUnits = 'in2' | 'yd2' | 'ft2' | 'ac' | 'mi2';
 
 const metric: Record<AreaMetricUnits, Unit> = {
+  nm2: {
+    name: {
+      singular: 'Square Nanometer',
+      plural: 'Square Nanometers',
+    },
+    to_anchor: 1e-18,
+  },
+  μm2: {
+    name: {
+      singular: 'Square Micrometer',
+      plural: 'Square Micrometers',
+    },
+    to_anchor: 1e-12,
+  },
   mm2: {
     name: {
       singular: 'Square Millimeter',
