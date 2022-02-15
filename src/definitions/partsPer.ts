@@ -1,5 +1,5 @@
 import { Measure, Unit } from './../index';
-export type PartsPerUnits = PArtsPerSIUnits;
+export type PartsPerUnits = PartsPerSIUnits;
 export type PartsPerSystems = 'SI';
 
 export type PartsPerSIUnits = 'ppm' | 'ppb' | 'ppt' | 'ppq';
