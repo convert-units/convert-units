@@ -2,9 +2,9 @@ import { Measure, Unit } from './../index';
 export type PartsPerUnits = PArtsPerSIUnits;
 export type PartsPerSystems = 'SI';
 
-export type PArtsPerSIUnits = 'ppm' | 'ppb' | 'ppt' | 'ppq';
+export type PartsPerSIUnits = 'ppm' | 'ppb' | 'ppt' | 'ppq';
 
-const SI: Record<PArtsPerSIUnits, Unit> = {
+const SI: Record<PartsPerSIUnits, Unit> = {
   ppm: {
     name: {
       singular: 'Part-per Million',
