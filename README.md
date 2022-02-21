@@ -928,6 +928,8 @@ Packaged Units
 * ml
 * l
 * kl
+* Ml
+* Gl
 * m3
 * km3
 * tsp
@@ -1129,6 +1131,8 @@ Packaged Units
 * GWh
 * J
 * kJ
+* MJ
+* GJ
 </details>
 
 <details>

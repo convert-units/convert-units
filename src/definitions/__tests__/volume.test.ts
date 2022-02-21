@@ -252,3 +252,45 @@ test('gal to l', () => {
   });
   expect(convert(10).from('gal').to('l')).toBeCloseTo(37.85);
 });
+
+test('Ml to Ml', () => {
+  const convert = configureMeasurements<'volume', VolumeSystems, VolumeUnits>({
+    volume,
+  });
+  expect(convert(1).from('Ml').to('Ml')).toBe(1);
+});
+
+test('Gl to Gl', () => {
+  const convert = configureMeasurements<'volume', VolumeSystems, VolumeUnits>({
+    volume,
+  });
+  expect(convert(2).from('Gl').to('Gl')).toBe(2);
+});
+
+test('Ml to l', () => {
+  const convert = configureMeasurements<'volume', VolumeSystems, VolumeUnits>({
+    volume,
+  });
+  expect(convert(1).from('Ml').to('l')).toBe(1_000_000);
+});
+
+test('Gl to l', () => {
+  const convert = configureMeasurements<'volume', VolumeSystems, VolumeUnits>({
+    volume,
+  });
+  expect(convert(1).from('Gl').to('l')).toBe(1_000_000_000);
+});
+
+test('Gl to Ml', () => {
+  const convert = configureMeasurements<'volume', VolumeSystems, VolumeUnits>({
+    volume,
+  });
+  expect(convert(1).from('Gl').to('Ml')).toBe(1_000);
+});
+
+test('Ml to Gl', () => {
+  const convert = configureMeasurements<'volume', VolumeSystems, VolumeUnits>({
+    volume,
+  });
+  expect(convert(1).from('Ml').to('Gl')).toBe(0.001);
+});

@@ -50,6 +50,20 @@ test('kJ to kJ', () => {
   expect(convert(1).from('kJ').to('kJ')).toBe(1);
 });
 
+test('MJ to MJ', () => {
+  const convert = configureMeasurements<'energy', EnergySystems, EnergyUnits>({
+    energy,
+  });
+  expect(convert(1).from('MJ').to('MJ')).toBe(1);
+});
+
+test('GJ to GJ', () => {
+  const convert = configureMeasurements<'energy', EnergySystems, EnergyUnits>({
+    energy,
+  });
+  expect(convert(1).from('GJ').to('GJ')).toBe(1);
+});
+
 test('Wh to J', () => {
   const convert = configureMeasurements<'energy', EnergySystems, EnergyUnits>({
     energy,
@@ -139,4 +153,46 @@ test('kWh to kJ', () => {
     energy,
   });
   expect(convert(1).from('kWh').to('kJ')).toBe(3600);
+});
+
+test('MJ to J', () => {
+  const convert = configureMeasurements<'energy', EnergySystems, EnergyUnits>({
+    energy,
+  });
+  expect(convert(1).from('MJ').to('J')).toBe(1_000_000);
+});
+
+test('GJ to J', () => {
+  const convert = configureMeasurements<'energy', EnergySystems, EnergyUnits>({
+    energy,
+  });
+  expect(convert(1).from('GJ').to('J')).toBe(1_000_000_000);
+});
+
+test('GJ to MJ', () => {
+  const convert = configureMeasurements<'energy', EnergySystems, EnergyUnits>({
+    energy,
+  });
+  expect(convert(1).from('GJ').to('MJ')).toBe(1_000);
+});
+
+test('MJ to kJ', () => {
+  const convert = configureMeasurements<'energy', EnergySystems, EnergyUnits>({
+    energy,
+  });
+  expect(convert(1).from('MJ').to('kJ')).toBe(1_000);
+});
+
+test('MWh to MJ', () => {
+  const convert = configureMeasurements<'energy', EnergySystems, EnergyUnits>({
+    energy,
+  });
+  expect(convert(1).from('MWh').to('MJ')).toBe(3_600);
+});
+
+test('MWh to GJ', () => {
+  const convert = configureMeasurements<'energy', EnergySystems, EnergyUnits>({
+    energy,
+  });
+  expect(convert(1).from('MWh').to('GJ')).toBe(3.6);
 });

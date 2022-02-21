@@ -74,6 +74,8 @@ test('l possibilities', () => {
       'dl',
       'l',
       'kl',
+      'Ml',
+      'Gl',
       'm3',
       'km3',
       'krm',
@@ -159,6 +161,8 @@ test('volume possibilities', () => {
       'dl',
       'l',
       'kl',
+      'Ml',
+      'Gl',
       'm3',
       'km3',
       'krm',
@@ -411,7 +415,7 @@ test('energy possibilities', () => {
     energy,
   });
   const actual = convert().possibilities('energy'),
-    expected = ['Wh', 'mWh', 'kWh', 'MWh', 'GWh', 'J', 'kJ'];
+    expected = ['Wh', 'mWh', 'kWh', 'MWh', 'GWh', 'J', 'kJ', 'MJ', 'GJ'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -601,8 +605,12 @@ test('all possibilities', () => {
       'kg',
       'kkp',
       'kJ',
+      'MJ',
+      'GJ',
       'kN',
       'kl',
+      'Ml',
+      'Gl',
       'kl/h',
       'kl/min',
       'kl/s',
