@@ -2,7 +2,16 @@ import { Measure, Unit } from './../index';
 export type EnergyUnits = EnergySIUnits;
 export type EnergySystems = 'SI';
 
-export type EnergySIUnits = 'Wh' | 'mWh' | 'kWh' | 'MWh' | 'GWh' | 'J' | 'kJ' | 'MJ' | 'GJ';
+export type EnergySIUnits =
+  | 'Wh'
+  | 'mWh'
+  | 'kWh'
+  | 'MWh'
+  | 'GWh'
+  | 'J'
+  | 'kJ'
+  | 'MJ'
+  | 'GJ';
 
 const SI: Record<EnergySIUnits, Unit> = {
   Wh: {
