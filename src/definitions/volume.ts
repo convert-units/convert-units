@@ -8,6 +8,8 @@ export type VolumeMetricUnits =
   | 'ml'
   | 'l'
   | 'kl'
+  | 'Ml'
+  | 'Gl'
   | 'm3'
   | 'km3'
   | 'cl'
@@ -80,6 +82,20 @@ const metric: Record<VolumeMetricUnits, Unit> = {
       plural: 'Kilolitres',
     },
     to_anchor: 1000,
+  },
+  Ml: {
+    name: {
+      singular: 'Megalitre',
+      plural: 'Megalitres',
+    },
+    to_anchor: 1_000_000,
+  },
+  Gl: {
+    name: {
+      singular: 'Gigalitre',
+      plural: 'Gigalitres',
+    },
+    to_anchor: 1_000_000_000,
   },
   m3: {
     name: {
