@@ -83,7 +83,7 @@ convert(12000).from('mm').toBest({ exclude: ['m'] });
 // { val: 1200, unit: 'cm', ... } (the smallest unit excluding meters)
 ```
 
-The best is always the smallest number above `1`. That number can be changed to get different results:
+The best is always the smallest number above `1`. If the value is a negative number, the best is always the largest number below `-1`. The cut off number of either `1` or `-1` can be changed to get different results:
 
 ```js
 convert(900).from('mm').toBest({ cutOffNumber: 10 });
