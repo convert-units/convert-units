@@ -1,5 +1,6 @@
 import configureMeasurements from '..';
 import length, { LengthSystems, LengthUnits } from '../definitions/length';
+import power, { PowerSystems, PowerUnits } from '../definitions/power';
 
 test('best mm', () => {
   const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
@@ -231,6 +232,35 @@ test('Make sure that the first unit tested cannot become the best value if it is
       unit: 'al',
       singular: 'al',
       plural: 'als',
+    };
+  expect(actual).toEqual(expected);
+});
+
+test('Negative numbers should work exactly the same way as positive numbers', () => {
+  const convert = configureMeasurements<'power', PowerSystems, PowerUnits>({
+    power,
+  });
+  const convertPower = convert(-6596848);
+  const actual = convertPower.from('W').toBest(),
+    expected = {
+      val: -6.596848,
+      unit: 'MW',
+      singular: 'Megawatt',
+      plural: 'Megawatts',
+    };
+  expect(actual).toEqual(expected);
+});
+
+test('best mm with negative numbers', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  const actual = convert(-1200).from('mm').toBest(),
+    expected = {
+      val: -1.2,
+      unit: 'm',
+      singular: 'Meter',
+      plural: 'Meters',
     };
   expect(actual).toEqual(expected);
 });

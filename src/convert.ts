@@ -195,16 +195,19 @@ export class Converter<
     if (this.origin == null)
       throw new Error('.toBest must be called after .from');
 
+    const isNegative = this.val < 0;
+
     let exclude: TUnits[] = [];
-    let cutOffNumber = 1;
+    let cutOffNumber = isNegative ? -1 : 1;
     let system = this.origin.system;
+
     if (typeof options === 'object') {
       exclude = options.exclude ?? [];
-      cutOffNumber = options.cutOffNumber ?? 1;
+      cutOffNumber = options.cutOffNumber ?? cutOffNumber;
       system = options.system ?? this.origin.system;
     }
 
-    let best = null;
+    let best: BestResult | null = null;
     /**
       Looks through every possibility for the 'best' available unit.
       i.e. Where the value has the fewest numbers before the decimal point,
@@ -216,10 +219,15 @@ export class Converter<
 
       if (isIncluded && unit.system === system) {
         const result = this.to(possibility);
-        if (result < cutOffNumber) {
+        if (isNegative ? result > cutOffNumber : result < cutOffNumber) {
           continue;
         }
-        if (best == null || (result >= cutOffNumber && result < best.val)) {
+        if (
+          best === null ||
+          (isNegative
+            ? result <= cutOffNumber && result > best.val
+            : result >= cutOffNumber && result < best.val)
+        ) {
           best = {
             val: result,
             unit: possibility,
