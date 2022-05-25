@@ -336,7 +336,7 @@ test('speed possibilities', () => {
     speed,
   });
   const actual = convert().possibilities('speed'),
-    expected = ['m/s', 'km/h', 'mph', 'knot', 'ft/s', 'ft/min'];
+    expected = ['m/s', 'km/h', 'mph', 'knot', 'ft/s', 'ft/min', 'in/h', 'mm/h'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -592,6 +592,7 @@ test('all possibilities', () => {
       'hp',
       'Hz',
       'in',
+      'in/h',
       'in2',
       'in3',
       'in3/h',
@@ -656,6 +657,7 @@ test('all possibilities', () => {
       'ml',
       'ml/s',
       'mm',
+      'mm/h',
       'mm2',
       'mm3',
       'mm3/s',

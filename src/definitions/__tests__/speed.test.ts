@@ -63,3 +63,10 @@ test('m/s to ft/min', () => {
   });
   expect(convert(1).from('m/s').to('ft/min')).toBeCloseTo(196.85);
 });
+
+test('in/s to mm/s', () => {
+  const convert = configureMeasurements<'speed', SpeedSystems, SpeedUnits>({
+    speed,
+  });
+  expect(convert(1).from('in/h').to('mm/h')).toBeCloseTo(25.4);
+});

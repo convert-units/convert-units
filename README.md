@@ -1027,6 +1027,8 @@ Packaged Units
 * mph
 * knot
 * ft/s
+* in/h
+* mm/h
 </details>
 
 <details>
