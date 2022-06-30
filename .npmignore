@@ -7,3 +7,6 @@ coverage
 babel.config.js
 tsconfig*.json
 src
+.npmrc
+.git
+node_modules
