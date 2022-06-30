@@ -21,7 +21,9 @@ import illuminance, {
   IlluminanceUnits,
 } from './illuminance';
 import length, { LengthSystems, LengthUnits } from './length';
+import liquid, { LiquidSystems, LiquidUnits } from './liquid';
 import mass, { MassSystems, MassUnits } from './mass';
+import milimol, { MilimolSystems, MilimolUnits } from './milimol';
 import pace, { PaceSystems, PaceUnits } from './pace';
 import partsPer, { PartsPerSystems, PartsPerUnits } from './partsPer';
 import pieces, { PiecesSystems, PiecesUnits } from './pieces';
@@ -75,7 +77,9 @@ export type AllMeasuresSystems =
   | TimeSystems
   | VoltageSystems
   | VolumeSystems
-  | VolumeFlowRateSystems;
+  | VolumeFlowRateSystems
+  | LiquidSystems
+  | MilimolSystems;
 
 export type AllMeasuresUnits =
   | AccelerationUnits
@@ -104,7 +108,9 @@ export type AllMeasuresUnits =
   | TimeUnits
   | VoltageUnits
   | VolumeUnits
-  | VolumeFlowRateUnits;
+  | VolumeFlowRateUnits
+  | LiquidUnits
+  | MilimolUnits;
 
 export type AllMeasures =
   | 'acceleration'
@@ -133,7 +139,9 @@ export type AllMeasures =
   | 'time'
   | 'voltage'
   | 'volume'
-  | 'volumeFlowRate';
+  | 'volumeFlowRate'
+  | 'liquid'
+  | 'milimol';
 
 const allMeasures: Record<
   AllMeasures,
@@ -166,6 +174,8 @@ const allMeasures: Record<
   voltage,
   volume,
   volumeFlowRate,
+  liquid,
+  milimol,
 };
 
 export default allMeasures;
@@ -253,4 +263,6 @@ export {
   voltage,
   volume,
   volumeFlowRate,
+  milimol,
+  liquid,
 };

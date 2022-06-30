@@ -10,3 +10,4 @@ scratch
 coverage
 lib
 convert-units-*.tgz
+.npmrc

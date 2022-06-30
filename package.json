@@ -1,5 +1,5 @@
 {
-  "name": "convert-units",
+  "name": "@curbside-health-inc/convert-units",
   "version": "3.0.0-beta.4",
   "description": "Convert between quantities in different units",
   "main": "lib/cjs/index.js",
@@ -8,7 +8,7 @@
     "lib/"
   ],
   "devDependencies": {
-    "@types/jest": "^26.0.23",
+    "@types/jest": "^26.0.24",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.23.0",
     "eslint": "^7.19.0",
