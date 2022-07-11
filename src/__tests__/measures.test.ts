@@ -28,7 +28,6 @@ test('measures', () => {
       'length',
       'liquid',
       'mass',
-      'milimol',
       'pace',
       'partsPer',
       'pieces',

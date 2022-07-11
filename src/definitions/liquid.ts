@@ -22,9 +22,41 @@ export type LiquidMetricUnits =
   | 'ng/dL'
   | 'ng/L'
   | 'ng/mL'
-  | 'ng/uL';
+  | 'ng/uL'
+  | 'mmol/L'
+  | 'mol/L'
+  | 'µmol/L'
+  | 'nmol/L';
 
 const metric: Record<LiquidMetricUnits, Unit> = {
+  'mmol/L': {
+    name: {
+      singular: 'MilliMole per litre',
+      plural: 'MilliMole per litres',
+    },
+    to_anchor: 0.0113,
+  },
+  'mol/L': {
+    name: {
+      singular: 'Mole per litre',
+      plural: 'Mole per litres',
+    },
+    to_anchor: 0.0113 * 10,
+  },
+  'µmol/L': {
+    name: {
+      singular: 'MicroMole per litre',
+      plural: 'MicroMole per litres',
+    },
+    to_anchor: 0.0113 / 10,
+  },
+  'nmol/L': {
+    name: {
+      singular: 'NanoMole per litre',
+      plural: 'NanoMole per litres',
+    },
+    to_anchor: 0.0113 / (10 ^ 4),
+  },
   'g/uL': {
     name: {
       singular: 'Gram per micro litre',
