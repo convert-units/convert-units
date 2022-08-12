@@ -1,5 +1,5 @@
 import configureMeasurements from '..';
-import allMeausures, {
+import allMeasures, {
   AllMeasures,
   AllMeasuresSystems,
   AllMeasuresUnits,
@@ -10,7 +10,7 @@ test('measures', () => {
     AllMeasures,
     AllMeasuresSystems,
     AllMeasuresUnits
-  >(allMeausures);
+  >(allMeasures);
   const actual = convert().measures(),
     expected = [
       'acceleration',
