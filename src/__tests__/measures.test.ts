@@ -27,6 +27,7 @@ test('measures', () => {
       'illuminance',
       'length',
       'mass',
+      'massFlowRate',
       'pace',
       'partsPer',
       'pieces',

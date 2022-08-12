@@ -1,18 +1,23 @@
 import configureMeasurements from '..';
+
 import allMeasures, {
   AllMeasures,
   AllMeasuresSystems,
   AllMeasuresUnits,
 } from '../definitions';
+
 import acceleration, {
   AccelerationSystems,
   AccelerationUnits,
 } from '../definitions/acceleration';
+
 import angle, { AngleSystems, AngleUnits } from '../definitions/angle';
+
 import apparentPower, {
   ApparentPowerSystems,
   ApparentPowerUnits,
 } from '../definitions/apparentPower';
+
 import charge, { ChargeSystems, ChargeUnits } from '../definitions/charge';
 import current, { CurrentSystems, CurrentUnits } from '../definitions/current';
 import digital, { DigitalSystems, DigitalUnits } from '../definitions/digital';
@@ -29,6 +34,12 @@ import illuminance, {
 } from '../definitions/illuminance';
 import length, { LengthSystems, LengthUnits } from '../definitions/length';
 import mass, { MassSystems, MassUnits } from '../definitions/mass';
+
+import massFlowRate, {
+  MassFlowRateSystems,
+  MassFlowRateUnits,
+} from '../definitions/massFlowRate';
+
 import pace, { PaceSystems, PaceUnits } from '../definitions/pace';
 import partsPer, {
   PartsPerSystems,
@@ -145,6 +156,19 @@ test('mass possibilities', () => {
   });
   const actual = convert().possibilities('mass'),
     expected = ['mcg', 'mg', 'g', 'kg', 'mt', 'oz', 'lb', 't'];
+  expect(actual.sort()).toEqual(expected.sort());
+});
+
+test('mass flow rate possibilities', () => {
+  const convert = configureMeasurements<
+    'massFlowRate',
+    MassFlowRateSystems,
+    MassFlowRateUnits
+  >({
+    massFlowRate,
+  });
+  const actual = convert().possibilities('massFlowRate'),
+    expected = ['kg/h', 'kg/s', 'lb/h', 'lb/s', 't/h'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -606,12 +630,16 @@ test('all possibilities', () => {
       'kg',
       'kkp',
       'kJ',
+      'lb/h',
+      'lb/s',
       'MJ',
       'GJ',
       'kN',
       'kl',
       'Ml',
       'Gl',
+      'kg/h',
+      'kg/s',
       'kl/h',
       'kl/min',
       'kl/s',
@@ -706,6 +734,7 @@ test('all possibilities', () => {
       's/m',
       's/ft',
       't',
+      't/h',
       'Tbs',
       'Tbs/s',
       'THz',
