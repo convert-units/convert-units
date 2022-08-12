@@ -1,5 +1,5 @@
 import configureMeasurements from '..';
-import allMeausures, {
+import allMeasures, {
   AllMeasures,
   AllMeasuresSystems,
   AllMeasuresUnits,
@@ -115,7 +115,7 @@ test('list by measure', () => {
     AllMeasures,
     AllMeasuresSystems,
     AllMeasuresUnits
-  >(allMeausures);
+  >(allMeasures);
   const full = convert().list();
   const measures = convert().measures();
 
