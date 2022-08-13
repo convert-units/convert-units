@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "es2020",
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "./lib/types",
+    "emitDeclarationOnly": true
+  }
+}

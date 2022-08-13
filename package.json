@@ -2,11 +2,30 @@
   "name": "convert-units",
   "version": "3.0.0-beta.4",
   "description": "Convert between quantities in different units",
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
-  "files": [
-    "lib/"
-  ],
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "index.d.ts",
+  "typesVersions": {
+    ">=4.2": {
+      "*": [
+        "lib/types/*",
+        "lib/types/definitions/*"
+      ]
+    }
+  },
+  "exports": {
+    ".": {
+      "require": "./lib/cjs/index.js",
+      "import": "./lib/esm/index.js",
+      "types": "./lib/types/index.d.ts"
+    },
+    "./definitions/*": {
+      "require": "./lib/cjs/definitions/*.js",
+      "import": "./lib/esm/definitions/*.js",
+      "types": "./lib/types/definitions/*.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
   "devDependencies": {
     "@types/jest": "^28.1.6",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
@@ -27,8 +46,17 @@
     "test:watch": "jest --watch",
     "lint": "eslint src",
     "format": "prettier --write src",
-    "compile": "tsc -p ./tsconfig.json && tsc -p ./tsconfig-cjs.json && tsc -p ./tsconfig-umd.json"
+    "compile": "tsc -p ./tsconfig.json && tsc -p ./tsconfig.cjs.json && tsc -p ./tsconfig.umd.json && tsc -p ./tsconfig.types.json"
   },
+  "files": [
+    "lib/types/**/!(*.tsbuildinfo)",
+    "lib/esm/**/!(*.tsbuildinfo)",
+    "lib/cjs/**/!(*.tsbuildinfo)",
+    "lib/umd/**/!(*.tsbuildinfo)",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/convert-units/convert-units.git"

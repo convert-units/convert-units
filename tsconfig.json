@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ES5",
-    "module": "ES2020",
+    "target": "es2017",
+    "module": "es2020",
     "allowJs": false,
     "checkJs": false,
     "noImplicitAny": true,
-    "declaration": true,
+    "declaration": false,
     "outDir": "./lib/esm",
     "strict": true,
     "esModuleInterop": true,
