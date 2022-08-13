@@ -1,10 +1,8 @@
 import configureMeasurements from '../../index';
-
+import measure, { VolumeFlowRateUnits } from '../volumeFlowRate';
 import { runTests } from './index';
 
-import measure, { VolumeFlowRateUnits } from '../volumeFlowRate';
-
-export type TestType = [
+type TestType = [
   VolumeFlowRateUnits,
   VolumeFlowRateUnits,
   number,

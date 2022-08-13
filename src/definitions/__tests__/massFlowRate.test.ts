@@ -1,16 +1,8 @@
 import configureMeasurements from '../../index';
-
+import measure, { MassFlowRateUnits } from '../massFlowRate';
 import { runTests } from './index';
 
-import measure, { MassFlowRateUnits } from '../massFlowRate';
-
-export type TestType = [
-  MassFlowRateUnits,
-  MassFlowRateUnits,
-  number,
-  number,
-  boolean
-];
+type TestType = [MassFlowRateUnits, MassFlowRateUnits, number, number, boolean];
 
 // prettier-ignore
 const unitTests: TestType[] = [

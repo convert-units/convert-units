@@ -1,9 +1,18 @@
+/**
+ * @typedef {Array} TestType
+ * @property {string} 0 - convert from
+ * @property {string} 1 - convert to
+ * @property {number} 2 - input
+ * @property {number} 3 - result
+ * @property {boolean} 4 - exact (i.e. whether to use 'toBe' or 'toBeCloseTo' matcher)
+ */
+
 type TestType = [string, string, number, number, boolean];
 
 /**
  * @name runTests
  * @summary Maps an array of unit test values that should be run.
- * @param {TestType[]} tests
+ * @param {...TestType[]} tests
  * @param {any} convert
  * @returns void
  */
