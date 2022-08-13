@@ -6,7 +6,7 @@ export type MassFlowRateUnits =
 
 export type MassFlowRateSystems = 'metric' | 'imperial';
 
-export type MassFlowRateMetricUnits = 'kg/s' | 'kg/h' | 't/h';
+export type MassFlowRateMetricUnits = 'kg/s' | 'kg/h' | 'mt/h';
 export type MassFlowRateImperialUnits = 'lb/s' | 'lb/h';
 
 const metric: Record<MassFlowRateMetricUnits, Unit> = {
@@ -24,7 +24,7 @@ const metric: Record<MassFlowRateMetricUnits, Unit> = {
     },
     to_anchor: 1 / 3600,
   },
-  't/h': {
+  'mt/h': {
     name: {
       singular: 'Ton per hour',
       plural: 'Tons per hour',

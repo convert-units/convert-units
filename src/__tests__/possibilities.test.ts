@@ -168,7 +168,7 @@ test('mass flow rate possibilities', () => {
     massFlowRate,
   });
   const actual = convert().possibilities('massFlowRate'),
-    expected = ['kg/h', 'kg/s', 'lb/h', 'lb/s', 't/h'];
+    expected = ['kg/h', 'kg/s', 'lb/h', 'lb/s', 'mt/h'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -694,6 +694,7 @@ test('all possibilities', () => {
       'ms',
       'msk',
       'mt',
+      'mt/h',
       'mu',
       'nC',
       'nm',
@@ -734,7 +735,6 @@ test('all possibilities', () => {
       's/m',
       's/ft',
       't',
-      't/h',
       'Tbs',
       'Tbs/s',
       'THz',
