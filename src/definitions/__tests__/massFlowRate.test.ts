@@ -1,116 +1,41 @@
-import configureMeasurements from '../..';
+import configureMeasurements from '../../index';
 
 import massFlowRate, {
   MassFlowRateSystems,
   MassFlowRateUnits,
 } from '../massFlowRate';
 
-test('kg/s to kg/h', () => {
-  const convert = configureMeasurements<
-    'massFlowRate',
-    MassFlowRateSystems,
-    MassFlowRateUnits
-  >({
-    massFlowRate,
-  });
-  expect(convert(1).from('kg/s').to('kg/h')).toBe(3600);
+type TestType = [MassFlowRateUnits, MassFlowRateUnits, number, number, boolean];
+
+// prettier-ignore
+const unitTests: TestType[] = [
+  ['kg/h',  'lb/h',   1,  2.204623,      false],
+  ['kg/h',  't/h',    1,  0.001,         true],
+  ['kg/s',  'kg/h',   1,  3600,          true],
+  ['kg/s',  'lb/s',   1,  2.204623,      false],
+  ['lb/h',  'kg/h',   1,  0.453592,      false],
+  ['lb/h',  't/h',    1,  0.0004535924,  false],
+  ['lb/s',  'kg/s',   1,  0.453592,      false],
+  ['lb/s',  'lb/h',   1,  3600,          true],
+  ['t/h',   'kg/h',   1,  1000,          true],
+  ['t/h',   'lb/h',   1,  2204.622622,   false],
+];
+
+const convert = configureMeasurements<
+  'massFlowRate',
+  MassFlowRateSystems,
+  MassFlowRateUnits
+>({
+  massFlowRate,
 });
 
-test('lb/s to lb/h', () => {
-  const convert = configureMeasurements<
-    'massFlowRate',
-    MassFlowRateSystems,
-    MassFlowRateUnits
-  >({
-    massFlowRate,
-  });
-  expect(convert(1).from('lb/s').to('lb/h')).toBe(3600);
-});
-
-test('kg/s to lb/s', () => {
-  const convert = configureMeasurements<
-    'massFlowRate',
-    MassFlowRateSystems,
-    MassFlowRateUnits
-  >({
-    massFlowRate,
-  });
-  expect(convert(1).from('kg/s').to('lb/s')).toBeCloseTo(2.204623);
-});
-
-test('lb/s to kg/s', () => {
-  const convert = configureMeasurements<
-    'massFlowRate',
-    MassFlowRateSystems,
-    MassFlowRateUnits
-  >({
-    massFlowRate,
-  });
-  expect(convert(1).from('lb/s').to('kg/s')).toBeCloseTo(0.453592);
-});
-
-test('kg/h to lb/h', () => {
-  const convert = configureMeasurements<
-    'massFlowRate',
-    MassFlowRateSystems,
-    MassFlowRateUnits
-  >({
-    massFlowRate,
-  });
-  expect(convert(1).from('kg/h').to('lb/h')).toBeCloseTo(2.204623);
-});
-
-test('lb/h to kg/h', () => {
-  const convert = configureMeasurements<
-    'massFlowRate',
-    MassFlowRateSystems,
-    MassFlowRateUnits
-  >({
-    massFlowRate,
-  });
-  expect(convert(1).from('lb/h').to('kg/h')).toBeCloseTo(0.453592);
-});
-
-test('kg/h to t/h', () => {
-  const convert = configureMeasurements<
-    'massFlowRate',
-    MassFlowRateSystems,
-    MassFlowRateUnits
-  >({
-    massFlowRate,
-  });
-  expect(convert(1).from('kg/h').to('t/h')).toBe(0.001);
-});
-
-test('t/h to kg/h', () => {
-  const convert = configureMeasurements<
-    'massFlowRate',
-    MassFlowRateSystems,
-    MassFlowRateUnits
-  >({
-    massFlowRate,
-  });
-  expect(convert(1).from('t/h').to('kg/h')).toBe(1000);
-});
-
-test('lb/h to t/h', () => {
-  const convert = configureMeasurements<
-    'massFlowRate',
-    MassFlowRateSystems,
-    MassFlowRateUnits
-  >({
-    massFlowRate,
-  });
-  expect(convert(1).from('lb/h').to('t/h')).toBeCloseTo(0.0004535924);
-});
-
-test('t/h to lb/h', () => {
-  const convert = configureMeasurements<
-    'massFlowRate',
-    MassFlowRateSystems,
-    MassFlowRateUnits
-  >({
-    massFlowRate,
-  });
-  expect(convert(1).from('t/h').to('lb/h')).toBeCloseTo(2204.622622);
-});
+unitTests.map((val) =>
+  test(val[0] + ' to ' + val[1], () => {
+    const actual = convert(val[2]).from(val[0]).to(val[1]);
+    const exact = val[4];
+    const result = val[3];
+    return exact
+      ? expect(actual).toBe(result)
+      : expect(actual).toBeCloseTo(result);
+  })
+);
