@@ -1,16 +1,15 @@
 import configureMeasurements from '../../index';
 
-import volumeFlowRate, {
-  VolumeFlowRateSystems,
-  VolumeFlowRateUnits,
-} from '../volumeFlowRate';
+import { runTests } from './index';
 
-type TestType = [
-  VolumeFlowRateUnits, // from
-  VolumeFlowRateUnits, // to
-  number, // anchor
-  number, // result
-  boolean // exact (i.e. use 'toBe' or 'toBeCloseTo' matcher)
+import measure, { VolumeFlowRateUnits } from '../volumeFlowRate';
+
+export type TestType = [
+  VolumeFlowRateUnits,
+  VolumeFlowRateUnits,
+  number,
+  number,
+  boolean
 ];
 
 // prettier-ignore
@@ -56,21 +55,9 @@ const unitTests: TestType[] = [
   ['yd3/h',   'm3/min',   1,          0.012742581,        false],
 ];
 
-const convert = configureMeasurements<
-  'volumeFlowRate',
-  VolumeFlowRateSystems,
-  VolumeFlowRateUnits
->({
-  volumeFlowRate,
-});
-
-unitTests.map((val) =>
-  test(val[0] + ' to ' + val[1], () => {
-    const actual = convert(val[2]).from(val[0]).to(val[1]);
-    const exact = val[4];
-    const result = val[3];
-    return exact
-      ? expect(actual).toBe(result)
-      : expect(actual).toBeCloseTo(result);
+runTests(
+  unitTests,
+  configureMeasurements({
+    measure,
   })
 );
