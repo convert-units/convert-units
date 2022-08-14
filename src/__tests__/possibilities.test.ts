@@ -3,7 +3,7 @@ import acceleration, {
   AccelerationSystems,
   AccelerationUnits,
 } from '../definitions/acceleration';
-import allMeausures, {
+import allMeasures, {
   AllMeasures,
   AllMeasuresSystems,
   AllMeasuresUnits,
