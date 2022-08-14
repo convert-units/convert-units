@@ -1,6 +1,6 @@
-import configureMeasurements from '../../index';
-import measure, { VolumeFlowRateUnits } from '../volumeFlowRate';
 import { runTests } from './index';
+
+import measure, { VolumeFlowRateUnits } from '../volumeFlowRate';
 
 type TestType = [
   VolumeFlowRateUnits,
@@ -53,9 +53,4 @@ const unitTests: TestType[] = [
   ['yd3/h',   'm3/min',   1,          0.012742581,        false],
 ];
 
-runTests(
-  unitTests,
-  configureMeasurements({
-    measure,
-  })
-);
+runTests(unitTests, measure);

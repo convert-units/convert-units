@@ -1,3 +1,5 @@
+import configureMeasurements, { Measure } from '../../index';
+
 /**
  * @typedef {Array} TestType
  * @property {string} 0 - convert from
@@ -13,11 +15,15 @@ type TestType = [string, string, number, number, boolean];
  * @name runTests
  * @summary Maps an array of unit test values that should be run.
  * @param {...TestType[]} tests
- * @param {any} convert
+ * @param {Measure<string, string>} measure
  * @returns void
  */
 
-export const runTests = (tests: TestType[], convert: any) => {
+export const runTests = (
+  tests: TestType[],
+  measure: Measure<string, string>
+) => {
+  const convert = configureMeasurements({ measure });
   return tests.map((val) =>
     test(val[0] + ' to ' + val[1], () => {
       const actual: number = convert(val[2]).from(val[0]).to(val[1]);

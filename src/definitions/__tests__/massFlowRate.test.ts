@@ -1,6 +1,6 @@
-import configureMeasurements from '../../index';
-import measure, { MassFlowRateUnits } from '../massFlowRate';
 import { runTests } from './index';
+
+import measure, { MassFlowRateUnits } from '../massFlowRate';
 
 type TestType = [MassFlowRateUnits, MassFlowRateUnits, number, number, boolean];
 
@@ -18,9 +18,4 @@ const unitTests: TestType[] = [
   ['mt/h',  'lb/h',   1,  2204.622622,  false],
 ];
 
-runTests(
-  unitTests,
-  configureMeasurements({
-    measure,
-  })
-);
+runTests(unitTests, measure);
