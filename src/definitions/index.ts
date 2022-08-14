@@ -22,6 +22,10 @@ import illuminance, {
 } from './illuminance';
 import length, { LengthSystems, LengthUnits } from './length';
 import mass, { MassSystems, MassUnits } from './mass';
+import massFlowRate, {
+  MassFlowRateSystems,
+  MassFlowRateUnits,
+} from './massFlowRate';
 import pace, { PaceSystems, PaceUnits } from './pace';
 import partsPer, { PartsPerSystems, PartsPerUnits } from './partsPer';
 import pieces, { PiecesSystems, PiecesUnits } from './pieces';
@@ -63,6 +67,7 @@ export type AllMeasuresSystems =
   | IlluminanceSystems
   | LengthSystems
   | MassSystems
+  | MassFlowRateSystems
   | PaceSystems
   | PartsPerSystems
   | PiecesSystems
@@ -92,6 +97,7 @@ export type AllMeasuresUnits =
   | IlluminanceUnits
   | LengthUnits
   | MassUnits
+  | MassFlowRateUnits
   | PaceUnits
   | PartsPerUnits
   | PiecesUnits
@@ -121,6 +127,7 @@ export type AllMeasures =
   | 'illuminance'
   | 'length'
   | 'mass'
+  | 'massFlowRate'
   | 'pace'
   | 'partsPer'
   | 'pieces'
@@ -153,6 +160,7 @@ const allMeasures: Record<
   illuminance,
   length,
   mass,
+  massFlowRate,
   pace,
   partsPer,
   pieces,
@@ -240,6 +248,7 @@ export {
   illuminance,
   length,
   mass,
+  massFlowRate,
   pace,
   partsPer,
   pieces,
