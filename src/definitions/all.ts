@@ -1,52 +1,52 @@
-import { Measure } from '../convert';
+import { Measure } from '../convert.js';
 import acceleration, {
   AccelerationSystems,
   AccelerationUnits,
-} from './acceleration';
-import angle, { AngleSystems, AngleUnits } from './angle';
+} from './acceleration.js';
+import angle, { AngleSystems, AngleUnits } from './angle.js';
 import apparentPower, {
   ApparentPowerSystems,
   ApparentPowerUnits,
-} from './apparentPower';
-import area, { AreaSystems, AreaUnits } from './area';
-import charge, { ChargeSystems, ChargeUnits } from './charge';
-import current, { CurrentSystems, CurrentUnits } from './current';
-import digital, { DigitalSystems, DigitalUnits } from './digital';
-import each, { EachSystems, EachUnits } from './each';
-import energy, { EnergySystems, EnergyUnits } from './energy';
-import force, { ForceSystems, ForceUnits } from './force';
-import frequency, { FrequencySystems, FrequencyUnits } from './frequency';
+} from './apparentPower.js';
+import area, { AreaSystems, AreaUnits } from './area.js';
+import charge, { ChargeSystems, ChargeUnits } from './charge.js';
+import current, { CurrentSystems, CurrentUnits } from './current.js';
+import digital, { DigitalSystems, DigitalUnits } from './digital.js';
+import each, { EachSystems, EachUnits } from './each.js';
+import energy, { EnergySystems, EnergyUnits } from './energy.js';
+import force, { ForceSystems, ForceUnits } from './force.js';
+import frequency, { FrequencySystems, FrequencyUnits } from './frequency.js';
 import illuminance, {
   IlluminanceSystems,
   IlluminanceUnits,
-} from './illuminance';
-import length, { LengthSystems, LengthUnits } from './length';
-import mass, { MassSystems, MassUnits } from './mass';
-import pace, { PaceSystems, PaceUnits } from './pace';
-import partsPer, { PartsPerSystems, PartsPerUnits } from './partsPer';
-import pieces, { PiecesSystems, PiecesUnits } from './pieces';
-import power, { PowerSystems, PowerUnits } from './power';
-import pressure, { PressureSystems, PressureUnits } from './pressure';
+} from './illuminance.js';
+import length, { LengthSystems, LengthUnits } from './length.js';
+import mass, { MassSystems, MassUnits } from './mass.js';
+import pace, { PaceSystems, PaceUnits } from './pace.js';
+import partsPer, { PartsPerSystems, PartsPerUnits } from './partsPer.js';
+import pieces, { PiecesSystems, PiecesUnits } from './pieces.js';
+import power, { PowerSystems, PowerUnits } from './power.js';
+import pressure, { PressureSystems, PressureUnits } from './pressure.js';
 import reactiveEnergy, {
   ReactiveEnergySystems,
   ReactiveEnergyUnits,
-} from './reactiveEnergy';
+} from './reactiveEnergy.js';
 import reactivePower, {
   ReactivePowerSystems,
   ReactivePowerUnits,
-} from './reactivePower';
-import speed, { SpeedSystems, SpeedUnits } from './speed';
+} from './reactivePower.js';
+import speed, { SpeedSystems, SpeedUnits } from './speed.js';
 import temperature, {
   TemperatureSystems,
   TemperatureUnits,
-} from './temperature';
-import time, { TimeSystems, TimeUnits } from './time';
-import voltage, { VoltageSystems, VoltageUnits } from './voltage';
-import volume, { VolumeSystems, VolumeUnits } from './volume';
+} from './temperature.js';
+import time, { TimeSystems, TimeUnits } from './time.js';
+import voltage, { VoltageSystems, VoltageUnits } from './voltage.js';
+import volume, { VolumeSystems, VolumeUnits } from './volume.js';
 import volumeFlowRate, {
   VolumeFlowRateSystems,
   VolumeFlowRateUnits,
-} from './volumeFlowRate';
+} from './volumeFlowRate.js';
 
 export type AllMeasuresSystems =
   | AccelerationSystems

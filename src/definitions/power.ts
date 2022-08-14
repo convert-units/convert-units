@@ -1,4 +1,4 @@
-import { Measure, Unit } from './../index';
+import { Measure, Unit } from './../index.js';
 export type PowerUnits = PowerMetricUnits | PowerImperialUnits;
 export type PowerSystems = 'metric' | 'imperial';
 

@@ -1,4 +1,4 @@
-import configMeasurements, { Converter } from './convert';
+import configMeasurements, { Converter } from './convert.js';
 export default configMeasurements;
 export type {
   Anchor,
@@ -7,5 +7,5 @@ export type {
   Measure,
   Unit,
   UnitDescription,
-} from './convert';
+} from './convert.js';
 export { Converter };

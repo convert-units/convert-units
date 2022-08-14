@@ -1,4 +1,4 @@
-import { Measure, Unit } from './../index';
+import { Measure, Unit } from './../index.js';
 export type MassUnits = MassMetricUnits | MassImperialUnits;
 export type MassSystems = 'metric' | 'imperial';
 
