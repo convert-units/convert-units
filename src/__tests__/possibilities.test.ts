@@ -513,7 +513,7 @@ test('all possibilities', () => {
     AllMeasures,
     AllMeasuresSystems,
     AllMeasuresUnits
-  >(allMeausures);
+  >(allMeasures);
   const actual = convert().possibilities(),
     // Please keep these sorted for maintainability
     expected = [
