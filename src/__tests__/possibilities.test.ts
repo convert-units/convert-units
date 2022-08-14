@@ -1,13 +1,13 @@
 import configureMeasurements from '..';
+import acceleration, {
+  AccelerationSystems,
+  AccelerationUnits,
+} from '../definitions/acceleration';
 import allMeausures, {
   AllMeasures,
   AllMeasuresSystems,
   AllMeasuresUnits,
 } from '../definitions/all';
-import acceleration, {
-  AccelerationSystems,
-  AccelerationUnits,
-} from '../definitions/acceleration';
 import angle, { AngleSystems, AngleUnits } from '../definitions/angle';
 import apparentPower, {
   ApparentPowerSystems,
