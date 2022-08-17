@@ -22,6 +22,10 @@ import illuminance, {
 } from './illuminance.js';
 import length, { LengthSystems, LengthUnits } from './length.js';
 import mass, { MassSystems, MassUnits } from './mass.js';
+import massFlowRate, {
+  MassFlowRateSystems,
+  MassFlowRateUnits,
+} from './massFlowRate.js';
 import pace, { PaceSystems, PaceUnits } from './pace.js';
 import partsPer, { PartsPerSystems, PartsPerUnits } from './partsPer.js';
 import pieces, { PiecesSystems, PiecesUnits } from './pieces.js';
@@ -63,6 +67,7 @@ export type AllMeasuresSystems =
   | IlluminanceSystems
   | LengthSystems
   | MassSystems
+  | MassFlowRateSystems
   | PaceSystems
   | PartsPerSystems
   | PiecesSystems
@@ -92,6 +97,7 @@ export type AllMeasuresUnits =
   | IlluminanceUnits
   | LengthUnits
   | MassUnits
+  | MassFlowRateUnits
   | PaceUnits
   | PartsPerUnits
   | PiecesUnits
@@ -121,6 +127,7 @@ export type AllMeasures =
   | 'illuminance'
   | 'length'
   | 'mass'
+  | 'massFlowRate'
   | 'pace'
   | 'partsPer'
   | 'pieces'
@@ -153,6 +160,7 @@ const allMeasures: Record<
   illuminance,
   length,
   mass,
+  massFlowRate,
   pace,
   partsPer,
   pieces,
@@ -169,3 +177,92 @@ const allMeasures: Record<
 };
 
 export default allMeasures;
+<<<<<<< HEAD:src/definitions/all.ts
+=======
+export type {
+  AccelerationSystems,
+  AngleSystems,
+  ApparentPowerSystems,
+  AreaSystems,
+  ChargeSystems,
+  CurrentSystems,
+  DigitalSystems,
+  EachSystems,
+  EnergySystems,
+  ForceSystems,
+  FrequencySystems,
+  IlluminanceSystems,
+  LengthSystems,
+  MassSystems,
+  PaceSystems,
+  PartsPerSystems,
+  PiecesSystems,
+  PowerSystems,
+  PressureSystems,
+  ReactiveEnergySystems,
+  ReactivePowerSystems,
+  SpeedSystems,
+  TemperatureSystems,
+  TimeSystems,
+  VoltageSystems,
+  VolumeSystems,
+  VolumeFlowRateSystems,
+  AccelerationUnits,
+  AngleUnits,
+  ApparentPowerUnits,
+  AreaUnits,
+  ChargeUnits,
+  CurrentUnits,
+  DigitalUnits,
+  EachUnits,
+  EnergyUnits,
+  ForceUnits,
+  FrequencyUnits,
+  IlluminanceUnits,
+  LengthUnits,
+  MassUnits,
+  PaceUnits,
+  PartsPerUnits,
+  PiecesUnits,
+  PowerUnits,
+  PressureUnits,
+  ReactiveEnergyUnits,
+  ReactivePowerUnits,
+  SpeedUnits,
+  TemperatureUnits,
+  TimeUnits,
+  VoltageUnits,
+  VolumeUnits,
+  VolumeFlowRateUnits,
+};
+export {
+  acceleration,
+  angle,
+  apparentPower,
+  area,
+  charge,
+  current,
+  digital,
+  each,
+  energy,
+  force,
+  frequency,
+  illuminance,
+  length,
+  mass,
+  massFlowRate,
+  pace,
+  partsPer,
+  pieces,
+  power,
+  pressure,
+  reactiveEnergy,
+  reactivePower,
+  speed,
+  temperature,
+  time,
+  voltage,
+  volume,
+  volumeFlowRate,
+};
+>>>>>>> main:src/definitions/index.ts

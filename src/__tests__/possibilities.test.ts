@@ -29,6 +29,10 @@ import illuminance, {
 } from '../definitions/illuminance';
 import length, { LengthSystems, LengthUnits } from '../definitions/length';
 import mass, { MassSystems, MassUnits } from '../definitions/mass';
+import massFlowRate, {
+  MassFlowRateSystems,
+  MassFlowRateUnits,
+} from '../definitions/massFlowRate';
 import pace, { PaceSystems, PaceUnits } from '../definitions/pace';
 import partsPer, {
   PartsPerSystems,
@@ -145,6 +149,19 @@ test('mass possibilities', () => {
   });
   const actual = convert().possibilities('mass'),
     expected = ['mcg', 'mg', 'g', 'kg', 'mt', 'oz', 'lb', 't'];
+  expect(actual.sort()).toEqual(expected.sort());
+});
+
+test('mass flow rate possibilities', () => {
+  const convert = configureMeasurements<
+    'massFlowRate',
+    MassFlowRateSystems,
+    MassFlowRateUnits
+  >({
+    massFlowRate,
+  });
+  const actual = convert().possibilities('massFlowRate'),
+    expected = ['kg/h', 'kg/s', 'lb/h', 'lb/s', 'mt/h'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -606,12 +623,16 @@ test('all possibilities', () => {
       'kg',
       'kkp',
       'kJ',
+      'lb/h',
+      'lb/s',
       'MJ',
       'GJ',
       'kN',
       'kl',
       'Ml',
       'Gl',
+      'kg/h',
+      'kg/s',
       'kl/h',
       'kl/min',
       'kl/s',
@@ -666,6 +687,7 @@ test('all possibilities', () => {
       'ms',
       'msk',
       'mt',
+      'mt/h',
       'mu',
       'nC',
       'nm',
