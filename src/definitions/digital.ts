@@ -18,28 +18,28 @@ const bits: Record<DigitalBitsUnits, Unit> = {
       singular: 'Kilobit',
       plural: 'Kilobits',
     },
-    to_anchor: 1024,
+    to_anchor: 1e3,
   },
   Mb: {
     name: {
       singular: 'Megabit',
       plural: 'Megabits',
     },
-    to_anchor: 1048576,
+    to_anchor: 1e6,
   },
   Gb: {
     name: {
       singular: 'Gigabit',
       plural: 'Gigabits',
     },
-    to_anchor: 1073741824,
+    to_anchor: 1e9,
   },
   Tb: {
     name: {
       singular: 'Terabit',
       plural: 'Terabits',
     },
-    to_anchor: 1099511627776,
+    to_anchor: 1e12,
   },
 };
 
@@ -56,28 +56,28 @@ const bytes: Record<DigitalBytesUnits, Unit> = {
       singular: 'Kilobyte',
       plural: 'Kilobytes',
     },
-    to_anchor: 1024,
+    to_anchor: 1e3,
   },
   MB: {
     name: {
       singular: 'Megabyte',
       plural: 'Megabytes',
     },
-    to_anchor: 1048576,
+    to_anchor: 1e6,
   },
   GB: {
     name: {
       singular: 'Gigabyte',
       plural: 'Gigabytes',
     },
-    to_anchor: 1073741824,
+    to_anchor: 1e9,
   },
   TB: {
     name: {
       singular: 'Terabyte',
       plural: 'Terabytes',
     },
-    to_anchor: 1099511627776,
+    to_anchor: 1e12,
   },
 };
 
