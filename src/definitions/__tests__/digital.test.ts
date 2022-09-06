@@ -20,7 +20,7 @@ test('Kb to b', () => {
   >({
     digital,
   });
-  expect(convert(1).from('Kb').to('b')).toBe(1024);
+  expect(convert(1).from('Kb').to('b')).toBe(1e3);
 });
 
 test('Mb to b', () => {
@@ -31,7 +31,7 @@ test('Mb to b', () => {
   >({
     digital,
   });
-  expect(convert(1).from('Mb').to('b')).toBe(1048576);
+  expect(convert(1).from('Mb').to('b')).toBe(1e6);
 });
 
 test('Gb to b', () => {
@@ -42,7 +42,7 @@ test('Gb to b', () => {
   >({
     digital,
   });
-  expect(convert(1).from('Gb').to('b')).toBe(1073741824);
+  expect(convert(1).from('Gb').to('b')).toBe(1e9);
 });
 
 test('Tb to b', () => {
@@ -53,7 +53,7 @@ test('Tb to b', () => {
   >({
     digital,
   });
-  expect(convert(1).from('Tb').to('b')).toBe(1099511627776);
+  expect(convert(1).from('Tb').to('b')).toBe(1e12);
 });
 
 test('B to B', () => {
@@ -75,7 +75,7 @@ test('KB to B', () => {
   >({
     digital,
   });
-  expect(convert(1).from('KB').to('B')).toBe(1024);
+  expect(convert(1).from('KB').to('B')).toBe(1e3);
 });
 
 test('MB to B', () => {
@@ -86,7 +86,7 @@ test('MB to B', () => {
   >({
     digital,
   });
-  expect(convert(1).from('MB').to('B')).toBe(1048576);
+  expect(convert(1).from('MB').to('B')).toBe(1e6);
 });
 
 test('GB to B', () => {
@@ -97,7 +97,7 @@ test('GB to B', () => {
   >({
     digital,
   });
-  expect(convert(1).from('GB').to('B')).toBe(1073741824);
+  expect(convert(1).from('GB').to('B')).toBe(1e9);
 });
 
 test('TB to B', () => {
@@ -108,7 +108,7 @@ test('TB to B', () => {
   >({
     digital,
   });
-  expect(convert(1).from('TB').to('B')).toBe(1099511627776);
+  expect(convert(1).from('TB').to('B')).toBe(1e12);
 });
 
 test('B to b', () => {
@@ -131,4 +131,15 @@ test('b to B', () => {
     digital,
   });
   expect(convert(1).from('b').to('B')).toBeCloseTo(0.125);
+});
+
+test('KB to Kb', () => {
+  const convert = configureMeasurements<
+    'digital',
+    DigitalSystems,
+    DigitalUnits
+  >({
+    digital,
+  });
+  expect(convert(1).from('KB').to('Kb')).toBe(8);
 });
