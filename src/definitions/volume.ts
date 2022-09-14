@@ -19,7 +19,9 @@ export type VolumeMetricUnits =
   | 'msk'
   | 'kkp'
   | 'glas'
-  | 'kanna';
+  | 'kanna'
+  | '× 10³ cells/µL'
+  | '× 10⁹ cells/L';
 
 export type VolumeImperialUnits =
   | 'tsp'
@@ -155,6 +157,20 @@ const metric: Record<VolumeMetricUnits, Unit> = {
     },
     to_anchor: 2.617,
   },
+  '× 10³ cells/µL': {
+    name: {
+      singular: 'per micro liter',
+      plural: 'per micro liters',
+    },
+    to_anchor: 1/10^9,
+  },
+  '× 10⁹ cells/L': {
+    name: {
+      singular: 'per liter',
+      plural: 'per liters',
+    },
+    to_anchor: 1/10^9,
+  }
 };
 
 const imperial: Record<VolumeImperialUnits, Unit> = {
