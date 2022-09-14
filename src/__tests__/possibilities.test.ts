@@ -94,6 +94,8 @@ test('l possibilities', () => {
       'gal',
       'ft3',
       'yd3',
+      '× 10³ cells/µL',
+      '× 10⁹ cells/L',
     ];
   expect(actual.sort()).toEqual(expected.sort());
 });
@@ -181,6 +183,8 @@ test('volume possibilities', () => {
       'gal',
       'ft3',
       'yd3',
+      '× 10³ cells/µL',
+      '× 10⁹ cells/L',
     ];
   expect(actual.sort()).toEqual(expected.sort());
 });
@@ -747,6 +751,8 @@ test('all possibilities', () => {
       'yd',
       'yd2',
       'yd3',
+      '× 10³ cells/µL',
+      '× 10⁹ cells/L',
       'yd3/h',
       'yd3/min',
       'yd3/s',
