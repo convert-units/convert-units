@@ -1055,14 +1055,22 @@ Packaged Units
 <summary>Digital</summary>
 * b
 * Kb
+* Kib
 * Mb
+* Mib
 * Gb
+* Gib
 * Tb
+* Tib
 * B
 * KB
+* KiB
 * MB
+* MiB
 * GB
+* GiB
 * TB
+* TiB
 </details>
 
 <details>

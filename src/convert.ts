@@ -396,6 +396,9 @@ export class Converter<
       }
     }
 
+    // Remove duplicates
+    possibilities = [...new Set(possibilities)];
+
     return possibilities;
   }
 
