@@ -3,7 +3,7 @@ import allMeasures, {
   AllMeasures,
   AllMeasuresSystems,
   AllMeasuresUnits,
-} from '../definitions';
+} from '../definitions/all';
 
 test('measures', () => {
   const convert = configureMeasurements<

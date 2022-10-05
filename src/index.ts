@@ -1,5 +1,4 @@
-import configMeasurements, { Converter } from './convert';
-import allMeasures from './definitions';
+import configMeasurements, { Converter } from './convert.js';
 export default configMeasurements;
 export type {
   Anchor,
@@ -8,6 +7,5 @@ export type {
   Measure,
   Unit,
   UnitDescription,
-} from './convert';
-export * from './definitions';
-export { allMeasures, Converter };
+} from './convert.js';
+export { Converter };

@@ -1,4 +1,4 @@
-import { Measure, Unit } from './../index';
+import { Measure, Unit } from './../index.js';
 export type SpeedUnits = SpeedMetricUnits | SpeedImperialUnits;
 export type SpeedSystems = 'metric' | 'imperial';
 

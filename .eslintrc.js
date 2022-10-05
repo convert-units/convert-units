@@ -25,6 +25,8 @@ module.exports = {
   ],
   rules: {
     'prettier/prettier': 2,
+    // Typescript will warn if an import is unable to be resolved
+    'import/no-unresolved': 0,
   },
   parser: '@typescript-eslint/parser',
 };

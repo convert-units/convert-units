@@ -3,7 +3,7 @@ import allMeasures, {
   AllMeasures,
   AllMeasuresSystems,
   AllMeasuresUnits,
-} from '../definitions';
+} from '../definitions/all';
 import length, { LengthSystems, LengthUnits } from '../definitions/length';
 
 test('list length not 0', () => {

@@ -1,4 +1,4 @@
-import { Measure, Unit } from './../index';
+import { Measure, Unit } from './../index.js';
 export type AngleUnits = AngleSIUnits;
 export type AngleSystems = 'SI';
 

@@ -26,7 +26,8 @@ The code snippet below shows everything needed to get going:
 
 ```js
 // `allMeasures` includes all the measures packaged with this library
-import configureMeasurements, { allMeasures } from 'convert-units';
+import configureMeasurements from 'convert-units';
+import allMeasures from 'convert-units/definitions/all';
 
 const convert = configureMeasurements(allMeasures);
 ```
@@ -34,7 +35,8 @@ const convert = configureMeasurements(allMeasures);
 It's also possible to limit the measures configured. This allows for smaller packages when using a bundler like `webpack` or `rollup`:
 
 ```js
-import configureMeasurements, { volume, mass, length } from 'convert-units';
+import configureMeasurements from 'convert-units';
+import volume from 'convert-units/definitions/volume';
 
 /*
   `configureMeasurements` is a closure that accepts a directory
@@ -725,11 +727,14 @@ Since measure definitions are plain JS objects, additional units can be added, r
 
 ```ts
 import configureMeasurements, {
-  length,
-  LengthSystems,
-  LengthUnits,
   Measure
 } from 'convert-units';
+
+import
+  length, {
+  LengthSystems,
+  LengthUnits,
+} from "convert-units/definitions/length"
 
 type NewLengthUnits = LengthUnits | 'px';
 const DPI = 96;
@@ -788,7 +793,8 @@ convert(1).from('m').to('ft');
 
 `convert.js`
 ```js
-import configureMeasurements, { allMeasures } from 'convert-units';
+import configureMeasurements from 'convert-units';
+import allMeasures from 'convert-units/definitions/all';  
 
 export default configureMeasurements(allMeasures);
 ```
@@ -799,14 +805,17 @@ Typescript
 The library provides types for all packaged mesasures:
 
 ```ts
-import configureMeasurements, {
-  area,
-  AreaSystems,
-  AreaUnits,
-  length,
+import configureMeasurements from 'convert-units';
+
+import length, {
   LengthSystems,
   LengthUnits,
-} from 'convert-units';
+} from "convert-units/definitions/length"
+
+import area, {
+  AreaSystems,
+  AreaUnits,
+} from "convert-units/definitions/area"
 
 // Measures: The names of the measures being used
 type Measures = 'length' | 'area';
@@ -827,14 +836,17 @@ convert(4).from('m').to('cm');
 This also allows for IDE tools to highlight issues before running the application:
 
 ```ts
-import configureMeasurements, {
-  area,
-  AreaSystems,
-  AreaUnits,
-  length,
+import configureMeasurements from 'convert-units';
+
+import length, {
   LengthSystems,
   LengthUnits,
-} from 'convert-units';
+} from "convert-units/definitions/length"
+
+import area, {
+  AreaSystems,
+  AreaUnits,
+} from "convert-units/definitions/area"
 
 // Measures: The names of the measures being used
 type Measures = 'length' | 'area';
@@ -855,12 +867,13 @@ convert(4).from('wat').to('cm');
 Types for the `allMeasures` object are also provided:
 
 ```js
-import configureMeasurements, {
+import configureMeasurements from 'convert-units';
+
+import allMeasures, {
   AllMeasures,
-  allMeasures,
   AllMeasuresSystems,
   AllMeasuresUnits,
-} from 'convert-units';
+} from 'convert-units/definitions/all';
 
 const convertAll = configureMeasurements<
   AllMeasures,

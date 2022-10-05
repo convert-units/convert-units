@@ -1,4 +1,5 @@
-import configureMeasurements, { allMeasures, Measure, Unit } from '..';
+import configureMeasurements, { Measure, Unit } from '..';
+import allMeasures from '../definitions/all';
 import length, { LengthSystems, LengthUnits } from '../definitions/length';
 import mass, { MassSystems, MassUnits } from '../definitions/mass';
 import volume, { VolumeSystems, VolumeUnits } from '../definitions/volume';
