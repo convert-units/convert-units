@@ -4,6 +4,7 @@ export type LengthSystems = 'metric' | 'imperial';
 
 export type LengthMetricUnits = 'nm' | 'μm' | 'mm' | 'cm' | 'm' | 'km';
 export type LengthImperialUnits =
+  | 'mil'
   | 'in'
   | 'yd'
   | 'ft-us'
@@ -58,6 +59,13 @@ const metric: Record<LengthMetricUnits, Unit> = {
 };
 
 const imperial: Record<LengthImperialUnits, Unit> = {
+  mil: {
+    name: {
+      singular: 'Mil',
+      plural: 'Mils',
+    },
+    to_anchor: 1 / 12000,
+  },
   in: {
     name: {
       singular: 'Inch',
