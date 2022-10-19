@@ -26,13 +26,21 @@ export type LiquidMetricUnits =
   | 'mmol/L'
   | 'mol/L'
   | 'µmol/L'
-  | 'nmol/L';
+  | 'nmol/L'
+  | 'mEq/L';
 
 const metric: Record<LiquidMetricUnits, Unit> = {
   'mmol/L': {
     name: {
       singular: 'MilliMole per litre',
       plural: 'MilliMole per litres',
+    },
+    to_anchor: 0.0113,
+  },
+  'mEq/L': {
+    name: {
+      singular: 'Milliequivalents per litre',
+      plural: 'Milliequivalents per litres',
     },
     to_anchor: 0.0113,
   },

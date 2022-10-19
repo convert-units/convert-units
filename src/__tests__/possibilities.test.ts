@@ -611,6 +611,7 @@ test('all possibilities', () => {
       'pg/uL',
       'ng/dL',
       'ng/mL',
+      'mEq/L',
       'ng/uL',
       'mol/L',
       'mg/dL',
