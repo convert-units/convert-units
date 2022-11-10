@@ -4,6 +4,7 @@ export interface Unit {
     plural: string;
   };
   to_anchor: number;
+  with_mole?: boolean;
   anchor_shift?: number;
 }
 
@@ -54,16 +55,22 @@ export class Converter<
   TUnits extends string
 > {
   private val = 0;
+  private molecularWeight = 0;
   private destination: Conversion<TMeasures, TSystems, TUnits> | null = null;
   private origin: Conversion<TMeasures, TSystems, TUnits> | null = null;
   private measureData: Record<TMeasures, Measure<TSystems, TUnits>>;
 
   constructor(
     measures: Record<TMeasures, Measure<TSystems, TUnits>>,
-    value?: number
+    value?: number,
+    molecularWeight?: number
   ) {
     if (typeof value === 'number') {
       this.val = value;
+    }
+
+    if (typeof molecularWeight === 'number') {
+      this.molecularWeight = molecularWeight;
     }
 
     if (typeof measures !== 'object') {
@@ -124,6 +131,29 @@ export class Converter<
      * Convert from the source value to its anchor inside the system
      */
     let result: number = this.val * origin.unit.to_anchor;
+    if (
+      !this.molecularWeight &&
+      (this.destination.unit.with_mole || this.origin.unit.with_mole)
+    ) {
+      throw new Error(
+        `Unable to convert from "${origin.measure}" to "${destination.measure}" as the molecularWeight is undefined`
+      );
+    }
+    if (
+      this.molecularWeight &&
+      this.destination.unit.with_mole &&
+      !origin.unit.with_mole
+    ) {
+      result *= 1 / this.molecularWeight;
+    }
+
+    if (
+      this.molecularWeight &&
+      this.origin.unit.with_mole &&
+      !this.destination.unit.with_mole
+    ) {
+      result *= this.molecularWeight;
+    }
 
     /**
      * For some changes it's a simple shift (C to K)
@@ -414,7 +444,14 @@ export default function <
   TUnits extends string
 >(
   measures: Record<TMeasures, Measure<TSystems, TUnits>>
-): (value?: number) => Converter<TMeasures, TSystems, TUnits> {
-  return (value?: number) =>
-    new Converter<TMeasures, TSystems, TUnits>(measures, value);
+): (
+  value?: number,
+  molecularWeight?: number
+) => Converter<TMeasures, TSystems, TUnits> {
+  return (value?: number, molecularWeight?: number) =>
+    new Converter<TMeasures, TSystems, TUnits>(
+      measures,
+      value,
+      molecularWeight
+    );
 }
