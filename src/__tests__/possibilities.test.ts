@@ -612,6 +612,7 @@ test('all possibilities', () => {
       'ng/dL',
       'ng/mL',
       'mEq/L',
+      'Eq/L',
       'ng/uL',
       'mol/L',
       'mg/dL',
