@@ -1139,6 +1139,8 @@ Packaged Units
 
 <details>
 <summary>Energy</summary>
+* Ws
+* Wm
 * Wh
 * mWh
 * kWh
