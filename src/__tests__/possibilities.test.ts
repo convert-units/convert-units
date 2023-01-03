@@ -434,7 +434,19 @@ test('energy possibilities', () => {
     energy,
   });
   const actual = convert().possibilities('energy'),
-    expected = ['Ws', 'Wm', 'Wh', 'mWh', 'kWh', 'MWh', 'GWh', 'J', 'kJ', 'MJ', 'GJ'];
+    expected = [
+      'Ws',
+      'Wm',
+      'Wh',
+      'mWh',
+      'kWh',
+      'MWh',
+      'GWh',
+      'J',
+      'kJ',
+      'MJ',
+      'GJ',
+    ];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
