@@ -3,6 +3,8 @@ export type EnergyUnits = EnergySIUnits;
 export type EnergySystems = 'SI';
 
 export type EnergySIUnits =
+  | 'Ws'
+  | 'Wm'
   | 'Wh'
   | 'mWh'
   | 'kWh'
@@ -14,6 +16,20 @@ export type EnergySIUnits =
   | 'GJ';
 
 const SI: Record<EnergySIUnits, Unit> = {
+  Ws: {
+    name: {
+      singular: 'Watt-second',
+      plural: 'Watt-seconds',
+    },
+    to_anchor: 1,
+  },
+  Wm: {
+    name: {
+      singular: 'Watt-minute',
+      plural: 'Watt-minutes',
+    },
+    to_anchor: 60,
+  },
   Wh: {
     name: {
       singular: 'Watt-hour',
