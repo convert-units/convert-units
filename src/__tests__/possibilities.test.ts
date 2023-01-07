@@ -346,7 +346,19 @@ test('pressure possibilities', () => {
     pressure,
   });
   const actual = convert().possibilities('pressure'),
-    expected = ['Pa', 'kPa', 'MPa', 'hPa', 'bar', 'torr', 'psi', 'ksi', 'inHg'];
+    expected = [
+      'Pa',
+      'kPa',
+      'MPa',
+      'hPa',
+      'bar',
+      'torr',
+      'mH2O',
+      'mmHg',
+      'psi',
+      'ksi',
+      'inHg',
+    ];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -684,6 +696,7 @@ test('all possibilities', () => {
       'mC',
       'mcg',
       'mg',
+      'mH2O',
       'mi',
       'mi2',
       'mil',
@@ -697,6 +710,7 @@ test('all possibilities', () => {
       'mm2',
       'mm3',
       'mm3/s',
+      'mmHg',
       'month',
       'mph',
       'ms',
