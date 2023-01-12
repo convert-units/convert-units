@@ -148,3 +148,47 @@ test('Pa to inHg', () => {
   });
   expect(convert(1013.25).from('hPa').to('inHg')).toBeCloseTo(29.92);
 });
+
+test('mH2O to kPa', () => {
+  const convert = configureMeasurements<
+    'pressure',
+    PressureSystems,
+    PressureUnits
+  >({
+    pressure,
+  });
+  expect(convert(1).from('mH2O').to('kPa')).toBe(9.80665);
+});
+
+test('kPa to mH2O', () => {
+  const convert = configureMeasurements<
+    'pressure',
+    PressureSystems,
+    PressureUnits
+  >({
+    pressure,
+  });
+  expect(convert(1).from('kPa').to('mH2O')).toBeCloseTo(0.102, 3);
+});
+
+test('mmHg to kPa', () => {
+  const convert = configureMeasurements<
+    'pressure',
+    PressureSystems,
+    PressureUnits
+  >({
+    pressure,
+  });
+  expect(convert(1).from('mmHg').to('kPa')).toBeCloseTo(0.13332, 5);
+});
+
+test('kPa to mmHg', () => {
+  const convert = configureMeasurements<
+    'pressure',
+    PressureSystems,
+    PressureUnits
+  >({
+    pressure,
+  });
+  expect(convert(1).from('kPa').to('mmHg')).toBeCloseTo(7.5);
+});

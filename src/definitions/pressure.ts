@@ -2,7 +2,15 @@ import { Measure, Unit } from './../index.js';
 export type PressureUnits = PressureMetricUnits | PressureImperialUnits;
 export type PressureSystems = 'metric' | 'imperial';
 
-export type PressureMetricUnits = 'Pa' | 'kPa' | 'MPa' | 'hPa' | 'bar' | 'torr';
+export type PressureMetricUnits =
+  | 'Pa'
+  | 'kPa'
+  | 'MPa'
+  | 'hPa'
+  | 'bar'
+  | 'torr'
+  | 'mH2O'
+  | 'mmHg';
 export type PressureImperialUnits = 'psi' | 'ksi' | 'inHg';
 
 const metric: Record<PressureMetricUnits, Unit> = {
@@ -47,6 +55,20 @@ const metric: Record<PressureMetricUnits, Unit> = {
       plural: 'torr',
     },
     to_anchor: 101325 / 760000,
+  },
+  mH2O: {
+    name: {
+      singular: 'meter of water @ 4°C',
+      plural: 'meters of water @ 4°C',
+    },
+    to_anchor: 9.80665,
+  },
+  mmHg: {
+    name: {
+      singular: 'millimeter of mercury',
+      plural: 'millimeters of mercury',
+    },
+    to_anchor: 0.133322,
   },
 };
 
