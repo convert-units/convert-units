@@ -86,6 +86,34 @@ const imperial: Record<AreaImperialUnits, Unit> = {
     },
     to_anchor: 1,
   },
+  mau2: {
+    name: {
+      singular: 'Marla Urban',
+      plural: 'Marlas Urban',
+    },
+    to_anchor: 225,
+  },
+  ma2: {
+    name: {
+      singular: 'Marla',
+      plural: 'Marlas',
+    },
+    to_anchor: 272.25,
+  },
+  ka2: {
+    name: {
+      singular: 'Kanal',
+      plural: 'Kanals',
+    },
+    to_anchor: 5445,
+  },
+  kau: {
+    name: {
+      singular: 'Kanal Urban',
+      plural: 'Kanals Urban',
+    },
+    to_anchor: 4500,
+  },
   ac: {
     name: {
       singular: 'Acre',
