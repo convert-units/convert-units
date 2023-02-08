@@ -58,6 +58,13 @@ const imperial: Record<MassImperialUnits, Unit> = {
     },
     to_anchor: 1,
   },
+  st: {
+    name: {
+      singular: 'Stone',
+      plural: 'Stones',
+    },
+    to_anchor: 14,
+  },
   t: {
     name: {
       singular: 'Ton',
