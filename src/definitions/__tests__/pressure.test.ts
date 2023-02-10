@@ -26,6 +26,20 @@ test('kPa to Pa', () => {
   expect(convert(1).from('kPa').to('Pa')).toBe(1000);
 });
 
+test('kPa to mmHg', () => {
+  const convert = configureMeasurements({
+    pressure,
+  });
+  expect(convert(1).from('kPa').to('mmHg')).toBe(7.524454477050415);
+});
+
+test('mmHg to kPa', () => {
+  const convert = configureMeasurements({
+    pressure,
+  });
+  expect(convert(7.524454477050415).from('mmHg').to('kPa')).toBe(1);
+});
+
 test('kPa to hPa', () => {
   const convert = configureMeasurements({
     pressure,

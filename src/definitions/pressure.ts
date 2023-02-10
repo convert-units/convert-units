@@ -2,7 +2,14 @@ import { Measure, Unit } from './../index';
 export type PressureUnits = PressureMetricUnits | PressureImperialUnits;
 export type PressureSystems = 'metric' | 'imperial';
 
-export type PressureMetricUnits = 'Pa' | 'kPa' | 'MPa' | 'hPa' | 'bar' | 'torr';
+export type PressureMetricUnits =
+  | 'Pa'
+  | 'kPa'
+  | 'MPa'
+  | 'hPa'
+  | 'bar'
+  | 'torr'
+  | 'mmHg';
 export type PressureImperialUnits = 'psi' | 'ksi' | 'inHg';
 
 const metric: Record<PressureMetricUnits, Unit> = {
@@ -19,6 +26,13 @@ const metric: Record<PressureMetricUnits, Unit> = {
       plural: 'kilopascals',
     },
     to_anchor: 1,
+  },
+  mmHg: {
+    name: {
+      singular: 'millimetermercury',
+      plural: 'millimetermercury',
+    },
+    to_anchor: 0.1329,
   },
   MPa: {
     name: {
