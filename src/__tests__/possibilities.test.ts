@@ -107,7 +107,7 @@ test('kg possibilities', () => {
     mass,
   });
   const actual = convert().from('kg').possibilities(),
-    expected = ['mcg', 'mg', 'g', 'kg', 'mt', 'oz', 'lb', 't'];
+    expected = ['mcg', 'mg', 'g', 'kg', 'mt', 'oz', 'lb', 'st', 't'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -149,7 +149,7 @@ test('mass possibilities', () => {
     mass,
   });
   const actual = convert().possibilities('mass'),
-    expected = ['mcg', 'mg', 'g', 'kg', 'mt', 'oz', 'lb', 't'];
+    expected = ['mcg', 'mg', 'g', 'kg', 'mt', 'oz', 'lb', 'st', 't'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -795,6 +795,7 @@ test('all possibilities', () => {
       'ream',
       'scores',
       'sm-gr',
+      'st',
       'trio',
     ];
   expect(actual.sort()).toEqual(expected.sort());

@@ -77,3 +77,31 @@ test('lb to g', () => {
   });
   expect(convert(3).from('lb').to('g')).toBeCloseTo(1360.78);
 });
+
+test('st to st', () => {
+  const convert = configureMeasurements<'mass', MassSystems, MassUnits>({
+    mass,
+  });
+  expect(convert(100).from('st').to('st')).toBe(100);
+});
+
+test('st to kg', () => {
+  const convert = configureMeasurements<'mass', MassSystems, MassUnits>({
+    mass,
+  });
+  expect(convert(1).from('st').to('kg')).toBeCloseTo(6.35029);
+});
+
+test('g to st', () => {
+  const convert = configureMeasurements<'mass', MassSystems, MassUnits>({
+    mass,
+  });
+  expect(convert(1).from('g').to('st')).toBeCloseTo(0.000157473);
+});
+
+test('st to g', () => {
+  const convert = configureMeasurements<'mass', MassSystems, MassUnits>({
+    mass,
+  });
+  expect(convert(3).from('st').to('g')).toBeCloseTo(19050.863999);
+});
