@@ -24,6 +24,11 @@
       "import": "./lib/esm/definitions/*.js",
       "types": "./lib/types/definitions/*.d.ts"
     },
+    "./lib/esm/definitions/*": {
+      "require": "./lib/cjs/definitions/*.js",
+      "import": "./lib/esm/definitions/*.js",
+      "types": "./lib/types/definitions/*.d.ts"
+    },
     "./package.json": "./package.json"
   },
   "devDependencies": {
