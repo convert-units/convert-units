@@ -1,6 +1,6 @@
 {
   "name": "convert-units",
-  "version": "3.0.2",
+  "version": "3.0.0-beta.5",
   "description": "Convert between quantities in different units",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
@@ -20,11 +20,6 @@
       "types": "./lib/types/index.d.ts"
     },
     "./definitions/*": {
-      "require": "./lib/cjs/definitions/*.js",
-      "import": "./lib/esm/definitions/*.js",
-      "types": "./lib/types/definitions/*.d.ts"
-    },
-    "./lib/esm/definitions/*": {
       "require": "./lib/cjs/definitions/*.js",
       "import": "./lib/esm/definitions/*.js",
       "types": "./lib/types/definitions/*.d.ts"
