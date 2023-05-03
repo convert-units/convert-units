@@ -1186,6 +1186,7 @@ Packaged Units
 * N
 * kN
 * lbf
+* kgf
 </details>
 
 <details>
