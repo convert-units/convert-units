@@ -1044,6 +1044,13 @@ Packaged Units
 * mm/h
 </details>
 
+<summary>Torque</summary>
+* Nm
+* lbf-ft
+</details>
+
+
+
 <details>
 <summary>Pace</summary>
 * s/m

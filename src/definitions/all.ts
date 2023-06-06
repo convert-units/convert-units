@@ -40,6 +40,7 @@ import reactivePower, {
   ReactivePowerUnits,
 } from './reactivePower.js';
 import speed, { SpeedSystems, SpeedUnits } from './speed.js';
+import torque, { TorqueSystems, TorqueUnits } from './torque.js';
 import temperature, {
   TemperatureSystems,
   TemperatureUnits,
@@ -76,6 +77,7 @@ export type AllMeasuresSystems =
   | ReactiveEnergySystems
   | ReactivePowerSystems
   | SpeedSystems
+  | TorqueSystems
   | TemperatureSystems
   | TimeSystems
   | VoltageSystems
@@ -106,6 +108,7 @@ export type AllMeasuresUnits =
   | ReactiveEnergyUnits
   | ReactivePowerUnits
   | SpeedUnits
+  | TorqueUnits
   | TemperatureUnits
   | TimeUnits
   | VoltageUnits
@@ -136,6 +139,7 @@ export type AllMeasures =
   | 'reactiveEnergy'
   | 'reactivePower'
   | 'speed'
+  | 'torque'
   | 'temperature'
   | 'time'
   | 'voltage'
@@ -169,6 +173,7 @@ const allMeasures: Record<
   reactiveEnergy,
   reactivePower,
   speed,
+  torque,
   temperature,
   time,
   voltage,
