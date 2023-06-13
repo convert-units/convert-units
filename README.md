@@ -1044,6 +1044,7 @@ Packaged Units
 * mm/h
 </details>
 
+<details>
 <summary>Torque</summary>
 * Nm
 * lbf-ft
