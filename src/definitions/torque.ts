@@ -1,5 +1,5 @@
 import { Measure, Unit } from './../index.js';
-export type TorqueUnits = TorqueMetricUnits | SpeedImperialUnits;
+export type TorqueUnits = TorqueMetricUnits | TorqueImperialUnits;
 export type TorqueSystems = 'metric' | 'imperial';
 
 export type TorqueMetricUnits = 'Nm';
@@ -16,7 +16,7 @@ const metric: Record<TorqueMetricUnits, Unit> = {
 };
 
 const imperial: Record<TorqueImperialUnits, Unit> = {
-  lbf-ft: {
+  'lbf-ft': {
     name: {
       singular: 'Pound-foot',
       plural: 'Pound-feet',

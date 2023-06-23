@@ -53,6 +53,7 @@ import reactivePower, {
   ReactivePowerUnits,
 } from '../definitions/reactivePower';
 import speed, { SpeedSystems, SpeedUnits } from '../definitions/speed';
+import torque, { TorqueSystems, TorqueUnits } from '../definitions/torque';
 import temperature, {
   TemperatureSystems,
   TemperatureUnits,
@@ -371,6 +372,15 @@ test('speed possibilities', () => {
   expect(actual.sort()).toEqual(expected.sort());
 });
 
+test('torque possibilities', () => {
+  const convert = configureMeasurements<'torque', TorqueSystems, TorqueUnits>({
+    torque,
+  });
+  const actual = convert().possibilities('torque'),
+    expected = ['Nm', 'lbf-ft'];
+  expect(actual.sort()).toEqual(expected.sort());
+});
+
 test('pace possibilities', () => {
   const convert = configureMeasurements<'pace', PaceSystems, PaceUnits>({
     pace,
@@ -678,6 +688,7 @@ test('all possibilities', () => {
       'kW',
       'kWh',
       'l',
+      'lbf-ft',
       'l/h',
       'l/min',
       'l/s',
@@ -720,6 +731,7 @@ test('all possibilities', () => {
       'mu',
       'nC',
       'nm',
+      'Nm',
       'nm2',
       'mHz',
       'MHz',

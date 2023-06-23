@@ -36,6 +36,7 @@ test('measures', () => {
       'reactiveEnergy',
       'reactivePower',
       'speed',
+      'torque',
       'temperature',
       'time',
       'voltage',
