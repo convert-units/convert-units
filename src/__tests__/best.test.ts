@@ -39,7 +39,7 @@ test('Should ignore exclude values that are not in the list of possibilities', (
       // Have to ignore TS errors since providing an invalid string to exclude
       // will cause the compiler to fail
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
+      // @ts-expect-error
       .toBest({ exclude: ['not_possible'] }),
     expected = {
       val: 1.2,
