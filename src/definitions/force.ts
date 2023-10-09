@@ -2,7 +2,7 @@ import { Measure, Unit } from './../index.js';
 export type ForceUnits = ForceSIUnits;
 export type ForceSystems = 'SI';
 
-export type ForceSIUnits = 'N' | 'kN' | 'lbf';
+export type ForceSIUnits = 'N' | 'kN' | 'lbf' | 'kgf';
 
 const SI: Record<ForceSIUnits, Unit> = {
   N: {
@@ -25,6 +25,13 @@ const SI: Record<ForceSIUnits, Unit> = {
       plural: 'Pound-forces',
     },
     to_anchor: 4.44822,
+  },
+  kgf: {
+    name: {
+      singular: 'Kilogram-force',
+      plural: 'Kilogram-forces',
+    },
+    to_anchor: 9.807,
   },
 };
 

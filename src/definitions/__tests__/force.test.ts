@@ -28,3 +28,17 @@ test('lbf to N', () => {
   });
   expect(convert(1).from('lbf').to('N')).toBe(4.44822);
 });
+
+test('N to kgf', () => {
+  const convert = configureMeasurements<'force', ForceSystems, ForceUnits>({
+    force,
+  });
+  expect(convert(1).from('N').to('kgf')).toBeCloseTo(0.102);
+});
+
+test('kgf to N', () => {
+  const convert = configureMeasurements<'force', ForceSystems, ForceUnits>({
+    force,
+  });
+  expect(convert(1).from('kgf').to('N')).toBe(9.807);
+});

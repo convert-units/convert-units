@@ -544,7 +544,7 @@ test('force possibilities', () => {
     force,
   });
   const actual = convert().possibilities('force'),
-    expected = ['N', 'kN', 'lbf'];
+    expected = ['N', 'kN', 'lbf', 'kgf'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -657,6 +657,7 @@ test('all possibilities', () => {
       'kPa',
       'kanna',
       'kg',
+      'kgf',
       'kkp',
       'kJ',
       'lb/h',
