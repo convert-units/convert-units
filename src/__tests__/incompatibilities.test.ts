@@ -14,7 +14,7 @@ test('l to kg throws', () => {
   });
   expect(() => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error
     convert(2).from('ltr').to('kg');
   }).toThrow();
 });
@@ -28,8 +28,6 @@ test('fl-oz to oz throws', () => {
     mass,
   });
   expect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     convert(4).from('fl-oz').to('oz');
   }).toThrow();
 });
@@ -43,8 +41,6 @@ test('kg to fl-oz throws', () => {
     mass,
   });
   expect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     convert(4).from('kg').to('fl-oz');
   }).toThrow();
 });
@@ -58,8 +54,6 @@ test('kg to ft throws', () => {
     mass,
   });
   expect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     convert(4).from('kg').to('ft');
   }).toThrow();
 });
@@ -70,7 +64,7 @@ test('kg to nonexistant unit throws', () => {
   });
   expect(() => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error
     convert(4).from('kg').to('garbage');
   }).toThrow();
 });
@@ -81,7 +75,7 @@ test('nonexistant unit to kg throws', () => {
   });
   expect(() => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error
     convert(4).from('garbage').to('kg');
   }).toThrow();
 });
@@ -217,7 +211,7 @@ test('Missing system to system anchor should throw an error', () => {
 
 test('passing no measures to configureMeasurements should cause calling convert to throw an error', () => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
+  // @ts-expect-error
   const convert = configureMeasurements();
   expect(() => {
     convert();
