@@ -3,7 +3,7 @@ export type MassUnits = MassMetricUnits | MassImperialUnits;
 export type MassSystems = 'metric' | 'imperial';
 
 export type MassMetricUnits = 'mcg' | 'mg' | 'g' | 'kg' | 'mt';
-export type MassImperialUnits = 'oz' | 'lb' | 't';
+export type MassImperialUnits = 'oz' | 'lb' | 'st' | 't';
 
 const metric: Record<MassMetricUnits, Unit> = {
   mcg: {
@@ -57,6 +57,13 @@ const imperial: Record<MassImperialUnits, Unit> = {
       plural: 'Pounds',
     },
     to_anchor: 1,
+  },
+  st: {
+    name: {
+      singular: 'Stone',
+      plural: 'Stones',
+    },
+    to_anchor: 14,
   },
   t: {
     name: {
