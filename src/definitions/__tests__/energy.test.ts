@@ -350,3 +350,52 @@ test('MWh to GJ', () => {
   });
   expect(convert(1).from('MWh').to('GJ')).toBe(3.6);
 });
+
+test('J to cal', () => {
+  const convert = configureMeasurements<'energy', EnergySystems, EnergyUnits>({
+    energy,
+  });
+  expect(convert(1).from('J').to('cal')).toBe(1 / 4.184);
+});
+
+test('cal to J', () => {
+  const convert = configureMeasurements<'energy', EnergySystems, EnergyUnits>({
+    energy,
+  });
+  expect(convert(1).from('cal').to('J')).toBe(4.184);
+});
+
+test('cal to kcal', () => {
+  const convert = configureMeasurements<'energy', EnergySystems, EnergyUnits>({
+    energy,
+  });
+  expect(convert(1).from('cal').to('kcal')).toBe(0.001);
+});
+
+test('kcal to cal', () => {
+  const convert = configureMeasurements<'energy', EnergySystems, EnergyUnits>({
+    energy,
+  });
+  expect(convert(1).from('kcal').to('cal')).toBe(1000);
+});
+
+test('cal to Ws', () => {
+  const convert = configureMeasurements<'energy', EnergySystems, EnergyUnits>({
+    energy,
+  });
+  expect(convert(1).from('cal').to('Ws')).toBe(4.184);
+});
+
+test('Ws to cal', () => {
+  const convert = configureMeasurements<'energy', EnergySystems, EnergyUnits>({
+    energy,
+  });
+  expect(convert(1).from('Ws').to('cal')).toBe(1 / 4.184);
+});
+
+test('kcal to J', () => {
+  const convert = configureMeasurements<'energy', EnergySystems, EnergyUnits>({
+    energy,
+  });
+  expect(convert(1).from('kcal').to('J')).toBe(4184);
+});

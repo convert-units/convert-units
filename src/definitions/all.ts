@@ -40,12 +40,12 @@ import reactivePower, {
   ReactivePowerUnits,
 } from './reactivePower.js';
 import speed, { SpeedSystems, SpeedUnits } from './speed.js';
-import torque, { TorqueSystems, TorqueUnits } from './torque.js';
 import temperature, {
   TemperatureSystems,
   TemperatureUnits,
 } from './temperature.js';
 import time, { TimeSystems, TimeUnits } from './time.js';
+import torque, { TorqueSystems, TorqueUnits } from './torque.js';
 import voltage, { VoltageSystems, VoltageUnits } from './voltage.js';
 import volume, { VolumeSystems, VolumeUnits } from './volume.js';
 import volumeFlowRate, {

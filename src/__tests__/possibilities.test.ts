@@ -53,12 +53,12 @@ import reactivePower, {
   ReactivePowerUnits,
 } from '../definitions/reactivePower';
 import speed, { SpeedSystems, SpeedUnits } from '../definitions/speed';
-import torque, { TorqueSystems, TorqueUnits } from '../definitions/torque';
 import temperature, {
   TemperatureSystems,
   TemperatureUnits,
 } from '../definitions/temperature';
 import time, { TimeSystems, TimeUnits } from '../definitions/time';
+import torque, { TorqueSystems, TorqueUnits } from '../definitions/torque';
 import voltage, { VoltageSystems, VoltageUnits } from '../definitions/voltage';
 import volume, { VolumeSystems, VolumeUnits } from '../definitions/volume';
 import volumeFlowRate, {
@@ -468,6 +468,8 @@ test('energy possibilities', () => {
       'kJ',
       'MJ',
       'GJ',
+      'cal',
+      'kcal',
     ];
   expect(actual.sort()).toEqual(expected.sort());
 });
@@ -594,6 +596,7 @@ test('all possibilities', () => {
       'b',
       'bar',
       'c',
+      'cal',
       'cl',
       'cl/s',
       'cm',
@@ -656,6 +659,7 @@ test('all possibilities', () => {
       'kA',
       'kPa',
       'kanna',
+      'kcal',
       'kg',
       'kgf',
       'kkp',

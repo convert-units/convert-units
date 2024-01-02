@@ -12,5 +12,5 @@ test('Nm to lbf.ft', () => {
   const convert = configureMeasurements<'torque', TorqueSystems, TorqueUnits>({
     torque,
   });
-  expect(convert(1).from('Nm').to('lbf-ft')).toBe(1/1.355818);
+  expect(convert(1).from('Nm').to('lbf-ft')).toBe(1 / 1.355818);
 });
