@@ -1,6 +1,6 @@
 import { Measure, Unit } from './../index.js';
-export type EnergyUnits = EnergySIUnits;
-export type EnergySystems = 'SI';
+export type EnergyUnits = EnergySIUnits | EnergyNutritionUnits;
+export type EnergySystems = 'SI' | 'nutrition';
 
 export type EnergySIUnits =
   | 'Ws'
@@ -14,6 +14,8 @@ export type EnergySIUnits =
   | 'kJ'
   | 'MJ'
   | 'GJ';
+
+export type EnergyNutritionUnits = 'kcal' | 'cal';
 
 const SI: Record<EnergySIUnits, Unit> = {
   Ws: {
@@ -95,9 +97,38 @@ const SI: Record<EnergySIUnits, Unit> = {
   },
 };
 
+const nutrition: Record<EnergyNutritionUnits, Unit> = {
+  cal: {
+    name: {
+      singular: 'calorie',
+      plural: 'calories',
+    },
+    to_anchor: 1,
+  },
+  kcal: {
+    name: {
+      singular: 'Kilocalorie',
+      plural: 'Kilocalories',
+    },
+    to_anchor: 1000,
+  },
+};
 const measure: Measure<EnergySystems, EnergyUnits> = {
   systems: {
     SI,
+    nutrition,
+  },
+  anchors: {
+    SI: {
+      nutrition: {
+        ratio: 1 / 4.184,
+      },
+    },
+    nutrition: {
+      SI: {
+        ratio: 4.184,
+      },
+    },
   },
 };
 

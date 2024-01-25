@@ -6,7 +6,7 @@ export type TorqueMetricUnits = 'Nm';
 export type TorqueImperialUnits = 'lbf-ft';
 
 const metric: Record<TorqueMetricUnits, Unit> = {
-  'Nm': {
+  Nm: {
     name: {
       singular: 'Newton-meter',
       plural: 'Newton-meters',
