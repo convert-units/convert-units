@@ -5,6 +5,7 @@
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
   "types": "index.d.ts",
+  "type": "module",
   "typesVersions": {
     ">=4.2": {
       "*": [
@@ -15,14 +16,18 @@
   },
   "exports": {
     ".": {
-      "require": "./lib/cjs/index.js",
-      "import": "./lib/esm/index.js",
-      "types": "./lib/types/index.d.ts"
+      "import": {
+        "types": "./lib/types/index.d.ts",
+        "default": "./lib/esm/index.js"
+      },
+      "require": "./lib/cjs/index.js"
     },
     "./definitions/*": {
-      "require": "./lib/cjs/definitions/*.js",
-      "import": "./lib/esm/definitions/*.js",
-      "types": "./lib/types/definitions/*.d.ts"
+      "import": {
+        "types": "./lib/types/definitions/*.d.ts",
+        "default": "./lib/esm/definitions/*.js"
+      },
+      "require": "./lib/cjs/definitions/*.js"
     },
     "./package.json": "./package.json"
   },
