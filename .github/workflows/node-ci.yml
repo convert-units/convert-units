@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 22.x, 24.x]
+        node-version: [18.x, 20.x, 21.x]
 
     steps:
     - uses: actions/checkout@v2
@@ -26,5 +26,7 @@ jobs:
       run: npm run lint
     - name: Run tests
       run: npm run test
-    - name: Typecheck
-      uses: andoshin11/typescript-error-reporter-action@v1.0.2
+    - name: Compile Source
+      run: npm run compile
+    - name: Run publint
+      run: npm run publint

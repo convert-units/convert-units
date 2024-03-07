@@ -8,5 +8,12 @@ scratch
 *.swp
 
 coverage
-lib
+lib/*
+!lib/**/
+lib/umd/*
+lib/esm/*
+lib/cjs/*
+lib/types/*
+!lib/esm/package.json
+!lib/cjs/package.json
 convert-units-*.tgz
