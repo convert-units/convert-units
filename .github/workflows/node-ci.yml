@@ -30,5 +30,3 @@ jobs:
       run: npm run compile
     - name: Run publint
       run: npm run publint
-    - name: Typecheck
-      uses: andoshin11/typescript-error-reporter-action@v1.0.2
