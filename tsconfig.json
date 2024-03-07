@@ -5,10 +5,10 @@
     "allowJs": false,
     "checkJs": false,
     "noImplicitAny": true,
-    "declaration": false,
+    "declaration": true,
     "outDir": "./lib/esm",
     "strict": true,
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "typeRoots": [
