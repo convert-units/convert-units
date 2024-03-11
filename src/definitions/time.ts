@@ -5,7 +5,7 @@ export type TimeSystems = 'SI';
 export type TimeSIUnits =
   | 'ns'
   | 'mu'
-  | 'ms'
+  | 'μs'
   | 's'
   | 'min'
   | 'h'
