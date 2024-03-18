@@ -56,28 +56,28 @@ const bytes: Record<DigitalBytesUnits, Unit> = {
       singular: 'Kilobyte',
       plural: 'Kilobytes',
     },
-    to_anchor: 1e3,
+    to_anchor: 1024,
   },
   MB: {
     name: {
       singular: 'Megabyte',
       plural: 'Megabytes',
     },
-    to_anchor: 1e6,
+    to_anchor: 1024*1024,
   },
   GB: {
     name: {
       singular: 'Gigabyte',
       plural: 'Gigabytes',
     },
-    to_anchor: 1e9,
+    to_anchor: 1024*1024*1024,
   },
   TB: {
     name: {
       singular: 'Terabyte',
       plural: 'Terabytes',
     },
-    to_anchor: 1e12,
+    to_anchor: 1024*1024*1024*1024,
   },
 };
 
