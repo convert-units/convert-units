@@ -210,3 +210,17 @@ test('cm to mils', () => {
   });
   expect(convert(1).from('cm').to('mil')).toBeCloseTo(393.701);
 });
+
+test('dm to m', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  expect(convert(1).from('dm').to('m')).toBe(1e-1);
+});
+
+test('m to dm', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  expect(convert(1).from('m').to('dm')).toBe(1e1);
+});
