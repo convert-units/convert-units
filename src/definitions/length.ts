@@ -2,7 +2,7 @@ import { Measure, Unit } from './../index.js';
 export type LengthUnits = LengthMetricUnits | LengthImperialUnits;
 export type LengthSystems = 'metric' | 'imperial';
 
-export type LengthMetricUnits = 'nm' | 'μm' | 'mm' | 'cm' | 'm' | 'km';
+export type LengthMetricUnits = 'nm' | 'μm' | 'mm' | 'cm' | 'dm' | 'm' | 'km';
 export type LengthImperialUnits =
   | 'mil'
   | 'in'
@@ -41,6 +41,13 @@ const metric: Record<LengthMetricUnits, Unit> = {
       plural: 'Centimeters',
     },
     to_anchor: 1e-2,
+  },
+  dm: {
+    name: {
+      singular: 'Decimeter',
+      plural: 'Decimeters',
+    },
+    to_anchor: 1e-1,
   },
   m: {
     name: {

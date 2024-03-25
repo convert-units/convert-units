@@ -147,3 +147,17 @@ test('nm2 to yd2', () => {
   });
   expect(convert(1).from('nm2').to('yd2')).toBeCloseTo(1.196e-18);
 });
+
+test('dm2 to m2', () => {
+  const convert = configureMeasurements<'area', AreaSystems, AreaUnits>({
+    area,
+  });
+  expect(convert(1).from('dm2').to('m2')).toBe(0.01);
+});
+
+test('m2 to dm2', () => {
+  const convert = configureMeasurements<'area', AreaSystems, AreaUnits>({
+    area,
+  });
+  expect(convert(1).from('m2').to('dm2')).toBe(100);
+});
