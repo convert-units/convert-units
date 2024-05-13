@@ -13,8 +13,6 @@ test('l to kg throws', () => {
     mass,
   });
   expect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
     convert(2).from('ltr').to('kg');
   }).toThrow();
 });
@@ -63,8 +61,6 @@ test('kg to nonexistant unit throws', () => {
     mass,
   });
   expect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
     convert(4).from('kg').to('garbage');
   }).toThrow();
 });
@@ -74,8 +70,6 @@ test('nonexistant unit to kg throws', () => {
     mass,
   });
   expect(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
     convert(4).from('garbage').to('kg');
   }).toThrow();
 });
