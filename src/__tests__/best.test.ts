@@ -70,7 +70,7 @@ test('excludes measurements', () => {
   });
   const actual = convert(1200000)
       .from('mm')
-      .toBest({ exclude: ['km', 'm'] }),
+      .toBest({ exclude: ['km', 'm', 'dm'] }),
     expected = {
       val: 120000,
       unit: 'cm',
@@ -132,7 +132,7 @@ test('if all measurements are excluded return from', () => {
   });
   const actual = convert(10)
     .from('km')
-    .toBest({ exclude: ['mm', 'cm', 'm', 'km', 'nm', 'μm'] });
+    .toBest({ exclude: ['mm', 'cm', 'dm', 'm', 'km', 'nm', 'μm'] });
   expect(actual).toEqual(null);
 });
 
@@ -140,7 +140,7 @@ test('pre-cut off number', () => {
   const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
-  const actual = convert(9000).from('mm').toBest({ cutOffNumber: 10 }),
+  const actual = convert(9000).from('mm').toBest({ cutOffNumber: 100 }),
     expected = {
       val: 900,
       unit: 'cm',

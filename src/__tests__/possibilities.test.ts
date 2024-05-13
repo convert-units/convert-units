@@ -13,6 +13,7 @@ import apparentPower, {
   ApparentPowerSystems,
   ApparentPowerUnits,
 } from '../definitions/apparentPower';
+import area, { AreaSystems, AreaUnits } from '../definitions/area';
 import charge, { ChargeSystems, ChargeUnits } from '../definitions/charge';
 import current, { CurrentSystems, CurrentUnits } from '../definitions/current';
 import digital, { DigitalSystems, DigitalUnits } from '../definitions/digital';
@@ -122,6 +123,7 @@ test('m possibilities', () => {
       'μm',
       'mm',
       'cm',
+      'dm',
       'm',
       'km',
       'mil',
@@ -265,6 +267,7 @@ test('length possibilities', () => {
       'μm',
       'mm',
       'cm',
+      'dm',
       'm',
       'km',
       'mil',
@@ -275,6 +278,29 @@ test('length possibilities', () => {
       'fathom',
       'mi',
       'nMi',
+    ];
+  expect(actual.sort()).toEqual(expected.sort());
+});
+
+test('area possibilities', () => {
+  const convert = configureMeasurements<'area', AreaSystems, AreaUnits>({
+    area,
+  });
+  const actual = convert().possibilities('area'),
+    expected = [
+      'nm2',
+      'μm2',
+      'mm2',
+      'cm2',
+      'dm2',
+      'm2',
+      'ha',
+      'km2',
+      'in2',
+      'yd2',
+      'ft2',
+      'ac',
+      'mi2',
     ];
   expect(actual.sort()).toEqual(expected.sort());
 });
@@ -610,6 +636,8 @@ test('all possibilities', () => {
       'deg/s',
       'dl',
       'dl/s',
+      'dm',
+      'dm2',
       'ea',
       'dz',
       'fl-oz',
