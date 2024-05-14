@@ -45,6 +45,12 @@ export interface BestResult {
   plural: string;
 }
 
+export class UnknownUnitError extends Error {}
+export class OperationOrderError extends Error {}
+export class IncompatibleUnitError extends Error {}
+export class MeasureStructureError extends Error {}
+export class UnknownMeasureError extends Error {}
+
 /**
  * Represents a conversion path
  */
@@ -58,6 +64,9 @@ export class Converter<
   private origin: Conversion<TMeasures, TSystems, TUnits> | null = null;
   private measureData: Record<TMeasures, Measure<TSystems, TUnits>>;
 
+  /**
+   * @throws TypeError, EmptyMeasuresError
+   */
   constructor(
     measures: Record<TMeasures, Measure<TSystems, TUnits>>,
     value?: number
@@ -67,7 +76,7 @@ export class Converter<
     }
 
     if (typeof measures !== 'object') {
-      throw new Error('Measures cannot be blank');
+      throw new TypeError('The measures argument needs to be an object');
     }
 
     this.measureData = measures;
@@ -75,10 +84,12 @@ export class Converter<
 
   /**
    * Lets the converter know the source unit abbreviation
+   *
+   * @throws OperationOrderError, UnknownUnitError
    */
-  from(from: TUnits): this {
+  from(from: TUnits | (string & {})): this {
     if (this.destination != null)
-      throw new Error('.from must be called before .to');
+      throw new OperationOrderError('.from must be called before .to');
 
     this.origin = this.getUnit(from);
 
@@ -91,8 +102,10 @@ export class Converter<
 
   /**
    * Converts the unit and returns the value
+   *
+   * @throws OperationOrderError, UnknownUnitError, IncompatibleUnitError, MeasureStructureError
    */
-  to(to: TUnits): number {
+  to(to: TUnits | (string & {})): number {
     if (this.origin == null) throw new Error('.to must be called after .from');
 
     this.destination = this.getUnit(to);
@@ -115,7 +128,7 @@ export class Converter<
 
     // You can't go from liquid to mass, for example
     if (destination.measure != origin.measure) {
-      throw new Error(
+      throw new IncompatibleUnitError(
         `Cannot convert incompatible measures of ${destination.measure} and ${origin.measure}`
       );
     }
@@ -144,7 +157,7 @@ export class Converter<
 
       const anchors = measure.anchors;
       if (anchors == null) {
-        throw new Error(
+        throw new MeasureStructureError(
           `Unable to convert units. Anchors are missing for "${origin.measure}" and "${destination.measure}" measures.`
         );
       }
@@ -152,7 +165,7 @@ export class Converter<
       const anchor: Partial<Record<TSystems, Anchor>> | undefined =
         anchors[origin.system];
       if (anchor == null) {
-        throw new Error(
+        throw new MeasureStructureError(
           `Unable to find anchor for "${origin.measure}" to "${destination.measure}". Please make sure it is defined.`
         );
       }
@@ -165,7 +178,7 @@ export class Converter<
       } else if (typeof ratio === 'number') {
         result *= ratio;
       } else {
-        throw new Error(
+        throw new MeasureStructureError(
           'A system anchor needs to either have a defined ratio number or a transform function.'
         );
       }
@@ -186,20 +199,22 @@ export class Converter<
 
   /**
    * Converts the unit to the best available unit.
+   *
+   * @throws OperationOrderError
    */
   toBest(options?: {
-    exclude?: TUnits[];
+    exclude?: (TUnits | (string & {}))[];
     cutOffNumber?: number;
-    system?: TSystems;
+    system?: TSystems | (string & {});
   }): BestResult | null {
     if (this.origin == null)
-      throw new Error('.toBest must be called after .from');
+      throw new OperationOrderError('.toBest must be called after .from');
 
     const isNegative = this.val < 0;
 
-    let exclude: TUnits[] = [];
+    let exclude: (TUnits | (string & {}))[] = [];
     let cutOffNumber = isNegative ? -1 : 1;
-    let system = this.origin.system;
+    let system: TSystems | (string & {}) = this.origin.system;
 
     if (typeof options === 'object') {
       exclude = options.exclude ?? [];
@@ -240,10 +255,13 @@ export class Converter<
 
     return best;
   }
+
   /**
    * Finds the unit
    */
-  getUnit(abbr: TUnits): Conversion<TMeasures, TSystems, TUnits> | null {
+  getUnit(
+    abbr: TUnits | (string & {})
+  ): Conversion<TMeasures, TSystems, TUnits> | null {
     const found = null;
 
     for (const [measureName, measure] of Object.entries(this.measureData)) {
@@ -269,9 +287,11 @@ export class Converter<
   }
 
   /**
-   * An alias for getUnit
+   * Provides additional information about the unit
+   *
+   * @throws UnknownUnitError
    */
-  describe(abbr: TUnits): UnitDescription | never {
+  describe(abbr: TUnits | (string & {})): UnitDescription {
     const result = this.getUnit(abbr);
 
     if (result != null) {
@@ -303,8 +323,9 @@ export class Converter<
    * However, if the measure doesn't exist, an empty array will be
    * returned
    *
+   *
    */
-  list(measureName?: TMeasures): UnitDescription[] | never {
+  list(measureName?: TMeasures | (string & {})): UnitDescription[] | never {
     const list = [];
 
     if (measureName == null) {
@@ -326,9 +347,10 @@ export class Converter<
           }
         }
       }
-    } else if (!(measureName in this.measureData)) {
-      throw new Error(`Meausre "${measureName}" not found.`);
     } else {
+      if (!this.isMeasure(measureName))
+        throw new UnknownMeasureError(`Meausure "${measureName}" not found.`);
+
       const measure = this.measureData[measureName];
       for (const [systemName, units] of Object.entries(
         (measure as Measure<TSystems, TUnits>).systems
@@ -351,6 +373,10 @@ export class Converter<
     return list;
   }
 
+  private isMeasure(measureName: string): measureName is TMeasures {
+    return measureName in this.measureData;
+  }
+
   private throwUnsupportedUnitError(what: string): never {
     let validUnits: string[] = [];
 
@@ -364,7 +390,7 @@ export class Converter<
       }
     }
 
-    throw new Error(
+    throw new UnknownUnitError(
       `Unsupported unit ${what}, use one of: ${validUnits.join(', ')}`
     );
   }
@@ -373,11 +399,11 @@ export class Converter<
    * Returns the abbreviated measures that the value can be
    * converted to.
    */
-  possibilities(forMeasure?: TMeasures): TUnits[] {
+  possibilities(forMeasure?: TMeasures | (string & {})): TUnits[] {
     let possibilities: TUnits[] = [];
     let list_measures: TMeasures[] = [];
 
-    if (typeof forMeasure == 'string') {
+    if (typeof forMeasure == 'string' && this.isMeasure(forMeasure)) {
       list_measures.push(forMeasure);
     } else if (this.origin != null) {
       list_measures.push(this.origin.measure);
@@ -415,6 +441,6 @@ export default function <
 >(
   measures: Record<TMeasures, Measure<TSystems, TUnits>>
 ): (value?: number) => Converter<TMeasures, TSystems, TUnits> {
-  return (value?: number) =>
+  return /** @throws TypeError, EmptyMeasuresError */ (value?: number) =>
     new Converter<TMeasures, TSystems, TUnits>(measures, value);
 }
