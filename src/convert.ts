@@ -253,6 +253,15 @@ export class Converter<
       }
     }
 
+    if (best == null) {
+      return {
+        val: this.val,
+        unit: this.origin.abbr,
+        singular: this.origin.unit.name.singular,
+        plural: this.origin.unit.name.plural,
+      };
+    }
+
     return best;
   }
 
