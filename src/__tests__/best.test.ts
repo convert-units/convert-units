@@ -125,16 +125,6 @@ test('does not break when excluding from measurement', () => {
   expect(actual).toEqual(expected);
 });
 
-test('if all measurements are excluded return from', () => {
-  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
-    length,
-  });
-  const actual = convert(10)
-    .from('km')
-    .toBest({ exclude: ['mm', 'cm', 'dm', 'm', 'km', 'nm', 'μm'] });
-  expect(actual).toEqual(null);
-});
-
 test('pre-cut off number', () => {
   const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
@@ -177,7 +167,7 @@ test('post-cut off number', () => {
   expect(actual).toEqual(expected);
 });
 
-test('return null if all possible units are excluded', () => {
+test('return the original value/unit if all possible units are excluded', () => {
   const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
@@ -185,7 +175,29 @@ test('return null if all possible units are excluded', () => {
   const actual = convertLenght
       .from('km')
       .toBest({ exclude: convertLenght.possibilities() }),
-    expected = null;
+    expected = {
+      val: 10,
+      unit: 'km',
+      singular: 'Kilometer',
+      plural: 'Kilometers',
+    };
+  expect(actual).toEqual(expected);
+});
+
+test('return the original value/unit the convert value is zero', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  const convertLenght = convert(0);
+  const actual = convertLenght
+      .from('km')
+      .toBest({ exclude: convertLenght.possibilities() }),
+    expected = {
+      val: 0,
+      unit: 'km',
+      singular: 'Kilometer',
+      plural: 'Kilometers',
+    };
   expect(actual).toEqual(expected);
 });
 

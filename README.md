@@ -78,6 +78,18 @@ convert(12000).from('mm').toBest();
 // { val: 12, unit: 'm', ... }
 ```
 
+> Note: The `toBest` method is *subjective* and **does not work for all measures**.
+
+If a *better* value is not found, then from unit is returned. This is also the case for zero:
+
+```js
+convert(1).from('mm').toBest();
+// { val: 1, unit: 'mm', ... }
+
+convert(0).from('mm').toBest();
+// { val: 0, unit: 'mm', ... }
+```
+
 Exclude units to get different results:
 
 ```js
