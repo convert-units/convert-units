@@ -87,7 +87,7 @@ export class Converter<
    *
    * @throws OperationOrderError, UnknownUnitError
    */
-  from(from: TUnits | (string & object)): this {
+  from(from: TUnits | (string & {})): this {
     if (this.destination != null)
       throw new OperationOrderError('.from must be called before .to');
 
@@ -105,7 +105,7 @@ export class Converter<
    *
    * @throws OperationOrderError, UnknownUnitError, IncompatibleUnitError, MeasureStructureError
    */
-  to(to: TUnits | (string & object)): number {
+  to(to: TUnits | (string & {})): number {
     if (this.origin == null) throw new Error('.to must be called after .from');
 
     this.destination = this.getUnit(to);
@@ -203,18 +203,18 @@ export class Converter<
    * @throws OperationOrderError
    */
   toBest(options?: {
-    exclude?: (TUnits | (string & object))[];
+    exclude?: (TUnits | (string & {}))[];
     cutOffNumber?: number;
-    system?: TSystems | (string & object);
+    system?: TSystems | (string & {});
   }): BestResult | null {
     if (this.origin == null)
       throw new OperationOrderError('.toBest must be called after .from');
 
     const isNegative = this.val < 0;
 
-    let exclude: (TUnits | (string & object))[] = [];
+    let exclude: (TUnits | (string & {}))[] = [];
     let cutOffNumber = isNegative ? -1 : 1;
-    let system = this.origin.system;
+    let system: TSystems | (string & {}) = this.origin.system;
 
     if (typeof options === 'object') {
       exclude = options.exclude ?? [];
@@ -260,7 +260,7 @@ export class Converter<
    * Finds the unit
    */
   getUnit(
-    abbr: TUnits | (string & object)
+    abbr: TUnits | (string & {})
   ): Conversion<TMeasures, TSystems, TUnits> | null {
     const found = null;
 
@@ -291,7 +291,7 @@ export class Converter<
    *
    * @throws UnknownUnitError
    */
-  describe(abbr: TUnits | (string & object)): UnitDescription {
+  describe(abbr: TUnits | (string & {})): UnitDescription {
     const result = this.getUnit(abbr);
 
     if (result != null) {
@@ -325,7 +325,7 @@ export class Converter<
    *
    *
    */
-  list(measureName?: TMeasures | (string & object)): UnitDescription[] | never {
+  list(measureName?: TMeasures | (string & {})): UnitDescription[] | never {
     const list = [];
 
     if (measureName == null) {
@@ -399,7 +399,7 @@ export class Converter<
    * Returns the abbreviated measures that the value can be
    * converted to.
    */
-  possibilities(forMeasure?: TMeasures | (string & object)): TUnits[] {
+  possibilities(forMeasure?: TMeasures | (string & {})): TUnits[] {
     let possibilities: TUnits[] = [];
     let list_measures: TMeasures[] = [];
 
