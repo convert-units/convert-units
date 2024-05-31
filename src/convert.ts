@@ -38,9 +38,9 @@ export interface Measure<TSystems extends string, TUnits extends string> {
   anchors?: Partial<Record<TSystems, Partial<Record<TSystems, Anchor>>>>;
 }
 
-export interface BestResult {
+export interface BestResult<TUnits extends string = string> {
   val: number;
-  unit: string;
+  unit: TUnits;
   singular: string;
   plural: string;
 }
@@ -206,7 +206,7 @@ export class Converter<
     exclude?: (TUnits | (string & {}))[];
     cutOffNumber?: number;
     system?: TSystems | (string & {});
-  }): BestResult | null {
+  }): BestResult<TUnits> | null {
     if (this.origin == null)
       throw new OperationOrderError('.toBest must be called after .from');
 
@@ -222,7 +222,7 @@ export class Converter<
       system = options.system ?? this.origin.system;
     }
 
-    let best: BestResult | null = null;
+    let best: BestResult<TUnits> | null = null;
     /**
       Looks through every possibility for the 'best' available unit.
       i.e. Where the value has the fewest numbers before the decimal point,

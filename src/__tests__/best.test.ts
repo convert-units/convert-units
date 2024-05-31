@@ -13,6 +13,8 @@ test('best mm', () => {
       singular: 'Meter',
       plural: 'Meters',
     };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const _typedUnit: LengthUnits | undefined = actual?.unit; // should type-check
   expect(actual).toEqual(expected);
 });
 
