@@ -82,12 +82,12 @@ const measure: Measure<MassSystems, MassUnits> = {
   anchors: {
     metric: {
       imperial: {
-        ratio: 1 / 453.592,
+        ratio: 1 / 453.59237,
       },
     },
     imperial: {
       metric: {
-        ratio: 453.592,
+        ratio: 453.59237,
       },
     },
   },

@@ -103,5 +103,12 @@ test('st to g', () => {
   const convert = configureMeasurements<'mass', MassSystems, MassUnits>({
     mass,
   });
-  expect(convert(3).from('st').to('g')).toBeCloseTo(19050.863999);
+  expect(convert(3).from('st').to('g')).toBeCloseTo(19050.87954);
+});
+
+test('kg to lb', () => {
+  const convert = configureMeasurements<'mass', MassSystems, MassUnits>({
+    mass,
+  });
+  expect(convert(4677.6713).from('kg').to('lb')).toBeCloseTo(10312.49996555277);
 });
