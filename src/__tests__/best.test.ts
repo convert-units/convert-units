@@ -13,8 +13,6 @@ test('best mm', () => {
       singular: 'Meter',
       plural: 'Meters',
     };
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const _typedUnit: LengthUnits | undefined = actual?.unit; // should type-check
   expect(actual).toEqual(expected);
 });
 
@@ -276,4 +274,18 @@ test('best mm with negative numbers', () => {
       plural: 'Meters',
     };
   expect(actual).toEqual(expected);
+});
+
+function assertStaticType<T>(value: T): void {
+  // intentionally empty body; just used to ask TypeScript to check that
+  // `value` does have type `t`
+  value;
+}
+
+test('type of unit field matches configured units', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  const best = convert(1200).from('mm').toBest();
+  assertStaticType<LengthUnits | undefined>(best?.unit);
 });
