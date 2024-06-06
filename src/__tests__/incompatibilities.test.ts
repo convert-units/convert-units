@@ -203,13 +203,26 @@ test('Missing system to system anchor should throw an error', () => {
   }).toThrow();
 });
 
-test('passing no measures to configureMeasurements should cause calling convert to throw an error', () => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-expect-error
-  const convert = configureMeasurements();
+test('passing no measures to configureMeasurements should throw an error', () => {
   expect(() => {
-    convert();
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    configureMeasurements();
   }).toThrow();
+});
+
+test('passing anything but an object to configureMeasurements should throw an error', () => {
+  expect(() => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
+    configureMeasurements(0);
+  }).toThrow();
+});
+
+test('passing an empty object to configureMeasurements should not throw an error', () => {
+  expect(() => {
+    configureMeasurements({});
+  }).not.toThrow();
 });
 
 test('Calling from again on the same instance should throw an error', () => {

@@ -45,6 +45,18 @@ export interface BestResult<TUnits extends string> {
   plural: string;
 }
 
+type Entries<T, S extends keyof T> = [S, T[keyof T]];
+
+export type UnitCache<TMeasures, TSystems, TUnits> = Map<
+  string,
+  {
+    system: TSystems;
+    measure: TMeasures;
+    unit: Unit;
+    abbr: TUnits;
+  }
+>;
+
 export class UnknownUnitError extends Error {}
 export class OperationOrderError extends Error {}
 export class IncompatibleUnitError extends Error {}
@@ -63,23 +75,27 @@ export class Converter<
   private destination: Conversion<TMeasures, TSystems, TUnits> | null = null;
   private origin: Conversion<TMeasures, TSystems, TUnits> | null = null;
   private measureData: Record<TMeasures, Measure<TSystems, TUnits>>;
+  private unitCache: Map<
+    string,
+    {
+      system: TSystems;
+      measure: TMeasures;
+      unit: Unit;
+      abbr: TUnits;
+    }
+  >;
 
-  /**
-   * @throws TypeError, EmptyMeasuresError
-   */
   constructor(
     measures: Record<TMeasures, Measure<TSystems, TUnits>>,
+    unitCache: UnitCache<TMeasures, TSystems, TUnits>,
     value?: number
   ) {
     if (typeof value === 'number') {
       this.val = value;
     }
 
-    if (typeof measures !== 'object') {
-      throw new TypeError('The measures argument needs to be an object');
-    }
-
     this.measureData = measures;
+    this.unitCache = unitCache;
   }
 
   /**
@@ -271,28 +287,7 @@ export class Converter<
   getUnit(
     abbr: TUnits | (string & {})
   ): Conversion<TMeasures, TSystems, TUnits> | null {
-    const found = null;
-
-    for (const [measureName, measure] of Object.entries(this.measureData)) {
-      for (const [systemName, system] of Object.entries(
-        (measure as Measure<TSystems, TUnits>).systems
-      )) {
-        for (const [testAbbr, unit] of Object.entries(
-          system as Partial<Record<TUnits, Unit>>
-        )) {
-          if (testAbbr == abbr) {
-            return {
-              abbr: abbr as TUnits,
-              measure: measureName as TMeasures,
-              system: systemName as TSystems,
-              unit: unit as Unit,
-            };
-          }
-        }
-      }
-    }
-
-    return found;
+    return this.unitCache.get(abbr) ?? null;
   }
 
   /**
@@ -443,13 +438,49 @@ export class Converter<
   }
 }
 
-export default function <
+export function buildUnitCache<
+  TMeasures extends string,
+  TSystems extends string,
+  TUnits extends string,
+>(measures: Record<TMeasures, Measure<TSystems, TUnits>>) {
+  const unitCache: UnitCache<TMeasures, TSystems, TUnits> = new Map();
+  for (const [measureName, measure] of Object.entries(measures) as Entries<
+    typeof measures,
+    TMeasures
+  >[]) {
+    for (const [systemName, system] of Object.entries(
+      measure.systems
+    ) as Entries<Record<TSystems, Record<TUnits, Unit>>, TSystems>[]) {
+      for (const [testAbbr, unit] of Object.entries(system) as Entries<
+        typeof system,
+        TUnits
+      >[]) {
+        unitCache.set(testAbbr, {
+          measure: measureName,
+          system: systemName,
+          abbr: testAbbr,
+          unit,
+        });
+      }
+    }
+  }
+  return unitCache;
+}
+
+export function configureMeasurements<
   TMeasures extends string,
   TSystems extends string,
   TUnits extends string,
 >(
   measures: Record<TMeasures, Measure<TSystems, TUnits>>
-): (value?: number) => Converter<TMeasures, TSystems, TUnits> {
-  return /** @throws TypeError, EmptyMeasuresError */ (value?: number) =>
-    new Converter<TMeasures, TSystems, TUnits>(measures, value);
+): /** @throws TypeError */ (
+  value?: number
+) => Converter<TMeasures, TSystems, TUnits> {
+  if (typeof measures !== 'object') {
+    throw new TypeError('The measures argument needs to be an object');
+  }
+
+  const unitCache = buildUnitCache(measures);
+  return (value?: number) =>
+    new Converter<TMeasures, TSystems, TUnits>(measures, unitCache, value);
 }
