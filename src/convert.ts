@@ -446,7 +446,7 @@ export class Converter<
 export default function <
   TMeasures extends string,
   TSystems extends string,
-  TUnits extends string
+  TUnits extends string,
 >(
   measures: Record<TMeasures, Measure<TSystems, TUnits>>
 ): (value?: number) => Converter<TMeasures, TSystems, TUnits> {
