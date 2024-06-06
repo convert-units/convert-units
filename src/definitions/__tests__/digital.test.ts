@@ -1,7 +1,7 @@
 import configureMeasurements from '../..';
 import digital, { DigitalSystems, DigitalUnits } from '../digital';
 
-test('b to b', () => {
+test('kB to MB', () => {
   const convert = configureMeasurements<
     'digital',
     DigitalSystems,
@@ -9,10 +9,10 @@ test('b to b', () => {
   >({
     digital,
   });
-  expect(convert(1).from('b').to('b')).toBe(1);
+  expect(convert(1000).from('kB').to('MB')).toBe(1);
 });
 
-test('Kb to b', () => {
+test('kB to bit', () => {
   const convert = configureMeasurements<
     'digital',
     DigitalSystems,
@@ -20,10 +20,10 @@ test('Kb to b', () => {
   >({
     digital,
   });
-  expect(convert(1).from('Kb').to('b')).toBe(1e3);
+  expect(convert(1).from('kB').to('bit')).toBe(8000);
 });
 
-test('Mb to b', () => {
+test('kB to KiB', () => {
   const convert = configureMeasurements<
     'digital',
     DigitalSystems,
@@ -31,10 +31,10 @@ test('Mb to b', () => {
   >({
     digital,
   });
-  expect(convert(1).from('Mb').to('b')).toBe(1e6);
+  expect(convert(1).from('kB').to('KiB')).toBe(0.9765625);
 });
 
-test('Gb to b', () => {
+test('kB to byte', () => {
   const convert = configureMeasurements<
     'digital',
     DigitalSystems,
@@ -42,10 +42,10 @@ test('Gb to b', () => {
   >({
     digital,
   });
-  expect(convert(1).from('Gb').to('b')).toBe(1e9);
+  expect(convert(1).from('kB').to('byte')).toBe(1000);
 });
 
-test('Tb to b', () => {
+test('KiB to MiB', () => {
   const convert = configureMeasurements<
     'digital',
     DigitalSystems,
@@ -53,10 +53,10 @@ test('Tb to b', () => {
   >({
     digital,
   });
-  expect(convert(1).from('Tb').to('b')).toBe(1e12);
+  expect(convert(1024).from('KiB').to('MiB')).toBe(1);
 });
 
-test('B to B', () => {
+test('KiB to kB', () => {
   const convert = configureMeasurements<
     'digital',
     DigitalSystems,
@@ -64,10 +64,10 @@ test('B to B', () => {
   >({
     digital,
   });
-  expect(convert(1).from('B').to('B')).toBe(1);
+  expect(convert(1).from('KiB').to('kB')).toBe(1.024);
 });
 
-test('KB to B', () => {
+test('KiB to bit', () => {
   const convert = configureMeasurements<
     'digital',
     DigitalSystems,
@@ -75,10 +75,10 @@ test('KB to B', () => {
   >({
     digital,
   });
-  expect(convert(1).from('KB').to('B')).toBe(1e3);
+  expect(convert(1).from('KiB').to('bit')).toBe(8192);
 });
 
-test('MB to B', () => {
+test('KiB to byte', () => {
   const convert = configureMeasurements<
     'digital',
     DigitalSystems,
@@ -86,10 +86,10 @@ test('MB to B', () => {
   >({
     digital,
   });
-  expect(convert(1).from('MB').to('B')).toBe(1e6);
+  expect(convert(1).from('KiB').to('byte')).toBe(1024);
 });
 
-test('GB to B', () => {
+test('bit to kB', () => {
   const convert = configureMeasurements<
     'digital',
     DigitalSystems,
@@ -97,10 +97,10 @@ test('GB to B', () => {
   >({
     digital,
   });
-  expect(convert(1).from('GB').to('B')).toBe(1e9);
+  expect(convert(8000).from('bit').to('kB')).toBe(1);
 });
 
-test('TB to B', () => {
+test('bit to KiB', () => {
   const convert = configureMeasurements<
     'digital',
     DigitalSystems,
@@ -108,10 +108,10 @@ test('TB to B', () => {
   >({
     digital,
   });
-  expect(convert(1).from('TB').to('B')).toBe(1e12);
+  expect(convert(8192).from('bit').to('KiB')).toBe(1);
 });
 
-test('B to b', () => {
+test('bit to byte', () => {
   const convert = configureMeasurements<
     'digital',
     DigitalSystems,
@@ -119,10 +119,10 @@ test('B to b', () => {
   >({
     digital,
   });
-  expect(convert(1).from('B').to('b')).toBe(8);
+  expect(convert(8).from('bit').to('byte')).toBe(1);
 });
 
-test('b to B', () => {
+test('byte to kB', () => {
   const convert = configureMeasurements<
     'digital',
     DigitalSystems,
@@ -130,10 +130,10 @@ test('b to B', () => {
   >({
     digital,
   });
-  expect(convert(1).from('b').to('B')).toBeCloseTo(0.125);
+  expect(convert(1000).from('byte').to('kB')).toBe(1);
 });
 
-test('KB to Kb', () => {
+test('byte to KiB', () => {
   const convert = configureMeasurements<
     'digital',
     DigitalSystems,
@@ -141,5 +141,16 @@ test('KB to Kb', () => {
   >({
     digital,
   });
-  expect(convert(1).from('KB').to('Kb')).toBe(8);
+  expect(convert(1024).from('byte').to('KiB')).toBe(1);
+});
+
+test('byte to bit', () => {
+  const convert = configureMeasurements<
+    'digital',
+    DigitalSystems,
+    DigitalUnits
+  >({
+    digital,
+  });
+  expect(convert(1).from('byte').to('bit')).toBe(8);
 });

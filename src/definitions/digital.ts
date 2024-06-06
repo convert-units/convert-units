@@ -1,40 +1,59 @@
 import { Measure, Unit } from './../index.js';
-export type DigitalUnits = DigitalBitsUnits | DigitalBytesUnits;
-export type DigitalSystems = 'bits' | 'bytes';
+export type DigitalUnits =
+  | DigitalSIUnits
+  | DigitalIECUnits
+  | DigitalBitUnit
+  | DigitalByteUnit;
+export type DigitalSystems = 'SI' | 'IEC' | 'bit' | 'byte';
 
-export type DigitalBitsUnits = 'b' | 'Kb' | 'Mb' | 'Gb' | 'Tb';
-export type DigitalBytesUnits = 'B' | 'KB' | 'MB' | 'GB' | 'TB';
+export type DigitalSIUnits = 'kB' | 'MB' | 'GB' | 'TB';
+export type DigitalIECUnits = 'KiB' | 'MiB' | 'GiB' | 'TiB';
+export type DigitalBitUnit = 'bit';
+export type DigitalByteUnit = 'byte';
 
-const bits: Record<DigitalBitsUnits, Unit> = {
-  b: {
+const bit: Record<DigitalBitUnit, Unit> = {
+  bit: {
     name: {
       singular: 'Bit',
       plural: 'Bits',
     },
     to_anchor: 1,
   },
-  Kb: {
+};
+
+const byte: Record<DigitalByteUnit, Unit> = {
+  byte: {
+    name: {
+      singular: 'Byte',
+      plural: 'Bytes',
+    },
+    to_anchor: 1,
+  },
+};
+
+const SI: Record<DigitalSIUnits, Unit> = {
+  kB: {
     name: {
       singular: 'Kilobit',
       plural: 'Kilobits',
     },
     to_anchor: 1e3,
   },
-  Mb: {
+  MB: {
     name: {
       singular: 'Megabit',
       plural: 'Megabits',
     },
     to_anchor: 1e6,
   },
-  Gb: {
+  GB: {
     name: {
       singular: 'Gigabit',
       plural: 'Gigabits',
     },
     to_anchor: 1e9,
   },
-  Tb: {
+  TB: {
     name: {
       singular: 'Terabit',
       plural: 'Terabits',
@@ -43,58 +62,87 @@ const bits: Record<DigitalBitsUnits, Unit> = {
   },
 };
 
-const bytes: Record<DigitalBytesUnits, Unit> = {
-  B: {
+const IEC: Record<DigitalIECUnits, Unit> = {
+  KiB: {
     name: {
-      singular: 'Byte',
-      plural: 'Bytes',
+      singular: 'Kilibyte',
+      plural: 'Kilibytes',
     },
-    to_anchor: 1,
+    to_anchor: 1.024e3,
   },
-  KB: {
+  MiB: {
     name: {
-      singular: 'Kilobyte',
-      plural: 'Kilobytes',
+      singular: 'Megibyte',
+      plural: 'Megibytes',
     },
-    to_anchor: 1e3,
+    to_anchor: 1.048576e6,
   },
-  MB: {
+  GiB: {
     name: {
-      singular: 'Megabyte',
-      plural: 'Megabytes',
+      singular: 'Gigibyte',
+      plural: 'Gigibytes',
     },
-    to_anchor: 1e6,
+    to_anchor: 1.073741824e9,
   },
-  GB: {
+  TiB: {
     name: {
-      singular: 'Gigabyte',
-      plural: 'Gigabytes',
+      singular: 'Teribyte',
+      plural: 'Teribytes',
     },
-    to_anchor: 1e9,
-  },
-  TB: {
-    name: {
-      singular: 'Terabyte',
-      plural: 'Terabytes',
-    },
-    to_anchor: 1e12,
+    to_anchor: 1.09951162778e12,
   },
 };
 
 const measure: Measure<DigitalSystems, DigitalUnits> = {
   systems: {
-    bits,
-    bytes,
+    bit,
+    byte,
+    SI,
+    IEC,
   },
   anchors: {
-    bits: {
-      bytes: {
-        ratio: 1 / 8,
+    SI: {
+      IEC: {
+        ratio: 1,
+      },
+      bit: {
+        ratio: 8,
+      },
+      byte: {
+        ratio: 1,
       },
     },
-    bytes: {
-      bits: {
+    IEC: {
+      SI: {
+        ratio: 1,
+      },
+      bit: {
         ratio: 8,
+      },
+      byte: {
+        ratio: 1,
+      },
+    },
+    bit: {
+      SI: {
+        ratio: 1.25e-1,
+      },
+      IEC: {
+        ratio: 1.25e-1,
+      },
+      byte: {
+        ratio: 1.25e-1,
+      },
+    },
+    byte: {
+      SI: {
+        ratio: 1,
+      },
+      bit: {
+        ratio: 8,
+      },
+      IEC: {
+        ratio: 1,
       },
     },
   },
