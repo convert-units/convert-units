@@ -1,4 +1,5 @@
-import configureMeasurements from '..';
+import { expectTypeOf } from 'expect-type';
+import configureMeasurements, { type Converter } from '..';
 import length, { LengthSystems, LengthUnits } from '../definitions/length';
 import power, { PowerSystems, PowerUnits } from '../definitions/power';
 
@@ -274,4 +275,14 @@ test('best mm with negative numbers', () => {
       plural: 'Meters',
     };
   expect(actual).toEqual(expected);
+});
+
+test("toBest method's return type should equal the desired return type", () => {
+  type toBestMethod = Converter<'length', LengthSystems, LengthUnits>['toBest'];
+  expectTypeOf<toBestMethod>().returns.toEqualTypeOf<{
+    val: number;
+    unit: LengthUnits;
+    singular: string;
+    plural: string;
+  } | null>();
 });
