@@ -10,7 +10,7 @@ export interface Unit {
 export interface Conversion<
   TMeasures extends string,
   TSystems extends string,
-  TUnits extends string
+  TUnits extends string,
 > {
   abbr: TUnits;
   measure: TMeasures;
@@ -38,7 +38,7 @@ export interface Measure<TSystems extends string, TUnits extends string> {
   anchors?: Partial<Record<TSystems, Partial<Record<TSystems, Anchor>>>>;
 }
 
-export interface BestResult<TUnits extends string = string> {
+export interface BestResult<TUnits extends string> {
   val: number;
   unit: TUnits;
   singular: string;
@@ -57,7 +57,7 @@ export class UnknownMeasureError extends Error {}
 export class Converter<
   TMeasures extends string,
   TSystems extends string,
-  TUnits extends string
+  TUnits extends string,
 > {
   private val = 0;
   private destination: Conversion<TMeasures, TSystems, TUnits> | null = null;
