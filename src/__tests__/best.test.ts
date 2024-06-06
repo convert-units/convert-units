@@ -1,4 +1,5 @@
-import configureMeasurements from '..';
+import { expectTypeOf } from 'expect-type';
+import configureMeasurements, { type Converter } from '..';
 import length, { LengthSystems, LengthUnits } from '../definitions/length';
 import power, { PowerSystems, PowerUnits } from '../definitions/power';
 
@@ -276,16 +277,12 @@ test('best mm with negative numbers', () => {
   expect(actual).toEqual(expected);
 });
 
-function assertStaticType<T>(value: T): void {
-  // intentionally empty body; just used to ask TypeScript to check that
-  // `value` does have type `t`
-  value;
-}
-
-test('type of unit field matches configured units', () => {
-  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
-    length,
-  });
-  const best = convert(1200).from('mm').toBest();
-  assertStaticType<LengthUnits | undefined>(best?.unit);
+test("toBest method's return type should equal the desired return type", () => {
+  type toBestMethod = Converter<'length', LengthSystems, LengthUnits>['toBest'];
+  expectTypeOf<toBestMethod>().returns.toEqualTypeOf<{
+    val: number;
+    unit: LengthUnits;
+    singular: string;
+    plural: string;
+  } | null>();
 });
