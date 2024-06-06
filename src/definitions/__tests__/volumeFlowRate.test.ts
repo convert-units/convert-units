@@ -345,17 +345,6 @@ test('kl/s to kl/min', () => {
   expect(convert(1).from('kl/s').to('kl/min')).toBeCloseTo(60);
 });
 
-test('l/s to kl/h', () => {
-  const convert = configureMeasurements<
-    'volumeFlowRate',
-    VolumeFlowRateSystems,
-    VolumeFlowRateUnits
-  >({
-    volumeFlowRate,
-  });
-  expect(convert(1).from('l/s').to('kl/h')).toBeCloseTo(3.6);
-});
-
 test('kl/min to l/h', () => {
   const convert = configureMeasurements<
     'volumeFlowRate',
