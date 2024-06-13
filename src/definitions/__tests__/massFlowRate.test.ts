@@ -114,3 +114,25 @@ test('mt/h to lb/h', () => {
   });
   expect(convert(1).from('mt/h').to('lb/h')).toBeCloseTo(2204.622622);
 });
+
+test('kg/min to kg/s', () => {
+  const convert = configureMeasurements<
+    'massFlowRate',
+    MassFlowRateSystems,
+    MassFlowRateUnits
+  >({
+    massFlowRate,
+  });
+  expect(convert(1).from('kg/min').to('kg/s')).toBeCloseTo(0.0166667);
+});
+
+test('kg/s to kg/min', () => {
+  const convert = configureMeasurements<
+    'massFlowRate',
+    MassFlowRateSystems,
+    MassFlowRateUnits
+  >({
+    massFlowRate,
+  });
+  expect(convert(1).from('kg/s').to('kg/min')).toBe(60);
+});
