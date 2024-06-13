@@ -436,7 +436,7 @@ test('current possibilities', () => {
     current,
   });
   const actual = convert().possibilities('current'),
-    expected = ['A', 'mA', 'kA'];
+    expected = ['A', 'μA', 'mA', 'kA', 'MA'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -739,6 +739,7 @@ test('all possibilities', () => {
       'lb',
       'lbf',
       'lx',
+      'MA',
       'm',
       'm/s',
       'm/s2',
@@ -839,6 +840,7 @@ test('all possibilities', () => {
       'μm',
       'μm2',
       'μC',
+      'μA',
       'pcs',
       'bk-doz',
       'cp',
