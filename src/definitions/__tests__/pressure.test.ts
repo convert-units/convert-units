@@ -40,6 +40,20 @@ test('kPa to MPa', () => {
   expect(convert(8000).from('kPa').to('MPa')).toBe(8);
 });
 
+test('mbar to Pa', () => {
+  const convert = configureMeasurements({
+    pressure,
+  });
+  expect(convert(1).from('mbar').to('Pa')).toBe(100);
+});
+
+test('Pa to mbar', () => {
+  const convert = configureMeasurements({
+    pressure,
+  });
+  expect(convert(1).from('Pa').to('mbar')).toBe(0.01);
+});
+
 test('kPa to bar', () => {
   const convert = configureMeasurements({
     pressure,
