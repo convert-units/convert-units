@@ -450,7 +450,7 @@ test('voltage possibilities', () => {
     voltage,
   });
   const actual = convert().possibilities('voltage'),
-    expected = ['V', 'mV', 'kV'];
+    expected = ['V', 'μV', 'mV', 'kV', 'MV'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -785,6 +785,7 @@ test('all possibilities', () => {
       'MHz',
       'mV',
       'mVA',
+      'MV',
       'MVA',
       'mVAR',
       'MVAR',
@@ -844,6 +845,7 @@ test('all possibilities', () => {
       'μm2',
       'μC',
       'μA',
+      'μV',
       'pcs',
       'bk-doz',
       'cp',
