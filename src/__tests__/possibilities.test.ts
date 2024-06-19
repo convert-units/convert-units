@@ -75,6 +75,7 @@ test('l possibilities', () => {
     expected = [
       'mm3',
       'cm3',
+      'dm3',
       'ml',
       'cl',
       'dl',
@@ -177,6 +178,7 @@ test('volume possibilities', () => {
     expected = [
       'mm3',
       'cm3',
+      'dm3',
       'ml',
       'cl',
       'dl',
@@ -659,6 +661,7 @@ test('all possibilities', () => {
       'dl/s',
       'dm',
       'dm2',
+      'dm3',
       'dm3/a',
       'dm3/d',
       'dm3/h',
