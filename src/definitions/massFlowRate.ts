@@ -6,7 +6,7 @@ export type MassFlowRateUnits =
 
 export type MassFlowRateSystems = 'metric' | 'imperial';
 
-export type MassFlowRateMetricUnits = 'kg/s' | 'kg/min' |'kg/h' | 'mt/h';
+export type MassFlowRateMetricUnits = 'kg/s' | 'kg/min' | 'kg/h' | 'mt/h';
 export type MassFlowRateImperialUnits = 'lb/s' | 'lb/h';
 
 const metric: Record<MassFlowRateMetricUnits, Unit> = {
