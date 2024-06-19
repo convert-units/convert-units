@@ -2,7 +2,7 @@ import { Measure, Unit } from './../index.js';
 export type CurrentUnits = CurrentSIUnits;
 export type CurrentSystems = 'SI';
 
-export type CurrentSIUnits = 'A' | 'μA' |'mA' | 'kA' |'MA';
+export type CurrentSIUnits = 'A' | 'μA' | 'mA' | 'kA' | 'MA';
 
 const SI: Record<CurrentSIUnits, Unit> = {
   A: {
@@ -17,7 +17,7 @@ const SI: Record<CurrentSIUnits, Unit> = {
       singular: 'Microampere',
       plural: 'Microamperes',
     },
-    to_anchor:  1e-6,
+    to_anchor: 1e-6,
   },
   mA: {
     name: {
@@ -33,7 +33,7 @@ const SI: Record<CurrentSIUnits, Unit> = {
     },
     to_anchor: 1000,
   },
- MA: {
+  MA: {
     name: {
       singular: 'Megaampere',
       plural: 'Megaamperes',

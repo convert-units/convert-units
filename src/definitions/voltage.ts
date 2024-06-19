@@ -17,7 +17,7 @@ const SI: Record<VoltageSIUnits, Unit> = {
       singular: 'Microvolt',
       plural: 'Microvolts',
     },
-    to_anchor:  1e-6,
+    to_anchor: 1e-6,
   },
   mV: {
     name: {
