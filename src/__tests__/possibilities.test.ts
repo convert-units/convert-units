@@ -305,6 +305,7 @@ test('area possibilities', () => {
       'cm2',
       'dm2',
       'm2',
+      'a',
       'ha',
       'km2',
       'in2',
@@ -622,6 +623,7 @@ test('all possibilities', () => {
     // Please keep these sorted for maintainability
     expected = [
       'A',
+      'a',
       'arcmin',
       'arcsec',
       'Btu/s',
