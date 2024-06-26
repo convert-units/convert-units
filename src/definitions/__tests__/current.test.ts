@@ -99,3 +99,47 @@ test('kA to A', () => {
   });
   expect(convert(1).from('kA').to('A')).toBe(1000);
 });
+
+test('μA to A', () => {
+  const convert = configureMeasurements<
+    'current',
+    CurrentSystems,
+    CurrentUnits
+  >({
+    current,
+  });
+  expect(convert(1).from('μA').to('A')).toBe(0.000001);
+});
+
+test('A to μA', () => {
+  const convert = configureMeasurements<
+    'current',
+    CurrentSystems,
+    CurrentUnits
+  >({
+    current,
+  });
+  expect(convert(1).from('A').to('μA')).toBe(1000000);
+});
+
+test('MA to A', () => {
+  const convert = configureMeasurements<
+    'current',
+    CurrentSystems,
+    CurrentUnits
+  >({
+    current,
+  });
+  expect(convert(1).from('MA').to('A')).toBe(1000000);
+});
+
+test('A to MA', () => {
+  const convert = configureMeasurements<
+    'current',
+    CurrentSystems,
+    CurrentUnits
+  >({
+    current,
+  });
+  expect(convert(1).from('A').to('MA')).toBe(0.000001);
+});

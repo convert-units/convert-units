@@ -37,6 +37,116 @@ test('cm3/s to l/s', () => {
   expect(convert(100).from('cm3/s').to('l/s')).toBe(1 / 10);
 });
 
+test('dm3/s to l/s', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(1).from('dm3/s').to('l/s')).toBe(1);
+});
+
+test('l/s to dm3/s', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(1).from('l/s').to('dm3/s')).toBe(1);
+});
+
+test('dm3/min to l/s', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(1).from('dm3/min').to('l/s')).toBeCloseTo(0.0166667);
+});
+
+test('l/s to dm3/min', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(1).from('l/s').to('dm3/min')).toBe(60);
+});
+
+test('dm3/h to l/s', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(1).from('dm3/h').to('l/s')).toBeCloseTo(0.000277778);
+});
+
+test('l/s to dm3/h', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(1).from('l/s').to('dm3/h')).toBe(3600);
+});
+
+test('dm3/d to l/s', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(1).from('dm3/d').to('l/s')).toBeCloseTo(0.0000115741);
+});
+
+test('l/s to dm3/d', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(1).from('l/s').to('dm3/d')).toBeCloseTo(86400);
+});
+
+test('dm3/a to l/s', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(1).from('dm3/a').to('l/s')).toBeCloseTo(0.0000000316881);
+});
+
+test('l/s to dm3/a', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(1).from('l/s').to('dm3/a')).toBeCloseTo(31557600);
+});
+
 test('dl/s to l/s', () => {
   const convert = configureMeasurements<
     'volumeFlowRate',
@@ -79,6 +189,50 @@ test('m3/s to l/s', () => {
     volumeFlowRate,
   });
   expect(convert(1).from('m3/s').to('l/s')).toBe(1000);
+});
+
+test('m3/d to l/s', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(1).from('m3/d').to('l/s')).toBeCloseTo(0.0115741);
+});
+
+test('l/s to m3/d', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(1).from('l/s').to('m3/d')).toBe(86.4);
+});
+
+test('m3/a to l/s', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(1).from('m3/a').to('l/s')).toBeCloseTo(0.0000000316881);
+});
+
+test('l/s to m3/a', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(1).from('l/s').to('m3/a')).toBeCloseTo(31557.6);
 });
 
 test('km3/s to l/s', () => {
@@ -200,6 +354,28 @@ test('l/s to l/h', () => {
     volumeFlowRate,
   });
   expect(convert(1).from('l/s').to('l/h')).toBe(3600);
+});
+
+test('l/s to l/d', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(1).from('l/s').to('l/d')).toBe(86400);
+});
+
+test('l/s to l/a', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(1).from('l/s').to('l/a')).toBeCloseTo(31557600);
 });
 
 test('kl/s to kl/h', () => {

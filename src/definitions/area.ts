@@ -9,6 +9,7 @@ export type AreaMetricUnits =
   | 'cm2'
   | 'dm2'
   | 'm2'
+  | 'a'
   | 'ha'
   | 'km2';
 export type AreaImperialUnits = 'in2' | 'yd2' | 'ft2' | 'ac' | 'mi2';
@@ -55,6 +56,13 @@ const metric: Record<AreaMetricUnits, Unit> = {
       plural: 'Square Meters',
     },
     to_anchor: 1,
+  },
+  a: {
+    name: {
+      singular: 'Are',
+      plural: 'Ares',
+    },
+    to_anchor: 100,
   },
   ha: {
     name: {

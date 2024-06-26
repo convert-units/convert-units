@@ -22,6 +22,13 @@ test('cm3 to l', () => {
   expect(convert(100).from('cm3').to('l')).toBe(1 / 10);
 });
 
+test('dm3 to l', () => {
+  const convert = configureMeasurements<'volume', VolumeSystems, VolumeUnits>({
+    volume,
+  });
+  expect(convert(100).from('dm3').to('l')).toBe(100);
+});
+
 test('dl to l', () => {
   const convert = configureMeasurements<'volume', VolumeSystems, VolumeUnits>({
     volume,

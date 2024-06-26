@@ -5,6 +5,7 @@ export type VolumeSystems = 'metric' | 'imperial';
 export type VolumeMetricUnits =
   | 'mm3'
   | 'cm3'
+  | 'dm3'
   | 'ml'
   | 'l'
   | 'kl'
@@ -47,6 +48,13 @@ const metric: Record<VolumeMetricUnits, Unit> = {
       plural: 'Cubic Centimeters',
     },
     to_anchor: 1 / 1000,
+  },
+  dm3: {
+    name: {
+      singular: 'Cubic Decimeter',
+      plural: 'Cubic Decimeters',
+    },
+    to_anchor: 1,
   },
   ml: {
     name: {

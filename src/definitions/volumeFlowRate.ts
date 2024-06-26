@@ -7,18 +7,27 @@ export type VolumeFlowRateSystems = 'metric' | 'imperial';
 export type VolumeFlowRateMetricUnits =
   | 'mm3/s'
   | 'cm3/s'
+  | 'dm3/s'
+  | 'dm3/min'
+  | 'dm3/h'
+  | 'dm3/d'
+  | 'dm3/a'
   | 'ml/s'
   | 'cl/s'
   | 'dl/s'
   | 'l/s'
   | 'l/min'
   | 'l/h'
+  | 'l/d'
+  | 'l/a'
   | 'kl/s'
   | 'kl/min'
   | 'kl/h'
   | 'm3/s'
   | 'm3/min'
   | 'm3/h'
+  | 'm3/d'
+  | 'm3/a'
   | 'km3/s';
 
 export type VolumeFlowRateImperialUnits =
@@ -59,6 +68,41 @@ const metric: Record<VolumeFlowRateMetricUnits, Unit> = {
       plural: 'Cubic Centimeters per second',
     },
     to_anchor: 1 / 1000,
+  },
+  'dm3/s': {
+    name: {
+      singular: 'Cubic Decimeter per second',
+      plural: 'Cubic Decimeters per second',
+    },
+    to_anchor: 1,
+  },
+  'dm3/min': {
+    name: {
+      singular: 'Cubic Decimeter per minute',
+      plural: 'Cubic Decimeters per minute',
+    },
+    to_anchor: 1 / 60,
+  },
+  'dm3/h': {
+    name: {
+      singular: 'Cubic Decimeter per hour',
+      plural: 'Cubic Decimeters per hour',
+    },
+    to_anchor: 1 / 3600,
+  },
+  'dm3/d': {
+    name: {
+      singular: 'Cubic Decimeter per day',
+      plural: 'Cubic Decimeters per day',
+    },
+    to_anchor: 1 / 86400,
+  },
+  'dm3/a': {
+    name: {
+      singular: 'Cubic Decimeter per year',
+      plural: 'Cubic Decimeters per year',
+    },
+    to_anchor: 1 / 31557600,
   },
   'ml/s': {
     name: {
@@ -102,6 +146,20 @@ const metric: Record<VolumeFlowRateMetricUnits, Unit> = {
     },
     to_anchor: 1 / 3600,
   },
+  'l/d': {
+    name: {
+      singular: 'Litre per day',
+      plural: 'Litres per day',
+    },
+    to_anchor: 1 / 86400,
+  },
+  'l/a': {
+    name: {
+      singular: 'Litre per year',
+      plural: 'Litres per year',
+    },
+    to_anchor: 1 / 31557600,
+  },
   'kl/s': {
     name: {
       singular: 'Kilolitre per second',
@@ -143,6 +201,20 @@ const metric: Record<VolumeFlowRateMetricUnits, Unit> = {
       plural: 'Cubic meters per hour',
     },
     to_anchor: 5 / 18,
+  },
+  'm3/d': {
+    name: {
+      singular: 'Cubic meter per day',
+      plural: 'Cubic meters per day',
+    },
+    to_anchor: 5 / 432,
+  },
+  'm3/a': {
+    name: {
+      singular: 'Cubic meter per year',
+      plural: 'Cubic meters per year',
+    },
+    to_anchor: 5 / 157788,
   },
   'km3/s': {
     name: {
