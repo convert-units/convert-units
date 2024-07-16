@@ -28,6 +28,9 @@
     },
     "./package.json": "./package.json"
   },
+  "dependencies": {
+    "decimal.js": "^10.4.3"
+  },
   "devDependencies": {
     "@eslint/js": "^9.4.0",
     "@types/eslint__js": "^8.42.3",

@@ -1,9 +1,10 @@
+import Decimal from 'decimal.js';
 export interface Unit {
   name: {
     singular: string;
     plural: string;
   };
-  to_anchor: number;
+  to_anchor: Decimal | number;
   anchor_shift?: number;
 }
 
@@ -26,10 +27,10 @@ export interface UnitDescription {
   plural: string;
 }
 
-type TransformFunc = (value: number) => number;
+type TransformFunc = (value: Decimal) => Decimal;
 
 export interface Anchor {
-  ratio?: number;
+  ratio?: Decimal | number;
   transform?: TransformFunc;
 }
 
@@ -152,7 +153,7 @@ export class Converter<
     /**
      * Convert from the source value to its anchor inside the system
      */
-    let result: number = this.val * origin.unit.to_anchor;
+    let result: Decimal = new Decimal(this.val).mul(origin.unit.to_anchor);
 
     /**
      * For some changes it's a simple shift (C to K)
@@ -160,7 +161,7 @@ export class Converter<
      * and subtract it when converting from the unit
      */
     if (origin.unit.anchor_shift) {
-      result -= origin.unit.anchor_shift;
+      result = result.sub(origin.unit.anchor_shift);
     }
 
     /**
@@ -191,8 +192,8 @@ export class Converter<
 
       if (typeof transform === 'function') {
         result = transform(result);
-      } else if (typeof ratio === 'number') {
-        result *= ratio;
+      } else if (typeof ratio === 'number' || ratio instanceof Decimal) {
+        result = result.mul(ratio);
       } else {
         throw new MeasureStructureError(
           'A system anchor needs to either have a defined ratio number or a transform function.'
@@ -204,13 +205,13 @@ export class Converter<
      * This shift has to be done after the system conversion business
      */
     if (destination.unit.anchor_shift) {
-      result += destination.unit.anchor_shift;
+      result = result.add(destination.unit.anchor_shift);
     }
 
     /**
      * Convert to another unit inside the destination system
      */
-    return result / destination.unit.to_anchor;
+    return result.div(destination.unit.to_anchor).toNumber();
   }
 
   /**

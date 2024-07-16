@@ -67,7 +67,7 @@ test('F to R', () => {
   >({
     temperature,
   });
-  expect(convert(100).from('F').to('R')).toBe(559.6700000000001);
+  expect(convert(100).from('F').to('R')).toBe(559.67);
 });
 
 test('R to F', () => {
@@ -78,7 +78,7 @@ test('R to F', () => {
   >({
     temperature,
   });
-  expect(convert(670).from('R').to('F')).toBe(210.32999999999998);
+  expect(convert(670).from('R').to('F')).toBe(210.33);
 });
 
 test('R to C', () => {
@@ -100,5 +100,5 @@ test('R to K', () => {
   >({
     temperature,
   });
-  expect(convert(459.67).from('R').to('K')).toBe(255.3722222222222);
+  expect(convert(459.67).from('R').to('K')).toBe(255.37222222222223);
 });

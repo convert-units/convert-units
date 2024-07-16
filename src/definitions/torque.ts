@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { Measure, Unit } from './../index.js';
 export type TorqueUnits = TorqueMetricUnits | TorqueImperialUnits;
 export type TorqueSystems = 'metric' | 'imperial';
@@ -33,7 +34,7 @@ const measure: Measure<TorqueSystems, TorqueUnits> = {
   anchors: {
     metric: {
       imperial: {
-        ratio: 1 / 1.355818,
+        ratio: new Decimal(1).div(1.355818),
       },
     },
     imperial: {

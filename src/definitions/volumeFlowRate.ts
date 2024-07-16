@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { Measure, Unit } from './../index.js';
 export type VolumeFlowRateUnits =
   | VolumeFlowRateMetricUnits
@@ -51,35 +52,35 @@ const metric: Record<VolumeFlowRateMetricUnits, Unit> = {
       singular: 'Cubic Millimeter per second',
       plural: 'Cubic Millimeters per second',
     },
-    to_anchor: 1 / 1000000,
+    to_anchor: new Decimal(1).div(1000000),
   },
   'cm3/s': {
     name: {
       singular: 'Cubic Centimeter per second',
       plural: 'Cubic Centimeters per second',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: new Decimal(1).div(1000),
   },
   'ml/s': {
     name: {
       singular: 'Millilitre per second',
       plural: 'Millilitres per second',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: new Decimal(1).div(1000),
   },
   'cl/s': {
     name: {
       singular: 'Centilitre per second',
       plural: 'Centilitres per second',
     },
-    to_anchor: 1 / 100,
+    to_anchor: new Decimal(1).div(100),
   },
   'dl/s': {
     name: {
       singular: 'Decilitre per second',
       plural: 'Decilitres per second',
     },
-    to_anchor: 1 / 10,
+    to_anchor: new Decimal(1).div(10),
   },
   'l/s': {
     name: {
@@ -93,14 +94,14 @@ const metric: Record<VolumeFlowRateMetricUnits, Unit> = {
       singular: 'Litre per minute',
       plural: 'Litres per minute',
     },
-    to_anchor: 1 / 60,
+    to_anchor: new Decimal(1).div(60),
   },
   'l/h': {
     name: {
       singular: 'Litre per hour',
       plural: 'Litres per hour',
     },
-    to_anchor: 1 / 3600,
+    to_anchor: new Decimal(1).div(3600),
   },
   'kl/s': {
     name: {
@@ -114,14 +115,14 @@ const metric: Record<VolumeFlowRateMetricUnits, Unit> = {
       singular: 'Kilolitre per minute',
       plural: 'Kilolitres per minute',
     },
-    to_anchor: 50 / 3,
+    to_anchor: new Decimal(50).div(3),
   },
   'kl/h': {
     name: {
       singular: 'Kilolitre per hour',
       plural: 'Kilolitres per hour',
     },
-    to_anchor: 5 / 18,
+    to_anchor: new Decimal(5).div(18),
   },
   'm3/s': {
     name: {
@@ -135,14 +136,14 @@ const metric: Record<VolumeFlowRateMetricUnits, Unit> = {
       singular: 'Cubic meter per minute',
       plural: 'Cubic meters per minute',
     },
-    to_anchor: 50 / 3,
+    to_anchor: new Decimal(50).div(3),
   },
   'm3/h': {
     name: {
       singular: 'Cubic meter per hour',
       plural: 'Cubic meters per hour',
     },
-    to_anchor: 5 / 18,
+    to_anchor: new Decimal(5).div(18),
   },
   'km3/s': {
     name: {
@@ -159,14 +160,14 @@ const imperial: Record<VolumeFlowRateImperialUnits, Unit> = {
       singular: 'Teaspoon per second',
       plural: 'Teaspoons per second',
     },
-    to_anchor: 1 / 6,
+    to_anchor: new Decimal(1).div(6),
   },
   'Tbs/s': {
     name: {
       singular: 'Tablespoon per second',
       plural: 'Tablespoons per second',
     },
-    to_anchor: 1 / 2,
+    to_anchor: new Decimal(1).div(2),
   },
   'in3/s': {
     name: {
@@ -180,14 +181,14 @@ const imperial: Record<VolumeFlowRateImperialUnits, Unit> = {
       singular: 'Cubic inch per minute',
       plural: 'Cubic inches per minute',
     },
-    to_anchor: 0.55411 / 60,
+    to_anchor: new Decimal(0.55411).div(60),
   },
   'in3/h': {
     name: {
       singular: 'Cubic inch per hour',
       plural: 'Cubic inches per hour',
     },
-    to_anchor: 0.55411 / 3600,
+    to_anchor: new Decimal(0.55411).div(3600),
   },
   'fl-oz/s': {
     name: {
@@ -201,14 +202,14 @@ const imperial: Record<VolumeFlowRateImperialUnits, Unit> = {
       singular: 'Fluid Ounce per minute',
       plural: 'Fluid Ounces per minute',
     },
-    to_anchor: 1 / 60,
+    to_anchor: new Decimal(1).div(60),
   },
   'fl-oz/h': {
     name: {
       singular: 'Fluid Ounce per hour',
       plural: 'Fluid Ounces per hour',
     },
-    to_anchor: 1 / 3600,
+    to_anchor: new Decimal(1).div(3600),
   },
   'cup/s': {
     name: {
@@ -229,14 +230,14 @@ const imperial: Record<VolumeFlowRateImperialUnits, Unit> = {
       singular: 'Pint per minute',
       plural: 'Pints per minute',
     },
-    to_anchor: 4 / 15,
+    to_anchor: new Decimal(4).div(15),
   },
   'pnt/h': {
     name: {
       singular: 'Pint per hour',
       plural: 'Pints per hour',
     },
-    to_anchor: 1 / 225,
+    to_anchor: new Decimal(1).div(225),
   },
   'qt/s': {
     name: {
@@ -257,14 +258,14 @@ const imperial: Record<VolumeFlowRateImperialUnits, Unit> = {
       singular: 'Gallon per minute',
       plural: 'Gallons per minute',
     },
-    to_anchor: 32 / 15,
+    to_anchor: new Decimal(32).div(15),
   },
   'gal/h': {
     name: {
       singular: 'Gallon per hour',
       plural: 'Gallons per hour',
     },
-    to_anchor: 8 / 225,
+    to_anchor: new Decimal(8).div(225),
   },
   'ft3/s': {
     name: {
@@ -278,14 +279,14 @@ const imperial: Record<VolumeFlowRateImperialUnits, Unit> = {
       singular: 'Cubic foot per minute',
       plural: 'Cubic feet per minute',
     },
-    to_anchor: 957.506 / 60,
+    to_anchor: new Decimal(957.506).div(60),
   },
   'ft3/h': {
     name: {
       singular: 'Cubic foot per hour',
       plural: 'Cubic feet per hour',
     },
-    to_anchor: 957.506 / 3600,
+    to_anchor: new Decimal(957.506).div(3600),
   },
   'yd3/s': {
     name: {
@@ -299,14 +300,14 @@ const imperial: Record<VolumeFlowRateImperialUnits, Unit> = {
       singular: 'Cubic yard per minute',
       plural: 'Cubic yards per minute',
     },
-    to_anchor: 25852.7 / 60,
+    to_anchor: new Decimal(25852.7).div(60),
   },
   'yd3/h': {
     name: {
       singular: 'Cubic yard per hour',
       plural: 'Cubic yards per hour',
     },
-    to_anchor: 25852.7 / 3600,
+    to_anchor: new Decimal(25852.7).div(3600),
   },
 };
 
@@ -323,7 +324,7 @@ const measure: Measure<VolumeFlowRateSystems, VolumeFlowRateUnits> = {
     },
     imperial: {
       metric: {
-        ratio: 1 / 33.8140227,
+        ratio: new Decimal(1).div(33.8140227),
       },
     },
   },

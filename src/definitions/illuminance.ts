@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { Measure, Unit } from './../index.js';
 export type IlluminanceUnits =
   | IlluminanceMetricUnits
@@ -35,7 +36,7 @@ const measure: Measure<IlluminanceSystems, IlluminanceUnits> = {
   anchors: {
     metric: {
       imperial: {
-        ratio: 1 / 10.76391,
+        ratio: new Decimal(1).div(10.76391),
       },
     },
     imperial: {

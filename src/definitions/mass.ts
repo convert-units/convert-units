@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { Measure, Unit } from './../index.js';
 export type MassUnits = MassMetricUnits | MassImperialUnits;
 export type MassSystems = 'metric' | 'imperial';
@@ -11,14 +12,14 @@ const metric: Record<MassMetricUnits, Unit> = {
       singular: 'Microgram',
       plural: 'Micrograms',
     },
-    to_anchor: 1 / 1000000,
+    to_anchor: new Decimal(1).div(1000000),
   },
   mg: {
     name: {
       singular: 'Milligram',
       plural: 'Milligrams',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: new Decimal(1).div(1000),
   },
   g: {
     name: {
@@ -49,7 +50,7 @@ const imperial: Record<MassImperialUnits, Unit> = {
       singular: 'Ounce',
       plural: 'Ounces',
     },
-    to_anchor: 1 / 16,
+    to_anchor: new Decimal(1).div(16),
   },
   lb: {
     name: {
@@ -82,7 +83,7 @@ const measure: Measure<MassSystems, MassUnits> = {
   anchors: {
     metric: {
       imperial: {
-        ratio: 1 / 453.59237,
+        ratio: new Decimal(1).div(453.59237),
       },
     },
     imperial: {

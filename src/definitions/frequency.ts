@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { Measure, Unit } from './../index.js';
 export type FrequencyUnits = FrequencySIUnits;
 export type FrequencySystems = 'SI';
@@ -19,7 +20,7 @@ const SI: Record<FrequencySIUnits, Unit> = {
       singular: 'millihertz',
       plural: 'millihertz',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: new Decimal(1).div(1000),
   },
   Hz: {
     name: {
@@ -40,42 +41,42 @@ const SI: Record<FrequencySIUnits, Unit> = {
       singular: 'megahertz',
       plural: 'megahertz',
     },
-    to_anchor: 1000 * 1000,
+    to_anchor: new Decimal(1000).mul(1000),
   },
   GHz: {
     name: {
       singular: 'gigahertz',
       plural: 'gigahertz',
     },
-    to_anchor: 1000 * 1000 * 1000,
+    to_anchor: new Decimal(1000).mul(1000).mul(1000),
   },
   THz: {
     name: {
       singular: 'terahertz',
       plural: 'terahertz',
     },
-    to_anchor: 1000 * 1000 * 1000 * 1000,
+    to_anchor: new Decimal(1000).mul(1000).mul(1000).mul(1000),
   },
   rpm: {
     name: {
       singular: 'rotation per minute',
       plural: 'rotations per minute',
     },
-    to_anchor: 1 / 60,
+    to_anchor: new Decimal(1).div(60),
   },
   'deg/s': {
     name: {
       singular: 'degree per second',
       plural: 'degrees per second',
     },
-    to_anchor: 1 / 360,
+    to_anchor: new Decimal(1).div(360),
   },
   'rad/s': {
     name: {
       singular: 'radian per second',
       plural: 'radians per second',
     },
-    to_anchor: 1 / (Math.PI * 2),
+    to_anchor: new Decimal(1).div(new Decimal(Math.PI).mul(2)),
   },
 };
 

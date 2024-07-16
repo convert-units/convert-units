@@ -1,4 +1,6 @@
+import Decimal from 'decimal.js';
 import { Measure, Unit } from './../index.js';
+
 export type TemperatureUnits =
   | TemperatureMetricUnits
   | TemperatureImperialUnits;
@@ -52,15 +54,15 @@ const measure: Measure<TemperatureSystems, TemperatureUnits> = {
   anchors: {
     metric: {
       imperial: {
-        transform: function (C: number): number {
-          return C / (5 / 9) + 32;
+        transform: function (C: Decimal): Decimal {
+          return C.div(new Decimal(5).div(9)).add(32);
         },
       },
     },
     imperial: {
       metric: {
-        transform: function (F: number): number {
-          return (F - 32) * (5 / 9);
+        transform: function (F: Decimal): Decimal {
+          return F.sub(32).mul(new Decimal(5).div(9));
         },
       },
     },

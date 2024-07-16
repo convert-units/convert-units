@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { Measure, Unit } from './../index.js';
 export type PowerUnits = PowerMetricUnits | PowerImperialUnits;
 export type PowerSystems = 'metric' | 'imperial';
@@ -87,7 +88,7 @@ const measure: Measure<PowerSystems, PowerUnits> = {
     },
     imperial: {
       metric: {
-        ratio: 1 / 0.737562149,
+        ratio: new Decimal(1).div(0.737562149),
       },
     },
   },

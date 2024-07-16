@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { Measure, Unit } from './../index.js';
 export type PressureUnits = PressureMetricUnits | PressureImperialUnits;
 export type PressureSystems = 'metric' | 'imperial';
@@ -19,7 +20,7 @@ const metric: Record<PressureMetricUnits, Unit> = {
       singular: 'pascal',
       plural: 'pascals',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: new Decimal(1).div(1000),
   },
   kPa: {
     name: {
@@ -40,7 +41,7 @@ const metric: Record<PressureMetricUnits, Unit> = {
       singular: 'hectopascal',
       plural: 'hectopascals',
     },
-    to_anchor: 1 / 10,
+    to_anchor: new Decimal(1).div(10),
   },
   bar: {
     name: {
@@ -54,7 +55,7 @@ const metric: Record<PressureMetricUnits, Unit> = {
       singular: 'torr',
       plural: 'torr',
     },
-    to_anchor: 101325 / 760000,
+    to_anchor: new Decimal(101325).div(760000),
   },
   mH2O: {
     name: {
@@ -78,7 +79,7 @@ const imperial: Record<PressureImperialUnits, Unit> = {
       singular: 'pound per square inch',
       plural: 'pounds per square inch',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: new Decimal(1).div(1000),
   },
   ksi: {
     name: {
@@ -109,7 +110,7 @@ const measure: Measure<PressureSystems, PressureUnits> = {
     },
     imperial: {
       metric: {
-        ratio: 1 / 0.00014503768078,
+        ratio: new Decimal(1).div(0.00014503768078),
       },
     },
   },

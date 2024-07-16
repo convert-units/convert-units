@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { Measure, Unit } from './../index.js';
 export type LengthUnits = LengthMetricUnits | LengthImperialUnits;
 export type LengthSystems = 'metric' | 'imperial';
@@ -71,14 +72,14 @@ const imperial: Record<LengthImperialUnits, Unit> = {
       singular: 'Mil',
       plural: 'Mils',
     },
-    to_anchor: 1 / 12000,
+    to_anchor: new Decimal(1).div(12000),
   },
   in: {
     name: {
       singular: 'Inch',
       plural: 'Inches',
     },
-    to_anchor: 1 / 12,
+    to_anchor: new Decimal(1).div(12),
   },
   yd: {
     name: {
@@ -137,7 +138,7 @@ const measure: Measure<LengthSystems, LengthUnits> = {
     },
     imperial: {
       metric: {
-        ratio: 1 / 3.28084,
+        ratio: new Decimal(1).div(3.28084),
       },
     },
   },

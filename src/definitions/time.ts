@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { Measure, Unit } from './../index.js';
 export type TimeUnits = TimeSIUnits;
 export type TimeSystems = 'SI';
@@ -22,21 +23,21 @@ const SI: Record<TimeSIUnits, Unit> = {
       singular: 'Nanosecond',
       plural: 'Nanoseconds',
     },
-    to_anchor: 1 / 1000000000,
+    to_anchor: new Decimal(1).div(1000000000),
   },
   mu: {
     name: {
       singular: 'Microsecond',
       plural: 'Microseconds',
     },
-    to_anchor: 1 / 1000000,
+    to_anchor: new Decimal(1).div(1000000),
   },
   ms: {
     name: {
       singular: 'Millisecond',
       plural: 'Milliseconds',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: new Decimal(1).div(1000),
   },
   s: {
     name: {
@@ -57,35 +58,35 @@ const SI: Record<TimeSIUnits, Unit> = {
       singular: 'Hour',
       plural: 'Hours',
     },
-    to_anchor: 60 * 60,
+    to_anchor: new Decimal(60).mul(60),
   },
   d: {
     name: {
       singular: 'Day',
       plural: 'Days',
     },
-    to_anchor: 60 * 60 * 24,
+    to_anchor: new Decimal(60).mul(60).mul(24),
   },
   week: {
     name: {
       singular: 'Week',
       plural: 'Weeks',
     },
-    to_anchor: 60 * 60 * 24 * 7,
+    to_anchor: new Decimal(60).mul(60).mul(24).mul(7),
   },
   month: {
     name: {
       singular: 'Month',
       plural: 'Months',
     },
-    to_anchor: (60 * 60 * 24 * daysInYear) / 12,
+    to_anchor: new Decimal(60).mul(60).mul(24).mul(daysInYear).div(12),
   },
   year: {
     name: {
       singular: 'Year',
       plural: 'Years',
     },
-    to_anchor: 60 * 60 * 24 * daysInYear,
+    to_anchor: new Decimal(60).mul(60).mul(24).mul(daysInYear),
   },
 };
 

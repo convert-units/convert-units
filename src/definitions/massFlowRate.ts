@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { Measure, Unit } from './../index';
 
 export type MassFlowRateUnits =
@@ -22,14 +23,14 @@ const metric: Record<MassFlowRateMetricUnits, Unit> = {
       singular: 'Kilogram per hour',
       plural: 'Kilograms per hour',
     },
-    to_anchor: 1 / 3600,
+    to_anchor: new Decimal(1).div(3600),
   },
   'mt/h': {
     name: {
       singular: 'Ton per hour',
       plural: 'Tons per hour',
     },
-    to_anchor: 1 / 3.6,
+    to_anchor: new Decimal(1).div(3.6),
   },
 };
 
@@ -46,7 +47,7 @@ const imperial: Record<MassFlowRateImperialUnits, Unit> = {
       singular: 'Pound per hour',
       plural: 'Pounds per hour',
     },
-    to_anchor: 1 / 3600,
+    to_anchor: new Decimal(1).div(3600),
   },
 };
 
@@ -58,7 +59,7 @@ const measure: Measure<MassFlowRateSystems, MassFlowRateUnits> = {
   anchors: {
     metric: {
       imperial: {
-        ratio: 1 / 0.453592,
+        ratio: new Decimal(1).div(0.453592),
       },
     },
     imperial: {

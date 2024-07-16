@@ -23,5 +23,5 @@ test('lx to ft-cd', () => {
   >({
     illuminance,
   });
-  expect(convert(1).from('lx').to('ft-cd')).toBe(0.09290304359661128);
+  expect(convert(1).from('lx').to('ft-cd')).toBe(0.09290304359661126);
 });

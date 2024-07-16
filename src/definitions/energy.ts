@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { Measure, Unit } from './../index.js';
 export type EnergyUnits = EnergySIUnits | EnergyNutritionUnits;
 export type EnergySystems = 'SI' | 'nutrition';
@@ -121,7 +122,7 @@ const measure: Measure<EnergySystems, EnergyUnits> = {
   anchors: {
     SI: {
       nutrition: {
-        ratio: 1 / 4.184,
+        ratio: new Decimal(1).div(4.184),
       },
     },
     nutrition: {

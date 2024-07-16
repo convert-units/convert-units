@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { Measure, Unit } from './../index.js';
 export type AreaUnits = AreaMetricUnits | AreaImperialUnits;
 export type AreaSystems = 'metric' | 'imperial';
@@ -33,21 +34,21 @@ const metric: Record<AreaMetricUnits, Unit> = {
       singular: 'Square Millimeter',
       plural: 'Square Millimeters',
     },
-    to_anchor: 1 / 1000000,
+    to_anchor: new Decimal(1).div(1000000),
   },
   cm2: {
     name: {
       singular: 'Square Centimeter',
       plural: 'Square Centimeters',
     },
-    to_anchor: 1 / 10000,
+    to_anchor: new Decimal(1).div(10000),
   },
   dm2: {
     name: {
       singular: 'Square Decimeter',
       plural: 'Square Decimeters',
     },
-    to_anchor: 1 / 100,
+    to_anchor: new Decimal(1).div(100),
   },
   m2: {
     name: {
@@ -78,7 +79,7 @@ const imperial: Record<AreaImperialUnits, Unit> = {
       singular: 'Square Inch',
       plural: 'Square Inches',
     },
-    to_anchor: 1 / 144,
+    to_anchor: new Decimal(1).div(144),
   },
   yd2: {
     name: {
@@ -123,7 +124,7 @@ const measure: Measure<AreaSystems, AreaUnits> = {
     },
     imperial: {
       metric: {
-        ratio: 1 / 10.7639,
+        ratio: new Decimal(1).div(10.7639),
       },
     },
   },

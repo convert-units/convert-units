@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { Measure, Unit } from './../index.js';
 export type SpeedUnits = SpeedMetricUnits | SpeedImperialUnits;
 export type SpeedSystems = 'metric' | 'imperial';
@@ -75,7 +76,7 @@ const measure: Measure<SpeedSystems, SpeedUnits> = {
   anchors: {
     metric: {
       imperial: {
-        ratio: 1 / 1.609344,
+        ratio: new Decimal(1).div(1.609344),
       },
     },
     imperial: {

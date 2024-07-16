@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { Measure, Unit } from './../index.js';
 export type PaceUnits = PaceMetricUnits | PaceImperialUnits;
 export type PaceSystems = 'metric' | 'imperial';
@@ -52,7 +53,7 @@ const measure: Measure<PaceSystems, PaceUnits> = {
     },
     imperial: {
       metric: {
-        ratio: 1 / 0.3048,
+        ratio: new Decimal(1).div(0.3048),
       },
     },
   },

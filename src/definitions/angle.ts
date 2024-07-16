@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { Measure, Unit } from './../index.js';
 export type AngleUnits = AngleSIUnits;
 export type AngleSystems = 'SI';
@@ -10,7 +11,7 @@ const SI: Record<AngleSIUnits, Unit> = {
       singular: 'radian',
       plural: 'radians',
     },
-    to_anchor: 180 / Math.PI,
+    to_anchor: new Decimal(180).div(Math.PI),
   },
   deg: {
     name: {
@@ -24,21 +25,21 @@ const SI: Record<AngleSIUnits, Unit> = {
       singular: 'gradian',
       plural: 'gradians',
     },
-    to_anchor: 9 / 10,
+    to_anchor: new Decimal(9).div(10),
   },
   arcmin: {
     name: {
       singular: 'arcminute',
       plural: 'arcminutes',
     },
-    to_anchor: 1 / 60,
+    to_anchor: new Decimal(1).div(60),
   },
   arcsec: {
     name: {
       singular: 'arcsecond',
       plural: 'arcseconds',
     },
-    to_anchor: 1 / 3600,
+    to_anchor: new Decimal(1).div(3600),
   },
 };
 

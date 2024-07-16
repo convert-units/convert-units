@@ -1,3 +1,4 @@
+import Decimal from 'decimal.js';
 import { Measure, Unit } from './../index.js';
 export type VolumeUnits = VolumeMetricUnits | VolumeImperialUnits;
 export type VolumeSystems = 'metric' | 'imperial';
@@ -39,35 +40,35 @@ const metric: Record<VolumeMetricUnits, Unit> = {
       singular: 'Cubic Millimeter',
       plural: 'Cubic Millimeters',
     },
-    to_anchor: 1 / 1000000,
+    to_anchor: new Decimal(1).div(1000000),
   },
   cm3: {
     name: {
       singular: 'Cubic Centimeter',
       plural: 'Cubic Centimeters',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: new Decimal(1).div(1000),
   },
   ml: {
     name: {
       singular: 'Millilitre',
       plural: 'Millilitres',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: new Decimal(1).div(1000),
   },
   cl: {
     name: {
       singular: 'Centilitre',
       plural: 'Centilitres',
     },
-    to_anchor: 1 / 100,
+    to_anchor: new Decimal(1).div(100),
   },
   dl: {
     name: {
       singular: 'Decilitre',
       plural: 'Decilitres',
     },
-    to_anchor: 1 / 10,
+    to_anchor: new Decimal(1).div(10),
   },
   l: {
     name: {
@@ -118,35 +119,35 @@ const metric: Record<VolumeMetricUnits, Unit> = {
       singular: 'Kryddmått',
       plural: 'Kryddmått',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: new Decimal(1).div(1000),
   },
   tsk: {
     name: {
       singular: 'Tesked',
       plural: 'Teskedar',
     },
-    to_anchor: 5 / 1000,
+    to_anchor: new Decimal(5).div(1000),
   },
   msk: {
     name: {
       singular: 'Matsked',
       plural: 'Matskedar',
     },
-    to_anchor: 15 / 1000,
+    to_anchor: new Decimal(15).div(1000),
   },
   kkp: {
     name: {
       singular: 'Kaffekopp',
       plural: 'Kaffekoppar',
     },
-    to_anchor: 150 / 1000,
+    to_anchor: new Decimal(150).div(1000),
   },
   glas: {
     name: {
       singular: 'Glas',
       plural: 'Glas',
     },
-    to_anchor: 200 / 1000,
+    to_anchor: new Decimal(200).div(1000),
   },
   kanna: {
     name: {
@@ -163,14 +164,14 @@ const imperial: Record<VolumeImperialUnits, Unit> = {
       singular: 'Teaspoon',
       plural: 'Teaspoons',
     },
-    to_anchor: 1 / 6,
+    to_anchor: new Decimal(1).div(6),
   },
   Tbs: {
     name: {
       singular: 'Tablespoon',
       plural: 'Tablespoons',
     },
-    to_anchor: 1 / 2,
+    to_anchor: new Decimal(1).div(2),
   },
   in3: {
     name: {
@@ -243,7 +244,7 @@ const measure: Measure<VolumeSystems, VolumeUnits> = {
     },
     imperial: {
       metric: {
-        ratio: 1 / 33.8140226,
+        ratio: new Decimal(1).div(33.8140226),
       },
     },
   },
