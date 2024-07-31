@@ -34,6 +34,7 @@ test('Nm to lbf.in', () => {
   const convert = configureMeasurements<'torque', TorqueSystems, TorqueUnits>({
     torque,
   });
+  expect(convert(1).from('Nm').to('lbf-in')).toBeCloseTo(12 * (1 / 1.355818), 0.0001);
   expect(convert(1).from('Nm').to('lbf_in')).toBeCloseTo(12 * (1 / 1.355818), 0.0001);
 });
 
@@ -41,6 +42,7 @@ test('Nm to ozf.in', () => {
   const convert = configureMeasurements<'torque', TorqueSystems, TorqueUnits>({
     torque,
   });
+  expect(convert(1).from('Nm').to('ozf-in')).toBeCloseTo(192.00000227 * (1 / 1.355818), 0.0001);
   expect(convert(1).from('Nm').to('ozf_in')).toBeCloseTo(192.00000227 * (1 / 1.355818), 0.0001);
 });
 

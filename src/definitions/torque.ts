@@ -3,7 +3,7 @@ export type TorqueUnits = TorqueMetricUnits | TorqueImperialUnits;
 export type TorqueSystems = 'metric' | 'imperial';
 
 export type TorqueMetricUnits = 'Nm' | 'kgm' | 'kg_cm';
-export type TorqueImperialUnits = 'lbf-ft' | 'lbf_ft' | 'lbf_in' | 'ozf_in';
+export type TorqueImperialUnits = 'lbf-ft' | 'lbf_ft' | 'lbf-in' | 'lbf_in' | 'ozf-in' | 'ozf_in';
 
 const metric: Record<TorqueMetricUnits, Unit> = {
   Nm: {
@@ -15,15 +15,15 @@ const metric: Record<TorqueMetricUnits, Unit> = {
   },
   kgm: {
     name: {
-      singular: "Kilogram/meter",
-      plural: "Kilograms/meter"
+      singular: "Kilogram-meter",
+      plural: "Kilogram-meters"
     },
     to_anchor: 1 / 0.1019716213
   },
   kg_cm: {
     name: {
-      singular: "Kilogram/Centimeter",
-      plural: "Kilograms/Centimeter"
+      singular: "Kilogram-centimeter",
+      plural: "Kilogram-centimeters"
     },
     to_anchor: 1 / 10.19716213
   }
@@ -44,12 +44,26 @@ const imperial: Record<TorqueImperialUnits, Unit> = {
     },
     to_anchor: 1
   },
+  'lbf-in': {
+    name: {
+      singular: "Pound-inch",
+      plural: "Pound-inches"
+    },
+    to_anchor: 1 / 12
+  },
   lbf_in: {
     name: {
       singular: "Pound-inch",
       plural: "Pound-inches"
     },
     to_anchor: 1 / 12
+  },
+  'ozf-in': {
+    name: {
+      singular: "Ounce-inch",
+      plural: "Ounce-inches"
+    },
+    to_anchor: 1 / 192.00000227
   },
   ozf_in: {
     name: {
