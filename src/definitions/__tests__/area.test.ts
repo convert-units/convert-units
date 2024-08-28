@@ -78,6 +78,13 @@ test('m2 to mm2', () => {
   expect(convert(1).from('m2').to('mm2')).toBe(1000000);
 });
 
+test('a to m2', () => {
+  const convert = configureMeasurements<'area', AreaSystems, AreaUnits>({
+    area,
+  });
+  expect(convert(1).from('a').to('m2')).toBe(100);
+});
+
 test('ha to m2', () => {
   const convert = configureMeasurements<'area', AreaSystems, AreaUnits>({
     area,

@@ -75,6 +75,7 @@ test('l possibilities', () => {
     expected = [
       'mm3',
       'cm3',
+      'dm3',
       'ml',
       'cl',
       'dl',
@@ -165,7 +166,7 @@ test('mass flow rate possibilities', () => {
     massFlowRate,
   });
   const actual = convert().possibilities('massFlowRate'),
-    expected = ['kg/h', 'kg/s', 'lb/h', 'lb/s', 'mt/h'];
+    expected = ['kg/h', 'kg/min', 'kg/s', 'lb/h', 'lb/s', 'mt/h'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -177,6 +178,7 @@ test('volume possibilities', () => {
     expected = [
       'mm3',
       'cm3',
+      'dm3',
       'ml',
       'cl',
       'dl',
@@ -218,18 +220,27 @@ test('volume flow rate possibilities', () => {
     expected = [
       'mm3/s',
       'cm3/s',
+      'dm3/s',
+      'dm3/min',
+      'dm3/h',
+      'dm3/d',
+      'dm3/a',
       'ml/s',
       'cl/s',
       'dl/s',
       'l/s',
       'l/min',
       'l/h',
+      'l/d',
+      'l/a',
       'kl/s',
       'kl/min',
       'kl/h',
       'm3/s',
       'm3/min',
       'm3/h',
+      'm3/d',
+      'm3/a',
       'km3/s',
       'tsp/s',
       'Tbs/s',
@@ -294,6 +305,7 @@ test('area possibilities', () => {
       'cm2',
       'dm2',
       'm2',
+      'a',
       'ha',
       'km2',
       'in2',
@@ -389,6 +401,7 @@ test('pressure possibilities', () => {
       'kPa',
       'MPa',
       'hPa',
+      'mbar',
       'bar',
       'torr',
       'mH2O',
@@ -436,7 +449,7 @@ test('current possibilities', () => {
     current,
   });
   const actual = convert().possibilities('current'),
-    expected = ['A', 'mA', 'kA'];
+    expected = ['A', 'μA', 'mA', 'kA', 'MA'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -449,7 +462,7 @@ test('voltage possibilities', () => {
     voltage,
   });
   const actual = convert().possibilities('voltage'),
-    expected = ['V', 'mV', 'kV'];
+    expected = ['V', 'μV', 'mV', 'kV', 'MV'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -610,6 +623,7 @@ test('all possibilities', () => {
     // Please keep these sorted for maintainability
     expected = [
       'A',
+      'a',
       'arcmin',
       'arcsec',
       'Btu/s',
@@ -649,6 +663,12 @@ test('all possibilities', () => {
       'dl/s',
       'dm',
       'dm2',
+      'dm3',
+      'dm3/a',
+      'dm3/d',
+      'dm3/h',
+      'dm3/min',
+      'dm3/s',
       'ea',
       'dz',
       'fl-oz',
@@ -712,6 +732,7 @@ test('all possibilities', () => {
       'Ml',
       'Gl',
       'kg/h',
+      'kg/min',
       'kg/s',
       'kl/h',
       'kl/min',
@@ -733,21 +754,27 @@ test('all possibilities', () => {
       'kWh',
       'l',
       'lbf-ft',
+      'l/a',
+      'l/d',
       'l/h',
       'l/min',
       'l/s',
       'lb',
       'lbf',
       'lx',
+      'MA',
       'm',
       'm/s',
       'm/s2',
       'm2',
       'm3',
+      'm3/a',
+      'm3/d',
       'm3/h',
       'm3/min',
       'm3/s',
       'mA',
+      'mbar',
       'mC',
       'mcg',
       'mg',
@@ -781,6 +808,7 @@ test('all possibilities', () => {
       'MHz',
       'mV',
       'mVA',
+      'MV',
       'MVA',
       'mVAR',
       'MVAR',
@@ -839,6 +867,8 @@ test('all possibilities', () => {
       'μm',
       'μm2',
       'μC',
+      'μA',
+      'μV',
       'pcs',
       'bk-doz',
       'cp',
