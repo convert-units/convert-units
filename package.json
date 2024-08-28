@@ -66,7 +66,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/convert-units/convert-units.git"
+    "url": "https://github.com/convert-units/convert-units.git"
   },
   "keywords": [
     "metric",
