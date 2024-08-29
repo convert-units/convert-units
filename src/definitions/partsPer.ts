@@ -17,21 +17,21 @@ const SI: Record<PartsPerSIUnits, Unit> = {
       singular: 'Part-per Billion',
       plural: 'Parts-per Billion',
     },
-    to_anchor: 0.001,
+    to_anchor: 1e-3,
   },
   ppt: {
     name: {
       singular: 'Part-per Trillion',
       plural: 'Parts-per Trillion',
     },
-    to_anchor: 0.000001,
+    to_anchor: 1e-6,
   },
   ppq: {
     name: {
       singular: 'Part-per Quadrillion',
       plural: 'Parts-per Quadrillion',
     },
-    to_anchor: 0.000000001,
+    to_anchor: 1e-9,
   },
 };
 

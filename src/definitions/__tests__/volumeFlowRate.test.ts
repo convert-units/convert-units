@@ -597,3 +597,14 @@ test('yd3/h to m3/min', () => {
   });
   expect(convert(1).from('yd3/h').to('m3/min')).toBeCloseTo(0.012742581);
 });
+
+test('l/h to m3/h', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(10).from('l/h').to('m3/h')).toBeCloseTo(0.01);
+});

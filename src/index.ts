@@ -11,8 +11,10 @@ export type {
   Anchor,
   BestResult,
   Conversion,
+  Fraction,
   Measure,
   Unit,
   UnitCache,
   UnitDescription,
 } from './convert.js';
+export { NotAValidNumber, Wrapper } from './wrapper.js';

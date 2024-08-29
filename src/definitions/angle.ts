@@ -10,7 +10,10 @@ const SI: Record<AngleSIUnits, Unit> = {
       singular: 'radian',
       plural: 'radians',
     },
-    to_anchor: 180 / Math.PI,
+    to_anchor: {
+      numerator: 180,
+      denominator: Math.PI,
+    },
   },
   deg: {
     name: {
@@ -24,21 +27,30 @@ const SI: Record<AngleSIUnits, Unit> = {
       singular: 'gradian',
       plural: 'gradians',
     },
-    to_anchor: 9 / 10,
+    to_anchor: {
+      numerator: 9,
+      denominator: 10,
+    },
   },
   arcmin: {
     name: {
       singular: 'arcminute',
       plural: 'arcminutes',
     },
-    to_anchor: 1 / 60,
+    to_anchor: {
+      numerator: 1,
+      denominator: 60,
+    },
   },
   arcsec: {
     name: {
       singular: 'arcsecond',
       plural: 'arcseconds',
     },
-    to_anchor: 1 / 3600,
+    to_anchor: {
+      numerator: 1,
+      denominator: 3600,
+    },
   },
 };
 

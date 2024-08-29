@@ -71,14 +71,20 @@ const imperial: Record<LengthImperialUnits, Unit> = {
       singular: 'Mil',
       plural: 'Mils',
     },
-    to_anchor: 1 / 12000,
+    to_anchor: {
+      numerator: 1,
+      denominator: 12000,
+    },
   },
   in: {
     name: {
       singular: 'Inch',
       plural: 'Inches',
     },
-    to_anchor: 1 / 12,
+    to_anchor: {
+      numerator: 1,
+      denominator: 12,
+    },
   },
   yd: {
     name: {
@@ -137,7 +143,10 @@ const measure: Measure<LengthSystems, LengthUnits> = {
     },
     imperial: {
       metric: {
-        ratio: 1 / 3.28084,
+        ratio: {
+          numerator: 1,
+          denominator: 3.28084,
+        },
       },
     },
   },

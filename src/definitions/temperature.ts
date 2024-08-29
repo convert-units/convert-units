@@ -52,15 +52,17 @@ const measure: Measure<TemperatureSystems, TemperatureUnits> = {
   anchors: {
     metric: {
       imperial: {
-        transform: function (C: number): number {
-          return C / (5 / 9) + 32;
+        transform: function (C, cls) {
+          // C / (5 / 9) + 32;
+          return cls.add(cls.div(C, cls.div(5, 9)), 32);
         },
       },
     },
     imperial: {
       metric: {
-        transform: function (F: number): number {
-          return (F - 32) * (5 / 9);
+        transform: function (F, cls) {
+          // (F - 32) * (5 / 9);
+          return cls.mul(cls.sub(F, 32), cls.div(5, 9));
         },
       },
     },

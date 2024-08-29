@@ -1,10 +1,31 @@
+import DefaultWrapper from './number_wrapper.js';
+import { Wrapper, isWrapper } from './wrapper.js';
+
+export interface Fraction {
+  numerator: number | string;
+  denominator: number | string;
+}
+
+function isFraction(value: unknown): value is Fraction {
+  return (
+    value != null &&
+    typeof value === 'object' &&
+    'numerator' in value &&
+    (typeof value.numerator === 'number' ||
+      typeof value.numerator === 'string') &&
+    'denominator' in value &&
+    (typeof value.denominator === 'number' ||
+      typeof value.denominator === 'string')
+  );
+}
+
 export interface Unit {
   name: {
     singular: string;
     plural: string;
   };
-  to_anchor: number;
-  anchor_shift?: number;
+  to_anchor: number | string | Fraction;
+  anchor_shift?: number | string | Fraction;
 }
 
 export interface Conversion<
@@ -26,10 +47,9 @@ export interface UnitDescription {
   plural: string;
 }
 
-type TransformFunc = (value: number) => number;
-
+type TransformFunc = <T>(value: T, cls: Wrapper<T>) => T;
 export interface Anchor {
-  ratio?: number;
+  ratio?: number | Fraction;
   transform?: TransformFunc;
 }
 
@@ -38,14 +58,12 @@ export interface Measure<TSystems extends string, TUnits extends string> {
   anchors?: Partial<Record<TSystems, Partial<Record<TSystems, Anchor>>>>;
 }
 
-export interface BestResult<TUnits extends string> {
-  val: number;
+export interface BestResult<TUnits extends string, TValue> {
+  val: TValue;
   unit: TUnits;
   singular: string;
   plural: string;
 }
-
-type Entries<T, S extends keyof T> = [S, T[keyof T]];
 
 export type UnitCache<TMeasures, TSystems, TUnits> = Map<
   string,
@@ -70,8 +88,10 @@ export class Converter<
   TMeasures extends string,
   TSystems extends string,
   TUnits extends string,
+  TValue,
 > {
-  private val = 0;
+  private val: TValue;
+  private cls: Wrapper<TValue>;
   private destination: Conversion<TMeasures, TSystems, TUnits> | null = null;
   private origin: Conversion<TMeasures, TSystems, TUnits> | null = null;
   private measureData: Record<TMeasures, Measure<TSystems, TUnits>>;
@@ -86,16 +106,18 @@ export class Converter<
   >;
 
   constructor(
-    measures: Record<TMeasures, Measure<TSystems, TUnits>>,
-    unitCache: UnitCache<TMeasures, TSystems, TUnits>,
-    value?: number
+    options: {
+      measures: Record<TMeasures, Measure<TSystems, TUnits>>;
+      unitCache: UnitCache<TMeasures, TSystems, TUnits>;
+      cls: Wrapper<TValue>;
+    },
+    value?: number | string
   ) {
-    if (typeof value === 'number') {
-      this.val = value;
-    }
+    this.cls = options.cls;
+    this.val = this.cls.create(value ? value : 0);
 
-    this.measureData = measures;
-    this.unitCache = unitCache;
+    this.measureData = options.measures;
+    this.unitCache = options.unitCache;
   }
 
   /**
@@ -116,12 +138,20 @@ export class Converter<
     return this;
   }
 
+  private convertFraction(value: number | string | Fraction): TValue {
+    if (isFraction(value)) {
+      return this.cls.div(value.numerator, value.denominator);
+    }
+
+    return this.cls.create(value);
+  }
+
   /**
    * Converts the unit and returns the value
    *
    * @throws OperationOrderError, UnknownUnitError, IncompatibleUnitError, MeasureStructureError
    */
-  to(to: TUnits | (string & {})): number {
+  to(to: TUnits | (string & {})): TValue {
     if (this.origin == null) throw new Error('.to must be called after .from');
 
     this.destination = this.getUnit(to);
@@ -152,15 +182,21 @@ export class Converter<
     /**
      * Convert from the source value to its anchor inside the system
      */
-    let result: number = this.val * origin.unit.to_anchor;
+    let result = this.cls.mul(
+      this.val,
+      this.convertFraction(origin.unit.to_anchor)
+    );
 
     /**
      * For some changes it's a simple shift (C to K)
-     * So we'll add it when convering into the unit (later)
+     * So we'll add it when converting into the unit (later)
      * and subtract it when converting from the unit
      */
     if (origin.unit.anchor_shift) {
-      result -= origin.unit.anchor_shift;
+      result = this.cls.sub(
+        result,
+        this.convertFraction(origin.unit.anchor_shift)
+      );
     }
 
     /**
@@ -186,13 +222,15 @@ export class Converter<
         );
       }
 
-      const transform: unknown = anchor[destination.system]?.transform;
-      const ratio: unknown = anchor[destination.system]?.ratio;
+      const transform = anchor[destination.system]?.transform;
+      const ratio = anchor[destination.system]?.ratio;
 
       if (typeof transform === 'function') {
-        result = transform(result);
+        result = transform(result, this.cls);
       } else if (typeof ratio === 'number') {
-        result *= ratio;
+        result = this.cls.mul(result, ratio);
+      } else if (isFraction(ratio)) {
+        result = this.cls.mul(result, this.convertFraction(ratio));
       } else {
         throw new MeasureStructureError(
           'A system anchor needs to either have a defined ratio number or a transform function.'
@@ -204,13 +242,19 @@ export class Converter<
      * This shift has to be done after the system conversion business
      */
     if (destination.unit.anchor_shift) {
-      result += destination.unit.anchor_shift;
+      result = this.cls.add(
+        result,
+        this.convertFraction(destination.unit.anchor_shift)
+      );
     }
 
     /**
      * Convert to another unit inside the destination system
      */
-    return result / destination.unit.to_anchor;
+    return this.cls.div(
+      result,
+      this.convertFraction(destination.unit.to_anchor)
+    );
   }
 
   /**
@@ -222,11 +266,11 @@ export class Converter<
     exclude?: (TUnits | (string & {}))[];
     cutOffNumber?: number;
     system?: TSystems | (string & {});
-  }): BestResult<TUnits> | null {
+  }): BestResult<TUnits, TValue> | null {
     if (this.origin == null)
       throw new OperationOrderError('.toBest must be called after .from');
 
-    const isNegative = this.val < 0;
+    const isNegative = this.cls.lt(this.val, 0);
 
     let exclude: (TUnits | (string & {}))[] = [];
     let cutOffNumber = isNegative ? -1 : 1;
@@ -238,7 +282,7 @@ export class Converter<
       system = options.system ?? this.origin.system;
     }
 
-    let best: BestResult<TUnits> | null = null;
+    let best: BestResult<TUnits, TValue> | null = null;
     /**
       Looks through every possibility for the 'best' available unit.
       i.e. Where the value has the fewest numbers before the decimal point,
@@ -250,14 +294,20 @@ export class Converter<
 
       if (isIncluded && unit.system === system) {
         const result = this.to(possibility);
-        if (isNegative ? result > cutOffNumber : result < cutOffNumber) {
+        if (
+          isNegative
+            ? this.cls.gt(result, cutOffNumber)
+            : this.cls.lt(result, cutOffNumber)
+        ) {
           continue;
         }
         if (
           best === null ||
           (isNegative
-            ? result <= cutOffNumber && result > best.val
-            : result >= cutOffNumber && result < best.val)
+            ? this.cls.lte(result, cutOffNumber) &&
+              this.cls.gt(result, best.val)
+            : this.cls.gte(result, cutOffNumber) &&
+              this.cls.lt(result, best.val))
         ) {
           best = {
             val: result,
@@ -467,20 +517,64 @@ export function buildUnitCache<
   return unitCache;
 }
 
-export function configureMeasurements<
+type Entries<T, S extends keyof T> = [S, T[keyof T]];
+
+function configureMeasurements<
   TMeasures extends string,
   TSystems extends string,
   TUnits extends string,
 >(
   measures: Record<TMeasures, Measure<TSystems, TUnits>>
-): /** @throws TypeError */ (
-  value?: number
-) => Converter<TMeasures, TSystems, TUnits> {
+): (value?: number) => Converter<TMeasures, TSystems, TUnits, number>;
+function configureMeasurements<
+  TMeasures extends string,
+  TSystems extends string,
+  TUnits extends string,
+  TValue,
+>(
+  measures: Record<TMeasures, Measure<TSystems, TUnits>>,
+  cls: Wrapper<TValue>
+): (value?: number) => Converter<TMeasures, TSystems, TUnits, TValue>;
+function configureMeasurements<
+  TMeasures extends string,
+  TSystems extends string,
+  TUnits extends string,
+  TValue,
+>(
+  measures: Record<TMeasures, Measure<TSystems, TUnits>>,
+  cls?: unknown
+): (
+  value?: number | string
+) =>
+  | Converter<TMeasures, TSystems, TUnits, TValue>
+  | Converter<TMeasures, TSystems, TUnits, number> {
   if (typeof measures !== 'object') {
     throw new TypeError('The measures argument needs to be an object');
   }
 
   const unitCache = buildUnitCache(measures);
-  return (value?: number) =>
-    new Converter<TMeasures, TSystems, TUnits>(measures, unitCache, value);
+
+  if (cls != null && isWrapper<TValue>(cls)) {
+    return (value?: number | string) =>
+      new Converter<TMeasures, TSystems, TUnits, TValue>(
+        {
+          measures,
+          unitCache,
+          cls,
+        },
+        value
+      );
+  } else {
+    return (value?: number | string) =>
+      new Converter<TMeasures, TSystems, TUnits, number>(
+        {
+          measures,
+          unitCache,
+          cls: DefaultWrapper,
+        },
+        value
+      );
+  }
 }
+
+export { configureMeasurements };

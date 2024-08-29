@@ -25,7 +25,7 @@ const metric: Record<SpeedMetricUnits, Unit> = {
       singular: 'Millimeter per hour',
       plural: 'Millimeters per hour',
     },
-    to_anchor: 0.000001,
+    to_anchor: 1e-6,
   },
 };
 
@@ -56,14 +56,14 @@ const imperial: Record<SpeedImperialUnits, Unit> = {
       singular: 'Foot per minute',
       plural: 'Feet per minute',
     },
-    to_anchor: 0.0113636,
+    to_anchor: 1.13636e-2,
   },
   'in/h': {
     name: {
       singular: 'Inch per hour',
       plural: 'Inches per hour',
     },
-    to_anchor: 0.00001578,
+    to_anchor: 1.578e-5,
   },
 };
 
@@ -75,7 +75,10 @@ const measure: Measure<SpeedSystems, SpeedUnits> = {
   anchors: {
     metric: {
       imperial: {
-        ratio: 1 / 1.609344,
+        ratio: {
+          numerator: 1,
+          denominator: 1.609344,
+        },
       },
     },
     imperial: {

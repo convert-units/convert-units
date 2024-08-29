@@ -40,14 +40,20 @@ const metric: Record<VolumeMetricUnits, Unit> = {
       singular: 'Cubic Millimeter',
       plural: 'Cubic Millimeters',
     },
-    to_anchor: 1 / 1000000,
+    to_anchor: {
+      numerator: 1,
+      denominator: 1e6,
+    },
   },
   cm3: {
     name: {
       singular: 'Cubic Centimeter',
       plural: 'Cubic Centimeters',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: {
+      numerator: 1,
+      denominator: 1e3,
+    },
   },
   dm3: {
     name: {
@@ -61,21 +67,30 @@ const metric: Record<VolumeMetricUnits, Unit> = {
       singular: 'Millilitre',
       plural: 'Millilitres',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: {
+      numerator: 1,
+      denominator: 1e3,
+    },
   },
   cl: {
     name: {
       singular: 'Centilitre',
       plural: 'Centilitres',
     },
-    to_anchor: 1 / 100,
+    to_anchor: {
+      numerator: 1,
+      denominator: 100,
+    },
   },
   dl: {
     name: {
       singular: 'Decilitre',
       plural: 'Decilitres',
     },
-    to_anchor: 1 / 10,
+    to_anchor: {
+      numerator: 1,
+      denominator: 10,
+    },
   },
   l: {
     name: {
@@ -89,35 +104,35 @@ const metric: Record<VolumeMetricUnits, Unit> = {
       singular: 'Kilolitre',
       plural: 'Kilolitres',
     },
-    to_anchor: 1000,
+    to_anchor: 1e3,
   },
   Ml: {
     name: {
       singular: 'Megalitre',
       plural: 'Megalitres',
     },
-    to_anchor: 1_000_000,
+    to_anchor: 1e6,
   },
   Gl: {
     name: {
       singular: 'Gigalitre',
       plural: 'Gigalitres',
     },
-    to_anchor: 1_000_000_000,
+    to_anchor: 1e9,
   },
   m3: {
     name: {
       singular: 'Cubic meter',
       plural: 'Cubic meters',
     },
-    to_anchor: 1000,
+    to_anchor: 1e3,
   },
   km3: {
     name: {
       singular: 'Cubic kilometer',
       plural: 'Cubic kilometers',
     },
-    to_anchor: 1000000000000,
+    to_anchor: 1e12,
   },
 
   // Swedish units
@@ -126,35 +141,50 @@ const metric: Record<VolumeMetricUnits, Unit> = {
       singular: 'Kryddmått',
       plural: 'Kryddmått',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: {
+      numerator: 1,
+      denominator: 1e3,
+    },
   },
   tsk: {
     name: {
       singular: 'Tesked',
       plural: 'Teskedar',
     },
-    to_anchor: 5 / 1000,
+    to_anchor: {
+      numerator: 5,
+      denominator: 1e3,
+    },
   },
   msk: {
     name: {
       singular: 'Matsked',
       plural: 'Matskedar',
     },
-    to_anchor: 15 / 1000,
+    to_anchor: {
+      numerator: 15,
+      denominator: 1e3,
+    },
   },
   kkp: {
     name: {
       singular: 'Kaffekopp',
       plural: 'Kaffekoppar',
     },
-    to_anchor: 150 / 1000,
+    to_anchor: {
+      numerator: 150,
+      denominator: 1e3,
+    },
   },
   glas: {
     name: {
       singular: 'Glas',
       plural: 'Glas',
     },
-    to_anchor: 200 / 1000,
+    to_anchor: {
+      numerator: 200,
+      denominator: 1e3,
+    },
   },
   kanna: {
     name: {
@@ -171,14 +201,20 @@ const imperial: Record<VolumeImperialUnits, Unit> = {
       singular: 'Teaspoon',
       plural: 'Teaspoons',
     },
-    to_anchor: 1 / 6,
+    to_anchor: {
+      numerator: 1,
+      denominator: 6,
+    },
   },
   Tbs: {
     name: {
       singular: 'Tablespoon',
       plural: 'Tablespoons',
     },
-    to_anchor: 1 / 2,
+    to_anchor: {
+      numerator: 1,
+      denominator: 2,
+    },
   },
   in3: {
     name: {
@@ -251,7 +287,10 @@ const measure: Measure<VolumeSystems, VolumeUnits> = {
     },
     imperial: {
       metric: {
-        ratio: 1 / 33.8140226,
+        ratio: {
+          numerator: 1,
+          denominator: 33.8140226,
+        },
       },
     },
   },

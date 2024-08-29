@@ -11,14 +11,20 @@ const metric: Record<MassMetricUnits, Unit> = {
       singular: 'Microgram',
       plural: 'Micrograms',
     },
-    to_anchor: 1 / 1000000,
+    to_anchor: {
+      numerator: 1,
+      denominator: 1e6,
+    },
   },
   mg: {
     name: {
       singular: 'Milligram',
       plural: 'Milligrams',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: {
+      numerator: 1,
+      denominator: 1e3,
+    },
   },
   g: {
     name: {
@@ -32,14 +38,14 @@ const metric: Record<MassMetricUnits, Unit> = {
       singular: 'Kilogram',
       plural: 'Kilograms',
     },
-    to_anchor: 1000,
+    to_anchor: 1e3,
   },
   mt: {
     name: {
       singular: 'Metric Tonne',
       plural: 'Metric Tonnes',
     },
-    to_anchor: 1000000,
+    to_anchor: 1e6,
   },
 };
 
@@ -49,7 +55,10 @@ const imperial: Record<MassImperialUnits, Unit> = {
       singular: 'Ounce',
       plural: 'Ounces',
     },
-    to_anchor: 1 / 16,
+    to_anchor: {
+      numerator: 1,
+      denominator: 16,
+    },
   },
   lb: {
     name: {
@@ -70,7 +79,7 @@ const imperial: Record<MassImperialUnits, Unit> = {
       singular: 'Ton',
       plural: 'Tons',
     },
-    to_anchor: 2000,
+    to_anchor: 2e3,
   },
 };
 
@@ -82,7 +91,10 @@ const measure: Measure<MassSystems, MassUnits> = {
   anchors: {
     metric: {
       imperial: {
-        ratio: 1 / 453.59237,
+        ratio: {
+          numerator: 1,
+          denominator: 453.59237,
+        },
       },
     },
     imperial: {

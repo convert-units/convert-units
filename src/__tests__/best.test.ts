@@ -275,9 +275,15 @@ test('best mm with negative numbers', () => {
 });
 
 test("toBest method's return type should equal the desired return type", () => {
-  type toBestMethod = Converter<'length', LengthSystems, LengthUnits>['toBest'];
+  type ValType = number;
+  type toBestMethod = Converter<
+    'length',
+    LengthSystems,
+    LengthUnits,
+    ValType
+  >['toBest'];
   expectTypeOf<toBestMethod>().returns.toEqualTypeOf<{
-    val: number;
+    val: ValType;
     unit: LengthUnits;
     singular: string;
     plural: string;

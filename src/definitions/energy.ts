@@ -51,21 +51,21 @@ const SI: Record<EnergySIUnits, Unit> = {
       singular: 'Kilowatt-hour',
       plural: 'Kilowatt-hours',
     },
-    to_anchor: 3600000,
+    to_anchor: 3.6e6,
   },
   MWh: {
     name: {
       singular: 'Megawatt-hour',
       plural: 'Megawatt-hours',
     },
-    to_anchor: 3600000000,
+    to_anchor: 3.6e9,
   },
   GWh: {
     name: {
       singular: 'Gigawatt-hour',
       plural: 'Gigawatt-hours',
     },
-    to_anchor: 3600000000000,
+    to_anchor: 3.6e12,
   },
   J: {
     name: {
@@ -86,14 +86,14 @@ const SI: Record<EnergySIUnits, Unit> = {
       singular: 'Megajoule',
       plural: 'Megajoules',
     },
-    to_anchor: 1_000_000,
+    to_anchor: 1e6,
   },
   GJ: {
     name: {
       singular: 'Gigajoule',
       plural: 'Gigajoules',
     },
-    to_anchor: 1_000_000_000,
+    to_anchor: 1e9,
   },
 };
 
@@ -121,7 +121,10 @@ const measure: Measure<EnergySystems, EnergyUnits> = {
   anchors: {
     SI: {
       nutrition: {
-        ratio: 1 / 4.184,
+        ratio: {
+          numerator: 1,
+          denominator: 4.184,
+        },
       },
     },
     nutrition: {
