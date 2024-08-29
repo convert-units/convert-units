@@ -5,7 +5,7 @@ export const decimal_cls: Wrapper<Decimal> = {
   create(value) {
     try {
       return new Decimal(value);
-    } catch (e) {
+    } catch {
       throw new NotAValidNumber(`"${value}" cannot be parsed into a number`);
     }
   },
