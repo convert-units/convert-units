@@ -2,7 +2,7 @@ import { Measure, Unit } from './../index.js';
 export type TorqueUnits = TorqueMetricUnits | TorqueImperialUnits;
 export type TorqueSystems = 'metric' | 'imperial';
 
-export type TorqueMetricUnits = 'Nm' | 'kgm' | 'kg-cm';
+export type TorqueMetricUnits = 'Nm' | 'cNm' | 'dNm' | 'kgm' | 'kg-cm';
 export type TorqueImperialUnits = 'lbf-ft' | 'lbf-in' | 'ozf-in';
 
 const metric: Record<TorqueMetricUnits, Unit> = {
@@ -13,20 +13,34 @@ const metric: Record<TorqueMetricUnits, Unit> = {
     },
     to_anchor: 1,
   },
+  cNm: {
+    name: {
+      singular: 'Centinewton-meter',
+      plural: 'Centinewton-meters',
+    },
+    to_anchor: 1 / 100,
+  },
+  dNm: {
+    name: {
+      singular: 'Decinewton-meter',
+      plural: 'Decinewton-meters',
+    },
+    to_anchor: 1 / 10,
+  },
   kgm: {
     name: {
-      singular: "Kilogram-meter",
-      plural: "Kilogram-meters"
+      singular: 'Kilogram-meter',
+      plural: 'Kilogram-meters',
     },
-    to_anchor: 1 / 0.1019716213
+    to_anchor: 1 / 0.1019716213,
   },
   'kg-cm': {
     name: {
-      singular: "Kilogram-centimeter",
-      plural: "Kilogram-centimeters"
+      singular: 'Kilogram-centimeter',
+      plural: 'Kilogram-centimeters',
     },
-    to_anchor: 1 / 10.19716213
-  }
+    to_anchor: 1 / 10.19716213,
+  },
 };
 
 const imperial: Record<TorqueImperialUnits, Unit> = {
@@ -39,18 +53,18 @@ const imperial: Record<TorqueImperialUnits, Unit> = {
   },
   'lbf-in': {
     name: {
-      singular: "Pound-inch",
-      plural: "Pound-inches"
+      singular: 'Pound-inch',
+      plural: 'Pound-inches',
     },
-    to_anchor: 1 / 12
+    to_anchor: 1 / 12,
   },
   'ozf-in': {
     name: {
-      singular: "Ounce-inch",
-      plural: "Ounce-inches"
+      singular: 'Ounce-inch',
+      plural: 'Ounce-inches',
     },
-    to_anchor: 1 / 192.00000227
-  }
+    to_anchor: 1 / 192.00000227,
+  },
 };
 
 const measure: Measure<TorqueSystems, TorqueUnits> = {

@@ -8,6 +8,20 @@ test('Nm to Nm', () => {
   expect(convert(1).from('Nm').to('Nm')).toBe(1);
 });
 
+test('Nm to cNm', () => {
+  const convert = configureMeasurements<'torque', TorqueSystems, TorqueUnits>({
+    torque,
+  });
+  expect(convert(1).from('Nm').to('cNm')).toBe(1 * 100);
+});
+
+test('Nm to dNm', () => {
+  const convert = configureMeasurements<'torque', TorqueSystems, TorqueUnits>({
+    torque,
+  });
+  expect(convert(1).from('Nm').to('dNm')).toBe(1 * 10);
+});
+
 test('Nm to kgm', () => {
   const convert = configureMeasurements<'torque', TorqueSystems, TorqueUnits>({
     torque,
@@ -33,13 +47,18 @@ test('Nm to lbf.in', () => {
   const convert = configureMeasurements<'torque', TorqueSystems, TorqueUnits>({
     torque,
   });
-  expect(convert(1).from('Nm').to('lbf-in')).toBeCloseTo(12 * (1 / 1.355818), 0.0001);
+  expect(convert(1).from('Nm').to('lbf-in')).toBeCloseTo(
+    12 * (1 / 1.355818),
+    0.0001
+  );
 });
 
 test('Nm to ozf.in', () => {
   const convert = configureMeasurements<'torque', TorqueSystems, TorqueUnits>({
     torque,
   });
-  expect(convert(1).from('Nm').to('ozf-in')).toBeCloseTo(192.00000227 * (1 / 1.355818), 0.0001);
+  expect(convert(1).from('Nm').to('ozf-in')).toBeCloseTo(
+    192.00000227 * (1 / 1.355818),
+    0.0001
+  );
 });
-

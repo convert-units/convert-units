@@ -17,4 +17,3 @@ lib/types/*
 !lib/esm/package.json
 !lib/cjs/package.json
 convert-units-*.tgz
-yarn.lock
