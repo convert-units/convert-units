@@ -22,7 +22,7 @@
         "default": "./lib/esm/definitions/*.js"
       },
       "require": {
-        "types": "./lib/esm/definitions/*.d.ts",
+        "types": "./lib/cjs/definitions/*.d.ts",
         "default": "./lib/cjs/definitions/*.js"
       }
     },
