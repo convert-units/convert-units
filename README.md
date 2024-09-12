@@ -1214,6 +1214,7 @@ Packaged Units
 <summary>Acceleration</summary>
 * g (g-force)
 * m/s2
+* g0 (Standard Gravity)
 </details>
 
 <details>

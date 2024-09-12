@@ -609,7 +609,7 @@ test('acceleration possibilities', () => {
     acceleration,
   });
   const actual = convert().possibilities('acceleration'),
-    expected = ['g-force', 'm/s2'];
+    expected = ['g-force', 'm/s2', 'g0'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -695,6 +695,7 @@ test('all possibilities', () => {
       'gal/s',
       'glas',
       'grad',
+      'g0',
       'GHz',
       'GVA',
       'GVAR',
