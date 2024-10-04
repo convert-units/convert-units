@@ -253,7 +253,7 @@ const measure = {
 ```
 </details>
 
-Each unit also needs to an `to_anchor` property. `to_anchor` holds a number which represents the factor needed to go from another unit in the system to the base unit. In the case of the `a` unit, the value will be `1`. The value for all base units in every system should to be `1` because if you convert `5 a` to `a` the result should be `5 a`. This is because the value of `to_anchor` is multiplied with the value of the unit being converted from. So in this case, `5 * 1 = 5`.
+Each unit also needs to a `to_anchor` property. `to_anchor` holds a number that represents the factor needed to go from another unit in the system to the base unit. In the case of the `a` unit, the value will be `1`. The value for all base units in every system should be `1` because if you convert `5 a` to `a` the result should be `5 a`. This is because the value of `to_anchor` is multiplied by the value of the unit being converted from. So in this case, `5 * 1 = 5`.
 
 <details>
 <summary>Code example:</summary>
@@ -349,7 +349,7 @@ const measure = {
 ```
 </details>
 
-There is one more option, `anchor_shift`, it can be defined on a unit if it requires to be shifted after the conversion. If `al` had a `anchor_shift` of `5` then `10 al` to `a` would look like, `10 * 0.1 - 5 = -4 a`. If the shift needs to go in the opposite direction then it should be a negative number. Typically, measures and units that use the `anchor_shift` only need to be shifted. If that is the desired effect then setting `to_anchor` to `1` for each unit will achieve that. To see a real world example, check out the `temperature` measure in the `definitions` folder.
+There is one more option, `anchor_shift`, it can be defined on a unit if it requires to be shifted after the conversion. If `al` had an `anchor_shift` of `5` then `10 al` to `a` would look like, `10 * 0.1 - 5 = -4 a`. If the shift needs to go in the opposite direction then it should be a negative number. Typically, measures and units that use the `anchor_shift` only need to be shifted. If that is the desired effect then setting `to_anchor` to `1` for each unit will achieve that. To see a real world example, check out the `temperature` measure in the `definitions` folder.
 
 <details>
 <summary>Code example:</summary>
@@ -541,11 +541,11 @@ const measure = {
 ```
 </details>
 
-When converting, for example, `1 a` to `bl`, the code can perform a simple lookup here, `anchors.A.B`. If instead the conversion is from `10 c` to `ah` then the lookup would be, `anchors.C.A`. At this point how to convert from one system to the next hasn't been defined yet; that will be the next and final step in creating a new measure.
+When converting, for example, `1 a` to `bl`, the code can perform a simple lookup here, `anchors.A.B`. If instead, the conversion is from `10 c` to `ah` then the lookup would be, `anchors.C.A`. At this point how to convert from one system to the next hasn't been defined yet; that will be the next and final step in creating a new measure.
 
 Each system pair needs to either defined a `ratio` or a `transform` function. If a `ratio` is defined then it's multiplied by the base unit to convert it to the target system's base unit. If `transform` is defined, the function is called with the value of the best unit. It's value is used as the base unit of the target system. The `transform` function should return a number.
 
-> Note: If both `ratio` and `transform` are defined then the `ratio` will be used and the `transform` function will be ignored. If nether are defined, the conversion will throw an error.
+> Note: If both `ratio` and `transform` are defined then the `ratio` will be used and the `transform` function will be ignored. If neither is defined, the conversion will throw an error.
 
 <details>
 <summary>Code example:</summary>
@@ -873,7 +873,7 @@ const convert = configureMeasurements<Measures, Systems, Units>({
 });
 
 convert(4).from('wat').to('cm');
-// Typescript will warm that the unit `wat` does not exist because it's not a member of the `Units` type defined above.
+// Typescript will warn that the unit `wat` does not exist because it's not a member of the `Units` type defined above.
 ```
 
 Types for the `allMeasures` object are also provided:
