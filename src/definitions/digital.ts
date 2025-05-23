@@ -65,29 +65,29 @@ const SI: Record<DigitalSIUnits, Unit> = {
 const IEC: Record<DigitalIECUnits, Unit> = {
   KiB: {
     name: {
-      singular: 'Kilibyte',
-      plural: 'Kilibytes',
+      singular: 'Kibibyte',
+      plural: 'Kibibytes',
     },
     to_anchor: 1.024e3,
   },
   MiB: {
     name: {
-      singular: 'Megibyte',
-      plural: 'Megibytes',
+      singular: 'Mebibyte',
+      plural: 'Mebibytes',
     },
     to_anchor: 1.048576e6,
   },
   GiB: {
     name: {
-      singular: 'Gigibyte',
-      plural: 'Gigibytes',
+      singular: 'Gibibyte',
+      plural: 'Gibibytes',
     },
     to_anchor: 1.073741824e9,
   },
   TiB: {
     name: {
-      singular: 'Teribyte',
-      plural: 'Teribytes',
+      singular: 'Tebibyte',
+      plural: 'Tebibytes',
     },
     to_anchor: 1.09951162778e12,
   },
