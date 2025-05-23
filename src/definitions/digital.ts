@@ -6,7 +6,15 @@ export type DigitalUnits =
   | DigitalByteUnit;
 export type DigitalSystems = 'SI' | 'IEC' | 'bit' | 'byte';
 
-export type DigitalSIUnits = 'kB' | 'MB' | 'GB' | 'TB';
+export type DigitalSIUnits =
+  | 'kb'
+  | 'Mb'
+  | 'Gb'
+  | 'Tb'
+  | 'kB'
+  | 'MB'
+  | 'GB'
+  | 'TB';
 export type DigitalIECUnits = 'KiB' | 'MiB' | 'GiB' | 'TiB';
 export type DigitalBitUnit = 'bit';
 export type DigitalByteUnit = 'byte';
@@ -32,33 +40,61 @@ const byte: Record<DigitalByteUnit, Unit> = {
 };
 
 const SI: Record<DigitalSIUnits, Unit> = {
-  kB: {
+  kb: {
     name: {
       singular: 'Kilobit',
       plural: 'Kilobits',
     },
     to_anchor: 1e3,
   },
-  MB: {
+  Mb: {
     name: {
       singular: 'Megabit',
       plural: 'Megabits',
     },
     to_anchor: 1e6,
   },
-  GB: {
+  Gb: {
     name: {
       singular: 'Gigabit',
       plural: 'Gigabits',
     },
     to_anchor: 1e9,
   },
-  TB: {
+  Tb: {
     name: {
       singular: 'Terabit',
       plural: 'Terabits',
     },
     to_anchor: 1e12,
+  },
+  kB: {
+    name: {
+      singular: 'Kilobyte',
+      plural: 'Kilobytes',
+    },
+    to_anchor: 8e3,
+  },
+  MB: {
+    name: {
+      singular: 'Megabyte',
+      plural: 'Megabytes',
+    },
+    to_anchor: 8e6,
+  },
+  GB: {
+    name: {
+      singular: 'Gigabyte',
+      plural: 'Gigabytes',
+    },
+    to_anchor: 8e9,
+  },
+  TB: {
+    name: {
+      singular: 'Terabyte',
+      plural: 'Terabytes',
+    },
+    to_anchor: 8e12,
   },
 };
 
