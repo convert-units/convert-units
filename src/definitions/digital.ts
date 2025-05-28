@@ -1,25 +1,19 @@
 import { Measure, Unit } from './../index.js';
+
 export type DigitalUnits =
-  | DigitalSIUnits
-  | DigitalIECUnits
-  | DigitalBitUnit
-  | DigitalByteUnit;
-export type DigitalSystems = 'SI' | 'IEC' | 'bit' | 'byte';
+  | DigitalBitUnits
+  | DigitalByteUnits
+  | DigitalIECBitUnits
+  | DigitalIECByteUnits;
 
-export type DigitalSIUnits =
-  | 'kb'
-  | 'Mb'
-  | 'Gb'
-  | 'Tb'
-  | 'kB'
-  | 'MB'
-  | 'GB'
-  | 'TB';
-export type DigitalIECUnits = 'KiB' | 'MiB' | 'GiB' | 'TiB';
-export type DigitalBitUnit = 'bit';
-export type DigitalByteUnit = 'byte';
+export type DigitalSystems = 'bit' | 'byte' | 'IECBit' | 'IECByte';
 
-const bit: Record<DigitalBitUnit, Unit> = {
+export type DigitalBitUnits = 'bit' | 'kb' | 'Mb' | 'Gb' | 'Tb';
+export type DigitalByteUnits = 'byte' | 'kB' | 'MB' | 'GB' | 'TB';
+export type DigitalIECBitUnits = 'Kib' | 'Mib' | 'Gib' | 'Tib';
+export type DigitalIECByteUnits = 'KiB' | 'MiB' | 'GiB' | 'TiB';
+
+const bit: Record<DigitalBitUnits, Unit> = {
   bit: {
     name: {
       singular: 'Bit',
@@ -27,19 +21,6 @@ const bit: Record<DigitalBitUnit, Unit> = {
     },
     to_anchor: 1,
   },
-};
-
-const byte: Record<DigitalByteUnit, Unit> = {
-  byte: {
-    name: {
-      singular: 'Byte',
-      plural: 'Bytes',
-    },
-    to_anchor: 1,
-  },
-};
-
-const SI: Record<DigitalSIUnits, Unit> = {
   kb: {
     name: {
       singular: 'Kilobit',
@@ -68,64 +49,105 @@ const SI: Record<DigitalSIUnits, Unit> = {
     },
     to_anchor: 1e12,
   },
+};
+
+const byte: Record<DigitalByteUnits, Unit> = {
+  byte: {
+    name: {
+      singular: 'Byte',
+      plural: 'Bytes',
+    },
+    to_anchor: 1,
+  },
   kB: {
     name: {
       singular: 'Kilobyte',
       plural: 'Kilobytes',
     },
-    to_anchor: 8e3,
+    to_anchor: 1e3,
   },
   MB: {
     name: {
       singular: 'Megabyte',
       plural: 'Megabytes',
     },
-    to_anchor: 8e6,
+    to_anchor: 1e6,
   },
   GB: {
     name: {
       singular: 'Gigabyte',
       plural: 'Gigabytes',
     },
-    to_anchor: 8e9,
+    to_anchor: 1e9,
   },
   TB: {
     name: {
       singular: 'Terabyte',
       plural: 'Terabytes',
     },
-    to_anchor: 8e12,
+    to_anchor: 1e12,
   },
 };
 
-const IEC: Record<DigitalIECUnits, Unit> = {
+const IECBit: Record<DigitalIECBitUnits, Unit> = {
+  Kib: {
+    name: {
+      singular: 'Kibibit',
+      plural: 'Kibibits',
+    },
+    to_anchor: 1,
+  },
+  Mib: {
+    name: {
+      singular: 'Mebibit',
+      plural: 'Mebibits',
+    },
+    to_anchor: 1024,
+  },
+  Gib: {
+    name: {
+      singular: 'Gibibit',
+      plural: 'Gibibits',
+    },
+    to_anchor: 1024 ** 2,
+  },
+  Tib: {
+    name: {
+      singular: 'Tebibit',
+      plural: 'Tebibits',
+    },
+    to_anchor: 1024 ** 3,
+  },
+};
+
+const IECByte: Record<DigitalIECByteUnits, Unit> = {
   KiB: {
     name: {
       singular: 'Kibibyte',
       plural: 'Kibibytes',
     },
-    to_anchor: 1.024e3,
+    to_anchor: 1,
   },
   MiB: {
     name: {
       singular: 'Mebibyte',
       plural: 'Mebibytes',
     },
-    to_anchor: 1.048576e6,
+    to_anchor: 1024,
   },
   GiB: {
     name: {
       singular: 'Gibibyte',
       plural: 'Gibibytes',
     },
-    to_anchor: 1.073741824e9,
+    to_anchor: 1024 ** 2,
   },
   TiB: {
     name: {
       singular: 'Tebibyte',
       plural: 'Tebibytes',
     },
-    to_anchor: 1.09951162778e12,
+    to_anchor: 1024 ** 3,
   },
 };
 
@@ -133,53 +155,29 @@ const measure: Measure<DigitalSystems, DigitalUnits> = {
   systems: {
     bit,
     byte,
-    SI,
-    IEC,
+    IECBit,
+    IECByte,
   },
   anchors: {
-    SI: {
-      IEC: {
-        ratio: 1,
-      },
-      bit: {
-        ratio: 8,
-      },
-      byte: {
-        ratio: 1,
-      },
-    },
-    IEC: {
-      SI: {
-        ratio: 1,
-      },
-      bit: {
-        ratio: 8,
-      },
-      byte: {
-        ratio: 1,
-      },
-    },
     bit: {
-      SI: {
-        ratio: 1.25e-1,
-      },
-      IEC: {
-        ratio: 1.25e-1,
-      },
-      byte: {
-        ratio: 1.25e-1,
-      },
+      byte: { ratio: 1 / 8 },
+      IECBit: { ratio: 1 / 1024 },
+      IECByte: { ratio: 1 / (1024 * 8) },
     },
     byte: {
-      SI: {
-        ratio: 1,
-      },
-      bit: {
-        ratio: 8,
-      },
-      IEC: {
-        ratio: 1,
-      },
+      bit: { ratio: 8 },
+      IECBit: { ratio: 8 / 1024 },
+      IECByte: { ratio: 1 / 1024 },
+    },
+    IECBit: {
+      bit: { ratio: 1024 },
+      byte: { ratio: 1024 / 8 },
+      IECByte: { ratio: 1 / 8 },
+    },
+    IECByte: {
+      bit: { ratio: 1024 * 8 },
+      byte: { ratio: 1024 },
+      IECBit: { ratio: 8 },
     },
   },
 };
