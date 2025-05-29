@@ -109,14 +109,14 @@ const IECBit: Record<DigitalIECBitUnits, Unit> = {
       singular: 'Gibibit',
       plural: 'Gibibits',
     },
-    to_anchor: 1024 ** 2,
+    to_anchor: 1.048576e6,
   },
   Tib: {
     name: {
       singular: 'Tebibit',
       plural: 'Tebibits',
     },
-    to_anchor: 1024 ** 3,
+    to_anchor: 1.073741824e9,
   },
 };
 
@@ -140,14 +140,14 @@ const IECByte: Record<DigitalIECByteUnits, Unit> = {
       singular: 'Gibibyte',
       plural: 'Gibibytes',
     },
-    to_anchor: 1024 ** 2,
+    to_anchor: 1.048576e6,
   },
   TiB: {
     name: {
       singular: 'Tebibyte',
       plural: 'Tebibytes',
     },
-    to_anchor: 1024 ** 3,
+    to_anchor: 1.073741824e9,
   },
 };
 
@@ -160,24 +160,48 @@ const measure: Measure<DigitalSystems, DigitalUnits> = {
   },
   anchors: {
     bit: {
-      byte: { ratio: 1 / 8 },
-      IECBit: { ratio: 1 / 1024 },
-      IECByte: { ratio: 1 / (1024 * 8) },
+      byte: {
+        ratio: 1.25e-1,
+      },
+      IECBit: {
+        ratio: 9.765625e-4,
+      },
+      IECByte: {
+        ratio: 1.220703125e-4,
+      },
     },
     byte: {
-      bit: { ratio: 8 },
-      IECBit: { ratio: 8 / 1024 },
-      IECByte: { ratio: 1 / 1024 },
+      bit: {
+        ratio: 8,
+      },
+      IECBit: {
+        ratio: 7.8125e-3,
+      },
+      IECByte: {
+        ratio: 9.765625e-4,
+      },
     },
     IECBit: {
-      bit: { ratio: 1024 },
-      byte: { ratio: 1024 / 8 },
-      IECByte: { ratio: 1 / 8 },
+      bit: {
+        ratio: 1024,
+      },
+      byte: {
+        ratio: 1.28e2,
+      },
+      IECByte: {
+        ratio: 1.25e-1,
+      },
     },
     IECByte: {
-      bit: { ratio: 1024 * 8 },
-      byte: { ratio: 1024 },
-      IECBit: { ratio: 8 },
+      bit: {
+        ratio: 8.192e3,
+      },
+      byte: {
+        ratio: 1024,
+      },
+      IECBit: {
+        ratio: 8,
+      },
     },
   },
 };
