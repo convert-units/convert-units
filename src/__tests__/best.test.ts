@@ -165,6 +165,51 @@ test('post-cut off number', () => {
   expect(actual).toEqual(expected);
 });
 
+test('when no conversion meets the cut-off', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  const actual = convert(0.5e-3).from('μm').toBest({ cutOffNumber: 1 }),
+    expected = {
+      val: 0.5,
+      unit: 'nm',
+      singular: 'Nanometer',
+      plural: 'Nanometers',
+    };
+  expect(actual).toEqual(expected);
+});
+
+test('when no conversion meets the cut-off, cross-system', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  const inputInches = convert(0.5).from('nm').to('in');
+  const actual = convert(inputInches)
+      .from('in')
+      .toBest({ cutOffNumber: 1, system: 'metric' }),
+    expected = {
+      val: 0.5,
+      unit: 'nm',
+      singular: 'Nanometer',
+      plural: 'Nanometers',
+    };
+  expect(actual).toEqual(expected);
+});
+
+test('when no conversion meets the cut-off, negative', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  const actual = convert(-0.5e-3).from('μm').toBest({ cutOffNumber: -1 }),
+    expected = {
+      val: -0.5,
+      unit: 'nm',
+      singular: 'Nanometer',
+      plural: 'Nanometers',
+    };
+  expect(actual).toEqual(expected);
+});
+
 test('return the original value/unit if all possible units are excluded', () => {
   const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,

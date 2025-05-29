@@ -216,6 +216,14 @@ export class Converter<
   /**
    * Converts the unit to the best available unit.
    *
+   * Conversions where the resulting scalar is at least the `cutOffNumber` are
+   * preferred, and among those conversions, the one with the smallest scalar
+   * is considered best. If there are no conversions where the scalar is at
+   * least the `cutOffNumber`, then the one with the largest scalar is best.
+   * That is, we try to find a conversion with the scalar close to the
+   * `cutOffNumber`, with a preference for being on the high side if at all
+   * possible.
+   *
    * @throws OperationOrderError
    */
   toBest(options?: {
@@ -239,32 +247,46 @@ export class Converter<
     }
 
     let best: BestResult<TUnits> | null = null;
-    /**
-      Looks through every possibility for the 'best' available unit.
-      i.e. Where the value has the fewest numbers before the decimal point,
-      but is still higher than 1.
-    */
+
+    const meetsCutOff = (result: BestResult<TUnits>): boolean =>
+      isNegative ? result.val <= cutOffNumber : result.val >= cutOffNumber;
+
+    // Any result that meets the cutoff is better than any result that doesn't.
+    // Among candidates that meet the cutoff, smaller results (closer to the
+    // cutoff) are better. Among candidates that fail the cutoff, larger
+    // results (again, closer to the cutoff) are better.
+    const isBetter = (
+      candidate: BestResult<TUnits>,
+      best: BestResult<TUnits>
+    ): boolean => {
+      const candidateMeetsCutOff = meetsCutOff(candidate);
+      const bestMeetsCutOff = meetsCutOff(best);
+      if (candidateMeetsCutOff && !bestMeetsCutOff) {
+        return true;
+      }
+      if (bestMeetsCutOff && !candidateMeetsCutOff) {
+        return false;
+      }
+      if (candidateMeetsCutOff) {
+        return isNegative ? candidate.val > best.val : candidate.val < best.val;
+      } else {
+        return isNegative ? candidate.val < best.val : candidate.val > best.val;
+      }
+    };
+
     for (const possibility of this.possibilities()) {
       const unit = this.describe(possibility);
       const isIncluded = exclude.indexOf(possibility) === -1;
 
       if (isIncluded && unit.system === system) {
-        const result = this.to(possibility);
-        if (isNegative ? result > cutOffNumber : result < cutOffNumber) {
-          continue;
-        }
-        if (
-          best === null ||
-          (isNegative
-            ? result <= cutOffNumber && result > best.val
-            : result >= cutOffNumber && result < best.val)
-        ) {
-          best = {
-            val: result,
-            unit: possibility,
-            singular: unit.singular,
-            plural: unit.plural,
-          };
+        const candidate = {
+          val: this.to(possibility),
+          unit: possibility,
+          singular: unit.singular,
+          plural: unit.plural,
+        };
+        if (best === null || isBetter(candidate, best)) {
+          best = candidate;
         }
       }
     }
