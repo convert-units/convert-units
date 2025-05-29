@@ -1091,6 +1091,10 @@ Packaged Units
 <summary>Digital</summary>
 * bit
 * byte
+* kb
+* Mb
+* Gb
+* Tb
 * kB
 * MB
 * GB
