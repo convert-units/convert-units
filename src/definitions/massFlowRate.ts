@@ -6,7 +6,7 @@ export type MassFlowRateUnits =
 
 export type MassFlowRateSystems = 'metric' | 'imperial';
 
-export type MassFlowRateMetricUnits = 'kg/s' | 'kg/h' | 'mt/h';
+export type MassFlowRateMetricUnits = 'kg/s' | 'kg/min' | 'kg/h' | 'mt/h';
 export type MassFlowRateImperialUnits = 'lb/s' | 'lb/h';
 
 const metric: Record<MassFlowRateMetricUnits, Unit> = {
@@ -16,6 +16,13 @@ const metric: Record<MassFlowRateMetricUnits, Unit> = {
       plural: 'Kilograms per second',
     },
     to_anchor: 1,
+  },
+  'kg/min': {
+    name: {
+      singular: 'Kilogram per minute',
+      plural: 'Kilograms per minute',
+    },
+    to_anchor: 1 / 60,
   },
   'kg/h': {
     name: {

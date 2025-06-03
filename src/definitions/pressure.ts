@@ -7,6 +7,7 @@ export type PressureMetricUnits =
   | 'kPa'
   | 'MPa'
   | 'hPa'
+  | 'mbar'
   | 'bar'
   | 'torr'
   | 'mH2O'
@@ -41,6 +42,13 @@ const metric: Record<PressureMetricUnits, Unit> = {
       plural: 'hectopascals',
     },
     to_anchor: 1 / 10,
+  },
+  mbar: {
+    name: {
+      singular: 'millibar',
+      plural: 'millibar',
+    },
+    to_anchor: 1e-1,
   },
   bar: {
     name: {
