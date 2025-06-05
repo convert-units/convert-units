@@ -12,28 +12,28 @@ test('Nm to cNm', () => {
   const convert = configureMeasurements<'torque', TorqueSystems, TorqueUnits>({
     torque,
   });
-  expect(convert(1).from('Nm').to('cNm')).toBe(1 * 100);
+  expect(convert(1).from('Nm').to('cNm')).toBe(100);
 });
 
 test('Nm to dNm', () => {
   const convert = configureMeasurements<'torque', TorqueSystems, TorqueUnits>({
     torque,
   });
-  expect(convert(1).from('Nm').to('dNm')).toBe(1 * 10);
+  expect(convert(1).from('Nm').to('dNm')).toBe(10);
 });
 
 test('Nm to kgm', () => {
   const convert = configureMeasurements<'torque', TorqueSystems, TorqueUnits>({
     torque,
   });
-  expect(convert(1).from('Nm').to('kgm')).toBe(1 * 0.1019716213);
+  expect(convert(1).from('Nm').to('kgm')).toBe(0.1019716213);
 });
 
 test('Nm to kg-cm', () => {
   const convert = configureMeasurements<'torque', TorqueSystems, TorqueUnits>({
     torque,
   });
-  expect(convert(1).from('Nm').to('kg-cm')).toBe(1 * 10.19716213);
+  expect(convert(1).from('Nm').to('kg-cm')).toBe(10.19716213);
 });
 
 test('Nm to lbf.ft', () => {
