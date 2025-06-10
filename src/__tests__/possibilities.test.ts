@@ -435,7 +435,16 @@ test('torque possibilities', () => {
     torque,
   });
   const actual = convert().possibilities('torque'),
-    expected = ['Nm', 'lbf-ft'];
+    expected = [
+      'Nm',
+      'cNm',
+      'dNm',
+      'kg-cm',
+      'kgm',
+      'lbf-ft',
+      'lbf-in',
+      'ozf-in',
+    ];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -670,6 +679,7 @@ test('all possibilities', () => {
       'cm2',
       'cm3',
       'cm3/s',
+      'cNm',
       'cup',
       'cup/s',
       'd',
@@ -685,6 +695,7 @@ test('all possibilities', () => {
       'dm3/h',
       'dm3/min',
       'dm3/s',
+      'dNm',
       'ea',
       'dz',
       'fl-oz',
@@ -751,6 +762,8 @@ test('all possibilities', () => {
       'kg/h',
       'kg/min',
       'kg/s',
+      'kg-cm',
+      'kgm',
       'kl/h',
       'kl/min',
       'kl/s',
@@ -771,6 +784,7 @@ test('all possibilities', () => {
       'kWh',
       'l',
       'lbf-ft',
+      'lbf-in',
       'l/a',
       'l/d',
       'l/h',
@@ -838,6 +852,7 @@ test('all possibilities', () => {
       'nMi',
       'ns',
       'oz',
+      'ozf-in',
       'pC',
       'pnt',
       'pnt/h',
