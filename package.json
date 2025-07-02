@@ -1,5 +1,5 @@
 {
-  "name": "convert-units",
+  "name": "@vijayanand/convert-units",
   "version": "3.0.0-beta.7",
   "description": "Convert between quantities in different units",
   "main": "./lib/cjs/index.js",
@@ -46,7 +46,8 @@
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5",
-    "typescript-eslint": "^8.3.0"
+    "typescript-eslint": "^8.3.0",
+    "release-it": "^19.0.3"
   },
   "scripts": {
     "test": "jest --coverage",
@@ -54,7 +55,8 @@
     "lint": "eslint src",
     "publint": "publint",
     "format": "prettier --write src",
-    "compile": "tsc -p ./tsconfig.json && tsc -p ./tsconfig.cjs.json && tsc -p ./tsconfig.umd.json"
+    "compile": "tsc -p ./tsconfig.json && tsc -p ./tsconfig.cjs.json && tsc -p ./tsconfig.umd.json",
+    "release": "release-it"
   },
   "files": [
     "lib/esm/**/!(*.tsbuildinfo)",
@@ -66,7 +68,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/convert-units/convert-units.git"
+    "url": "git+https://github.com/vijayanandof/convert-units.git"
   },
   "keywords": [
     "metric",
@@ -75,6 +77,6 @@
     "ratio",
     "fraction"
   ],
-  "author": "Ben Ng <me@benng.me> (http://benng.me)",
+  "author": "vijayanand <vijayanandof@gmail.com> (https://github.com/vijayanandof)",
   "license": "MIT"
 }
