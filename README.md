@@ -1051,6 +1051,7 @@ Packaged Units
 * m/s
 * km/h
 * mph
+* mi/h
 * knot
 * ft/s
 * in/h
