@@ -70,3 +70,52 @@ test('in/s to mm/s', () => {
   });
   expect(convert(1).from('in/h').to('mm/h')).toBeCloseTo(25.4);
 });
+
+test('mi/h to mi/h', () => {
+  const convert = configureMeasurements<'speed', SpeedSystems, SpeedUnits>({
+    speed,
+  });
+  expect(convert(5).from('mi/h').to('mi/h')).toBe(5);
+});
+
+test('mi/h to mph', () => {
+  const convert = configureMeasurements<'speed', SpeedSystems, SpeedUnits>({
+    speed,
+  });
+  expect(convert(10).from('mi/h').to('mph')).toBe(10);
+});
+
+test('mph to mi/h', () => {
+  const convert = configureMeasurements<'speed', SpeedSystems, SpeedUnits>({
+    speed,
+  });
+  expect(convert(15).from('mph').to('mi/h')).toBe(15);
+});
+
+test('mi/h to km/h', () => {
+  const convert = configureMeasurements<'speed', SpeedSystems, SpeedUnits>({
+    speed,
+  });
+  expect(convert(20).from('mi/h').to('km/h')).toBeCloseTo(32.1869);
+});
+
+test('mi/h to knot', () => {
+  const convert = configureMeasurements<'speed', SpeedSystems, SpeedUnits>({
+    speed,
+  });
+  expect(convert(10).from('mi/h').to('knot')).toBeCloseTo(8.68976);
+});
+
+test('mi/h to ft/s', () => {
+  const convert = configureMeasurements<'speed', SpeedSystems, SpeedUnits>({
+    speed,
+  });
+  expect(convert(30).from('mi/h').to('ft/s')).toBeCloseTo(44);
+});
+
+test('m/s to mi/h', () => {
+  const convert = configureMeasurements<'speed', SpeedSystems, SpeedUnits>({
+    speed,
+  });
+  expect(convert(10).from('m/s').to('mi/h')).toBeCloseTo(22.369);
+});

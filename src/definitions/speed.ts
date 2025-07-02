@@ -3,7 +3,7 @@ export type SpeedUnits = SpeedMetricUnits | SpeedImperialUnits;
 export type SpeedSystems = 'metric' | 'imperial';
 
 export type SpeedMetricUnits = 'm/s' | 'km/h' | 'mm/h';
-export type SpeedImperialUnits = 'mph' | 'knot' | 'ft/s' | 'ft/min' | 'in/h';
+export type SpeedImperialUnits = 'mph' | 'mi/h' | 'knot' | 'ft/s' | 'ft/min' | 'in/h';
 
 const metric: Record<SpeedMetricUnits, Unit> = {
   'm/s': {
@@ -31,6 +31,13 @@ const metric: Record<SpeedMetricUnits, Unit> = {
 
 const imperial: Record<SpeedImperialUnits, Unit> = {
   mph: {
+    name: {
+      singular: 'Mile per hour',
+      plural: 'Miles per hour',
+    },
+    to_anchor: 1,
+  },
+  'mi/h': {
     name: {
       singular: 'Mile per hour',
       plural: 'Miles per hour',
