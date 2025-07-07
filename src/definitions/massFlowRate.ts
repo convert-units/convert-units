@@ -29,14 +29,20 @@ const metric: Record<MassFlowRateMetricUnits, Unit> = {
       singular: 'Kilogram per hour',
       plural: 'Kilograms per hour',
     },
-    to_anchor: 1 / 3600,
+    to_anchor: {
+      numerator: 1,
+      denominator: 3.6e3,
+    },
   },
   'mt/h': {
     name: {
       singular: 'Ton per hour',
       plural: 'Tons per hour',
     },
-    to_anchor: 1 / 3.6,
+    to_anchor: {
+      numerator: 1,
+      denominator: 3.6,
+    },
   },
 };
 
@@ -53,7 +59,10 @@ const imperial: Record<MassFlowRateImperialUnits, Unit> = {
       singular: 'Pound per hour',
       plural: 'Pounds per hour',
     },
-    to_anchor: 1 / 3600,
+    to_anchor: {
+      numerator: 1,
+      denominator: 3.6e3,
+    },
   },
 };
 
@@ -65,7 +74,10 @@ const measure: Measure<MassFlowRateSystems, MassFlowRateUnits> = {
   anchors: {
     metric: {
       imperial: {
-        ratio: 1 / 0.453592,
+        ratio: {
+          numerator: 1,
+          denominator: 0.453592,
+        },
       },
     },
     imperial: {

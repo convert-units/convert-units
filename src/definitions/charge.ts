@@ -17,14 +17,20 @@ const SI: Record<ChargeSIUnits, Unit> = {
       singular: 'Millicoulomb',
       plural: 'Millicoulombs',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: {
+      numerator: 1,
+      denominator: 1000,
+    },
   },
   μC: {
     name: {
       singular: 'Microcoulomb',
       plural: 'Microcoulombs',
     },
-    to_anchor: 1 / 1000000,
+    to_anchor: {
+      numerator: 1,
+      denominator: 1e6,
+    },
   },
   nC: {
     name: {

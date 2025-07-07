@@ -35,7 +35,10 @@ const measure: Measure<IlluminanceSystems, IlluminanceUnits> = {
   anchors: {
     metric: {
       imperial: {
-        ratio: 1 / 10.76391,
+        ratio: {
+          numerator: 1,
+          denominator: 10.76391,
+        },
       },
     },
     imperial: {

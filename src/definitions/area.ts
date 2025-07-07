@@ -34,21 +34,30 @@ const metric: Record<AreaMetricUnits, Unit> = {
       singular: 'Square Millimeter',
       plural: 'Square Millimeters',
     },
-    to_anchor: 1 / 1000000,
+    to_anchor: {
+      numerator: 1,
+      denominator: 1e6,
+    },
   },
   cm2: {
     name: {
       singular: 'Square Centimeter',
       plural: 'Square Centimeters',
     },
-    to_anchor: 1 / 10000,
+    to_anchor: {
+      numerator: 1,
+      denominator: 1e4,
+    },
   },
   dm2: {
     name: {
       singular: 'Square Decimeter',
       plural: 'Square Decimeters',
     },
-    to_anchor: 1 / 100,
+    to_anchor: {
+      numerator: 1,
+      denominator: 100,
+    },
   },
   m2: {
     name: {
@@ -69,14 +78,14 @@ const metric: Record<AreaMetricUnits, Unit> = {
       singular: 'Hectare',
       plural: 'Hectares',
     },
-    to_anchor: 10000,
+    to_anchor: 1e4,
   },
   km2: {
     name: {
       singular: 'Square Kilometer',
       plural: 'Square Kilometers',
     },
-    to_anchor: 1000000,
+    to_anchor: 1e6,
   },
 };
 
@@ -86,7 +95,10 @@ const imperial: Record<AreaImperialUnits, Unit> = {
       singular: 'Square Inch',
       plural: 'Square Inches',
     },
-    to_anchor: 1 / 144,
+    to_anchor: {
+      numerator: 1,
+      denominator: 144,
+    },
   },
   yd2: {
     name: {
@@ -131,7 +143,10 @@ const measure: Measure<AreaSystems, AreaUnits> = {
     },
     imperial: {
       metric: {
-        ratio: 1 / 10.7639,
+        ratio: {
+          numerator: 1,
+          denominator: 10.7639,
+        },
       },
     },
   },

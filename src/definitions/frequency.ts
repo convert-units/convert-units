@@ -19,7 +19,10 @@ const SI: Record<FrequencySIUnits, Unit> = {
       singular: 'millihertz',
       plural: 'millihertz',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: {
+      numerator: 1,
+      denominator: 1000,
+    },
   },
   Hz: {
     name: {
@@ -40,42 +43,51 @@ const SI: Record<FrequencySIUnits, Unit> = {
       singular: 'megahertz',
       plural: 'megahertz',
     },
-    to_anchor: 1000 * 1000,
+    to_anchor: 1e6,
   },
   GHz: {
     name: {
       singular: 'gigahertz',
       plural: 'gigahertz',
     },
-    to_anchor: 1000 * 1000 * 1000,
+    to_anchor: 1e9,
   },
   THz: {
     name: {
       singular: 'terahertz',
       plural: 'terahertz',
     },
-    to_anchor: 1000 * 1000 * 1000 * 1000,
+    to_anchor: 1e12,
   },
   rpm: {
     name: {
       singular: 'rotation per minute',
       plural: 'rotations per minute',
     },
-    to_anchor: 1 / 60,
+    to_anchor: {
+      numerator: 1,
+      denominator: 60,
+    },
   },
   'deg/s': {
     name: {
       singular: 'degree per second',
       plural: 'degrees per second',
     },
-    to_anchor: 1 / 360,
+    to_anchor: {
+      numerator: 1,
+      denominator: 360,
+    },
   },
   'rad/s': {
     name: {
       singular: 'radian per second',
       plural: 'radians per second',
     },
-    to_anchor: 1 / (Math.PI * 2),
+    to_anchor: {
+      numerator: 1,
+      denominator: 6.283185307179586, // Math.PI * 2
+    },
   },
 };
 

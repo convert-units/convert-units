@@ -17,28 +17,28 @@ const SI: Record<ApparentPowerMetricUnits, Unit> = {
       singular: 'Millivolt-Ampere',
       plural: 'Millivolt-Amperes',
     },
-    to_anchor: 0.001,
+    to_anchor: 1e-3,
   },
   kVA: {
     name: {
       singular: 'Kilovolt-Ampere',
       plural: 'Kilovolt-Amperes',
     },
-    to_anchor: 1000,
+    to_anchor: 1e3,
   },
   MVA: {
     name: {
       singular: 'Megavolt-Ampere',
       plural: 'Megavolt-Amperes',
     },
-    to_anchor: 1000000,
+    to_anchor: 1e6,
   },
   GVA: {
     name: {
       singular: 'Gigavolt-Ampere',
       plural: 'Gigavolt-Amperes',
     },
-    to_anchor: 1000000000,
+    to_anchor: 1e9,
   },
 };
 

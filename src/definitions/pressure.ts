@@ -20,7 +20,10 @@ const metric: Record<PressureMetricUnits, Unit> = {
       singular: 'pascal',
       plural: 'pascals',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: {
+      numerator: 1,
+      denominator: 1e3,
+    },
   },
   kPa: {
     name: {
@@ -34,14 +37,17 @@ const metric: Record<PressureMetricUnits, Unit> = {
       singular: 'megapascal',
       plural: 'megapascals',
     },
-    to_anchor: 1000,
+    to_anchor: 1e3,
   },
   hPa: {
     name: {
       singular: 'hectopascal',
       plural: 'hectopascals',
     },
-    to_anchor: 1 / 10,
+    to_anchor: {
+      numerator: 1,
+      denominator: 10,
+    },
   },
   mbar: {
     name: {
@@ -62,7 +68,10 @@ const metric: Record<PressureMetricUnits, Unit> = {
       singular: 'torr',
       plural: 'torr',
     },
-    to_anchor: 101325 / 760000,
+    to_anchor: {
+      numerator: 101325,
+      denominator: 7.6e5,
+    },
   },
   mH2O: {
     name: {
@@ -86,7 +95,10 @@ const imperial: Record<PressureImperialUnits, Unit> = {
       singular: 'pound per square inch',
       plural: 'pounds per square inch',
     },
-    to_anchor: 1 / 1000,
+    to_anchor: {
+      numerator: 1,
+      denominator: 1e3,
+    },
   },
   ksi: {
     name: {
@@ -100,7 +112,7 @@ const imperial: Record<PressureImperialUnits, Unit> = {
       singular: 'Inch of mercury',
       plural: 'Inches of mercury',
     },
-    to_anchor: 0.000491154,
+    to_anchor: 4.91154e-4,
   },
 };
 
@@ -112,12 +124,15 @@ const measure: Measure<PressureSystems, PressureUnits> = {
   anchors: {
     metric: {
       imperial: {
-        ratio: 0.00014503768078,
+        ratio: 1.4503768078e-4,
       },
     },
     imperial: {
       metric: {
-        ratio: 1 / 0.00014503768078,
+        ratio: {
+          numerator: 1,
+          denominator: 1.4503768078e-4,
+        },
       },
     },
   },

@@ -1,9 +1,10 @@
-import type { JestConfigWithTsJest } from 'ts-jest'
+import type { JestConfigWithTsJest } from 'ts-jest';
 
 const jestConfig: JestConfigWithTsJest = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   extensionsToTreatAsEsm: ['.ts'],
+  testRegex: '.test.ts$',
   transform: {
     '^.+\\.ts?$': [
       'ts-jest',
@@ -19,6 +20,6 @@ const jestConfig: JestConfigWithTsJest = {
   moduleNameMapper: {
     '^(\\.{1,2}/.*)\\.js$': '$1',
   },
-}
+};
 
 export default jestConfig;

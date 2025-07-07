@@ -24,14 +24,14 @@ const SI: Record<CurrentSIUnits, Unit> = {
       singular: 'Milliampere',
       plural: 'Milliamperes',
     },
-    to_anchor: 0.001,
+    to_anchor: 1e-3,
   },
   kA: {
     name: {
       singular: 'Kiloampere',
       plural: 'Kiloamperes',
     },
-    to_anchor: 1000,
+    to_anchor: 1e3,
   },
   MA: {
     name: {

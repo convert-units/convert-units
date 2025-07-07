@@ -18,28 +18,28 @@ const metric: Record<PowerMetricUnits, Unit> = {
       singular: 'Milliwatt',
       plural: 'Milliwatts',
     },
-    to_anchor: 0.001,
+    to_anchor: 1e-3,
   },
   kW: {
     name: {
       singular: 'Kilowatt',
       plural: 'Kilowatts',
     },
-    to_anchor: 1000,
+    to_anchor: 1e3,
   },
   MW: {
     name: {
       singular: 'Megawatt',
       plural: 'Megawatts',
     },
-    to_anchor: 1000000,
+    to_anchor: 1e6,
   },
   GW: {
     name: {
       singular: 'Gigawatt',
       plural: 'Gigawatts',
     },
-    to_anchor: 1000000000,
+    to_anchor: 1e9,
   },
   PS: {
     name: {
@@ -87,7 +87,10 @@ const measure: Measure<PowerSystems, PowerUnits> = {
     },
     imperial: {
       metric: {
-        ratio: 1 / 0.737562149,
+        ratio: {
+          numerator: 1,
+          denominator: 0.737562149,
+        },
       },
     },
   },

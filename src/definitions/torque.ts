@@ -75,7 +75,10 @@ const measure: Measure<TorqueSystems, TorqueUnits> = {
   anchors: {
     metric: {
       imperial: {
-        ratio: 1 / 1.355818,
+        ratio: {
+          numerator: 1,
+          denominator: 1.355818,
+        },
       },
     },
     imperial: {

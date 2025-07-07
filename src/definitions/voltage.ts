@@ -24,14 +24,14 @@ const SI: Record<VoltageSIUnits, Unit> = {
       singular: 'Millivolt',
       plural: 'Millivolts',
     },
-    to_anchor: 0.001,
+    to_anchor: 1e-3,
   },
   kV: {
     name: {
       singular: 'Kilovolt',
       plural: 'Kilovolts',
     },
-    to_anchor: 1000,
+    to_anchor: 1e3,
   },
   MV: {
     name: {

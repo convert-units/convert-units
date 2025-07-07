@@ -52,7 +52,10 @@ const measure: Measure<PaceSystems, PaceUnits> = {
     },
     imperial: {
       metric: {
-        ratio: 1 / 0.3048,
+        ratio: {
+          numerator: 1,
+          denominator: 0.3048,
+        },
       },
     },
   },
