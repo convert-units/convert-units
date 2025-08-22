@@ -1189,6 +1189,22 @@ Packaged Units
 </details>
 
 <details>
+<summary>Electrical Conductivity</summary>
+* S/m
+* dS/m
+* mS/m
+* μS/m
+* nS/m
+* pS/m
+* S/cm
+* dS/cm
+* mS/cm
+* μS/cm
+* nS/cm
+* pS/cm
+</details>
+
+<details>
 <summary>Angle</summary>
 * deg
 * rad
