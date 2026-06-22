@@ -474,7 +474,7 @@ test('ft3/s to cm3/s', () => {
   >({
     volumeFlowRate,
   });
-  expect(convert(1).from('ft3/s').to('cm3/s')).toBeCloseTo(28316.832);
+  expect(convert(1).from('ft3/s').to('cm3/s')).toBeCloseTo(28316.846592);
 });
 
 test('pnt/s to ml/s', () => {

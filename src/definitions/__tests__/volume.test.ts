@@ -236,7 +236,7 @@ test('ft3 to cm3', () => {
   const convert = configureMeasurements<'volume', VolumeSystems, VolumeUnits>({
     volume,
   });
-  expect(convert(1).from('ft3').to('cm3')).toBeCloseTo(28316.832);
+  expect(convert(1).from('ft3').to('cm3')).toBeCloseTo(28316.846592);
 });
 
 test('pnt to ml', () => {
@@ -300,4 +300,14 @@ test('Ml to Gl', () => {
     volume,
   });
   expect(convert(1).from('Ml').to('Gl')).toBe(0.001);
+});
+
+test('cubic units preserve the exact integer identities', () => {
+  const convert = configureMeasurements<'volume', VolumeSystems, VolumeUnits>({
+    volume,
+  });
+  expect(convert(1).from('ft3').to('in3')).toBe(1728);
+  expect(convert(1).from('yd3').to('ft3')).toBe(27);
+  expect(convert(1728).from('in3').to('ft3')).toBe(1);
+  expect(convert(27).from('ft3').to('yd3')).toBe(1);
 });
