@@ -8,15 +8,15 @@ export type SpeedImperialUnits = 'mph' | 'knot' | 'ft/s' | 'ft/min' | 'in/h';
 const metric: Record<SpeedMetricUnits, Unit> = {
   'm/s': {
     name: {
-      singular: 'Metre per second',
-      plural: 'Metres per second',
+      singular: 'Meter per second',
+      plural: 'Meters per second',
     },
     to_anchor: 3.6,
   },
   'km/h': {
     name: {
-      singular: 'Kilometre per hour',
-      plural: 'Kilometres per hour',
+      singular: 'Kilometer per hour',
+      plural: 'Kilometers per hour',
     },
     to_anchor: 1,
   },
