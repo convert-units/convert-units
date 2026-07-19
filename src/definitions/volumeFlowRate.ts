@@ -284,7 +284,7 @@ const imperial: Record<VolumeFlowRateImperialUnits, Unit> = {
       singular: 'Cubic inch per second',
       plural: 'Cubic inches per second',
     },
-    to_anchor: 0.55411,
+    to_anchor: 0.5541125541125541,
   },
   'in3/min': {
     name: {
@@ -292,7 +292,7 @@ const imperial: Record<VolumeFlowRateImperialUnits, Unit> = {
       plural: 'Cubic inches per minute',
     },
     to_anchor: {
-      numerator: 0.55411,
+      numerator: 0.5541125541125541,
       denominator: 60,
     },
   },
@@ -302,7 +302,7 @@ const imperial: Record<VolumeFlowRateImperialUnits, Unit> = {
       plural: 'Cubic inches per hour',
     },
     to_anchor: {
-      numerator: 0.55411,
+      numerator: 0.5541125541125541,
       denominator: 3.6e3,
     },
   },
@@ -406,7 +406,7 @@ const imperial: Record<VolumeFlowRateImperialUnits, Unit> = {
       singular: 'Cubic foot per second',
       plural: 'Cubic feet per second',
     },
-    to_anchor: 957.506,
+    to_anchor: 957.5064935064935,
   },
   'ft3/min': {
     name: {
@@ -414,7 +414,7 @@ const imperial: Record<VolumeFlowRateImperialUnits, Unit> = {
       plural: 'Cubic feet per minute',
     },
     to_anchor: {
-      numerator: 957.506,
+      numerator: 957.5064935064935,
       denominator: 60,
     },
   },
@@ -424,7 +424,7 @@ const imperial: Record<VolumeFlowRateImperialUnits, Unit> = {
       plural: 'Cubic feet per hour',
     },
     to_anchor: {
-      numerator: 957.506,
+      numerator: 957.5064935064935,
       denominator: 3.6e3,
     },
   },
@@ -433,7 +433,7 @@ const imperial: Record<VolumeFlowRateImperialUnits, Unit> = {
       singular: 'Cubic yard per second',
       plural: 'Cubic yards per second',
     },
-    to_anchor: 25852.7,
+    to_anchor: 25852.675324675325,
   },
   'yd3/min': {
     name: {
@@ -441,7 +441,7 @@ const imperial: Record<VolumeFlowRateImperialUnits, Unit> = {
       plural: 'Cubic yards per minute',
     },
     to_anchor: {
-      numerator: 25852.7,
+      numerator: 25852.675324675325,
       denominator: 60,
     },
   },
@@ -451,7 +451,7 @@ const imperial: Record<VolumeFlowRateImperialUnits, Unit> = {
       plural: 'Cubic yards per hour',
     },
     to_anchor: {
-      numerator: 25852.7,
+      numerator: 25852.675324675325,
       denominator: 3.6e3,
     },
   },
