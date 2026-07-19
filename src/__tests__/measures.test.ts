@@ -14,6 +14,7 @@ test('measures', () => {
   const actual = convert().measures(),
     expected = [
       'acceleration',
+      'acidity',
       'angle',
       'apparentPower',
       'area',
@@ -42,6 +43,8 @@ test('measures', () => {
       'voltage',
       'volume',
       'volumeFlowRate',
+      'electricalConductivity',
+      'massConcentration',
     ];
   expect(actual.sort()).toEqual(expected.sort());
 });

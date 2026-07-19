@@ -3,6 +3,7 @@ import acceleration, {
   AccelerationSystems,
   AccelerationUnits,
 } from '../definitions/acceleration';
+import acidity, { AciditySystems, AcidityUnits } from '../definitions/acidity';
 import allMeasures, {
   AllMeasures,
   AllMeasuresSystems,
@@ -18,6 +19,10 @@ import charge, { ChargeSystems, ChargeUnits } from '../definitions/charge';
 import current, { CurrentSystems, CurrentUnits } from '../definitions/current';
 import digital, { DigitalSystems, DigitalUnits } from '../definitions/digital';
 import each, { EachSystems, EachUnits } from '../definitions/each';
+import electricalConductivity, {
+  ElectricalConductivitySystems,
+  ElectricalConductivityUnits,
+} from '../definitions/electricalConductivity';
 import energy, { EnergySystems, EnergyUnits } from '../definitions/energy';
 import force, { ForceSystems, ForceUnits } from '../definitions/force';
 import frequency, {
@@ -30,6 +35,10 @@ import illuminance, {
 } from '../definitions/illuminance';
 import length, { LengthSystems, LengthUnits } from '../definitions/length';
 import mass, { MassSystems, MassUnits } from '../definitions/mass';
+import massConcentration, {
+  MassConcentrationSystems,
+  MassConcentrationUnits,
+} from '../definitions/massConcentration';
 import massFlowRate, {
   MassFlowRateSystems,
   MassFlowRateUnits,
@@ -167,6 +176,19 @@ test('mass flow rate possibilities', () => {
   });
   const actual = convert().possibilities('massFlowRate'),
     expected = ['kg/h', 'kg/min', 'kg/s', 'lb/h', 'lb/s', 'mt/h'];
+  expect(actual.sort()).toEqual(expected.sort());
+});
+
+test('mass concentration possibilities', () => {
+  const convert = configureMeasurements<
+    'massConcentration',
+    MassConcentrationSystems,
+    MassConcentrationUnits
+  >({
+    massConcentration,
+  });
+  const actual = convert().possibilities('massConcentration'),
+    expected = ['mg/L', 'g/L', 'µg/L', 'kg/m3', 'g/mL', 'mg/mL'];
   expect(actual.sort()).toEqual(expected.sort());
 });
 
@@ -696,6 +718,8 @@ test('all possibilities', () => {
       'dm3/min',
       'dm3/s',
       'dNm',
+      'dS/m',
+      'dS/cm',
       'ea',
       'dz',
       'fl-oz',
@@ -716,6 +740,8 @@ test('all possibilities', () => {
       'ft3/s',
       'g',
       'g-force',
+      'g/L',
+      'g/mL',
       'gal',
       'gal/h',
       'gal/min',
@@ -748,6 +774,7 @@ test('all possibilities', () => {
       'kanna',
       'kcal',
       'kg',
+      'kg/m3',
       'kgf',
       'kkp',
       'kJ',
@@ -809,7 +836,12 @@ test('all possibilities', () => {
       'mC',
       'mcg',
       'mg',
+      'mg/L',
+      'mg/mL',
       'mH2O',
+      'mS/m',
+      'mS/cm',
+      'μS/m',
       'mi',
       'mi2',
       'mil',
@@ -832,6 +864,8 @@ test('all possibilities', () => {
       'mt/h',
       'mu',
       'nC',
+      'nS/m',
+      'nS/cm',
       'nm',
       'Nm',
       'nm2',
@@ -854,6 +888,8 @@ test('all possibilities', () => {
       'oz',
       'ozf-in',
       'pC',
+      'pS/m',
+      'pS/cm',
       'pnt',
       'pnt/h',
       'pnt/min',
@@ -870,6 +906,8 @@ test('all possibilities', () => {
       'rad/s',
       'rpm',
       's',
+      'S/m',
+      'S/cm',
       's/m',
       's/ft',
       't',
@@ -896,9 +934,11 @@ test('all possibilities', () => {
       'yd3/min',
       'yd3/s',
       'year',
+      'µg/L',
       'μm',
       'μm2',
       'μC',
+      'μS/cm',
       'μA',
       'μV',
       'pcs',
@@ -915,6 +955,8 @@ test('all possibilities', () => {
       'sm-gr',
       'st',
       'trio',
+      'pH',
+      'pOH',
     ];
   expect(actual.sort()).toEqual(expected.sort());
 });
@@ -939,5 +981,45 @@ test('pieces possibilities', () => {
       'sm-gr',
       'trio',
     ];
+  expect(actual.sort()).toEqual(expected.sort());
+});
+
+test('electrical conductivity possibilities', () => {
+  const convert = configureMeasurements<
+    'electricalConductivity',
+    ElectricalConductivitySystems,
+    ElectricalConductivityUnits
+  >({
+    electricalConductivity,
+  });
+  const actual = convert().possibilities('electricalConductivity'),
+    expected = [
+      'S/m',
+      'dS/m',
+      'mS/m',
+      'μS/m',
+      'nS/m',
+      'pS/m',
+      'S/cm',
+      'dS/cm',
+      'mS/cm',
+      'μS/cm',
+      'nS/cm',
+      'pS/cm',
+    ];
+  expect(actual.sort()).toEqual(expected.sort());
+});
+
+test('acidity possibilities', () => {
+  const convert = configureMeasurements<
+    'acidity',
+    AciditySystems,
+    AcidityUnits
+  >({
+    acidity,
+  });
+  const actual = convert().possibilities('acidity'),
+    expected = ['pH', 'pOH'];
+
   expect(actual.sort()).toEqual(expected.sort());
 });

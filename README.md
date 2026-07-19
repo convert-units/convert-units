@@ -1189,6 +1189,22 @@ Packaged Units
 </details>
 
 <details>
+<summary>Electrical Conductivity</summary>
+* S/m
+* dS/m
+* mS/m
+* μS/m
+* nS/m
+* pS/m
+* S/cm
+* dS/cm
+* mS/cm
+* μS/cm
+* nS/cm
+* pS/cm
+</details>
+
+<details>
 <summary>Angle</summary>
 * deg
 * rad
@@ -1238,6 +1254,21 @@ Packaged Units
 * trio
 </details>
 
+<details>
+<summary>Acidity</summary>
+* pH
+* pOH
+</details>
+
+<details>
+<summary>Mass Concentration</summary>
+* mg/L
+* g/L
+* µg/L
+* kg/m3
+* g/mL
+* mg/mL
+</details>
 
 License
 -------

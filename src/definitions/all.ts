@@ -3,6 +3,7 @@ import acceleration, {
   AccelerationSystems,
   AccelerationUnits,
 } from './acceleration.js';
+import acidity, { AciditySystems, AcidityUnits } from './acidity.js';
 import angle, { AngleSystems, AngleUnits } from './angle.js';
 import apparentPower, {
   ApparentPowerSystems,
@@ -13,6 +14,10 @@ import charge, { ChargeSystems, ChargeUnits } from './charge.js';
 import current, { CurrentSystems, CurrentUnits } from './current.js';
 import digital, { DigitalSystems, DigitalUnits } from './digital.js';
 import each, { EachSystems, EachUnits } from './each.js';
+import electricalConductivity, {
+  ElectricalConductivitySystems,
+  ElectricalConductivityUnits,
+} from './electricalConductivity.js';
 import energy, { EnergySystems, EnergyUnits } from './energy.js';
 import force, { ForceSystems, ForceUnits } from './force.js';
 import frequency, { FrequencySystems, FrequencyUnits } from './frequency.js';
@@ -22,6 +27,10 @@ import illuminance, {
 } from './illuminance.js';
 import length, { LengthSystems, LengthUnits } from './length.js';
 import mass, { MassSystems, MassUnits } from './mass.js';
+import massConcentration, {
+  MassConcentrationSystems,
+  MassConcentrationUnits,
+} from './massConcentration.js';
 import massFlowRate, {
   MassFlowRateSystems,
   MassFlowRateUnits,
@@ -55,6 +64,7 @@ import volumeFlowRate, {
 
 export type AllMeasuresSystems =
   | AccelerationSystems
+  | AciditySystems
   | AngleSystems
   | ApparentPowerSystems
   | AreaSystems
@@ -68,6 +78,7 @@ export type AllMeasuresSystems =
   | IlluminanceSystems
   | LengthSystems
   | MassSystems
+  | MassConcentrationSystems
   | MassFlowRateSystems
   | PaceSystems
   | PartsPerSystems
@@ -82,10 +93,12 @@ export type AllMeasuresSystems =
   | TimeSystems
   | VoltageSystems
   | VolumeSystems
-  | VolumeFlowRateSystems;
+  | VolumeFlowRateSystems
+  | ElectricalConductivitySystems;
 
 export type AllMeasuresUnits =
   | AccelerationUnits
+  | AcidityUnits
   | AngleUnits
   | ApparentPowerUnits
   | AreaUnits
@@ -99,6 +112,7 @@ export type AllMeasuresUnits =
   | IlluminanceUnits
   | LengthUnits
   | MassUnits
+  | MassConcentrationUnits
   | MassFlowRateUnits
   | PaceUnits
   | PartsPerUnits
@@ -113,10 +127,12 @@ export type AllMeasuresUnits =
   | TimeUnits
   | VoltageUnits
   | VolumeUnits
-  | VolumeFlowRateUnits;
+  | VolumeFlowRateUnits
+  | ElectricalConductivityUnits;
 
 export type AllMeasures =
   | 'acceleration'
+  | 'acidity'
   | 'angle'
   | 'apparentPower'
   | 'area'
@@ -130,6 +146,7 @@ export type AllMeasures =
   | 'illuminance'
   | 'length'
   | 'mass'
+  | 'massConcentration'
   | 'massFlowRate'
   | 'pace'
   | 'partsPer'
@@ -144,13 +161,15 @@ export type AllMeasures =
   | 'time'
   | 'voltage'
   | 'volume'
-  | 'volumeFlowRate';
+  | 'volumeFlowRate'
+  | 'electricalConductivity';
 
 const allMeasures: Record<
   AllMeasures,
   Measure<AllMeasuresSystems, AllMeasuresUnits>
 > = {
   acceleration,
+  acidity,
   angle,
   apparentPower,
   area,
@@ -164,6 +183,7 @@ const allMeasures: Record<
   illuminance,
   length,
   mass,
+  massConcentration,
   massFlowRate,
   pace,
   partsPer,
@@ -179,6 +199,7 @@ const allMeasures: Record<
   voltage,
   volume,
   volumeFlowRate,
+  electricalConductivity,
 };
 
 export default allMeasures;
