@@ -221,7 +221,7 @@ const imperial: Record<VolumeImperialUnits, Unit> = {
       singular: 'Cubic inch',
       plural: 'Cubic inches',
     },
-    to_anchor: 0.55411,
+    to_anchor: 0.5541125541125541, // 1 / 1.8046875 (1 fl-oz = 231/128 in3)
   },
   'fl-oz': {
     name: {
@@ -263,14 +263,14 @@ const imperial: Record<VolumeImperialUnits, Unit> = {
       singular: 'Cubic foot',
       plural: 'Cubic feet',
     },
-    to_anchor: 957.506,
+    to_anchor: 957.5064935064935, // 1728 in3
   },
   yd3: {
     name: {
       singular: 'Cubic yard',
       plural: 'Cubic yards',
     },
-    to_anchor: 25852.7,
+    to_anchor: 25852.675324675325, // 27 ft3
   },
 };
 
