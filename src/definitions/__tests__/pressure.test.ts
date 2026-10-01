@@ -95,6 +95,8 @@ test('Pa to psi', () => {
     pressure,
   });
   expect(convert(10000).from('Pa').to('psi')).toBeCloseTo(1.450377);
+  expect(convert(1).from('Pa').to('psi')).toBeCloseTo(0.000_145_0377);
+  expect(convert(1).from('Pa').to('psi')).toBe(1290320000 / 8896443230521);
 });
 
 test('torr to ksi', () => {
@@ -117,6 +119,18 @@ test('psi to hPa', () => {
     pressure,
   });
   expect(convert(10).from('psi').to('hPa')).toBeCloseTo(689.47573);
+});
+
+test('psi to Pa', () => {
+  const convert = configureMeasurements<
+    'pressure',
+    PressureSystems,
+    PressureUnits
+  >({
+    pressure,
+  });
+  expect(convert(1).from('psi').to('Pa')).toBeCloseTo(6894.757);
+  expect(convert(1).from('psi').to('Pa')).toBe(8896443230521 / 1290320000);
 });
 
 test('psi to inHg', () => {

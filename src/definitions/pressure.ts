@@ -124,14 +124,17 @@ const measure: Measure<PressureSystems, PressureUnits> = {
   anchors: {
     metric: {
       imperial: {
-        ratio: 1.4503768078e-4,
+        ratio: {
+          numerator: 1_290_320_000,
+          denominator: 8_896_443_230_521,
+        },
       },
     },
     imperial: {
       metric: {
         ratio: {
-          numerator: 1,
-          denominator: 1.4503768078e-4,
+          numerator: 8_896_443_230_521,
+          denominator: 1_290_320_000,
         },
       },
     },
