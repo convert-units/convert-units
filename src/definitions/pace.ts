@@ -28,7 +28,7 @@ const imperial: Record<PaceImperialUnits, Unit> = {
       singular: 'Minute per mile',
       plural: 'Minutes per mile',
     },
-    to_anchor: 0.0113636,
+    to_anchor: 60 / 5280,
   },
   's/ft': {
     name: {
