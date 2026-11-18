@@ -32,14 +32,14 @@ const metric: Record<TorqueMetricUnits, Unit> = {
       singular: 'Kilogram-meter',
       plural: 'Kilogram-meters',
     },
-    to_anchor: 9.806649999787735, // 1 / 0.1019716213,
+    to_anchor: 9.80665,
   },
   'kg-cm': {
     name: {
       singular: 'Kilogram-centimeter',
       plural: 'Kilogram-centimeters',
     },
-    to_anchor: 9.806649999787735e-2, // 1 / 10.19716213,
+    to_anchor: 9.80665e-2,
   },
 };
 
@@ -63,7 +63,7 @@ const imperial: Record<TorqueImperialUnits, Unit> = {
       singular: 'Ounce-inch',
       plural: 'Ounce-inches',
     },
-    to_anchor: 5.208333271755643e-3, // 1 / 192.00000227,
+    to_anchor: 1 / 192,
   },
 };
 
@@ -77,13 +77,13 @@ const measure: Measure<TorqueSystems, TorqueUnits> = {
       imperial: {
         ratio: {
           numerator: 1,
-          denominator: 1.355818,
+          denominator: 1.3558179483314003,
         },
       },
     },
     imperial: {
       metric: {
-        ratio: 1.355818,
+        ratio: 1.3558179483314003, // 4.4482216152605 N × 0.3048 m
       },
     },
   },
