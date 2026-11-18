@@ -24,14 +24,14 @@ const SI: Record<ForceSIUnits, Unit> = {
       singular: 'Pound-force',
       plural: 'Pound-forces',
     },
-    to_anchor: 4.44822,
+    to_anchor: 4.4482216152605, // 0.45359237 kg × 9.80665 m/s²
   },
   kgf: {
     name: {
       singular: 'Kilogram-force',
       plural: 'Kilogram-forces',
     },
-    to_anchor: 9.807,
+    to_anchor: 9.80665,
   },
 };
 

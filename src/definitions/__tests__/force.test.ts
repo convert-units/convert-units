@@ -26,7 +26,7 @@ test('lbf to N', () => {
   const convert = configureMeasurements<'force', ForceSystems, ForceUnits>({
     force,
   });
-  expect(convert(1).from('lbf').to('N')).toBe(4.44822);
+  expect(convert(1).from('lbf').to('N')).toBe(4.4482216152605);
 });
 
 test('N to kgf', () => {
@@ -40,5 +40,13 @@ test('kgf to N', () => {
   const convert = configureMeasurements<'force', ForceSystems, ForceUnits>({
     force,
   });
-  expect(convert(1).from('kgf').to('N')).toBe(9.807);
+  expect(convert(1).from('kgf').to('N')).toBe(9.80665);
+});
+
+test('kgf to lbf', () => {
+  const convert = configureMeasurements<'force', ForceSystems, ForceUnits>({
+    force,
+  });
+  // 1 kgf / 1 lbf = 1 kg / 1 lb = 1 / 0.45359237
+  expect(convert(1).from('kgf').to('lbf')).toBeCloseTo(1 / 0.45359237, 12);
 });
