@@ -19,7 +19,7 @@ test('min/mi to s/ft', () => {
   const convert = configureMeasurements<'pace', PaceSystems, PaceUnits>({
     pace,
   });
-  expect(convert(1).from('min/mi').to('s/ft')).toBe(0.0113636);
+  expect(convert(1).from('min/mi').to('s/ft')).toBe(60 / 5280);
 });
 
 test('s/m to min/km', () => {
@@ -41,4 +41,12 @@ test('min/km to min/mi', () => {
     pace,
   });
   expect(convert(1).from('min/km').to('min/mi')).toBeCloseTo(1.60934);
+});
+
+test('min/mi is exactly 60 s per 5280 ft', () => {
+  const convert = configureMeasurements<'pace', PaceSystems, PaceUnits>({
+    pace,
+  });
+  expect(convert(1).from('min/mi').to('min/km')).toBeCloseTo(1 / 1.609344, 12);
+  expect(convert(1).from('min/km').to('min/mi')).toBeCloseTo(1.609344, 12);
 });

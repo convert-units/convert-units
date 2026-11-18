@@ -70,3 +70,15 @@ test('in/s to mm/s', () => {
   });
   expect(convert(1).from('in/h').to('mm/h')).toBeCloseTo(25.4);
 });
+
+test('exact imperial speed identities', () => {
+  const convert = configureMeasurements<'speed', SpeedSystems, SpeedUnits>({
+    speed,
+  });
+  // 1 mi = 5280 ft = 63360 in, 1 in = 25.4 mm, 1 knot = 1852 m/h
+  expect(convert(88).from('ft/s').to('mph')).toBeCloseTo(60, 10);
+  expect(convert(1).from('mph').to('ft/min')).toBeCloseTo(88, 10);
+  expect(convert(1).from('mph').to('in/h')).toBeCloseTo(63360, 8);
+  expect(convert(1).from('in/h').to('mm/h')).toBeCloseTo(25.4, 10);
+  expect(convert(1).from('knot').to('km/h')).toBeCloseTo(1.852, 12);
+});

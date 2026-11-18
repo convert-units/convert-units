@@ -42,28 +42,28 @@ const imperial: Record<SpeedImperialUnits, Unit> = {
       singular: 'Knot',
       plural: 'Knots',
     },
-    to_anchor: 1.150779,
+    to_anchor: 1852 / 1609.344,
   },
   'ft/s': {
     name: {
       singular: 'Foot per second',
       plural: 'Feet per second',
     },
-    to_anchor: 0.681818,
+    to_anchor: 3600 / 5280,
   },
   'ft/min': {
     name: {
       singular: 'Foot per minute',
       plural: 'Feet per minute',
     },
-    to_anchor: 1.13636e-2,
+    to_anchor: 60 / 5280,
   },
   'in/h': {
     name: {
       singular: 'Inch per hour',
       plural: 'Inches per hour',
     },
-    to_anchor: 1.578e-5,
+    to_anchor: 1 / 63360,
   },
 };
 
