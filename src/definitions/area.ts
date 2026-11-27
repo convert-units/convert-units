@@ -138,15 +138,15 @@ const measure: Measure<AreaSystems, AreaUnits> = {
   anchors: {
     metric: {
       imperial: {
-        ratio: 10.7639,
+        ratio: {
+          numerator: 1,
+          denominator: 0.09290304,
+        },
       },
     },
     imperial: {
       metric: {
-        ratio: {
-          numerator: 1,
-          denominator: 10.7639,
-        },
+        ratio: 0.09290304,
       },
     },
   },

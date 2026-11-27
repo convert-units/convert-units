@@ -168,3 +168,12 @@ test('m2 to dm2', () => {
   });
   expect(convert(1).from('m2').to('dm2')).toBe(100);
 });
+
+test('metric and imperial areas use the exact square foot of 0.09290304 m2', () => {
+  const convert = configureMeasurements<'area', AreaSystems, AreaUnits>({
+    area,
+  });
+  expect(convert(2).from('in2').to('mm2')).toBeCloseTo(1290.32, 8);
+  expect(convert(1).from('ac').to('m2')).toBeCloseTo(4046.8564224, 8);
+  expect(convert(0.09290304).from('m2').to('ft2')).toBeCloseTo(1, 12);
+});

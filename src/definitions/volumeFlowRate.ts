@@ -465,15 +465,15 @@ const measure: Measure<VolumeFlowRateSystems, VolumeFlowRateUnits> = {
   anchors: {
     metric: {
       imperial: {
-        ratio: 33.8140227,
+        ratio: {
+          numerator: 1,
+          denominator: 0.0295735295625,
+        },
       },
     },
     imperial: {
       metric: {
-        ratio: {
-          numerator: 1,
-          denominator: 33.8140227,
-        },
+        ratio: 0.0295735295625,
       },
     },
   },

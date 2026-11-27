@@ -608,3 +608,16 @@ test('l/h to m3/h', () => {
   });
   expect(convert(10).from('l/h').to('m3/h')).toBeCloseTo(0.01);
 });
+
+test('metric and imperial flow rates use the exact fluid ounce of 29.5735295625 ml', () => {
+  const convert = configureMeasurements<
+    'volumeFlowRate',
+    VolumeFlowRateSystems,
+    VolumeFlowRateUnits
+  >({
+    volumeFlowRate,
+  });
+  expect(convert(1).from('gal/s').to('l/s')).toBeCloseTo(3.785411784, 12);
+  expect(convert(1).from('in3/s').to('ml/s')).toBeCloseTo(16.387064, 10);
+  expect(convert(29.5735295625).from('ml/s').to('fl-oz/s')).toBeCloseTo(1, 12);
+});
