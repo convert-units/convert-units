@@ -61,7 +61,7 @@ test('nMi to mi', () => {
   const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
     length,
   });
-  expect(convert(1).from('nMi').to('mi')).toBe(1.150780303030303);
+  expect(convert(1).from('nMi').to('mi')).toBe(1.1507794480235425);
 });
 
 test('m to m', () => {
@@ -223,4 +223,15 @@ test('m to dm', () => {
     length,
   });
   expect(convert(1).from('m').to('dm')).toBe(1e1);
+});
+
+test('metric and imperial lengths use the exact foot of 0.3048 m', () => {
+  const convert = configureMeasurements<'length', LengthSystems, LengthUnits>({
+    length,
+  });
+  expect(convert(1).from('in').to('mm')).toBeCloseTo(25.4, 10);
+  expect(convert(6).from('ft').to('m')).toBeCloseTo(1.8288, 12);
+  expect(convert(26.2).from('mi').to('km')).toBeCloseTo(42.1648128, 10);
+  expect(convert(0.3048).from('m').to('ft')).toBeCloseTo(1, 12);
+  expect(convert(1).from('nMi').to('m')).toBeCloseTo(1852, 9);
 });

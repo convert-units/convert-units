@@ -282,15 +282,15 @@ const measure: Measure<VolumeSystems, VolumeUnits> = {
   anchors: {
     metric: {
       imperial: {
-        ratio: 33.8140226,
+        ratio: {
+          numerator: 1,
+          denominator: 0.0295735295625,
+        },
       },
     },
     imperial: {
       metric: {
-        ratio: {
-          numerator: 1,
-          denominator: 33.8140226,
-        },
+        ratio: 0.0295735295625,
       },
     },
   },

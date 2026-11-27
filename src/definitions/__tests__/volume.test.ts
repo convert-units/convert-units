@@ -311,3 +311,12 @@ test('cubic units preserve the exact integer identities', () => {
   expect(convert(1728).from('in3').to('ft3')).toBe(1);
   expect(convert(27).from('ft3').to('yd3')).toBe(1);
 });
+
+test('metric and imperial volumes use the exact fluid ounce of 29.5735295625 ml', () => {
+  const convert = configureMeasurements<'volume', VolumeSystems, VolumeUnits>({
+    volume,
+  });
+  expect(convert(1).from('gal').to('l')).toBeCloseTo(3.785411784, 12);
+  expect(convert(1).from('in3').to('ml')).toBeCloseTo(16.387064, 10);
+  expect(convert(29.5735295625).from('ml').to('fl-oz')).toBeCloseTo(1, 12);
+});

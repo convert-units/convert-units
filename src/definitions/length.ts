@@ -126,7 +126,10 @@ const imperial: Record<LengthImperialUnits, Unit> = {
       singular: 'Nautical Mile',
       plural: 'Nautical Miles',
     },
-    to_anchor: 6076.12,
+    to_anchor: {
+      numerator: 1852,
+      denominator: 0.3048,
+    },
   },
 };
 
@@ -138,15 +141,15 @@ const measure: Measure<LengthSystems, LengthUnits> = {
   anchors: {
     metric: {
       imperial: {
-        ratio: 3.28084,
+        ratio: {
+          numerator: 1,
+          denominator: 0.3048,
+        },
       },
     },
     imperial: {
       metric: {
-        ratio: {
-          numerator: 1,
-          denominator: 3.28084,
-        },
+        ratio: 0.3048,
       },
     },
   },

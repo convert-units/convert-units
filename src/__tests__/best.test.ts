@@ -83,7 +83,7 @@ test('should convert to the chosen system', () => {
   });
   const actual = convert(1200000).from('mm').toBest({ system: 'imperial' }),
     expected = {
-      val: 656.168,
+      val: 656.1679790026246,
       unit: 'fathom',
       singular: 'Fathom',
       plural: 'Fathoms',
@@ -99,7 +99,7 @@ test('should exlude values and convert to the chosen system', () => {
       .from('mm')
       .toBest({ exclude: ['fathom'], system: 'imperial' }),
     expected = {
-      val: 1312.336,
+      val: 1312.3359580052493,
       unit: 'yd',
       singular: 'Yard',
       plural: 'Yards',
